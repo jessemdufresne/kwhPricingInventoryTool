@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Inventory/Edit.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Models/SeedData.cs">
     <Files>
-      <File FileName="../NewPIT/kwhCapstonePIT/kwh/kwh/kwh.csproj" Line="1" Column="1" />
       <File FileName="kwh/Pages/Inventory/Edit.cshtml" Line="1" Column="1" />
+      <File FileName="kwh/Models/SeedData.cs" Line="17" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,17 +10,15 @@
           <Node name="kwh" expanded="True">
             <Node name="kwh" expanded="True">
               <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="SeedData.cs" selected="True" />
+              </Node>
               <Node name="Pages" expanded="True">
-                <Node name="Inventory" expanded="True">
-                  <Node name="Edit.cshtml" expanded="True" selected="True" />
-                </Node>
+                <Node name="Inventory" expanded="True" />
               </Node>
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

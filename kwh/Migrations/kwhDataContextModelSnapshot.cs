@@ -53,7 +53,7 @@ namespace kwh.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<decimal>("UnitCost")
-                        .HasColumnType("decimal(65,30)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<string>("Url")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");

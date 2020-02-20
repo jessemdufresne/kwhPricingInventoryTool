@@ -83,7 +83,7 @@ namespace kwh.Migrations
                     ProjectId = table.Column<int>(nullable: false),
                     PartNumber = table.Column<string>(nullable: true),
                     PartName = table.Column<string>(nullable: true),
-                    UnitCost = table.Column<decimal>(nullable: false),
+                    UnitCost = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     Specification = table.Column<string>(nullable: true),
                     Url = table.Column<string>(nullable: true),
                     QuantityCurrent = table.Column<int>(nullable: false),
