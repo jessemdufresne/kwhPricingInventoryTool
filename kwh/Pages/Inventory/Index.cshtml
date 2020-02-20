@@ -16,6 +16,12 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<form>
+    <p>
+        Part Name: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -26,31 +32,10 @@
                 @Html.DisplayNameFor(model => model.Component[0].PartName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Component[0].Vendor)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Component[0].UnitCost)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Component[0].Specification)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Component[0].Maturity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Component[0].Url)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Component[0].QuantityNeeded)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Component[0].Project)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Component[0].Volunteer)
             </th>
             <th></th>
         </tr>
@@ -65,31 +50,10 @@
                 @Html.DisplayFor(modelItem => item.PartName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Vendor.VendorName)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.UnitCost)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Specification)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Maturity.MaturityStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Url)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.QuantityCurrent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuantityNeeded)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Project.ProjectName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Volunteer.LastName)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ComponentId">Edit</a> |

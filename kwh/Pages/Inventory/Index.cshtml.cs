@@ -20,14 +20,19 @@ namespace kwh.Pages.Inventory
         }
 
         public IList<Component> Component { get;set; }
-        /*[BindProperty(SupportsGet = true)]
-        public string SearchString { get; set; }
-        public SelectList Project { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string PartName { get; set; }
-        */
+        public string SearchString { get; set; }
+
         public async Task OnGetAsync()
         {
+            var components = from c in _context.Component
+                             select c;
+
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                components = components.Where(e => e.PartName.Contains(SearchString));
+            }
+
             Component = await _context.Component
                 .Include(c => c.Maturity)
                 .Include(c => c.Project)
