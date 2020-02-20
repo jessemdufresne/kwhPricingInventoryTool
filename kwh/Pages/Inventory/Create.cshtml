@@ -1,0 +1,89 @@
+@page
+@model kwh.Pages.Inventory.CreateModel
+
+@{
+    ViewData["Title"] = "Add Component";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>Component</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Component.PartNumber" class="control-label"></label>
+                <input asp-for="Component.PartNumber" class="form-control" />
+                <span asp-validation-for="Component.PartNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.PartName" class="control-label"></label>
+                <input asp-for="Component.PartName" class="form-control" />
+                <span asp-validation-for="Component.PartName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.VendorId" class="control-label"></label>
+                <select asp-for="Component.VendorId" class="form-control" asp-items="ViewBag.VendorId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.UnitCost" class="control-label"></label>
+                <input asp-for="Component.UnitCost" class="form-control" />
+                <span asp-validation-for="Component.UnitCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.Specification" class="control-label"></label>
+                <input asp-for="Component.Specification" class="form-control" />
+                <span asp-validation-for="Component.Specification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.MaturityId" class="control-label"></label>
+                <select asp-for="Component.MaturityId" class="form-control" asp-items="ViewBag.MaturityId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.Url" class="control-label"></label>
+                <input asp-for="Component.Url" class="form-control" />
+                <span asp-validation-for="Component.Url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.QuantityCurrent" class="control-label"></label>
+                <input asp-for="Component.QuantityCurrent" class="form-control" />
+                <span asp-validation-for="Component.QuantityCurrent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.QuantityNeeded" class="control-label"></label>
+                <input asp-for="Component.QuantityNeeded" class="form-control" />
+                <span asp-validation-for="Component.QuantityNeeded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.ProjectId" class="control-label"></label>
+                <select asp-for="Component.ProjectId" class="form-control" asp-items="ViewBag.ProjectId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.VolunteerId" class="control-label"></label>
+                <select asp-for="Component.VolunteerId" class="form-control" asp-items="ViewBag.VolunteerId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>
