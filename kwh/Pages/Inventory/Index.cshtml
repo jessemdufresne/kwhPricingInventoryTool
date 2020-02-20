@@ -13,56 +13,92 @@
     <title>Index</title>
 </head>
 <body>
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<form>
+    <h2>DAS Components</h2>
     <p>
-        Part Name: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" />
+        <a asp-page="Create">Create New</a>
     </p>
-</form>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Component[0].PartNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Component[0].PartName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Component[0].UnitCost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Component) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PartNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PartName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitCost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuantityCurrent)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ComponentId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ComponentId">Details</a>
-                <!-- <a asp-page="./Delete" asp-route-id="@item.ComponentId">Delete</a> -->
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+    <form asp-page="./Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Find by part name:
+                <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+                <input type="submit" value="Search" class="btn btn-primary" /> |
+                <a asp-page="./Index">Back to full List</a>
+            </p>
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Component[0].PartNumber)
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                       asp-route-currentFilter="@Model.CurrentFilter">
+                        @Html.DisplayNameFor(model => model.Component[0].PartName)
+                    </a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Component[0].UnitCost)
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.QuantitySort"
+                       asp-route-currentFilter="@Model.CurrentFilter">
+                        @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
+                    </a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Component)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PartNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PartName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnitCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuantityCurrent)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ComponentId">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ComponentId">Details</a>
+                        <!-- <a asp-page="./Delete" asp-route-id="@item.ComponentId">Delete</a> -->
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @{
+        var prevDisabled = !Model.Component.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Component.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Component.PageIndex - 1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-primary @prevDisabled">
+        Previous
+    </a>
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Component.PageIndex + 1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-primary @nextDisabled">
+        Next
+    </a>
+
+
 </body>
 </html>
