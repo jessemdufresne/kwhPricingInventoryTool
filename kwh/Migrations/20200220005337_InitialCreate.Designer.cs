@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace kwh.Migrations
 {
     [DbContext(typeof(kwhDataContext))]
-    [Migration("20200219223609_InitialCreate")]
+    [Migration("20200220005337_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,7 +55,7 @@ namespace kwh.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<decimal>("UnitCost")
-                        .HasColumnType("decimal(65,30)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<string>("Url")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");

@@ -15,21 +15,22 @@ namespace kwh.Models
             {
                 context.Database.EnsureCreated();
 
-                // Look for any movies.
-                if (context.Component.Any())
+                // Look for any Maturity.
+                if (!context.Maturity.Any())
                 {
-                    return;  // DB has been seeded
-                }
-
-                context.Maturity.AddRange(
+                    context.Maturity.AddRange(
                     new Maturity { MaturityStatus = "New/Growth" },
                     new Maturity { MaturityStatus = "Mature" },
                     new Maturity { MaturityStatus = "Decline" },
                     new Maturity { MaturityStatus = "Obsolete" }
                     );
-                context.SaveChanges();
+                    context.SaveChanges();
+                }
 
-                context.Project.AddRange(
+                // Look for any Project.
+                if (!context.Project.Any())
+                {
+                    context.Project.AddRange(
                     new Project
                     {
                         ProjectName = "Muhuru Bay",
@@ -72,9 +73,13 @@ namespace kwh.Models
                         ProjectYear = 2014,
                         ProjectCountry = "Zambia"
                     });
-                context.SaveChanges();
+                    context.SaveChanges();
+                }
 
-                context.Volunteer.AddRange(
+                // Look for any Volunteer.
+                if (!context.Volunteer.Any())
+                {
+                    context.Volunteer.AddRange(
                     new Volunteer
                     {
                         FirstName = "Daniel",
@@ -91,9 +96,13 @@ namespace kwh.Models
                         VolunteerEmail = "jeremiah.kalmus@gmail.com",
                         PIN = 7471
                     });
-                context.SaveChanges();
+                    context.SaveChanges();
+                }
 
-                context.Vendor.AddRange(
+                // Look for any Vendor.
+                if (!context.Vendor.Any())
+                {
+                    context.Vendor.AddRange(
                     new Vendor
                     {
                         VendorName = "Amazon",
@@ -108,9 +117,13 @@ namespace kwh.Models
                         VendorPhone = "",
                         VendorEmail = ""
                     });
-                context.SaveChanges();
+                    context.SaveChanges();
+                }
 
-                context.Component.AddRange(
+                // Look for any Component.
+                if (!context.Component.Any())
+                {
+                    context.Component.AddRange(
                     new Component
                     {
                         ComponentId = 1,
@@ -128,8 +141,9 @@ namespace kwh.Models
                         QuantityCurrent = 2,
                         QuantityNeeded = 2,
                         TimeStamp = DateTime.Now
-                    }) ;
-                context.SaveChanges();
+                    });
+                    context.SaveChanges();
+                }
             }
         }
     }
