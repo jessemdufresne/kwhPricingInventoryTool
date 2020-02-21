@@ -2,7 +2,7 @@
 @model kwh.Pages.Inventory.CreateModel
 
 @{
-    ViewData["Title"] = "Add Component";
+    ViewData["Title"] = "create_component";
 }
 
 <!DOCTYPE html>
@@ -31,8 +31,12 @@
                 <span asp-validation-for="Component.PartName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Component.VendorId" class="control-label"></label>
-                <select asp-for="Component.VendorId" class="form-control" asp-items="ViewBag.VendorId"></select>
+                <label asp-for="Component.Vendor" class="control-label"></label>
+                <select asp-for="Component.VendorId" class="form-control"
+                        asp-items="@Model.VendorNameSL">
+                    <option value="">-- Select a Vendor --</option>
+                </select>
+                <span asp-validation-for="Component.VendorId" class="text-danger" />
             </div>
             <div class="form-group">
                 <label asp-for="Component.UnitCost" class="control-label"></label>
@@ -45,8 +49,12 @@
                 <span asp-validation-for="Component.Specification" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Component.MaturityId" class="control-label"></label>
-                <select asp-for="Component.MaturityId" class="form-control" asp-items="ViewBag.MaturityId"></select>
+                <label asp-for="Component.Maturity" class="control-label"></label>
+                <select asp-for="Component.MaturityId" class="form-control"
+                        asp-items="@Model.MaturityStatusSL">
+                    <option value="">-- Select Maturity --</option>
+                </select>
+                <span asp-validation-for="Component.MaturityId" class="text-danger" />
             </div>
             <div class="form-group">
                 <label asp-for="Component.Url" class="control-label"></label>
@@ -64,12 +72,20 @@
                 <span asp-validation-for="Component.QuantityNeeded" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Component.ProjectId" class="control-label"></label>
-                <select asp-for="Component.ProjectId" class="form-control" asp-items="ViewBag.ProjectId"></select>
+                <label asp-for="Component.Project" class="control-label"></label>
+                <select asp-for="Component.ProjectId" class="form-control"
+                        asp-items="@Model.ProjectNameSL">
+                    <option value="">-- Select a Project --</option>
+                </select>
+                <span asp-validation-for="Component.ProjectId" class="text-danger" />
             </div>
             <div class="form-group">
-                <label asp-for="Component.VolunteerId" class="control-label"></label>
-                <select asp-for="Component.VolunteerId" class="form-control" asp-items="ViewBag.VolunteerId"></select>
+                <label asp-for="Component.Volunteer" class="control-label"></label>
+                <select asp-for="Component.VolunteerId" class="form-control"
+                        asp-items="@Model.LastNameSL">
+                    <option value="">-- Select a Volunteer --</option>
+                </select>
+                <span asp-validation-for="Component.VolunteerId" class="text-danger" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

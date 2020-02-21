@@ -33,4 +33,7 @@
     <Folder Include="Models\" />
     <Folder Include="Pages\Inventory\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove=".DS_Store" />
+  </ItemGroup>
 </Project>

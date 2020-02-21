@@ -21,6 +21,8 @@ namespace kwh.Pages.Inventory
 
         public string NameSort { get; set; }
         public string QuantitySort { get; set; }
+        public string CostSort { get; set; }
+        public string ProjectSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
@@ -32,6 +34,9 @@ namespace kwh.Pages.Inventory
 
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             QuantitySort = sortOrder == "Quantity" ? "quan_desc" : "Quantity";
+            CostSort = sortOrder == "Cost" ? "cost_desc" : "Cost";
+            ProjectSort = sortOrder == "Project" ? "proj_desc" : "Project";
+
             if (searchString != null)
             {
                 pageIndex = 1;
@@ -62,6 +67,18 @@ namespace kwh.Pages.Inventory
                     break;
                 case "quan_desc":
                     components = components.OrderByDescending(c => c.QuantityCurrent);
+                    break;
+                case "Cost":
+                    components = components.OrderBy(c => c.UnitCost);
+                    break;
+                case "cost_desc":
+                    components = components.OrderByDescending(c => c.UnitCost);
+                    break;
+                case "Project":
+                    components = components.OrderBy(c => c.Project.ProjectName);
+                    break;
+                case "proj_desc":
+                    components = components.OrderByDescending(c => c.Project.ProjectName);
                     break;
                 default:
                     components = components.OrderBy(c => c.PartName);

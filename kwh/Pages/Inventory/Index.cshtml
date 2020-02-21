@@ -42,12 +42,21 @@
                     </a>
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Component[0].UnitCost)
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.CostSort"
+                       asp-route-currentFilter="@Model.CurrentFilter">
+                        @Html.DisplayNameFor(model => model.Component[0].UnitCost)
+                    </a>
                 </th>
                 <th>
                     <a asp-page="./Index" asp-route-sortOrder="@Model.QuantitySort"
                        asp-route-currentFilter="@Model.CurrentFilter">
                         @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.ProjectSort"
+                       asp-route-currentFilter="@Model.CurrentFilter">
+                        @Html.DisplayNameFor(model => model.Component[0].Project)
                     </a>
                 </th>
                 <th></th>
@@ -56,25 +65,28 @@
         <tbody>
             @foreach (var item in Model.Component)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PartNumber)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PartName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UnitCost)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.QuantityCurrent)
-                    </td>
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@item.ComponentId">Edit</a> |
-                        <a asp-page="./Details" asp-route-id="@item.ComponentId">Details</a>
-                        <!-- <a asp-page="./Delete" asp-route-id="@item.ComponentId">Delete</a> -->
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PartNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PartName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuantityCurrent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ComponentId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ComponentId">Details</a>
+                    <!-- <a asp-page="./Delete" asp-route-id="@item.ComponentId">Delete</a> -->
+                </td>
+            </tr>
             }
         </tbody>
     </table>

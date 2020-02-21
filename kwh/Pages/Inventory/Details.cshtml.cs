@@ -28,6 +28,7 @@ namespace kwh.Pages.Inventory
             }
 
             Component = await _context.Component
+                .AsNoTracking()
                 .Include(c => c.Maturity)
                 .Include(c => c.Project)
                 .Include(c => c.Vendor)

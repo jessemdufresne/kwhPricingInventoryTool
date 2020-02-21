@@ -10,7 +10,7 @@ using kwh.Models;
 
 namespace kwh.Pages.Inventory
 {
-    public class EditModel : PageModel
+    public class EditModel : ComponentFKPageModel
     {
         private readonly kwhDataContext _context;
 
@@ -39,46 +39,47 @@ namespace kwh.Pages.Inventory
             {
                 return NotFound();
             }
-           ViewData["MaturityId"] = new SelectList(_context.Set<Maturity>(), "MaturityId", "MaturityId");
-           ViewData["ProjectId"] = new SelectList(_context.Set<Project>(), "ProjectId", "ProjectId");
-           ViewData["VendorId"] = new SelectList(_context.Set<Vendor>(), "VendorId", "VendorId");
-           ViewData["VolunteerId"] = new SelectList(_context.Set<Volunteer>(), "VolunteerId", "VolunteerId");
+
+            PopulateVendorDropDown(_context, Component.VendorId);
+            PopulateMaturityDropDown(_context, Component.MaturityId);
+            PopulateProjectDropDown(_context, Component.ProjectId);
+            PopulateVolunteerDropDown(_context, Component.VolunteerId);
             return Page();
         }
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(Component).State = EntityState.Modified;
+            var componentToUpdate = await _context.Component.FindAsync(id);
 
-            try
+            if (componentToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            if (await TryUpdateModelAsync<Component>(
+                 componentToUpdate,
+                 "edit_component",   // Prefix for form value.
+                 c => c.PartNumber, c => c.PartName, c => c.VendorId, c => c.UnitCost,
+                 c => c.Specification, c => c.MaturityId, c => c.Url, c => c.QuantityCurrent,
+                 c => c.QuantityNeeded, c => c.ProjectId, c => c.VolunteerId))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ComponentExists(Component.ComponentId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool ComponentExists(int id)
-        {
-            return _context.Component.Any(e => e.ComponentId == id);
+            // Select DepartmentID if TryUpdateModelAsync fails.
+            PopulateVendorDropDown(_context, componentToUpdate.VendorId);
+            PopulateMaturityDropDown(_context, componentToUpdate.MaturityId);
+            PopulateProjectDropDown(_context, componentToUpdate.ProjectId);
+            PopulateVolunteerDropDown(_context, componentToUpdate.VolunteerId);
+            return Page();
         }
     }
 }
