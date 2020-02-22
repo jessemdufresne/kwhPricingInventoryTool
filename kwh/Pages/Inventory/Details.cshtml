@@ -14,78 +14,78 @@
 </head>
 <body>
 
-<div>
-    <h4>Component</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.PartNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.PartNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.PartName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.PartName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.Vendor)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.Vendor.VendorId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.UnitCost)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.UnitCost)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.Specification)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.Specification)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.Maturity)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.Maturity.MaturityId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.Url)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.Url)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.QuantityCurrent)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.QuantityCurrent)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.QuantityNeeded)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.QuantityNeeded)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.Project)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.Project.ProjectId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.Volunteer)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.Volunteer.VolunteerId)
-        </dd>
-    </dl>
-</div>
+    <div>
+        <h4>Component</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Component.PartNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Component.PartNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Component.PartName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Component.PartName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Component.Vendor)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Component.Vendor.VendorName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Component.UnitCost)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Component.UnitCost)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Component.Specification)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Component.Specification)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Component.Maturity)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Component.Maturity.MaturityStatus)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Component.Url)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Component.Url)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Component.QuantityCurrent)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Component.QuantityCurrent)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Component.QuantityNeeded)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Component.QuantityNeeded)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Component.Project)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Component.Project.ProjectName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Component.Volunteer)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Component.Volunteer.LastName)
+            </dd>
+        </dl>
+    </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Component.ComponentId">Edit</a> |
     <a asp-page="./Index">Back to List</a>

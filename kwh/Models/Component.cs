@@ -24,21 +24,37 @@ namespace kwh.Models
         public Project Project { get; set; }
 
         [Display(Name = "Part Number")]
+        [StringLength(25, MinimumLength = 3)]
         public string PartNumber { get; set; }
+
         [Display(Name = "Part Name")]
+        [StringLength(30, MinimumLength = 3)]
+        [Required]
         public string PartName { get; set; }
+
         [Display(Name = "Unit Cost")]
+        [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]
         public decimal UnitCost { get; set; }
+
         [Display(Name = "Description")]
+        [StringLength(40, MinimumLength = 3)]
         public string Specification { get; set; }
+
+        [DataType(DataType.Url)]
         public string Url { get; set; }
+
         [Display(Name = "Current Quantity")]
         public int QuantityCurrent { get; set; }
+
         [Display(Name = "Quantity Needed")]
         public int QuantityNeeded { get; set; }
+
         [Display(Name = "Last Modified")]
         [DataType(DataType.Date)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime TimeStamp { get; set; }
+        //.Computed is for Add and Update actions...
+        //.Identity for Add action only
     }
 }

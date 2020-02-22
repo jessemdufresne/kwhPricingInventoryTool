@@ -19,20 +19,80 @@ namespace kwh.Pages.Inventory
             _context = context;
         }
 
-        public IList<Component> Component { get;set; }
-        /*[BindProperty(SupportsGet = true)]
-        public string SearchString { get; set; }
-        public SelectList Project { get; set; }
-        [BindProperty(SupportsGet = true)]
-        public string PartName { get; set; }
-        */
-        public async Task OnGetAsync()
+        public string NameSort { get; set; }
+        public string QuantitySort { get; set; }
+        public string CostSort { get; set; }
+        public string ProjectSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+
+        public PaginatedList<Component> Component { get;set; }
+
+        public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, int? pageIndex)
         {
-            Component = await _context.Component
+            CurrentSort = sortOrder;
+
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            QuantitySort = sortOrder == "Quantity" ? "quan_desc" : "Quantity";
+            CostSort = sortOrder == "Cost" ? "cost_desc" : "Cost";
+            ProjectSort = sortOrder == "Project" ? "proj_desc" : "Project";
+
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+
+            IQueryable<Component> components = from c in _context.Component
+                                               select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                components = components.Where(c => c.PartName.ToUpper().Contains(searchString.ToUpper())
+                || c.PartNumber.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    components = components.OrderByDescending(c => c.PartName);
+                    break;
+                case "Quantity":
+                    components = components.OrderBy(c => c.QuantityCurrent);
+                    break;
+                case "quan_desc":
+                    components = components.OrderByDescending(c => c.QuantityCurrent);
+                    break;
+                case "Cost":
+                    components = components.OrderBy(c => c.UnitCost);
+                    break;
+                case "cost_desc":
+                    components = components.OrderByDescending(c => c.UnitCost);
+                    break;
+                case "Project":
+                    components = components.OrderBy(c => c.Project.ProjectName);
+                    break;
+                case "proj_desc":
+                    components = components.OrderByDescending(c => c.Project.ProjectName);
+                    break;
+                default:
+                    components = components.OrderBy(c => c.PartName);
+                    break;
+            }
+
+            int pageSize = 3;
+            Component = await PaginatedList<Component>.CreateAsync(
+                components
                 .Include(c => c.Maturity)
                 .Include(c => c.Project)
                 .Include(c => c.Vendor)
-                .Include(c => c.Volunteer).ToListAsync();
+                .Include(c => c.Volunteer).AsNoTracking(),
+                pageIndex ?? 1, pageSize);
         }
     }
 }

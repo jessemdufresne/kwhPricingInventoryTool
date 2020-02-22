@@ -20,40 +20,10 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.Historic)
+            @Html.DisplayNameFor(model => model.Component.ComponentId)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.Historic)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.Current)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.Current)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.Vendor)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.Vendor.VendorId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.Volunteer)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.Volunteer.VolunteerId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.Maturity)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.Maturity.MaturityId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.Project)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.Project.ProjectId)
+            @Html.DisplayFor(model => model.Component.ComponentId)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Component.PartNumber)
@@ -68,6 +38,12 @@
             @Html.DisplayFor(model => model.Component.PartName)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Component.Vendor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Component.Vendor.VendorName)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Component.UnitCost)
         </dt>
         <dd class="col-sm-10">
@@ -78,6 +54,12 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Component.Specification)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Component.Maturity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Component.Maturity.MaturityStatus)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Component.Url)
@@ -98,10 +80,16 @@
             @Html.DisplayFor(model => model.Component.QuantityNeeded)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.TimeStamp)
+            @Html.DisplayNameFor(model => model.Component.Project)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.TimeStamp)
+            @Html.DisplayFor(model => model.Component.Project.ProjectName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Component.Volunteer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Component.Volunteer.LastName)
         </dd>
     </dl>
     

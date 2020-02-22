@@ -9,7 +9,7 @@ using kwh.Models;
 
 namespace kwh.Pages.Inventory
 {
-    public class CreateModel : PageModel
+    public class CreateModel : ComponentFKPageModel
     {
         private readonly kwhDataContext _context;
 
@@ -20,10 +20,10 @@ namespace kwh.Pages.Inventory
 
         public IActionResult OnGet()
         {
-        ViewData["MaturityId"] = new SelectList(_context.Set<Maturity>(), "MaturityId", "MaturityId");
-        ViewData["ProjectId"] = new SelectList(_context.Set<Project>(), "ProjectId", "ProjectId");
-        ViewData["VendorId"] = new SelectList(_context.Set<Vendor>(), "VendorId", "VendorId");
-        ViewData["VolunteerId"] = new SelectList(_context.Set<Volunteer>(), "VolunteerId", "VolunteerId");
+            PopulateVendorDropDown(_context);
+            PopulateMaturityDropDown(_context);
+            PopulateProjectDropDown(_context);
+            PopulateVolunteerDropDown(_context);
             return Page();
         }
 
@@ -34,15 +34,26 @@ namespace kwh.Pages.Inventory
         // more details see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            var emptyComponent = new Component();
+
+            if (await TryUpdateModelAsync<Component>(
+                 emptyComponent,
+                 "create_component",   // Prefix for form value.
+                 c => c.PartNumber, c => c.PartName, c => c.VendorId, c => c.UnitCost,
+                 c => c.Specification, c => c.MaturityId, c => c.Url, c => c.QuantityCurrent,
+                 c => c.QuantityNeeded, c => c.ProjectId, c => c.VolunteerId))
             {
-                return Page();
+                _context.Component.Add(emptyComponent);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
-            _context.Component.Add(Component);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            // Select FK IDs if TryUpdateModelAsync fails.
+            PopulateVendorDropDown(_context, emptyComponent.VendorId);
+            PopulateMaturityDropDown(_context, emptyComponent.MaturityId);
+            PopulateProjectDropDown(_context, emptyComponent.ProjectId);
+            PopulateVolunteerDropDown(_context, emptyComponent.VolunteerId);
+            return Page();
         }
     }
 }
