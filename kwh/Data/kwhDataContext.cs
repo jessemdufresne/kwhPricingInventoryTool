@@ -17,4 +17,5 @@ using kwh.Models;
         public DbSet<kwh.Models.Project> Project { get; set; }
         public DbSet<kwh.Models.Vendor> Vendor { get; set; }
         public DbSet<kwh.Models.Volunteer> Volunteer { get; set; }
+        public DbSet<kwh.Models.Category> Category { get; set; }
 }

@@ -18,10 +18,13 @@ namespace kwh.Models
         public int MaturityId { get; set; }
         [Display(Name = "Project")]
         public int ProjectId { get; set; }
+        [Display(Name = "Category")]
+        public int CategoryId { get; set; }
         public Vendor Vendor { get; set; }
         public Volunteer Volunteer { get; set; }
         public Maturity Maturity { get; set; }
         public Project Project { get; set; }
+        public Category Category { get; set; }
 
         [Display(Name = "Part Number")]
         [StringLength(25, MinimumLength = 3)]
@@ -37,9 +40,8 @@ namespace kwh.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal UnitCost { get; set; }
 
-        [Display(Name = "Description")]
         [StringLength(40, MinimumLength = 3)]
-        public string Specification { get; set; }
+        public string Notes { get; set; }
 
         [DataType(DataType.Url)]
         public string Url { get; set; }

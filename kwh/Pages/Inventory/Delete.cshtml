@@ -38,6 +38,12 @@
             @Html.DisplayFor(model => model.Component.PartName)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Component.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Component.Category.CategoryName)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Component.Vendor)
         </dt>
         <dd class="col-sm-10">
@@ -50,10 +56,10 @@
             @Html.DisplayFor(model => model.Component.UnitCost)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Component.Specification)
+            @Html.DisplayNameFor(model => model.Component.Notes)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Component.Specification)
+            @Html.DisplayFor(model => model.Component.Notes)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Component.Maturity)

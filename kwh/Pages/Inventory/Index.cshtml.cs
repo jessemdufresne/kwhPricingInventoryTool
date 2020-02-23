@@ -23,6 +23,7 @@ namespace kwh.Pages.Inventory
         public string QuantitySort { get; set; }
         public string CostSort { get; set; }
         public string ProjectSort { get; set; }
+        public string CategorySort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
@@ -36,6 +37,7 @@ namespace kwh.Pages.Inventory
             QuantitySort = sortOrder == "Quantity" ? "quan_desc" : "Quantity";
             CostSort = sortOrder == "Cost" ? "cost_desc" : "Cost";
             ProjectSort = sortOrder == "Project" ? "proj_desc" : "Project";
+            CategorySort = sortOrder == "Category" ? "cat_desc" : "Category";
 
             if (searchString != null)
             {
@@ -80,18 +82,25 @@ namespace kwh.Pages.Inventory
                 case "proj_desc":
                     components = components.OrderByDescending(c => c.Project.ProjectName);
                     break;
+                case "Category":
+                    components = components.OrderBy(c => c.Category.CategoryName);
+                    break;
+                case "cat_desc":
+                    components = components.OrderByDescending(c => c.Category.CategoryName);
+                    break;
                 default:
                     components = components.OrderBy(c => c.PartName);
                     break;
             }
 
-            int pageSize = 3;
+            int pageSize = 5;
             Component = await PaginatedList<Component>.CreateAsync(
                 components
                 .Include(c => c.Maturity)
                 .Include(c => c.Project)
                 .Include(c => c.Vendor)
-                .Include(c => c.Volunteer).AsNoTracking(),
+                .Include(c => c.Volunteer)
+                .Include(c => c.Category).AsNoTracking(),
                 pageIndex ?? 1, pageSize);
         }
     }

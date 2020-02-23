@@ -24,6 +24,7 @@ namespace kwh.Pages.Inventory
             PopulateMaturityDropDown(_context);
             PopulateProjectDropDown(_context);
             PopulateVolunteerDropDown(_context);
+            PopulateCategoryDropDown(_context);
             return Page();
         }
 
@@ -39,9 +40,9 @@ namespace kwh.Pages.Inventory
             if (await TryUpdateModelAsync<Component>(
                  emptyComponent,
                  "create_component",   // Prefix for form value.
-                 c => c.PartNumber, c => c.PartName, c => c.VendorId, c => c.UnitCost,
-                 c => c.Specification, c => c.MaturityId, c => c.Url, c => c.QuantityCurrent,
-                 c => c.QuantityNeeded, c => c.ProjectId, c => c.VolunteerId))
+                 c => c.PartNumber, c => c.PartName, c => c.CategoryId, c => c.VendorId,
+                 c => c.UnitCost, c => c.Notes, c => c.MaturityId, c => c.Url,
+                 c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.VolunteerId))
             {
                 _context.Component.Add(emptyComponent);
                 await _context.SaveChangesAsync();
@@ -53,6 +54,7 @@ namespace kwh.Pages.Inventory
             PopulateMaturityDropDown(_context, emptyComponent.MaturityId);
             PopulateProjectDropDown(_context, emptyComponent.ProjectId);
             PopulateVolunteerDropDown(_context, emptyComponent.VolunteerId);
+            PopulateCategoryDropDown(_context, emptyComponent.CategoryId);
             return Page();
         }
     }

@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Inventory/Details.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Inventory/Index.cshtml">
     <Files>
-      <File FileName="kwh/Pages/Inventory/ComponentFKPageModel.cs" Line="39" Column="18" />
-      <File FileName="kwh/Pages/Inventory/Details.cshtml" Line="25" Column="33" />
+      <File FileName="kwh/Pages/Shared/_Layout.cshtml" Line="31" Column="15" />
+      <File FileName="kwh/Pages/Inventory/Index.cshtml" Line="103" Column="7" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,9 +10,8 @@
           <Node name="kwh" expanded="True">
             <Node name="kwh" expanded="True">
               <Node name="Pages" expanded="True">
-                <Node name="Inventory" expanded="True">
-                  <Node name="Details.cshtml" selected="True" />
-                </Node>
+                <Node name="Inventory" expanded="True" />
+                <Node name="Index.cshtml" selected="True" />
               </Node>
             </Node>
           </Node>
