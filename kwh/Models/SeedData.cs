@@ -86,7 +86,6 @@ namespace kwh.Models
                         LastName = "Nausner",
                         VolunteerPhone = "206-735-1989",
                         VolunteerEmail = "dan.nausner@gmail.com",
-                        PIN = 1989
                     },
                     new Volunteer
                     {
@@ -94,7 +93,6 @@ namespace kwh.Models
                         LastName = "Kalmus",
                         VolunteerPhone = "425-354-7471 ",
                         VolunteerEmail = "jeremiah.kalmus@gmail.com",
-                        PIN = 7471
                     });
                     context.SaveChanges();
                 }
@@ -120,27 +118,151 @@ namespace kwh.Models
                     context.SaveChanges();
                 }
 
+                // Look for any Category.
+                if (!context.Category.Any())
+                {
+                    context.Category.AddRange(
+                    new Category { CategoryName = "Resistor" },
+                    new Category { CategoryName = "Converter" },
+                    new Category { CategoryName = "GSM Module" },
+                    new Category { CategoryName = "Capacitor" },
+                    new Category { CategoryName = "Battery" },
+                    new Category { CategoryName = "Raspberry Pi" },
+                    new Category { CategoryName = "SIM Card" },
+                    new Category { CategoryName = "SD Card" },
+                    new Category { CategoryName = "Circuit Board" },
+                    new Category { CategoryName = "Antenna" },
+                    new Category { CategoryName = "Pins" },
+                    new Category { CategoryName = "Cable/Wire" },
+                    new Category { CategoryName = "Extension Cords" },
+                    new Category { CategoryName = "Nuts" },
+                    new Category { CategoryName = "Screws" },
+                    new Category { CategoryName = "Bolts" });
+                    context.SaveChanges();
+                }
+
                 // Look for any Component.
                 if (!context.Component.Any())
                 {
                     context.Component.AddRange(
                     new Component
                     {
-                        ComponentId = 1,
                         Historic = 1,
                         Current = 1,
                         VendorId = 1,
                         VolunteerId = 1,
-                        PartNumber = "UBEC 5A",
-                        PartName = "Hobbywing UBEC 5V 5A",
-                        UnitCost = 6.19M,
-                        Specification = "6-30V Input/5V 3A Output Power Supply",
-                        MaturityId = 1,
+                        PartNumber = "MFR-25FBF52-100K",
+                        PartName = "RES 100K OHM 1/4W 1% AXIAL",
+                        UnitCost = 0.10M,
+                        CategoryId = 7, 
+                        Notes = "Analog Input Pull-down",
+                        MaturityId = 2,
                         Url = "",
                         ProjectId = 5,
                         QuantityCurrent = 2,
-                        QuantityNeeded = 2,
-                        TimeStamp = DateTime.Now
+                        QuantityNeeded = 2
+                    },
+                    new Component
+                    {
+                        Historic = 1,
+                        Current = 1,
+                        VendorId = 1,
+                        VolunteerId = 1,
+                        PartNumber = "1829390",
+                        PartName = "TERM BLK HEADER 7POS GREEN",
+                        UnitCost = 8.49M,
+                        CategoryId = 11,
+                        Notes = "7 Position Male Pins Green",
+                        MaturityId = 1,
+                        Url = "",
+                        ProjectId = 6,
+                        QuantityCurrent = 11,
+                        QuantityNeeded = 3
+                    },
+                    new Component
+                    {
+                        Historic = 1,
+                        Current = 1,
+                        VendorId = 1,
+                        VolunteerId = 1,
+                        PartNumber = "UKL1C100KDD1TD",
+                        PartName = "CAP ALUM 10UF 10% 16V RADIAL",
+                        UnitCost = 0.40M,
+                        CategoryId = 4,
+                        Notes = "10uF Capacitor (Hold-up)",
+                        MaturityId = 2,
+                        Url = "",
+                        ProjectId = 5,
+                        QuantityCurrent = 1,
+                        QuantityNeeded = 5
+                    },
+                    new Component
+                    {
+                        Historic = 1,
+                        Current = 1,
+                        VendorId = 1,
+                        VolunteerId = 1,
+                        PartNumber = "",
+                        PartName = "Ethernet Extension",
+                        UnitCost = 4.95M,
+                        CategoryId = 13,
+                        Notes = "1 ft. Chord",
+                        MaturityId = 1,
+                        Url = "",
+                        ProjectId = 5,
+                        QuantityCurrent = 1,
+                        QuantityNeeded = 1
+                    },
+                    new Component
+                    {
+                        Historic = 1,
+                        Current = 1,
+                        VendorId = 1,
+                        VolunteerId = 1,
+                        PartNumber = "",
+                        PartName = "Phoenix Mounting Nuts",
+                        UnitCost = 5.88M,
+                        CategoryId = 14,
+                        Notes = "",
+                        MaturityId = 1,
+                        Url = "",
+                        ProjectId = 5,
+                        QuantityCurrent = 23,
+                        QuantityNeeded = 11
+                    },
+                    new Component
+                    {
+                        Historic = 1,
+                        Current = 1,
+                        VendorId = 1,
+                        VolunteerId = 1,
+                        PartNumber = "",
+                        PartName = "M3 Standoff",
+                        UnitCost = 0.63M,
+                        CategoryId = 15,
+                        Notes = "10 mm",
+                        MaturityId = 1,
+                        Url = "",
+                        ProjectId = 6,
+                        QuantityCurrent = 17,
+                        QuantityNeeded = 16
+                    },
+                    new Component
+                    {
+                        Historic = 1,
+                        Current = 1,
+                        VendorId = 1,
+                        VolunteerId = 1,
+                        PartNumber = "",
+                        PartName = "16GB Micro SD Card",
+                        UnitCost = 5.79M,
+                        CategoryId = 8,
+                        Notes = "",
+                        MaturityId = 2,
+                        Url = "",
+                        ProjectId = 4,
+                        QuantityCurrent = 3,
+                        QuantityNeeded = 1
                     });
                     context.SaveChanges();
                 }

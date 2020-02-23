@@ -9,12 +9,25 @@ namespace kwh.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Category",
+                columns: table => new
+                {
+                    CategoryId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CategoryName = table.Column<string>(maxLength: 25, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Category", x => x.CategoryId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Maturity",
                 columns: table => new
                 {
                     MaturityId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    MaturityStatus = table.Column<string>(nullable: true)
+                    MaturityStatus = table.Column<string>(maxLength: 25, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,9 +40,9 @@ namespace kwh.Migrations
                 {
                     ProjectId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ProjectName = table.Column<string>(nullable: true),
-                    ProjectYear = table.Column<int>(nullable: false),
-                    ProjectCountry = table.Column<string>(nullable: true)
+                    ProjectName = table.Column<string>(maxLength: 25, nullable: false),
+                    ProjectYear = table.Column<int>(maxLength: 4, nullable: false),
+                    ProjectCountry = table.Column<string>(maxLength: 25, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,7 +55,7 @@ namespace kwh.Migrations
                 {
                     VendorId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    VendorName = table.Column<string>(nullable: true),
+                    VendorName = table.Column<string>(maxLength: 25, nullable: false),
                     VendorUrl = table.Column<string>(nullable: true),
                     VendorPhone = table.Column<string>(nullable: true),
                     VendorEmail = table.Column<string>(nullable: true)
@@ -58,11 +71,10 @@ namespace kwh.Migrations
                 {
                     VolunteerId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(maxLength: 25, nullable: false),
+                    LastName = table.Column<string>(maxLength: 25, nullable: false),
                     VolunteerPhone = table.Column<string>(nullable: true),
-                    VolunteerEmail = table.Column<string>(nullable: true),
-                    PIN = table.Column<int>(nullable: false)
+                    VolunteerEmail = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -81,18 +93,26 @@ namespace kwh.Migrations
                     VolunteerId = table.Column<int>(nullable: false),
                     MaturityId = table.Column<int>(nullable: false),
                     ProjectId = table.Column<int>(nullable: false),
-                    PartNumber = table.Column<string>(nullable: true),
-                    PartName = table.Column<string>(nullable: true),
+                    CategoryId = table.Column<int>(nullable: false),
+                    PartNumber = table.Column<string>(maxLength: 25, nullable: true),
+                    PartName = table.Column<string>(maxLength: 30, nullable: false),
                     UnitCost = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    Specification = table.Column<string>(nullable: true),
+                    Notes = table.Column<string>(maxLength: 40, nullable: true),
                     Url = table.Column<string>(nullable: true),
                     QuantityCurrent = table.Column<int>(nullable: false),
                     QuantityNeeded = table.Column<int>(nullable: false),
                     TimeStamp = table.Column<DateTime>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Component", x => x.ComponentId);
+                    table.ForeignKey(
+                        name: "FK_Component_Category_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Category",
+                        principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Component_Maturity_MaturityId",
                         column: x => x.MaturityId,
@@ -120,6 +140,11 @@ namespace kwh.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Component_CategoryId",
+                table: "Component",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Component_MaturityId",
                 table: "Component",
                 column: "MaturityId");
@@ -144,6 +169,9 @@ namespace kwh.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Component");
+
+            migrationBuilder.DropTable(
+                name: "Category");
 
             migrationBuilder.DropTable(
                 name: "Maturity");

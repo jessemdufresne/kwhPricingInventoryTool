@@ -13,6 +13,7 @@ namespace kwh.Pages.Inventory
         public SelectList ProjectNameSL { get; set; }
         public SelectList VendorNameSL { get; set; }
         public SelectList LastNameSL { get; set; }
+        public SelectList CategoryNameSL { get; set; }
 
         public void PopulateMaturityDropDown(kwhDataContext _context,
             object selectedMaturity = null)
@@ -56,6 +57,17 @@ namespace kwh.Pages.Inventory
 
             LastNameSL = new SelectList(volunteerQuery.AsNoTracking(),
                         "VolunteerId", "LastName", selectedVolunteer);
+        }
+
+        public void PopulateCategoryDropDown(kwhDataContext _context,
+            object selectedCategory = null)
+        {
+            var categoryQuery = from c in _context.Category
+                                 orderby c.CategoryName
+                                 select c;
+
+            CategoryNameSL = new SelectList(categoryQuery.AsNoTracking(),
+                        "CategoryId", "CategoryName", selectedCategory);
         }
     }
 }

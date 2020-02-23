@@ -33,7 +33,8 @@ namespace kwh.Pages.Inventory
                 .Include(c => c.Maturity)
                 .Include(c => c.Project)
                 .Include(c => c.Vendor)
-                .Include(c => c.Volunteer).FirstOrDefaultAsync(m => m.ComponentId == id);
+                .Include(c => c.Volunteer)
+                .Include(c => c.Category).FirstOrDefaultAsync(m => m.ComponentId == id);
 
             if (Component == null)
             {
@@ -44,6 +45,7 @@ namespace kwh.Pages.Inventory
             PopulateMaturityDropDown(_context, Component.MaturityId);
             PopulateProjectDropDown(_context, Component.ProjectId);
             PopulateVolunteerDropDown(_context, Component.VolunteerId);
+            PopulateCategoryDropDown(_context, Component.CategoryId);
             return Page();
         }
 
@@ -66,9 +68,9 @@ namespace kwh.Pages.Inventory
             if (await TryUpdateModelAsync<Component>(
                  componentToUpdate,
                  "edit_component",   // Prefix for form value.
-                 c => c.PartNumber, c => c.PartName, c => c.VendorId, c => c.UnitCost,
-                 c => c.Specification, c => c.MaturityId, c => c.Url, c => c.QuantityCurrent,
-                 c => c.QuantityNeeded, c => c.ProjectId, c => c.VolunteerId))
+                 c => c.PartNumber, c => c.PartName, c => c.CategoryId, c => c.VendorId,
+                 c => c.UnitCost, c => c.Notes, c => c.MaturityId, c => c.Url,
+                 c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.VolunteerId))
             {
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
@@ -79,6 +81,7 @@ namespace kwh.Pages.Inventory
             PopulateMaturityDropDown(_context, componentToUpdate.MaturityId);
             PopulateProjectDropDown(_context, componentToUpdate.ProjectId);
             PopulateVolunteerDropDown(_context, componentToUpdate.VolunteerId);
+            PopulateCategoryDropDown(_context, componentToUpdate.CategoryId);
             return Page();
         }
     }

@@ -32,6 +32,12 @@
                 <span asp-validation-for="Component.PartName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Component.Category" class="control-label"></label>
+                <select asp-for="Component.CategoryId" class="form-control"
+                        asp-items="@Model.CategoryNameSL"></select>
+                <span asp-validation-for="Component.CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Component.Vendor" class="control-label"></label>
                 <select asp-for="Component.VendorId" class="form-control"
                         asp-items="@Model.VendorNameSL"></select>
@@ -43,9 +49,9 @@
                 <span asp-validation-for="Component.UnitCost" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Component.Specification" class="control-label"></label>
-                <input asp-for="Component.Specification" class="form-control" />
-                <span asp-validation-for="Component.Specification" class="text-danger"></span>
+                <label asp-for="Component.Notes" class="control-label"></label>
+                <input asp-for="Component.Notes" class="form-control" />
+                <span asp-validation-for="Component.Notes" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Component.Maturity" class="control-label"></label>

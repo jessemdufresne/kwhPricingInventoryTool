@@ -16,10 +16,29 @@ namespace kwh.Migrations
                 .HasAnnotation("ProductVersion", "3.1.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("kwh.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
+                        .HasMaxLength(25);
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Category");
+                });
+
             modelBuilder.Entity("kwh.Models.Component", b =>
                 {
                     b.Property<int>("ComponentId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("Current")
@@ -30,6 +49,10 @@ namespace kwh.Migrations
 
                     b.Property<int>("MaturityId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
+                        .HasMaxLength(40);
 
                     b.Property<string>("PartName")
                         .IsRequired()
@@ -49,10 +72,6 @@ namespace kwh.Migrations
                     b.Property<int>("QuantityNeeded")
                         .HasColumnType("int");
 
-                    b.Property<string>("Specification")
-                        .HasColumnType("varchar(40) CHARACTER SET utf8mb4")
-                        .HasMaxLength(40);
-
                     b.Property<DateTime>("TimeStamp")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime(6)");
@@ -70,6 +89,8 @@ namespace kwh.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ComponentId");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("MaturityId");
 
@@ -164,9 +185,6 @@ namespace kwh.Migrations
                         .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
                         .HasMaxLength(25);
 
-                    b.Property<int>("PIN")
-                        .HasColumnType("int");
-
                     b.Property<string>("VolunteerEmail")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -180,6 +198,12 @@ namespace kwh.Migrations
 
             modelBuilder.Entity("kwh.Models.Component", b =>
                 {
+                    b.HasOne("kwh.Models.Category", "Category")
+                        .WithMany("Components")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("kwh.Models.Maturity", "Maturity")
                         .WithMany("Components")
                         .HasForeignKey("MaturityId")

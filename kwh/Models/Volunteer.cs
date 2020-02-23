@@ -26,10 +26,6 @@ namespace kwh.Models
         [DataType(DataType.EmailAddress)]
         public string VolunteerEmail { get; set; }
 
-        [RegularExpression(@"\d{4}")]
-        [Required]
-        public int PIN { get; set; }
-
         public ICollection<Component> Components { get; set; }
     }
 }
