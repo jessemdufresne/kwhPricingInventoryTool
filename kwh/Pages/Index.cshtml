@@ -15,12 +15,14 @@
     <h2>DAS Components</h2>
     <form asp-page="./Index" method="get">
         <div class="form-actions no-color">
-            <p>
-                Find by part name:
-                <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-                <input type="submit" value="Search" class="btn btn-primary" /> |
-                <a asp-page="./Index">Back to full List</a>
-            </p>
+            <b>Search By:</b>
+            @foreach (var searchby in Model.Criteria)
+            {
+                @Html.RadioButtonFor(m => m.SearchBy, searchby)<text> @searchby  </text>
+            }
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
         </div>
     </form>
 

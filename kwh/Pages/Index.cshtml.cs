@@ -39,10 +39,13 @@ namespace kwh.Pages
         public string CategorySort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
+        [BindProperty]
+        public string SearchBy { get; set; }
+        public string[] Criteria = new[] { "Category", "Part", "Project" };
 
         public PaginatedList<Component> Component { get; set; }
 
-        public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, int? pageIndex)
+        public async Task OnGetAsync(string sortOrder, string currentFilter, string searchby, string searchString, int? pageIndex)
         {
             CurrentSort = sortOrder;
 
@@ -68,8 +71,24 @@ namespace kwh.Pages
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                components = components.Where(c => c.PartName.ToUpper().Contains(searchString.ToUpper())
-                || c.PartNumber.ToUpper().Contains(searchString.ToUpper()));
+                if (searchby == "Category")
+                {
+                    components = components.Where(c => c.Category.CategoryName
+                    .ToUpper().Contains(searchString.ToUpper()));
+
+                }
+                else if (searchby == "Part")
+                {
+                    components = components.Where(c => c.PartName.ToUpper()
+                    .Contains(searchString.ToUpper()) || c.PartNumber.ToUpper()
+                    .Contains(searchString.ToUpper()));
+                }
+                else
+                {
+                    components = components.Where(c => c.Project.ProjectName
+                    .ToUpper().Contains(searchString.ToUpper()));
+                }
+
             }
 
             switch (sortOrder)
