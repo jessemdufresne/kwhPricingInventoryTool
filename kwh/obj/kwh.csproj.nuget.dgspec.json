@@ -75,6 +75,10 @@
               "target": "Package",
               "version": "[0.61.0, )"
             },
+            "Octicons.TagHelper": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[3.1.1, )"

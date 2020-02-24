@@ -36,7 +36,7 @@ namespace kwh.Models
         public string PartName { get; set; }
 
         [Display(Name = "Unit Cost")]
-        [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         [Column(TypeName = "decimal(18, 2)")]
         public decimal UnitCost { get; set; }
 

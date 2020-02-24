@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace kwh.Migrations
 {
     [DbContext(typeof(kwhDataContext))]
-    [Migration("20200222231556_InitialCreate")]
+    [Migration("20200224030053_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -138,8 +138,7 @@ namespace kwh.Migrations
                         .HasMaxLength(25);
 
                     b.Property<int>("ProjectYear")
-                        .HasColumnType("int")
-                        .HasMaxLength(4);
+                        .HasColumnType("int");
 
                     b.HasKey("ProjectId");
 

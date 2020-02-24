@@ -41,7 +41,7 @@ namespace kwh.Migrations
                     ProjectId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ProjectName = table.Column<string>(maxLength: 25, nullable: false),
-                    ProjectYear = table.Column<int>(maxLength: 4, nullable: false),
+                    ProjectYear = table.Column<int>(nullable: false),
                     ProjectCountry = table.Column<string>(maxLength: 25, nullable: false)
                 },
                 constraints: table =>

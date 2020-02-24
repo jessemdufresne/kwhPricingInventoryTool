@@ -14,7 +14,6 @@ namespace kwh.Models
         public string ProjectName { get; set; }
 
         [Display(Name = "Year")]
-        [StringLength(4, MinimumLength = 4)]
         [Required]
         public int ProjectYear { get; set; }
 

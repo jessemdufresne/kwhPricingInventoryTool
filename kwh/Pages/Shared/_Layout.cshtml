@@ -12,6 +12,26 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand">DAS Pricing and Inventory</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Inventory/Index">Inventory</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Projects/Index">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Vendors/Index">Vendors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Categories/Index">Category</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
@@ -24,9 +44,8 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2020 - Seattle University CS 20.10
-            | Download the completed project from
-            <a target="_blank" href="https://github.com/jessemdufresne/kwhPricingInventoryTool.git">
-                GitHub
+            | <a target="_blank" href="https://github.com/jessemdufresne/kwhPricingInventoryTool.git">
+                <octicon symbol="MarkGithub"></octicon>
             </a>
         </div>
     </footer>

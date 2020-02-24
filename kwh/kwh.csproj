@@ -28,10 +28,14 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
+    <PackageReference Include="Octicons.TagHelper" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Pages\Inventory\" />
+    <Folder Include="Pages\Projects\" />
+    <Folder Include="Pages\Categories\" />
+    <Folder Include="Pages\Vendors\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove=".DS_Store" />
