@@ -1,0 +1,81 @@
+@page
+@model kwh.Pages.Vendors.IndexModel
+
+@{
+    ViewData["Title"] = "Vendors";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.VendorSort">
+                        @Html.DisplayNameFor(model => model.Vendor[0].VendorName)
+                    </a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vendor[0].VendorUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vendor[0].VendorPhone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vendor[0].VendorEmail)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Vendor)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VendorName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VendorUrl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VendorPhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VendorEmail)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.VendorId">Edit</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.VendorId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @{
+        var prevDisabled = !Model.Vendor.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Vendor.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Vendor.PageIndex - 1)"
+       class="btn btn-primary @prevDisabled">
+        Previous
+    </a>
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Vendor.PageIndex + 1)"
+       class="btn btn-primary @nextDisabled">
+        Next
+    </a>
+</body>
+</html>

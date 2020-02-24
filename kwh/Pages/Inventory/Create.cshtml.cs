@@ -39,7 +39,7 @@ namespace kwh.Pages.Inventory
 
             if (await TryUpdateModelAsync<Component>(
                  emptyComponent,
-                 "create_component",   // Prefix for form value.
+                 "component",   // Prefix for form value.
                  c => c.PartNumber, c => c.PartName, c => c.CategoryId, c => c.VendorId,
                  c => c.UnitCost, c => c.Notes, c => c.MaturityId, c => c.Url,
                  c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.VolunteerId))

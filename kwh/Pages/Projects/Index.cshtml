@@ -1,0 +1,77 @@
+@page
+@model kwh.Pages.Projects.IndexModel
+
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                        @Html.DisplayNameFor(model => model.Project[0].ProjectName)
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.YearSort">
+                        @Html.DisplayNameFor(model => model.Project[0].ProjectYear)
+                    </a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Project[0].ProjectCountry)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Project)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProjectName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProjectYear)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProjectCountry)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ProjectId">Edit</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ProjectId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @{
+        var prevDisabled = !Model.Project.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Project.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Project.PageIndex - 1)"
+       class="btn btn-primary @prevDisabled">
+        Previous
+    </a>
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Project.PageIndex + 1)"
+       class="btn btn-primary @nextDisabled">
+        Next
+    </a>
+</body>
+</html>

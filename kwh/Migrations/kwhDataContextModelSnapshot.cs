@@ -136,8 +136,7 @@ namespace kwh.Migrations
                         .HasMaxLength(25);
 
                     b.Property<int>("ProjectYear")
-                        .HasColumnType("int")
-                        .HasMaxLength(4);
+                        .HasColumnType("int");
 
                     b.HasKey("ProjectId");
 

@@ -40,37 +40,37 @@ namespace kwh.Models
                     new Project
                     {
                         ProjectName = "Filibaba",
-                        ProjectYear = 2014,
+                        ProjectYear = 2015,
                         ProjectCountry = "Zambia"
                     },
                     new Project
                     {
                         ProjectName = "Chalokwa",
-                        ProjectYear = 2014,
+                        ProjectYear = 2016,
                         ProjectCountry = "Zambia"
                     },
                     new Project
                     {
                         ProjectName = "Munyama",
-                        ProjectYear = 2014,
+                        ProjectYear = 2017,
                         ProjectCountry = "Zambia"
                     },
                     new Project
                     {
                         ProjectName = "Palawan",
-                        ProjectYear = 2014,
+                        ProjectYear = 2018,
                         ProjectCountry = "Philippines"
                     },
                     new Project
                     {
                         ProjectName = "Cheeba",
-                        ProjectYear = 2014,
+                        ProjectYear = 2019,
                         ProjectCountry = "Zambia"
                     },
                     new Project
                     {
                         ProjectName = "Kanchomba",
-                        ProjectYear = 2014,
+                        ProjectYear = 2020,
                         ProjectCountry = "Zambia"
                     });
                     context.SaveChanges();
@@ -159,6 +159,23 @@ namespace kwh.Models
                         MaturityId = 2,
                         Url = "",
                         ProjectId = 5,
+                        QuantityCurrent = 2,
+                        QuantityNeeded = 2
+                    },
+                    new Component
+                    {
+                        Historic = 1,
+                        Current = 1,
+                        VendorId = 1,
+                        VolunteerId = 1,
+                        PartNumber = "WW3FT250",
+                        PartName = "RES 250 OHM 3W 1% AXIAL",
+                        UnitCost = 0.75M,
+                        CategoryId = 7,
+                        Notes = "Voltage Reference Shunt Resistor",
+                        MaturityId = 2,
+                        Url = "",
+                        ProjectId = 6,
                         QuantityCurrent = 2,
                         QuantityNeeded = 2
                     },

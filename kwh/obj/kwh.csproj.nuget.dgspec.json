@@ -17,7 +17,7 @@
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/audreykan/.config/NuGet/NuGet.Config"
+          "/Users/audreykan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -74,6 +74,10 @@
             "MySqlConnector": {
               "target": "Package",
               "version": "[0.61.0, )"
+            },
+            "Octicons.TagHelper": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",

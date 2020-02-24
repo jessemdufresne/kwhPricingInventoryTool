@@ -8,6 +8,7 @@ namespace kwh.Models
     {
         public int CategoryId { get; set; }
 
+        [Display(Name = "Category")]
         [StringLength(25, MinimumLength = 3)]
         [Required]
         public string CategoryName { get; set; }
