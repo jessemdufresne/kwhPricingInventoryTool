@@ -1,11 +1,10 @@
 using System;
+using System.Globalization;
+using kwh.Models;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.DependencyInjection;
-using kwh.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace kwh
 {
@@ -13,6 +12,7 @@ namespace kwh
     {
         public static void Main(string[] args)
         {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
             var host = CreateHostBuilder(args).Build();
 
             using (var scope = host.Services.CreateScope())
