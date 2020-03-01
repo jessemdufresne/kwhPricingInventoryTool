@@ -389,7 +389,6 @@
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll
-/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Debug.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/Microsoft.Identity.Client.dll

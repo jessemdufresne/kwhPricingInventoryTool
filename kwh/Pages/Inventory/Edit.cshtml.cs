@@ -34,7 +34,7 @@ namespace kwh.Pages.Inventory
                 .Include(c => c.Project)
                 .Include(c => c.Vendor)
                 .Include(c => c.Volunteer)
-                .Include(c => c.Category).FirstOrDefaultAsync(m => m.ComponentId == id);
+                .Include(c => c.Category).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Component == null)
             {
@@ -58,25 +58,29 @@ namespace kwh.Pages.Inventory
                 return NotFound();
             }
 
+            var emptyComponent = new Component();
             var componentToUpdate = await _context.Component.FindAsync(id);
 
-            if (componentToUpdate == null)
-            {
-                return NotFound();
-            }
+            // Retrieve ComponentId corresponding to the PK
+            var compId = _context.Component
+                .Where(x => x.Id == id)
+                .Select(x => x.ComponentId)
+                .FirstOrDefault();
 
             if (await TryUpdateModelAsync<Component>(
-                 componentToUpdate,
-                 "edit_component",   // Prefix for form value.
+                 emptyComponent,
+                 "component",   // Prefix for form value.
                  c => c.PartNumber, c => c.PartName, c => c.CategoryId, c => c.VendorId,
                  c => c.UnitCost, c => c.Notes, c => c.MaturityId, c => c.Url,
                  c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.VolunteerId))
             {
+                emptyComponent.ComponentId = compId;
+                _context.Component.Add(emptyComponent);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
 
-            // Select DepartmentID if TryUpdateModelAsync fails.
+            // Select FK IDs if TryUpdateModelAsync fails.
             PopulateVendorDropDown(_context, componentToUpdate.VendorId);
             PopulateMaturityDropDown(_context, componentToUpdate.MaturityId);
             PopulateProjectDropDown(_context, componentToUpdate.ProjectId);

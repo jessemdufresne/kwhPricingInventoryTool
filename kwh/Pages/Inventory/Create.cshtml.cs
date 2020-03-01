@@ -37,6 +37,14 @@ namespace kwh.Pages.Inventory
         {
             var emptyComponent = new Component();
 
+            // Retrieve max ComponentId
+            var compId = _context.Component
+                .OrderByDescending(x => x.ComponentId)
+                .Select(x => x.ComponentId)
+                .FirstOrDefault();
+
+            compId += 1;
+
             if (await TryUpdateModelAsync<Component>(
                  emptyComponent,
                  "component",   // Prefix for form value.
@@ -44,6 +52,7 @@ namespace kwh.Pages.Inventory
                  c => c.UnitCost, c => c.Notes, c => c.MaturityId, c => c.Url,
                  c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.VolunteerId))
             {
+                emptyComponent.ComponentId = compId;
                 _context.Component.Add(emptyComponent);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");

@@ -6,6 +6,8 @@ namespace kwh.Models
 {
     public class Project
     {
+        // EF Core Data Annotations
+
         public int ProjectId { get; set; }
 
         [Display(Name = "Project")]
@@ -22,6 +24,7 @@ namespace kwh.Models
         [Required]
         public string ProjectCountry { get; set; }
 
+        // Navigation property holds related entities in a 1:M
         public ICollection<Component> Components { get; set; }
     }
 

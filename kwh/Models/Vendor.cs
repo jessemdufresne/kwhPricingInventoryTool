@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace kwh.Models
 {
     public class Vendor
     {
+        // EF Core Data Annotations
+
         public int VendorId { get; set; }
 
         [Display(Name = "Vendor")]
@@ -25,6 +26,7 @@ namespace kwh.Models
         [DataType(DataType.EmailAddress)]
         public string VendorEmail { get; set; }
 
+        // Navigation property holds related entities in a 1:M
         public ICollection<Component> Components { get; set; }
     }
 }

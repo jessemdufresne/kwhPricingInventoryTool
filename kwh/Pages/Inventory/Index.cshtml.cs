@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using kwh.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using kwh.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace kwh.Pages.Inventory
 {
@@ -19,16 +17,16 @@ namespace kwh.Pages.Inventory
             _context = context;
         }
 
+        [BindProperty]
+        public string SearchBy { get; set; }
+        public string[] Criteria = new[] { "Category", "Part", "Project" };
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
         public string NameSort { get; set; }
         public string QuantitySort { get; set; }
         public string CostSort { get; set; }
         public string ProjectSort { get; set; }
         public string CategorySort { get; set; }
-        public string CurrentFilter { get; set; }
-        public string CurrentSort { get; set; }
-        [BindProperty]
-        public string SearchBy { get; set; }
-        public string[] Criteria = new[] { "Category", "Part", "Project" };
 
         public PaginatedList<Component> Component { get;set; }
 
@@ -53,9 +51,20 @@ namespace kwh.Pages.Inventory
 
             CurrentFilter = searchString;
 
+            //Grab most current record per each ComponentID using LINQ query syntax
             IQueryable<Component> components = from c in _context.Component
                                                select c;
+                                               //group c by c.ComponentId into g
+                                               //orderby g.Key
+                                               //select g.OrderByDescending(z => z.Id)
+                                               //.AsQueryable().FirstOrDefault();
+            /*
+             * IQueryable<Component> components = _context.Component
+                                               .GroupBy(c => c.ComponentId)
+                                               .Select(o => o.OrderByDescending(t => t.Timestamp).First());
+             */
 
+            SearchBy = searchby;
             if (!String.IsNullOrEmpty(searchString))
             {
                 if (searchby == "Category")
@@ -110,7 +119,7 @@ namespace kwh.Pages.Inventory
                     break;
             }
 
-            int pageSize = 5;
+            int pageSize = 10;
             Component = await PaginatedList<Component>.CreateAsync(
                 components
                 .Include(c => c.Maturity)

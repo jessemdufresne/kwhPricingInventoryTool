@@ -23,7 +23,7 @@
             {
                 @Html.RadioButtonFor(m => m.SearchBy, searchby)<text> @searchby  </text>
             }
-            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="text" name="CurrentFilter" value="@Model.CurrentFilter" />
             <input type="submit" value="Search" class="btn btn-primary" /> |
             <a asp-page="./Index">Back to full List</a>
         </div>
@@ -33,7 +33,8 @@
         <thead>
             <tr>
                 <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.CategorySort"
+                    <a asp-page="./Index" asp-route-searchBy="@Model.SearchBy"
+                       asp-route-sortOrder="@Model.CategorySort"
                        asp-route-currentFilter="@Model.CurrentFilter">
                         @Html.DisplayNameFor(model => model.Component[0].Category)
                     </a>
@@ -42,25 +43,29 @@
                     @Html.DisplayNameFor(model => model.Component[0].PartNumber)
                 </th>
                 <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                    <a asp-page="./Index" asp-route-searchBy="@Model.SearchBy"
+                       asp-route-sortOrder="@Model.NameSort"
                        asp-route-currentFilter="@Model.CurrentFilter">
                         @Html.DisplayNameFor(model => model.Component[0].PartName)
                     </a>
                 </th>
                 <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.CostSort"
+                    <a asp-page="./Index" asp-route-searchBy="@Model.SearchBy"
+                       asp-route-sortOrder="@Model.CostSort"
                        asp-route-currentFilter="@Model.CurrentFilter">
                         @Html.DisplayNameFor(model => model.Component[0].UnitCost)
                     </a>
                 </th>
                 <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.QuantitySort"
+                    <a asp-page="./Index" asp-route-searchBy="@Model.SearchBy"
+                       asp-route-sortOrder="@Model.QuantitySort"
                        asp-route-currentFilter="@Model.CurrentFilter">
                         @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
                     </a>
                 </th>
                 <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.ProjectSort"
+                    <a asp-page="./Index" asp-route-searchBy="@Model.SearchBy"
+                       asp-route-sortOrder="@Model.ProjectSort"
                        asp-route-currentFilter="@Model.CurrentFilter">
                         @Html.DisplayNameFor(model => model.Component[0].Project)
                     </a>
@@ -69,7 +74,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Component)
+           @foreach (var item in Model.Component)
             {
             <tr>
                 <td>
@@ -91,9 +96,9 @@
                     @Html.DisplayFor(modelItem => item.Project.ProjectName)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ComponentId">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.ComponentId">Details</a>
-                    <!-- <a asp-page="./Delete" asp-route-id="@item.ComponentId">Delete</a> -->
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                    <!-- <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> -->
                 </td>
             </tr>
             }
@@ -107,17 +112,19 @@
 
     <a asp-page="./Index"
        asp-route-sortOrder="@Model.CurrentSort"
-       asp-route-pageIndex="@(Model.Component.PageIndex - 1)"
        asp-route-currentFilter="@Model.CurrentFilter"
+       asp-route-searchBy="@Model.SearchBy"
+       asp-route-pageIndex="@(Model.Component.PageIndex - 1)"
        class="btn btn-primary @prevDisabled">
-        Previous
+        <octicon symbol="ChevronLeft"></octicon>
     </a>
     <a asp-page="./Index"
        asp-route-sortOrder="@Model.CurrentSort"
-       asp-route-pageIndex="@(Model.Component.PageIndex + 1)"
        asp-route-currentFilter="@Model.CurrentFilter"
+       asp-route-searchBy="@Model.SearchBy"
+       asp-route-pageIndex="@(Model.Component.PageIndex + 1)"
        class="btn btn-primary @nextDisabled">
-        Next
+        <octicon symbol="ChevronRight"></octicon>
     </a>
 
 

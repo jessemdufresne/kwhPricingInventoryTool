@@ -6,6 +6,7 @@ namespace kwh.Models
 {
     public class Volunteer
     {
+        // EF Core Data Annotations 
         public int VolunteerId { get; set; }
 
         [Display(Name = "First")]
@@ -26,6 +27,7 @@ namespace kwh.Models
         [DataType(DataType.EmailAddress)]
         public string VolunteerEmail { get; set; }
 
+        // Navigation property holds related entities in a 1:M
         public ICollection<Component> Components { get; set; }
     }
 }

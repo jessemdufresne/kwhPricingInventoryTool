@@ -15,7 +15,8 @@ namespace kwh.Models
             {
                 context.Database.EnsureCreated();
 
-                // Look for any Maturity.
+                // Check if Maturity table is empty
+                // If empty, create test data in arrays and save changes
                 if (!context.Maturity.Any())
                 {
                     context.Maturity.AddRange(
@@ -27,7 +28,8 @@ namespace kwh.Models
                     context.SaveChanges();
                 }
 
-                // Look for any Project.
+                // Check if Project table is empty
+                // If empty, create test data in arrays and save changes
                 if (!context.Project.Any())
                 {
                     context.Project.AddRange(
@@ -76,7 +78,8 @@ namespace kwh.Models
                     context.SaveChanges();
                 }
 
-                // Look for any Volunteer.
+                // Check if Volunteer table is empty
+                // If empty, create test data in arrays and save changes
                 if (!context.Volunteer.Any())
                 {
                     context.Volunteer.AddRange(
@@ -97,7 +100,8 @@ namespace kwh.Models
                     context.SaveChanges();
                 }
 
-                // Look for any Vendor.
+                // Check if Vendor table is empty
+                // If empty, create test data in arrays and save changes
                 if (!context.Vendor.Any())
                 {
                     context.Vendor.AddRange(
@@ -118,7 +122,8 @@ namespace kwh.Models
                     context.SaveChanges();
                 }
 
-                // Look for any Category.
+                // Check if Category table is empty
+                // If empty, create test data in arrays and save changes
                 if (!context.Category.Any())
                 {
                     context.Category.AddRange(
@@ -141,14 +146,14 @@ namespace kwh.Models
                     context.SaveChanges();
                 }
 
-                // Look for any Component.
+                // Check if Component table is empty
+                // If empty, create test data in arrays and save changes
                 if (!context.Component.Any())
                 {
                     context.Component.AddRange(
                     new Component
                     {
-                        Historic = 1,
-                        Current = 1,
+                        ComponentId = 1,
                         VendorId = 1,
                         VolunteerId = 1,
                         PartNumber = "MFR-25FBF52-100K",
@@ -164,8 +169,7 @@ namespace kwh.Models
                     },
                     new Component
                     {
-                        Historic = 1,
-                        Current = 1,
+                        ComponentId = 2,
                         VendorId = 1,
                         VolunteerId = 1,
                         PartNumber = "WW3FT250",
@@ -181,8 +185,7 @@ namespace kwh.Models
                     },
                     new Component
                     {
-                        Historic = 1,
-                        Current = 1,
+                        ComponentId = 3,
                         VendorId = 1,
                         VolunteerId = 1,
                         PartNumber = "1829390",
@@ -198,8 +201,7 @@ namespace kwh.Models
                     },
                     new Component
                     {
-                        Historic = 1,
-                        Current = 1,
+                        ComponentId = 4,
                         VendorId = 1,
                         VolunteerId = 1,
                         PartNumber = "UKL1C100KDD1TD",
@@ -215,8 +217,7 @@ namespace kwh.Models
                     },
                     new Component
                     {
-                        Historic = 1,
-                        Current = 1,
+                        ComponentId = 5,
                         VendorId = 1,
                         VolunteerId = 1,
                         PartNumber = "",
@@ -232,8 +233,7 @@ namespace kwh.Models
                     },
                     new Component
                     {
-                        Historic = 1,
-                        Current = 1,
+                        ComponentId = 6,
                         VendorId = 1,
                         VolunteerId = 1,
                         PartNumber = "",
@@ -249,8 +249,7 @@ namespace kwh.Models
                     },
                     new Component
                     {
-                        Historic = 1,
-                        Current = 1,
+                        ComponentId = 7,
                         VendorId = 1,
                         VolunteerId = 1,
                         PartNumber = "",
@@ -266,8 +265,7 @@ namespace kwh.Models
                     },
                     new Component
                     {
-                        Historic = 1,
-                        Current = 1,
+                        ComponentId = 8,
                         VendorId = 1,
                         VolunteerId = 1,
                         PartNumber = "",

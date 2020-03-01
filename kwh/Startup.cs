@@ -21,6 +21,7 @@ namespace kwh
         {
             services.AddRazorPages();
 
+            // Registers the context class with the dependency injection container
             services.AddDbContext<kwhDataContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("kwhDataContext")));
         }

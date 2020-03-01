@@ -69,13 +69,13 @@
        asp-route-sortOrder="@Model.CurrentSort"
        asp-route-pageIndex="@(Model.Vendor.PageIndex - 1)"
        class="btn btn-primary @prevDisabled">
-        Previous
+        <octicon symbol="ChevronLeft"></octicon>
     </a>
     <a asp-page="./Index"
        asp-route-sortOrder="@Model.CurrentSort"
        asp-route-pageIndex="@(Model.Vendor.PageIndex + 1)"
        class="btn btn-primary @nextDisabled">
-        Next
+        <octicon symbol="ChevronRight"></octicon>
     </a>
 </body>
 </html>
