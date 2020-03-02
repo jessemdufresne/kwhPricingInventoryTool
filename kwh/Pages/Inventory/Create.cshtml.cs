@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using kwh.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace kwh.Pages.Inventory
 {
+    // Derives ComponentFKPageModel to load FK navigation properties in drop down
     public class CreateModel : ComponentFKPageModel
     {
         private readonly kwhDataContext _context;
@@ -18,6 +15,7 @@ namespace kwh.Pages.Inventory
             _context = context;
         }
 
+        // Select FK navigation properties for drop down fields
         public IActionResult OnGet()
         {
             PopulateVendorDropDown(_context);
@@ -31,20 +29,22 @@ namespace kwh.Pages.Inventory
         [BindProperty]
         public Component Component { get; set; }
 
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
+        // TryUpdateModelAsync prevents overposting
+        // To protect from overposting attacks, enable specific bind properties
+        // More details at https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             var emptyComponent = new Component();
 
-            // Retrieve max ComponentId
+            // New additions to the Component table should use the next available ComponentId
+            // 1) Retrieve the maximum ComponentId to increment
+            // ** EF Core LINQ-to-Entities Query (written in method syntax) **
             var compId = _context.Component
                 .OrderByDescending(x => x.ComponentId)
                 .Select(x => x.ComponentId)
                 .FirstOrDefault();
 
-            compId += 1;
-
+            // 2) Asynchronously retrieve user input
             if (await TryUpdateModelAsync<Component>(
                  emptyComponent,
                  "component",   // Prefix for form value.
@@ -52,13 +52,16 @@ namespace kwh.Pages.Inventory
                  c => c.UnitCost, c => c.Notes, c => c.MaturityId, c => c.Url,
                  c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.VolunteerId))
             {
-                emptyComponent.ComponentId = compId;
+                // 3) Manually increment ComponentId before adding a new record
+                emptyComponent.ComponentId = compId + 1;
                 _context.Component.Add(emptyComponent);
+                // 4) Save changes to the database
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
 
-            // Select FK IDs if TryUpdateModelAsync fails.
+            // Select FK navigation properties for drop down fields if
+            // TryUpdateModelAsync fails
             PopulateVendorDropDown(_context, emptyComponent.VendorId);
             PopulateMaturityDropDown(_context, emptyComponent.MaturityId);
             PopulateProjectDropDown(_context, emptyComponent.ProjectId);

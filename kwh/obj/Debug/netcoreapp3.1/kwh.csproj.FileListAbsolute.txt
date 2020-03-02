@@ -529,7 +529,6 @@
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/Razor/Pages/Categories/Index.cshtml.g.cs
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/Razor/Pages/Projects/Create.cshtml.g.cs
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/Razor/Pages/Projects/Delete.cshtml.g.cs
-/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/Razor/Pages/Projects/Details.cshtml.g.cs
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/Razor/Pages/Projects/Edit.cshtml.g.cs
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/Razor/Pages/Projects/Index.cshtml.g.cs
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/Razor/Pages/Vendors/Create.cshtml.g.cs

@@ -19,6 +19,7 @@
     <form asp-page="./Index" method="get">
         <div class="form-actions no-color">
             <b>Search By:</b>
+            <!-- Retrive search criteria from Criteria[], where searchBy values are manually set-->
             @foreach (var searchby in Model.Criteria)
             {
                 @Html.RadioButtonFor(m => m.SearchBy, searchby)<text> @searchby  </text>
@@ -29,6 +30,11 @@
         </div>
     </form>
     <br />
+    <!--
+        URL Query String for sorting and searching: asp-route-searchBy="Model.SearchBy", asp-route-sortOrder="Model.CategorySort"
+        , asp-route-currentFilter="Model.CurrentFilter"
+
+        URL Query String for navigating to Inventory/Edit and Inventory/Details: asp-route-id="item.Id" -->
     <table class="table">
         <thead>
             <tr>
@@ -74,42 +80,44 @@
             </tr>
         </thead>
         <tbody>
-           @foreach (var item in Model.Component)
+            @foreach (var item in Model.Component)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PartNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PartName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UnitCost)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QuantityCurrent)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Project.ProjectName)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
-                    <!-- <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> -->
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PartNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PartName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnitCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuantityCurrent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                        <!-- <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> -->
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
-
+    <!-- Paging is disabled, if the number of records shown does not exceed threshold -->
     @{
         var prevDisabled = !Model.Component.HasPreviousPage ? "disabled" : "";
         var nextDisabled = !Model.Component.HasNextPage ? "disabled" : "";
     }
 
+    <!-- asp-route-sortOrder, asp-route-currentFilter, asp-route-searchBy, and asp-route-pageIndex preserves sort and
+        search results across pages -->
     <a asp-page="./Index"
        asp-route-sortOrder="@Model.CurrentSort"
        asp-route-currentFilter="@Model.CurrentFilter"
@@ -126,7 +134,5 @@
        class="btn btn-primary @nextDisabled">
         <octicon symbol="ChevronRight"></octicon>
     </a>
-
-
 </body>
 </html>

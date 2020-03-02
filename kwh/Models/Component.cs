@@ -1,14 +1,13 @@
 ﻿using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
+// Using EF Core Data Annotations
 
 namespace kwh.Models
 {
     public class Component
     {
-        // EF Core Data Annotations
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

@@ -28,13 +28,14 @@ namespace kwh.Pages.Inventory
                 return NotFound();
             }
 
+            // Retrieve the Component object corresponding to the selected Id
             Component = await _context.Component
                 .AsNoTracking()
                 .Include(c => c.Maturity)
                 .Include(c => c.Project)
                 .Include(c => c.Vendor)
                 .Include(c => c.Volunteer)
-                .Include(c => c.Category).FirstOrDefaultAsync(m => m.ComponentId == id);
+                .Include(c => c.Category).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Component == null)
             {

@@ -12,7 +12,7 @@ namespace kwh
     {
         public static void Main(string[] args)
         {
-            // Sets culture info, so prices will show as $0.00 not ¤0.00
+            // Sets culture info. Prices now show as $0.00 not ¤0.00
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 
             var host = CreateHostBuilder(args).Build();

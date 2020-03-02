@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+
+// Using EF Core Data Annotations
 
 namespace kwh.Models
 {
     public class Category
     {
-        // EF Core Data Annotations
-
         public int CategoryId { get; set; }
 
         [Display(Name = "Category")]

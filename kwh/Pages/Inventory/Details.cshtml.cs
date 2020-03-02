@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using kwh.Models;
@@ -26,18 +25,21 @@ namespace kwh.Pages.Inventory
                 return NotFound();
             }
 
-            //Retrieve ComponentId corresponding to the PK
+            // 1) Retrieve the ComponentId corresponding to the selected Id
+            // ** EF Core LINQ-to-Entities Query (written in method syntax) **
             var compId = _context.Component
                 .Where(x => x.Id == id)
                 .Select(x => x.ComponentId)
                 .FirstOrDefault();
 
+            // 2) Retrieve all historical records for the selected ComponentId ordered by timestamp
+            // ** EF Core LINQ-to-Entities Query (written in method syntax) **
             IQueryable<Component> components = _context.Component
                 .Where(x => x.ComponentId == compId)
                 .OrderByDescending(x => x.Timestamp)
                 .Select(c => c);
 
-            int pageSize = 10;
+            int pageSize = 10; // Number of records shown per page
             Component = await PaginatedList<Component>.CreateAsync(
                 components
                 .Include(c => c.Maturity)

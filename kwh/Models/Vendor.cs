@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+// Using EF Core Data Annotations
+
 namespace kwh.Models
 {
     public class Vendor
     {
-        // EF Core Data Annotations
-
         public int VendorId { get; set; }
 
         [Display(Name = "Vendor")]
