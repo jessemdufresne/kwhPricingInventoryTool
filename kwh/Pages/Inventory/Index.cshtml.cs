@@ -103,6 +103,8 @@ namespace kwh.Pages.Inventory
                 }
             }
 
+            // components = components.GroupBy(c => c.ComponentId).Select(o => o.OrderByDescending(t => t.Timestamp).FirstOrDefault()).AsQueryable<Component>();
+
             /* Ascending order by PartName is the default. When the user clicks
              * a column heading link, the appropriate sortOrder value is
              * provided in the query string value.
@@ -151,9 +153,6 @@ namespace kwh.Pages.Inventory
                     break;
             }
 
-            components = components
-                .GroupBy(c => c.ComponentId)
-                .Select(o => o.OrderByDescending(t => t.Timestamp).FirstOrDefault());
             /* IQueryable are converted to a collection by calling a method such
              * as ToListAsync. Therefore, the IQueryable code above results in a
              * single query that's not executed until the following statement:
