@@ -1,11 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using kwh.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using kwh.Models;
 
 namespace kwh.Pages.Inventory
 {
@@ -18,22 +16,38 @@ namespace kwh.Pages.Inventory
             _context = context;
         }
 
-        public Component Component { get; set; }
+        public PaginatedList<Component> Component { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, int? pageIndex)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Component = await _context.Component
-                .AsNoTracking()
+            // 1) Retrieve the ComponentId corresponding to the selected Id
+            // ** EF Core LINQ-to-Entities Query (written in method syntax) **
+            var compId = _context.Component
+                .Where(x => x.Id == id)
+                .Select(x => x.ComponentId)
+                .FirstOrDefault();
+
+            // 2) Retrieve all historical records for the selected ComponentId ordered by timestamp
+            // ** EF Core LINQ-to-Entities Query (written in method syntax) **
+            IQueryable<Component> components = _context.Component
+                .Where(x => x.ComponentId == compId)
+                .OrderByDescending(x => x.Timestamp)
+                .Select(c => c);
+
+            int pageSize = 10; // Number of records shown per page
+            Component = await PaginatedList<Component>.CreateAsync(
+                components
                 .Include(c => c.Maturity)
                 .Include(c => c.Project)
                 .Include(c => c.Vendor)
                 .Include(c => c.Volunteer)
-                .Include(c => c.Category).FirstOrDefaultAsync(m => m.ComponentId == id);
+                .Include(c => c.Category).AsNoTracking(),
+                pageIndex ?? 1, pageSize);
 
             if (Component == null)
             {

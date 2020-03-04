@@ -12,7 +12,9 @@ namespace kwh
     {
         public static void Main(string[] args)
         {
+            // Sets culture info. Prices now show as $0.00 not ¤0.00
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+
             var host = CreateHostBuilder(args).Build();
 
             using (var scope = host.Services.CreateScope())
@@ -21,6 +23,7 @@ namespace kwh
 
                 try
                 {
+                    // Calls SeedData.cs to initialize test records in the database
                     SeedData.Initialize(services);
                 }
                 catch (Exception ex)

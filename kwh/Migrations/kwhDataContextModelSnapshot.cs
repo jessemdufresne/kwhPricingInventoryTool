@@ -13,7 +13,7 @@ namespace kwh.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.1")
+                .HasAnnotation("ProductVersion", "3.1.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("kwh.Models.Category", b =>
@@ -34,17 +34,14 @@ namespace kwh.Migrations
 
             modelBuilder.Entity("kwh.Models.Component", b =>
                 {
-                    b.Property<int>("ComponentId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Current")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Historic")
+                    b.Property<int>("ComponentId")
                         .HasColumnType("int");
 
                     b.Property<int>("MaturityId")
@@ -72,8 +69,8 @@ namespace kwh.Migrations
                     b.Property<int>("QuantityNeeded")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("TimeStamp")
-                        .ValueGeneratedOnAddOrUpdate()
+                    b.Property<DateTime>("Timestamp")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<decimal>("UnitCost")
@@ -88,7 +85,7 @@ namespace kwh.Migrations
                     b.Property<int>("VolunteerId")
                         .HasColumnType("int");
 
-                    b.HasKey("ComponentId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 

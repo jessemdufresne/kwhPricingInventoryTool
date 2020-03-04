@@ -40,7 +40,7 @@ namespace kwh.Pages.Vendors
                     break;
             }
 
-            int pageSize = 8;
+            int pageSize = 10;
             Vendor = await PaginatedList<Vendor>.CreateAsync(
                 vendors.AsNoTracking(), pageIndex ?? 1, pageSize);
         }

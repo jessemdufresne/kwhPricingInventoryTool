@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+
+// Using EF Core Data Annotations
 
 namespace kwh.Models
 {
@@ -26,6 +27,7 @@ namespace kwh.Models
         [DataType(DataType.EmailAddress)]
         public string VolunteerEmail { get; set; }
 
+        // Navigation property holds related entities in a 1:M
         public ICollection<Component> Components { get; set; }
     }
 }

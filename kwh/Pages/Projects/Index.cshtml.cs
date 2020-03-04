@@ -50,7 +50,7 @@ namespace kwh.Pages.Projects
                     break;
             }
 
-            int pageSize = 8;
+            int pageSize = 10;
             Project = await PaginatedList<Project>.CreateAsync(
                 project.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
