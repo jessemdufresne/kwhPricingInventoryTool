@@ -42,8 +42,6 @@ namespace kwh.Pages.Inventory
             , string searchby, string searchString, int? pageIndex)
         {
             CurrentSort = sortOrder;
-            CurrentFilter = searchString;
-            SearchBy = searchby;
 
             /* The sortOrder is either Name, Quantity, Cost, Project, or
              * Category. The default sort order is ascending and "_desc"
@@ -66,6 +64,9 @@ namespace kwh.Pages.Inventory
                 searchString = currentFilter;
             }
 
+            CurrentFilter = searchString;
+            SearchBy = searchby;
+
             /* Selects all from Component table. IQueryable allows flexibility
              * to add onto that query below...
              *
@@ -85,25 +86,27 @@ namespace kwh.Pages.Inventory
                 if (searchby == "Category")
                 {
                     components = components
-                        .Where(c => c.Category.CategoryName.ToUpper()
-                        .Contains(searchString.ToUpper()));
+                        .Where(c => c.Category.CategoryName.ToUpper().Contains(searchString.ToUpper()));
 
                 } else if (searchby == "Part")
                 {
                     components = components
-                        .Where(c => c.PartName.ToUpper()
-                        .Contains(searchString.ToUpper())
-                        || c.PartNumber.ToUpper()
-                        .Contains(searchString.ToUpper()));
+                        .Where(c => c.PartName.ToUpper().Contains(searchString.ToUpper())
+                        || c.PartNumber.ToUpper().Contains(searchString.ToUpper()));
                 } else
                 {
                     components = components
-                        .Where(c => c.Project.ProjectName.ToUpper()
-                        .Contains(searchString.ToUpper()));
+                        .Where(c => c.Project.ProjectName.ToUpper().Contains(searchString.ToUpper()));
                 }
             }
 
-            // components = components.GroupBy(c => c.ComponentId).Select(o => o.OrderByDescending(t => t.Timestamp).FirstOrDefault()).AsQueryable<Component>();
+            /*Order should be
+             .Where()
+             .GroupBy(c => c.ComponentId)
+             .Select(o => o.OrderByDescending(t => t.Timestamp).FirstOrDefault())
+             .AsQueryable<Component>()
+             .OrderBy()
+             */
 
             /* Ascending order by PartName is the default. When the user clicks
              * a column heading link, the appropriate sortOrder value is

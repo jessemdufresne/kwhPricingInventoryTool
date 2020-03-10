@@ -1,6 +1,9 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using kwh.Models;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +18,9 @@ namespace kwh.Pages.Inventory
         {
             _context = context;
         }
+
+        public string UnitCostList { get; set; }
+        public HtmlString TimestampsList { get; set; }
 
         public PaginatedList<Component> Component { get; set; }
 
@@ -33,6 +39,17 @@ namespace kwh.Pages.Inventory
                 .FirstOrDefault();
 
             // 2) Retrieve all historical records for the selected ComponentId ordered by timestamp
+
+            // 3) Retrieve unit costs and timestamps, then create a list from query
+            var costs = graph.Select(c => c.UnitCost).ToList();
+            var time = graph.Select(c => c.Timestamp).ToList();
+
+            // 4) Convert lists to strings for Chart.js
+            UnitCostList = String.Join(",", costs);
+            List<string> t = time.ConvertAll(x => x.ToString("g"));
+            TimestampsList = new HtmlString("'" + string.Join("','", t) + "'");
+
+            // 5) Retrieve all historical records for the selected ComponentId ordered by timestamp
             // ** EF Core LINQ-to-Entities Query (written in method syntax) **
             IQueryable<Component> components = _context.Component
                 .Where(x => x.ComponentId == compId)

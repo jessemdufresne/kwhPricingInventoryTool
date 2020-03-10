@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.1": {
       "kwh/1.0.0": {
         "dependencies": {
+          "Chart.js": "2.9.3",
           "Microsoft.EntityFrameworkCore.Design": "3.1.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.2",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.2",
@@ -329,6 +330,7 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
+      "Chart.js/2.9.3": {},
       "Google.Protobuf/3.6.1": {
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -4499,6 +4501,13 @@
       "sha512": "sha512-jAy3uHN1U9DpoT/TgLqDTEhlccn/4doOVxhSmmNsnoSsGfHT9Lwr634ac9D0YFujAhNw61nWF4UIpHyzv0aQww==",
       "path": "bouncycastle.netcore/1.8.3",
       "hashPath": "bouncycastle.netcore.1.8.3.nupkg.sha512"
+    },
+    "Chart.js/2.9.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SY8PuXOJANgsEGMtuXPb/gxazfXdySUuFwTPbQUbw/YKiltR6FJ3mXrLFpr6N2MSCS7oUtfOhTotxLifyJcQNA==",
+      "path": "chart.js/2.9.3",
+      "hashPath": "chart.js.2.9.3.nupkg.sha512"
     },
     "Google.Protobuf/3.6.1": {
       "type": "package",

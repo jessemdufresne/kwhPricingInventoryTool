@@ -19,7 +19,7 @@
     <form asp-page="./Index" method="get">
         <div class="form-actions no-color">
             <b>Search By:</b>
-            <!-- Retrive search criteria from Criteria[], where searchBy values are manually set-->
+            <!-- Retrieve search criteria from Criteria[], where searchBy values are manually set-->
             @foreach (var searchby in Model.Criteria)
             {
                 @Html.RadioButtonFor(m => m.SearchBy, searchby)<text> @searchby  </text>
@@ -30,18 +30,14 @@
         </div>
     </form>
     <br />
-    <!--
-        URL Query String for sorting and searching: asp-route-searchBy="Model.SearchBy", asp-route-sortOrder="Model.CategorySort"
-        , asp-route-currentFilter="Model.CurrentFilter"
-
-        URL Query String for navigating to Inventory/Edit and Inventory/Details: asp-route-id="item.Id" -->
+    <!-- URL Query String for sorting and searching -->
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    <a asp-page="./Index" asp-route-searchBy="@Model.SearchBy"
-                       asp-route-sortOrder="@Model.CategorySort"
-                       asp-route-currentFilter="@Model.CurrentFilter">
+                    <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
+                       asp-route-CurrentFilter="@Model.CurrentFilter"
+                       asp-route-SortOrder="@Model.CategorySort">
                         @Html.DisplayNameFor(model => model.Component[0].Category)
                     </a>
                 </th>
@@ -49,30 +45,30 @@
                     @Html.DisplayNameFor(model => model.Component[0].PartNumber)
                 </th>
                 <th>
-                    <a asp-page="./Index" asp-route-searchBy="@Model.SearchBy"
-                       asp-route-sortOrder="@Model.NameSort"
-                       asp-route-currentFilter="@Model.CurrentFilter">
+                    <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
+                       asp-route-CurrentFilter="@Model.CurrentFilter"
+                       asp-route-SortOrder="@Model.NameSort">
                         @Html.DisplayNameFor(model => model.Component[0].PartName)
                     </a>
                 </th>
                 <th>
-                    <a asp-page="./Index" asp-route-searchBy="@Model.SearchBy"
-                       asp-route-sortOrder="@Model.CostSort"
-                       asp-route-currentFilter="@Model.CurrentFilter">
+                    <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
+                       asp-route-CurrentFilter="@Model.CurrentFilter"
+                       asp-route-SortOrder="@Model.CostSort">
                         @Html.DisplayNameFor(model => model.Component[0].UnitCost)
                     </a>
                 </th>
                 <th>
-                    <a asp-page="./Index" asp-route-searchBy="@Model.SearchBy"
-                       asp-route-sortOrder="@Model.QuantitySort"
-                       asp-route-currentFilter="@Model.CurrentFilter">
+                    <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
+                       asp-route-CurrentFilter="@Model.CurrentFilter"
+                       asp-route-SortOrder="@Model.QuantitySort">
                         @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
                     </a>
                 </th>
                 <th>
-                    <a asp-page="./Index" asp-route-searchBy="@Model.SearchBy"
-                       asp-route-sortOrder="@Model.ProjectSort"
-                       asp-route-currentFilter="@Model.CurrentFilter">
+                    <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
+                       asp-route-CurrentFilter="@Model.CurrentFilter"
+                       asp-route-SortOrder="@Model.ProjectSort">
                         @Html.DisplayNameFor(model => model.Component[0].Project)
                     </a>
                 </th>
