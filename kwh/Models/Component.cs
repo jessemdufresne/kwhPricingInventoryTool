@@ -2,17 +2,24 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+// Using EF Core Data Annotations
+
 namespace kwh.Models
 {
     public class Component
     {
-        public int ComponentId { get; set; }
-        public int Historic { get; set; }
-        public int Current { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
+        public int ComponentId { get; set; }
+
+        // Set foreign keys and corresponding navigation properties
+        // to hold related entities of a 1:M relationship
         [Display(Name = "Vendor")]
         public int VendorId { get; set; }
         [Display(Name = "Volunteer")]
+        [Required]
         public int VolunteerId { get; set; }
         [Display(Name = "Maturity")]
         public int MaturityId { get; set; }
@@ -52,11 +59,10 @@ namespace kwh.Models
         [Display(Name = "Quantity Needed")]
         public int QuantityNeeded { get; set; }
 
-        [Display(Name = "Last Modified")]
         [DataType(DataType.Date)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime TimeStamp { get; set; }
-        //.Computed is for Add and Update actions...
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public DateTime Timestamp { get; set; }
         //.Identity for Add action only
+        //.Computed is for Add and Update actions...
     }
 }

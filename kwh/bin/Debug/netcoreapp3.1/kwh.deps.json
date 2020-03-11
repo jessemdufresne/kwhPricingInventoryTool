@@ -24,8 +24,12 @@
     ".NETCoreApp,Version=v3.1": {
       "kwh/1.0.0": {
         "dependencies": {
+<<<<<<< HEAD
           "EntityFramework.Triggers": "6.2.2",
           "EntityFrameworkCore.Triggers": "1.2.2",
+=======
+          "Chart.js": "2.9.3",
+>>>>>>> master
           "Microsoft.EntityFrameworkCore.Design": "3.1.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.2",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.2",
@@ -331,6 +335,7 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
+<<<<<<< HEAD
       "EntityFramework/6.3.0": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -384,6 +389,9 @@
           "lib/netstandard2.1/EntityFrameworkCore.Triggers.dll": {}
         }
       },
+=======
+      "Chart.js/2.9.3": {},
+>>>>>>> master
       "Google.Protobuf/3.6.1": {
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -4596,6 +4604,7 @@
       "path": "bouncycastle.netcore/1.8.3",
       "hashPath": "bouncycastle.netcore.1.8.3.nupkg.sha512"
     },
+<<<<<<< HEAD
     "EntityFramework/6.3.0": {
       "type": "package",
       "serviceable": true,
@@ -4616,6 +4625,14 @@
       "sha512": "sha512-d5aVzdfOHbYm+sgSiOC+GvgrX+XgfaUuvRtXrMqkoMFBwnwO+Zp9/8FAL27TWhDK67F/o3mIv1YarS9jClshNQ==",
       "path": "entityframeworkcore.triggers/1.2.2",
       "hashPath": "entityframeworkcore.triggers.1.2.2.nupkg.sha512"
+=======
+    "Chart.js/2.9.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SY8PuXOJANgsEGMtuXPb/gxazfXdySUuFwTPbQUbw/YKiltR6FJ3mXrLFpr6N2MSCS7oUtfOhTotxLifyJcQNA==",
+      "path": "chart.js/2.9.3",
+      "hashPath": "chart.js.2.9.3.nupkg.sha512"
+>>>>>>> master
     },
     "Google.Protobuf/3.6.1": {
       "type": "package",

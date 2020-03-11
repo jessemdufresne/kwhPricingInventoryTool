@@ -36,13 +36,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "EntityFramework.Triggers": {
+            "Chart.js": {
               "target": "Package",
-              "version": "[6.2.2, )"
-            },
-            "EntityFrameworkCore.Triggers": {
-              "target": "Package",
-              "version": "[1.2.2, )"
+              "version": "[2.9.3, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

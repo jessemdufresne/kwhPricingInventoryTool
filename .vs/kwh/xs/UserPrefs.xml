@@ -1,4 +1,5 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Categories/Index.cshtml">
     <Files>
       <File FileName="kwh/wwwroot/css/site.css" Line="25" Column="1" />
@@ -7,13 +8,20 @@
       <File FileName="kwh/wwwroot/lib/bootstrap/dist/css/bootstrap.css" />
       <File FileName="kwh/Pages/Shared/_Layout.cshtml" />
       <File FileName="kwh/Pages/Categories/Index.cshtml" Line="27" Column="17" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Inventory/Details.cshtml">
+    <Files>
+      <File FileName="kwh/Pages/Inventory/Details.cshtml" Line="151" Column="36" />
+>>>>>>> master
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="kwh" expanded="True">
             <Node name="kwh" expanded="True">
+              <Node name="Dependencies" expanded="True" />
               <Node name="Pages" expanded="True">
+<<<<<<< HEAD
                 <Node name="Categories" expanded="True">
                   <Node name="Index.cshtml" selected="True" />
                 </Node>
@@ -28,7 +36,16 @@
                       <Node name="css" expanded="True" />
                     </Node>
                   </Node>
+=======
+                <Node name="Inventory" expanded="True">
+                  <Node name="Details.cshtml" expanded="True" selected="True" />
+                  <Node name="Index.cshtml" expanded="True" />
+>>>>>>> master
                 </Node>
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+                <Node name="lib" expanded="True" />
               </Node>
             </Node>
           </Node>

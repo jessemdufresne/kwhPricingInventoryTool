@@ -85,10 +85,9 @@ namespace kwh.Migrations
                 name: "Component",
                 columns: table => new
                 {
-                    ComponentId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Historic = table.Column<int>(nullable: false),
-                    Current = table.Column<int>(nullable: false),
+                    ComponentId = table.Column<int>(nullable: false),
                     VendorId = table.Column<int>(nullable: false),
                     VolunteerId = table.Column<int>(nullable: false),
                     MaturityId = table.Column<int>(nullable: false),
@@ -101,12 +100,12 @@ namespace kwh.Migrations
                     Url = table.Column<string>(nullable: true),
                     QuantityCurrent = table.Column<int>(nullable: false),
                     QuantityNeeded = table.Column<int>(nullable: false),
-                    TimeStamp = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn)
+                    Timestamp = table.Column<DateTime>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Component", x => x.ComponentId);
+                    table.PrimaryKey("PK_Component", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Component_Category_CategoryId",
                         column: x => x.CategoryId,

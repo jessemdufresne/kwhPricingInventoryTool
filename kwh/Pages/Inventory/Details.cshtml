@@ -10,91 +10,149 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.bundle.min.js"></script>
+    <style>
+
+    </style>
     <title>Details</title>
 </head>
 <body>
-
     <div>
         <h4>Component</h4>
         <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Component.PartNumber)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Component.PartNumber)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Component.PartName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Component.PartName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Component.Category)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Component.Category.CategoryName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Component.Vendor)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Component.Vendor.VendorName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Component.UnitCost)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Component.UnitCost)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Component.Notes)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Component.Notes)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Component.Maturity)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Component.Maturity.MaturityStatus)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Component.Url)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Component.Url)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Component.QuantityCurrent)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Component.QuantityCurrent)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Component.QuantityNeeded)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Component.QuantityNeeded)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Component.Project)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Component.Project.ProjectName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Component.Volunteer)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Component.Volunteer.LastName)
-            </dd>
-        </dl>
+        <div style="width: 55%; margin-left: auto; margin-right: auto;">
+            <canvas id="priceChart" width="500" height="400"></canvas>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Component[0].PartNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Component[0].PartName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Component[0].Category)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Component[0].Vendor)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Component[0].UnitCost)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Component[0].Notes)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Component[0].Maturity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Component[0].Url)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Component[0].QuantityNeeded)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Component[0].Project)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Component[0].Volunteer)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Component)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PartNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PartName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Vendor.VendorName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnitCost)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Notes)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Maturity.MaturityStatus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Url)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QuantityCurrent)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QuantityNeeded)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Volunteer.LastName)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Component.ComponentId">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+    <div>
+        <a asp-page="./Index">Back to List</a>
+    </div>
 </body>
 </html>
+
+<script>
+    //Line graph styling: https://www.chartjs.org/docs/latest/charts/line.html
+    //Time Axis: https://www.chartjs.org/docs/latest/axes/cartesian/time.html
+    Chart.defaults.global.legend.display = false;
+    var ctx = document.getElementById('priceChart').getContext('2d');
+    var LineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [{
+                fill: false,
+                borderColor: 'rgb(162, 202, 153)',
+                borderWidth: 2,
+                lineTension: 0.2,
+                data: [@Model.UnitCostList]
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Price History',
+                fontSize: 16,
+                fontFamily: 'Helvetica',
+                fontColor: '#272727',
+                fontStyle: 'bold',
+            },
+            scales: {
+                xAxes: [{
+                    type: 'time',
+                    labels: [@Model.TimestampsList],
+                    distribution: 'linear',
+                    time: {
+                        parser: 'MM/DD/YYYY hh:mm a',
+                        unit: 'day', //'month', 'week', 'day', 'hour', 'minute' 
+                        tooltipFormat: 'll hh:mm a'
+                    }
+                }]
+            }
+        }
+    });
+</script>

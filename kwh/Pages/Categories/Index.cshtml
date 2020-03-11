@@ -45,6 +45,7 @@
         var nextDisabled = !Model.Category.HasNextPage ? "disabled" : "";
     }
 
+<<<<<<< HEAD
 
     <div class="row p-2">
         <div class="btn-group col-sm-3 p-2">
@@ -65,6 +66,20 @@
             <input type="button" value="Create +" onclick="window.location.href = 'Inventory/Create';" class="btn btn-primary" />
         </div>
     </div>
+=======
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Category.PageIndex - 1)"
+       class="btn btn-primary @prevDisabled">
+        <octicon symbol="ChevronLeft"></octicon>
+    </a>
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Category.PageIndex + 1)"
+       class="btn btn-primary @nextDisabled">
+        <octicon symbol="ChevronRight"></octicon>
+    </a>
+>>>>>>> master
 
 </body>
 </html>

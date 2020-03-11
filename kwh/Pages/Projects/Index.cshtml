@@ -60,6 +60,7 @@
         var nextDisabled = !Model.Project.HasNextPage ? "disabled" : "";
     }
 
+<<<<<<< HEAD
     
 
     <!--Prev, Next, Create Buttons-->
@@ -84,5 +85,19 @@
         </div>
     </div>
 
+=======
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Project.PageIndex - 1)"
+       class="btn btn-primary @prevDisabled">
+        <octicon symbol="ChevronLeft"></octicon>
+    </a>
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Project.PageIndex + 1)"
+       class="btn btn-primary @nextDisabled">
+        <octicon symbol="ChevronRight"></octicon>
+    </a>
+>>>>>>> master
 </body>
 </html>

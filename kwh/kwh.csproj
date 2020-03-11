@@ -28,9 +28,8 @@
     </PackageReference>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
     <PackageReference Include="Octicons.TagHelper" Version="1.0.0" />
-    <PackageReference Include="EntityFrameworkCore.Triggers" Version="1.2.2" />
-    <PackageReference Include="EntityFramework.Triggers" Version="6.2.2" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.2" />
+    <PackageReference Include="Chart.js" Version="2.9.3" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

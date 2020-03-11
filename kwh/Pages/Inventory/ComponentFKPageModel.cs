@@ -5,10 +5,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
+// Tutorial from https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/update-related-data?view=aspnetcore-3.1
+// Creates and populates drop down lists for Inventory CRUD scaffolding
 namespace kwh.Pages.Inventory
 {
     public class ComponentFKPageModel : PageModel
     {
+        /* Create multiple SelectLists to contain the list of FK details
+         * If selectedMaturity, selectedProject, selectedVendor,
+         * selectedVolunteer or selectedCategory is specified, that corresponding
+         * FK detail.
+         *
+         * Inventory Create and Edit pages model classes will derive from the
+         * ComponentFKPageModel class. 
+        */
         public SelectList MaturityStatusSL { get; set; }
         public SelectList ProjectNameSL { get; set; }
         public SelectList VendorNameSL { get; set; }
