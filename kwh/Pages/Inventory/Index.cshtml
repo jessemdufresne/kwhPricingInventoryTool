@@ -10,26 +10,35 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="site.css">
     <title>Index</title>
 </head>
+
 <body>
-    <p>
-        <a asp-page="Create">Create New</a>
-    </p>
-    <form asp-page="./Index" method="get">
-        <div class="form-actions no-color">
-            <b>Search By:</b>
-            @foreach (var searchby in Model.Criteria)
-            {
-                @Html.RadioButtonFor(m => m.SearchBy, searchby)<text> @searchby  </text>
-            }
-            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to full List</a>
-        </div>
-    </form>
-    <br />
-    <table class="table">
+    <!--Search Bar-->
+    <div class="container">
+        <form asp-page="./Index" method="get">
+            <div class="form-actions color-white py-2 d-inline-block">
+                <b class="px-2 d-inline-block">Search By:</b>
+                @foreach (var searchby in Model.Criteria)
+                {
+                    @Html.RadioButtonFor(m => m.SearchBy, searchby)<p1 class="d-inline-block"> @searchby </p1>
+                }
+                <div class="p-2 d-inline-block">
+                    <input class="form-control" type="text" name="SearchString" placeholder="Search" value="@Model.CurrentFilter" />
+                </div>
+                <div class="p-2 d-inline-block h-100">
+                    <input class="btn btn-primary " type="submit" value="Search" />
+                </div>
+                <div class="p-2 d-inline-block">
+                    <a asp-page="./Index">Clear Search</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--Table Header and Rows-->
+    <table class="table border-hidden bg-white mb-0">
         <thead>
             <tr>
                 <th>
@@ -65,37 +74,36 @@
                         @Html.DisplayNameFor(model => model.Component[0].Project)
                     </a>
                 </th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Component)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PartNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PartName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UnitCost)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QuantityCurrent)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Project.ProjectName)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ComponentId">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.ComponentId">Details</a>
-                    <!-- <a asp-page="./Delete" asp-route-id="@item.ComponentId">Delete</a> -->
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PartNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PartName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnitCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuantityCurrent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ComponentId">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ComponentId">Details</a>
+                        <!-- <a asp-page="./Delete" asp-route-id="@item.ComponentId">Delete</a> -->
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
@@ -105,21 +113,29 @@
         var nextDisabled = !Model.Component.HasNextPage ? "disabled" : "";
     }
 
-    <a asp-page="./Index"
-       asp-route-sortOrder="@Model.CurrentSort"
-       asp-route-pageIndex="@(Model.Component.PageIndex - 1)"
-       asp-route-currentFilter="@Model.CurrentFilter"
-       class="btn btn-primary @prevDisabled">
-        Previous
-    </a>
-    <a asp-page="./Index"
-       asp-route-sortOrder="@Model.CurrentSort"
-       asp-route-pageIndex="@(Model.Component.PageIndex + 1)"
-       asp-route-currentFilter="@Model.CurrentFilter"
-       class="btn btn-primary @nextDisabled">
-        Next
-    </a>
+    <!--Prev, Next, Create Buttons-->
 
+    <div class="row p-2">
+        <div class="btn-group col-sm-3 p-2">
+            <a asp-page="./Index"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-pageIndex="@(Model.Component.PageIndex - 1)"
+               asp-route-currentFilter="@Model.CurrentFilter"
+               class="btn btn-primary @prevDisabled">
+                Previous
+            </a>
+            <a asp-page="./Index"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-pageIndex="@(Model.Component.PageIndex + 1)"
+               asp-route-currentFilter="@Model.CurrentFilter"
+               class="btn btn-primary @nextDisabled">
+                Next
+            </a>
+        </div>
+        <div class="col-sm text-right p-2">
+            <input type="button" value="Create +" onclick="window.location.href = 'Inventory/Create';" class="btn btn-primary" />
+        </div>
+    </div>
 
 </body>
 </html>

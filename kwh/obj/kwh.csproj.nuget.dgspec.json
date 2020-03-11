@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj": {}
+    "/Users/JesseDuFresne/Desktop/School/Project/branches/css/kwhPricingInventoryTool/kwh/kwh.csproj": {}
   },
   "projects": {
-    "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj": {
+    "/Users/JesseDuFresne/Desktop/School/Project/branches/css/kwhPricingInventoryTool/kwh/kwh.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj",
+        "projectUniqueName": "/Users/JesseDuFresne/Desktop/School/Project/branches/css/kwhPricingInventoryTool/kwh/kwh.csproj",
         "projectName": "kwh",
-        "projectPath": "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj",
-        "packagesPath": "/Users/audreykan/.nuget/packages/",
-        "outputPath": "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/",
+        "projectPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/css/kwhPricingInventoryTool/kwh/kwh.csproj",
+        "packagesPath": "/Users/JesseDuFresne/.nuget/packages/",
+        "outputPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/css/kwhPricingInventoryTool/kwh/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/Users/audreykan/.config/NuGet/NuGet.Config"
+          "/Users/JesseDuFresne/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
