@@ -10,13 +10,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/wwwroot/css/site.css" rel="stylesheet" type="text/css" />
     <title>Index</title>
 </head>
 <body>
-    <p>
-        <a asp-page="Create">Create New</a>
-    </p>
-    <table class="table">
+    <!--Table Header and Rows-->
+    <table class="table border-hidden bg-white mb-0 mt-3">
         <thead>
             <tr>
                 <th>
@@ -32,7 +31,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Project[0].ProjectCountry)
                 </th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -56,22 +54,32 @@
             }
         </tbody>
     </table>
+
     @{
         var prevDisabled = !Model.Project.HasPreviousPage ? "disabled" : "";
         var nextDisabled = !Model.Project.HasNextPage ? "disabled" : "";
     }
 
-    <a asp-page="./Index"
-       asp-route-sortOrder="@Model.CurrentSort"
-       asp-route-pageIndex="@(Model.Project.PageIndex - 1)"
-       class="btn btn-primary @prevDisabled">
-        <octicon symbol="ChevronLeft"></octicon>
-    </a>
-    <a asp-page="./Index"
-       asp-route-sortOrder="@Model.CurrentSort"
-       asp-route-pageIndex="@(Model.Project.PageIndex + 1)"
-       class="btn btn-primary @nextDisabled">
-        <octicon symbol="ChevronRight"></octicon>
-    </a>
+    <!--Prev, Next, Create Buttons-->
+
+    <div class="row p-2">
+        <div class="btn-group col-sm-3 p-2">
+            <a asp-page="./Index"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-pageIndex="@(Model.Project.PageIndex - 1)"
+               class="btn btn-primary @prevDisabled">
+                <octicon symbol="ChevronLeft"></octicon>
+            </a>
+            <a asp-page="./Index"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-pageIndex="@(Model.Project.PageIndex + 1)"
+               class="btn btn-primary @nextDisabled">
+                <octicon symbol="ChevronRight"></octicon>
+            </a>
+        </div>
+        <div class="col-sm text-right p-2">
+            <input type="button" value="Create +" onclick="window.location.href = 'Project/Create';" class="btn btn-primary" />
+        </div>
+    </div>
 </body>
 </html>

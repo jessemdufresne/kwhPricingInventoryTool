@@ -10,28 +10,35 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="site.css">
     <title>Index</title>
 </head>
+
 <body>
-    <p>
-        <a asp-page="Create">Create New</a>
-    </p>
-    <form asp-page="./Index" method="get">
-        <div class="form-actions no-color">
-            <b>Search By:</b>
-            <!-- Retrieve search criteria from Criteria[], where searchBy values are manually set-->
-            @foreach (var searchby in Model.Criteria)
-            {
-                @Html.RadioButtonFor(m => m.SearchBy, searchby)<text> @searchby  </text>
-            }
-            <input type="text" name="CurrentFilter" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to full List</a>
-        </div>
-    </form>
-    <br />
-    <!-- URL Query String for sorting and searching -->
-    <table class="table">
+    <!--Search Bar-->
+    <div class="container">
+        <form asp-page="./Index" method="get">
+            <div class="form-actions color-white py-2 d-inline-block">
+                <b class="px-2 d-inline-block">Search By:</b>
+                @foreach (var searchby in Model.Criteria)
+                {
+                    @Html.RadioButtonFor(m => m.SearchBy, searchby)<p1 class="d-inline-block"> @searchby </p1>
+                }
+                <div class="p-2 d-inline-block">
+                    <input class="form-control" type="text" name="CurrentFilter" placeholder="Search" value="@Model.CurrentFilter" />
+                </div>
+                <div class="p-2 d-inline-block h-100">
+                    <input class="btn btn-primary " type="submit" value="Search" />
+                </div>
+                <div class="p-2 d-inline-block">
+                    <a asp-page="./Index">Clear Search</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--Table Header and Rows-->
+    <table class="table border-hidden bg-white mb-0">
         <thead>
             <tr>
                 <th>
@@ -45,34 +52,37 @@
                     @Html.DisplayNameFor(model => model.Component[0].PartNumber)
                 </th>
                 <th>
-                    <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
+                    <a asp-page="./Index"
+                       asp-route-SearchBy="@Model.SearchBy"
                        asp-route-CurrentFilter="@Model.CurrentFilter"
                        asp-route-SortOrder="@Model.NameSort">
                         @Html.DisplayNameFor(model => model.Component[0].PartName)
                     </a>
                 </th>
                 <th>
-                    <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
+                    <a asp-page="./Index"
+                       asp-route-SearchBy="@Model.SearchBy"
                        asp-route-CurrentFilter="@Model.CurrentFilter"
                        asp-route-SortOrder="@Model.CostSort">
                         @Html.DisplayNameFor(model => model.Component[0].UnitCost)
                     </a>
                 </th>
                 <th>
-                    <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
+                    <a asp-page="./Index"
+                       asp-route-SearchBy="@Model.SearchBy"
                        asp-route-CurrentFilter="@Model.CurrentFilter"
                        asp-route-SortOrder="@Model.QuantitySort">
                         @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
                     </a>
                 </th>
                 <th>
-                    <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
+                    <a asp-page="./Index"
+                       asp-route-SearchBy="@Model.SearchBy"
                        asp-route-CurrentFilter="@Model.CurrentFilter"
                        asp-route-SortOrder="@Model.ProjectSort">
                         @Html.DisplayNameFor(model => model.Component[0].Project)
                     </a>
                 </th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -112,23 +122,32 @@
         var nextDisabled = !Model.Component.HasNextPage ? "disabled" : "";
     }
 
+    <!--Prev, Next, Create Buttons-->
     <!-- asp-route-sortOrder, asp-route-currentFilter, asp-route-searchBy, and asp-route-pageIndex preserves sort and
         search results across pages -->
-    <a asp-page="./Index"
-       asp-route-sortOrder="@Model.CurrentSort"
-       asp-route-currentFilter="@Model.CurrentFilter"
-       asp-route-searchBy="@Model.SearchBy"
-       asp-route-pageIndex="@(Model.Component.PageIndex - 1)"
-       class="btn btn-primary @prevDisabled">
-        <octicon symbol="ChevronLeft"></octicon>
-    </a>
-    <a asp-page="./Index"
-       asp-route-sortOrder="@Model.CurrentSort"
-       asp-route-currentFilter="@Model.CurrentFilter"
-       asp-route-searchBy="@Model.SearchBy"
-       asp-route-pageIndex="@(Model.Component.PageIndex + 1)"
-       class="btn btn-primary @nextDisabled">
-        <octicon symbol="ChevronRight"></octicon>
-    </a>
+    <div class="row p-2">
+        <div class="btn-group col-sm-3 p-2">
+            <a asp-page="./Index"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-currentFilter="@Model.CurrentFilter"
+               asp-route-searchBy="@Model.SearchBy"
+               asp-route-pageIndex="@(Model.Component.PageIndex - 1)"
+               class="btn btn-primary @prevDisabled">
+                <octicon symbol="ChevronLeft"></octicon>
+            </a>
+            <a asp-page="./Index"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-currentFilter="@Model.CurrentFilter"
+               asp-route-searchBy="@Model.SearchBy"
+               asp-route-pageIndex="@(Model.Component.PageIndex + 1)"
+               class="btn btn-primary @nextDisabled">
+                <octicon symbol="ChevronRight"></octicon>
+            </a>
+        </div>
+        <div class="col-sm text-right p-2">
+            <input type="button" value="Create +" onclick="window.location.href = 'Inventory/Create';" class="btn btn-primary" />
+        </div>
+    </div>
+
 </body>
 </html>

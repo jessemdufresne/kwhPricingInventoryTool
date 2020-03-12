@@ -10,13 +10,11 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/wwwroot/css/site.css" rel="stylesheet" type="text/css" />
     <title>Index</title>
 </head>
 <body>
-    <p>
-        <a asp-page="Create">Create New</a>
-    </p>
-    <table class="table">
+    <table class="table border-hidden bg-white mb-0 mt-3">
         <thead>
             <tr>
                 <th>
@@ -65,17 +63,24 @@
         var nextDisabled = !Model.Vendor.HasNextPage ? "disabled" : "";
     }
 
-    <a asp-page="./Index"
-       asp-route-sortOrder="@Model.CurrentSort"
-       asp-route-pageIndex="@(Model.Vendor.PageIndex - 1)"
-       class="btn btn-primary @prevDisabled">
-        <octicon symbol="ChevronLeft"></octicon>
-    </a>
-    <a asp-page="./Index"
-       asp-route-sortOrder="@Model.CurrentSort"
-       asp-route-pageIndex="@(Model.Vendor.PageIndex + 1)"
-       class="btn btn-primary @nextDisabled">
-        <octicon symbol="ChevronRight"></octicon>
-    </a>
+    <div class="row p-2">
+        <div class="btn-group col-sm-3 p-2">
+            <a asp-page="./Index"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-pageIndex="@(Model.Vendor.PageIndex - 1)"
+               class="btn btn-primary @prevDisabled">
+                <octicon symbol="ChevronLeft"></octicon>
+            </a>
+            <a asp-page="./Index"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-pageIndex="@(Model.Vendor.PageIndex + 1)"
+               class="btn btn-primary @nextDisabled">
+                <octicon symbol="ChevronRight"></octicon>
+            </a>
+        </div>
+        <div class="col-sm text-right p-2">
+            <input type="button" value="Create +" onclick="window.location.href = 'Vendor/Create';" class="btn btn-primary" />
+        </div>
+    </div>
 </body>
 </html>
