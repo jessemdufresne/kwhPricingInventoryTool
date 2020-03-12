@@ -1123,3 +1123,10 @@
 /Users/JesseDuFresne/Desktop/School/Project/branches/css/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/kwh.dll
 /Users/JesseDuFresne/Desktop/School/Project/branches/css/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/kwh.pdb
 /Users/JesseDuFresne/Desktop/School/Project/branches/css/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/kwh.csprojAssemblyReference.cache
+/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/wkhtmltox/v0.12.4/32 bit/libwkhtmltox.dll
+/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/wkhtmltox/v0.12.4/32 bit/libwkhtmltox.dylib
+/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/wkhtmltox/v0.12.4/32 bit/libwkhtmltox.so
+/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/wkhtmltox/v0.12.4/64 bit/libwkhtmltox.dll
+/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/wkhtmltox/v0.12.4/64 bit/libwkhtmltox.dylib
+/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/wkhtmltox/v0.12.4/64 bit/libwkhtmltox.so
+/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/DinkToPdf.dll

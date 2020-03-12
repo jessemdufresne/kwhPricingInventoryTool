@@ -51,17 +51,17 @@
                asp-route-sortOrder="@Model.CurrentSort"
                asp-route-pageIndex="@(Model.Category.PageIndex - 1)"
                class="btn btn-primary @prevDisabled">
-                <octicon symbol="ChevronLeft"></octicon>
+                <
             </a>
             <a asp-page="./Index"
                asp-route-sortOrder="@Model.CurrentSort"
                asp-route-pageIndex="@(Model.Category.PageIndex + 1)"
                class="btn btn-primary @nextDisabled">
-                <octicon symbol="ChevronRight"></octicon>
+                >
             </a>
         </div>
         <div class="col-sm text-right p-2">
-            <input type="button" value="Create +" onclick="window.location.href = 'Inventory/Create';" class="btn btn-primary" />
+            <input type="button" value="Create +" onclick="window.location.href = 'Categories/Create';" class="btn btn-primary" />
         </div>
     </div>
 
