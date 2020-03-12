@@ -18,12 +18,11 @@
 </head>
 <body>
     <div>
-        <h4>Component</h4>
-        <hr />
-        <div style="width: 55%; margin-left: auto; margin-right: auto;">
-            <canvas id="priceChart" width="500" height="400"></canvas>
+        <h4 class="m-3">Component Details</h4>
+        <div class="w-90 bg-white m-5 rounded">
+            <canvas id="priceChart" />
         </div>
-        <table class="table">
+        <table class="table border-hidden bg-white mb-0 mt-3">
             <thead>
                 <tr>
                     <th>
@@ -110,8 +109,8 @@
             </tbody>
         </table>
     </div>
-    <div>
-        <a asp-page="./Index">Back to List</a>
+    <div class="text-center m-3">
+        <input type="button" value="Back to List" onclick="window.location.href='./Index';" class="btn btn-primary" />
     </div>
 </body>
 </html>
@@ -136,7 +135,7 @@
             title: {
                 display: true,
                 text: 'Price History',
-                fontSize: 16,
+                fontSize: 20,
                 fontFamily: 'Helvetica',
                 fontColor: '#272727',
                 fontStyle: 'bold',

@@ -37,6 +37,7 @@
     <Folder Include="Pages\Projects\" />
     <Folder Include="Pages\Categories\" />
     <Folder Include="Pages\Vendors\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove=".DS_Store" />

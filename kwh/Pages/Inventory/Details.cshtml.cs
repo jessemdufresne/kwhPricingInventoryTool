@@ -39,6 +39,9 @@ namespace kwh.Pages.Inventory
                 .FirstOrDefault();
 
             // 2) Retrieve all historical records for the selected ComponentId ordered by timestamp
+            IQueryable<Component> graph = _context.Component
+                .Where(x => x.ComponentId == compId)
+                .OrderBy(x => x.Timestamp);
 
             // 3) Retrieve unit costs and timestamps, then create a list from query
             var costs = graph.Select(c => c.UnitCost).ToList();
