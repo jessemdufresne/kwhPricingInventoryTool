@@ -10808,11 +10808,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/JesseDuFresne/Desktop/School/Project/branches/css/kwhPricingInventoryTool/kwh/kwh.csproj",
+      "projectUniqueName": "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/kwh.csproj",
       "projectName": "kwh",
-      "projectPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/css/kwhPricingInventoryTool/kwh/kwh.csproj",
+      "projectPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/kwh.csproj",
       "packagesPath": "/Users/JesseDuFresne/.nuget/packages/",
-      "outputPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/css/kwhPricingInventoryTool/kwh/obj/",
+      "outputPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/JesseDuFresne/.config/NuGet/NuGet.Config"
@@ -10907,13 +10907,5 @@
         "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.101/RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file /Users/JesseDuFresne/Desktop/School/Project/branches/css/kwhPricingInventoryTool/kwh/obj/kwh.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
