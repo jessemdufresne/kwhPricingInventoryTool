@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 
-// Tutorial from https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/sort-filter-page?view=aspnetcore-3.1#add-paging-to-students-index 
+// Adapted from tutorial from https://www.youtube.com/watch?v=KuVPJER9GEQ
 namespace kwh
 {
     public class PaginatedList<T> : List<T>

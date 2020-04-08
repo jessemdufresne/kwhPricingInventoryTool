@@ -36,7 +36,6 @@
             </div>
         </form>
     </div>
-
     <!--Table Header and Rows-->
     <table class="table border-hidden bg-white mb-0">
         <thead>
@@ -145,10 +144,12 @@
             </a>
         </div>
         <div class="col-sm text-right p-2">
-            <input type="button" value="Create +" onclick="window.location.href = 'Inventory/Create';" class="btn btn-primary" />
-            <input type="button" id="ExportButton" value="Export" class="btn btn-primary" />
+            <input type="button" value="Create +" onclick="window.location.href='Inventory/Create';" class="btn btn-primary" />
+            <a asp-route-DownloadFile="@Model.DownloadFile" target="_blank" download>
+                <input type="button" value="Export" class="btn btn-primary" />
+            </a>
         </div>
-    </div>
-
 </body>
 </html>
+
+<!--asp-route-DownloadFile="at Model.DownloadFile" or href=" at Url.Action("Export", at Model)"-->

@@ -1,10 +1,15 @@
 using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using kwh.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
 
 // Tutorial from https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/sort-filter-page?view=aspnetcore-3.1
 namespace kwh.Pages.Inventory
@@ -12,7 +17,6 @@ namespace kwh.Pages.Inventory
     public class IndexModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public IndexModel(kwhDataContext context)
         {
             _context = context;
@@ -30,6 +34,9 @@ namespace kwh.Pages.Inventory
         public string CostSort { get; set; }
         public string ProjectSort { get; set; }
         public string CategorySort { get; set; }
+        // For exporting Excel files
+        //public List<Component> c_list { get; set; }
+        public FileResult DownloadFile { get; set; }
 
         // Derives PaginatedList to allow paging through
         public PaginatedList<Component> Component { get;set; }
@@ -104,9 +111,11 @@ namespace kwh.Pages.Inventory
              .Where()
              .GroupBy(c => c.ComponentId)
              .Select(o => o.OrderByDescending(t => t.Timestamp).FirstOrDefault())
-             .AsQueryable<Component>()
              .OrderBy()
-             */
+            */
+             // https://stackoverflow.com/questions/5013710/linq-order-by-group-by-and-order-by-each-group
+             // https://www.thinktecture.com/en/entity-framework-core/hidden-group-by-capabilities-in-3-0-part-1/
+
 
             /* Ascending order by PartName is the default. When the user clicks
              * a column heading link, the appropriate sortOrder value is
@@ -156,10 +165,13 @@ namespace kwh.Pages.Inventory
                     break;
             }
 
+            //c_list = components.ToList();
+            Export(components.ToList());
             /* IQueryable are converted to a collection by calling a method such
              * as ToListAsync. Therefore, the IQueryable code above results in a
              * single query that's not executed until the following statement:
              */
+
             int pageSize = 10; // Number of records shown per page
             Component = await PaginatedList<Component>.CreateAsync(
                 components
@@ -170,5 +182,87 @@ namespace kwh.Pages.Inventory
                 .Include(c => c.Category).AsNoTracking(),
                 pageIndex ?? 1, pageSize);
         }
+
+        // FileResult or Task<IActionResult> or void?
+        public void Export(List<Component> c_list)
+        {
+            // Array holds column headers
+            string[] headers = new string[]
+            {
+                "Component ID", "Part Number", "Part Name", "Category", "Vendor",
+                "Unit Cost", "Notes", "Maturity", "Url", "Current Quan.",
+                "Quan. Needed", "Project", "Volunteer"
+            };
+
+            // Convert the excel package to a byte array
+            byte[] result;
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            using (ExcelPackage package = new ExcelPackage())
+            {
+                // Create new worksheet to empty workbook
+                ExcelWorksheet ws = package.Workbook.Worksheets.Add("Inventory");
+
+                // Style and fill in header row
+                for (int i = 0; i < headers.Length; i++)
+                {
+                    ws.Cells[1, i + 1].Style.Font.Size = 14;
+                    ws.Cells[1, i + 1].Style.Font.Bold = true;
+                    ws.Cells[1, i + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    ws.Cells[1, i + 1].Style.Font.Color.SetColor(Color.FromArgb(255, 255, 255));
+                    ws.Cells[1, i + 1].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(0, 0, 0));
+                    //ws.Cells[1, i + 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thick);
+                    ws.Cells[1, i + 1].Value = headers[i];
+                }
+
+                int row = 2;
+                foreach (Component item in c_list)
+                {
+                    // Alternate row background colors for readability
+                    if (row % 2 == 0)
+                    {
+                        ws.Row(row).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        ws.Row(row).Style.Fill.BackgroundColor.SetColor(Color.FromArgb(201, 201, 201));
+                    }
+                    // Populate data cells
+                    for (int col = 1; col <= headers.Length; col++)
+                    {
+                        ws.Cells[row, col].Style.Font.Size = 12;
+                    }
+                    ws.Cells[row, 1].Value = item.ComponentId;
+                    ws.Cells[row, 2].Value = item.PartNumber;
+                    ws.Cells[row, 3].Value = item.PartName;
+                    ws.Cells[row, 4].Value = item.Category;
+                    ws.Cells[row, 5].Value = item.Vendor;
+                    ws.Cells[row, 6].Value = item.UnitCost;
+                    ws.Cells[row, 7].Value = item.Notes;
+                    ws.Cells[row, 8].Value = item.Maturity;
+                    ws.Cells[row, 9].Value = item.Url;
+                    ws.Cells[row, 10].Value = item.QuantityCurrent;
+                    ws.Cells[row, 11].Value = item.QuantityNeeded;
+                    ws.Cells[row, 12].Value = item.Project;
+                    ws.Cells[row, 13].Value = item.Volunteer;
+
+                    row++;
+                }
+                //ws.Cells[ws.Dimension.Address].AutoFitColumns();
+
+                // Convert Excel sheet into byte array
+                result = package.GetAsByteArray();
+            }
+            /*
+            if (result == null || result.Length == 0)
+            {
+                return NotFound();
+            }
+            */
+            string filename = "Inventory-"+ DateTime.Now.ToString("yyyyMMddTHHmmss") + ".xlsx";
+            DownloadFile = File(
+                fileContents: @result,
+                contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                fileDownloadName: filename
+            );
+        }
     }
 }
+
+
