@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using kwh.Models;
@@ -10,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
+using System.IO;
+using System.Drawing;
 
 // Tutorial from https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/sort-filter-page?view=aspnetcore-3.1
 namespace kwh.Pages.Inventory
@@ -17,6 +16,7 @@ namespace kwh.Pages.Inventory
     public class IndexModel : PageModel
     {
         private readonly kwhDataContext _context;
+
         public IndexModel(kwhDataContext context)
         {
             _context = context;
@@ -28,18 +28,19 @@ namespace kwh.Pages.Inventory
         public string[] Criteria = new[] { "Category", "Part", "Project" };
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
+
         // Add properties to contain sorting parameters
         public string NameSort { get; set; }
         public string QuantitySort { get; set; }
         public string CostSort { get; set; }
         public string ProjectSort { get; set; }
         public string CategorySort { get; set; }
-        // For exporting Excel files
-        //public List<Component> c_list { get; set; }
-        public FileResult DownloadFile { get; set; }
 
         // Derives PaginatedList to allow paging through
-        public PaginatedList<Component> Component { get;set; }
+        public PaginatedList<Component> Component { get; set; }
+
+        // For exporting Excel files
+        public IQueryable<Component> c_list { get; set; }
 
         /* Receives sortOrder, currentFilter, searchBy criteria, searchString
          * and pageIndex from the query string in the URL. (The URL and query
@@ -165,8 +166,8 @@ namespace kwh.Pages.Inventory
                     break;
             }
 
-            //c_list = components.ToList();
-            Export(components.ToList());
+            c_list = components;
+
             /* IQueryable are converted to a collection by calling a method such
              * as ToListAsync. Therefore, the IQueryable code above results in a
              * single query that's not executed until the following statement:
@@ -183,8 +184,8 @@ namespace kwh.Pages.Inventory
                 pageIndex ?? 1, pageSize);
         }
 
-        // FileResult or Task<IActionResult> or void?
-        public void Export(List<Component> c_list)
+        //FileResult or FileContentResult or IActionResult
+        public IActionResult ExportExcel()
         {
             // Array holds column headers
             string[] headers = new string[]
@@ -194,15 +195,24 @@ namespace kwh.Pages.Inventory
                 "Quan. Needed", "Project", "Volunteer"
             };
 
+            // Grab records from MySql db
+            var comp_list = c_list
+                    .Include(c => c.Maturity)
+                    .Include(c => c.Project)
+                    .Include(c => c.Vendor)
+                    .Include(c => c.Volunteer)
+                    .Include(c => c.Category).ToList();
+
             // Convert the excel package to a byte array
             byte[] result;
+            var stream = new MemoryStream();
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using (ExcelPackage package = new ExcelPackage())
             {
                 // Create new worksheet to empty workbook
                 ExcelWorksheet ws = package.Workbook.Worksheets.Add("Inventory");
 
-                // Style and fill in header row
+                // Style and populate header row
                 for (int i = 0; i < headers.Length; i++)
                 {
                     ws.Cells[1, i + 1].Style.Font.Size = 14;
@@ -210,12 +220,11 @@ namespace kwh.Pages.Inventory
                     ws.Cells[1, i + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
                     ws.Cells[1, i + 1].Style.Font.Color.SetColor(Color.FromArgb(255, 255, 255));
                     ws.Cells[1, i + 1].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(0, 0, 0));
-                    //ws.Cells[1, i + 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thick);
                     ws.Cells[1, i + 1].Value = headers[i];
                 }
 
                 int row = 2;
-                foreach (Component item in c_list)
+                foreach (var item in comp_list)
                 {
                     // Alternate row background colors for readability
                     if (row % 2 == 0)
@@ -231,35 +240,35 @@ namespace kwh.Pages.Inventory
                     ws.Cells[row, 1].Value = item.ComponentId;
                     ws.Cells[row, 2].Value = item.PartNumber;
                     ws.Cells[row, 3].Value = item.PartName;
-                    ws.Cells[row, 4].Value = item.Category;
-                    ws.Cells[row, 5].Value = item.Vendor;
+                    ws.Cells[row, 4].Value = item.Category.CategoryName;
+                    ws.Cells[row, 5].Value = item.Vendor.VendorName;
                     ws.Cells[row, 6].Value = item.UnitCost;
                     ws.Cells[row, 7].Value = item.Notes;
-                    ws.Cells[row, 8].Value = item.Maturity;
+                    ws.Cells[row, 8].Value = item.Maturity.MaturityStatus;
                     ws.Cells[row, 9].Value = item.Url;
                     ws.Cells[row, 10].Value = item.QuantityCurrent;
                     ws.Cells[row, 11].Value = item.QuantityNeeded;
-                    ws.Cells[row, 12].Value = item.Project;
-                    ws.Cells[row, 13].Value = item.Volunteer;
+                    ws.Cells[row, 12].Value = item.Project.ProjectName;
+                    ws.Cells[row, 13].Value = item.Volunteer.LastName;
 
                     row++;
                 }
-                //ws.Cells[ws.Dimension.Address].AutoFitColumns();
+                ws.Cells.AutoFitColumns();
 
                 // Convert Excel sheet into byte array
                 result = package.GetAsByteArray();
+                package.SaveAs(stream);
+                stream.Seek(0, SeekOrigin.Begin);
+                package.Dispose();
             }
-            /*
-            if (result == null || result.Length == 0)
-            {
-                return NotFound();
-            }
-            */
-            string filename = "Inventory-"+ DateTime.Now.ToString("yyyyMMddTHHmmss") + ".xlsx";
-            DownloadFile = File(
-                fileContents: @result,
-                contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                fileDownloadName: filename
+            string fileName = "Inventory-" + DateTime.Now.ToString("yyyyMMddTHHmmss") + ".xlsx";
+            string mimeType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            // Ommitting filename triggers inline content disposition, opening it
+            // Including triggers attachment, saving the file 
+            return File(
+                stream,
+                contentType: mimeType,
+                fileDownloadName: fileName
             );
         }
     }

@@ -17,16 +17,25 @@ namespace kwh.Models
         // Set foreign keys and corresponding navigation properties
         // to hold related entities of a 1:M relationship
         [Display(Name = "Vendor")]
-        public int VendorId { get; set; }
+        //[DisplayFormat(NullDisplayText = "[Null]")]
+        public int? VendorId { get; set; }
+
         [Display(Name = "Volunteer")]
         [Required]
         public int VolunteerId { get; set; }
+
         [Display(Name = "Maturity")]
-        public int MaturityId { get; set; }
+        //[DisplayFormat(NullDisplayText = "[Null]")]
+        public int? MaturityId { get; set; }
+
         [Display(Name = "Project")]
-        public int ProjectId { get; set; }
+        //[DisplayFormat(NullDisplayText = "[Null]")]
+        public int? ProjectId { get; set; }
+
         [Display(Name = "Category")]
-        public int CategoryId { get; set; }
+        //[DisplayFormat(NullDisplayText = "[Null]")]
+        public int? CategoryId { get; set; }
+
         public Vendor Vendor { get; set; }
         public Volunteer Volunteer { get; set; }
         public Maturity Maturity { get; set; }

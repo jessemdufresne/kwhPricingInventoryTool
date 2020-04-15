@@ -8,14 +8,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace kwh.Migrations
 {
     [DbContext(typeof(kwhDataContext))]
-    [Migration("20200301002912_InitialCreate")]
+    [Migration("20200415050413_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.2")
+                .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("kwh.Models.Category", b =>
@@ -40,13 +40,13 @@ namespace kwh.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("ComponentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MaturityId")
+                    b.Property<int?>("MaturityId")
                         .HasColumnType("int");
 
                     b.Property<string>("Notes")
@@ -62,7 +62,7 @@ namespace kwh.Migrations
                         .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
                         .HasMaxLength(25);
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int?>("ProjectId")
                         .HasColumnType("int");
 
                     b.Property<int>("QuantityCurrent")
@@ -81,7 +81,7 @@ namespace kwh.Migrations
                     b.Property<string>("Url")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("VendorId")
+                    b.Property<int?>("VendorId")
                         .HasColumnType("int");
 
                     b.Property<int>("VolunteerId")
@@ -199,26 +199,22 @@ namespace kwh.Migrations
                     b.HasOne("kwh.Models.Category", "Category")
                         .WithMany("Components")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("kwh.Models.Maturity", "Maturity")
                         .WithMany("Components")
                         .HasForeignKey("MaturityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("kwh.Models.Project", "Project")
                         .WithMany("Components")
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("kwh.Models.Vendor", "Vendor")
                         .WithMany("Components")
                         .HasForeignKey("VendorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("kwh.Models.Volunteer", "Volunteer")
                         .WithMany("Components")

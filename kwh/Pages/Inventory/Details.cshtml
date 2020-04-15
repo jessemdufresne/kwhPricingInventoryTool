@@ -120,6 +120,7 @@
     //Time Axis: https://www.chartjs.org/docs/latest/axes/cartesian/time.html
     Chart.defaults.global.legend.display = false;
     var ctx = document.getElementById('priceChart').getContext('2d');
+    var tti = [@Model.TimestampsList];
     var LineChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -146,11 +147,21 @@
                     labels: [@Model.TimestampsList],
                     distribution: 'linear',
                     time: {
-                        parser: 'MM/DD/YYYY hh:mm a',
-                        unit: 'day', //'month', 'week', 'day', 'hour', 'minute' 
-                        tooltipFormat: 'll hh:mm a'
+                        parser: 'M/DD/YYYY hh:mm a',
+                        unit: 'week'
                     }
                 }]
+            },
+            tooltips: {
+                callbacks: {
+                    title: function (tooltipItem, data) {
+                        console.log(tooltipItem);
+                        return 'Date: ' + tti[tooltipItem[0].index];
+                    },
+                    label: function (tooltipItem, data) {
+                        return "Unit Cost: $" + tooltipItem.yLabel;
+                    }
+                }
             }
         }
     });

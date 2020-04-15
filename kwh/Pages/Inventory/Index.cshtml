@@ -1,8 +1,7 @@
-@page
+@page 
 @model kwh.Pages.Inventory.IndexModel
-
 @{
-    ViewData["Title"] = "Components";
+    ViewData["Title"] = "Inventory";
 }
 
 <!DOCTYPE html>
@@ -10,7 +9,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="site.css">
     <title>Index</title>
 </head>
 
@@ -145,11 +143,10 @@
         </div>
         <div class="col-sm text-right p-2">
             <input type="button" value="Create +" onclick="window.location.href='Inventory/Create';" class="btn btn-primary" />
-            <a asp-route-DownloadFile="@Model.DownloadFile" target="_blank" download>
+            <a asp-page-handler="ExportExcel" target="_blank" download>
                 <input type="button" value="Export" class="btn btn-primary" />
             </a>
         </div>
+    </div>
 </body>
 </html>
-
-<!--asp-route-DownloadFile="at Model.DownloadFile" or href=" at Url.Action("Export", at Model)"-->
