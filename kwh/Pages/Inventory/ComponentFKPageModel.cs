@@ -34,6 +34,7 @@ namespace kwh.Pages.Inventory
 
             MaturityStatusSL = new SelectList(maturityQuery.AsNoTracking(),
                         "MaturityId", "MaturityStatus", selectedMaturity);
+
         }
 
         public void PopulateProjectDropDown(kwhDataContext _context,
