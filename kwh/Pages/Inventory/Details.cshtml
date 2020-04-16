@@ -1,4 +1,5 @@
-@page 
+@page
+
 @model kwh.Pages.Inventory.DetailsModel
 
 @{
@@ -147,8 +148,25 @@
                     labels: [@Model.TimestampsList],
                     distribution: 'linear',
                     time: {
+                        displayFormats: {
+                            'day': 'MMM DD',
+                            'week': 'll',
+                            'month': 'MMM YYYY',
+                            'year': 'YYYY',
+                        },
                         parser: 'M/DD/YYYY hh:mm a',
-                        unit: 'week'
+                        minUnit: 'day'
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        callback: function (value, index, values) {
+                            if (value.toString().length == 1) {
+                                return '$' + value + '.00';
+                            }
+                            return '$' + value;
+                        }
                     }
                 }]
             },

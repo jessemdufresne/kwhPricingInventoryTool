@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Inventory/Index.cshtml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Inventory/Details.cshtml">
     <Files>
-      <File FileName="kwh/Pages/Inventory/Index.cshtml.cs" Line="1" Column="1" />
+      <File FileName="kwh/Pages/Inventory/Details.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,9 +11,7 @@
               <Node name="Dependencies" expanded="True" />
               <Node name="Pages" expanded="True">
                 <Node name="Inventory" expanded="True">
-                  <Node name="Index.cshtml" expanded="True">
-                    <Node name="Index.cshtml.cs" selected="True" />
-                  </Node>
+                  <Node name="Details.cshtml" selected="True" />
                 </Node>
                 <Node name="Vendors" expanded="True" />
               </Node>

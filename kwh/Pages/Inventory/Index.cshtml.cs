@@ -82,7 +82,7 @@ namespace kwh.Pages.Inventory
              * the database. The query isn't executed until the IQueryable
              * object is converted into a collection.
              *
-             * ** EF Core LINQ-to-Entities Queries (written in query syntax) **
+             * ** EF Core LINQ-to-Entities Queries (written in method syntax) **
              */
             IQueryable<Component> components = _context.Component;
 
@@ -114,9 +114,6 @@ namespace kwh.Pages.Inventory
              .Select(o => o.OrderByDescending(t => t.Timestamp).FirstOrDefault())
              .OrderBy()
             */
-             // https://stackoverflow.com/questions/5013710/linq-order-by-group-by-and-order-by-each-group
-             // https://www.thinktecture.com/en/entity-framework-core/hidden-group-by-capabilities-in-3-0-part-1/
-
 
             /* Ascending order by PartName is the default. When the user clicks
              * a column heading link, the appropriate sortOrder value is
