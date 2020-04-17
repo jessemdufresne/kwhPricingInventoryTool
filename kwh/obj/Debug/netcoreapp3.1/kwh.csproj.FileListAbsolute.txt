@@ -1113,11 +1113,9 @@
 /Users/JesseDuFresne/Desktop/School/Project/branches/css/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/kwh.csprojAssemblyReference.cache
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/kwh.csproj.CoreCompileInputs.cache
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/kwh.genruntimeconfig.cache
-/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/EPPlus.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/runtimes/win-x64/native/Microsoft.DiaSymReader.Native.amd64.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/Microsoft.DiaSymReader.Native.x86.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/runtimes/win/native/Microsoft.DiaSymReader.Native.amd64.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/runtimes/win/native/Microsoft.DiaSymReader.Native.arm.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/runtimes/win/native/Microsoft.DiaSymReader.Native.x86.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/runtimes/win8-arm/native/Microsoft.DiaSymReader.Native.arm.dll
-/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/package.json
