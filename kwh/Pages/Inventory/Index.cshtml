@@ -1,4 +1,5 @@
-@page 
+@page
+
 @model kwh.Pages.Inventory.IndexModel
 @{
     ViewData["Title"] = "Inventory";
@@ -6,9 +7,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width" />
+    <script src="https://cdn.jsdelivr.net/gh/linways/table-to-excel@v1.0.4/dist/tableToExcel.js"></script>
     <title>Index</title>
 </head>
 
@@ -35,20 +37,20 @@
         </form>
     </div>
     <!--Table Header and Rows-->
-    <table class="table border-hidden bg-white mb-0">
+    <table id="invTable" data-cols-width="15,15,25,10,8,10,25,8,6,6,10,8" class="table table-striped border-hidden bg-white mb-0">
         <thead>
             <tr>
-                <th>
+                <th data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
                     <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
                        asp-route-CurrentFilter="@Model.CurrentFilter"
                        asp-route-SortOrder="@Model.CategorySort">
                         @Html.DisplayNameFor(model => model.Component[0].Category)
                     </a>
                 </th>
-                <th>
+                <th data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
                     @Html.DisplayNameFor(model => model.Component[0].PartNumber)
                 </th>
-                <th>
+                <th data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
                     <a asp-page="./Index"
                        asp-route-SearchBy="@Model.SearchBy"
                        asp-route-CurrentFilter="@Model.CurrentFilter"
@@ -56,7 +58,10 @@
                         @Html.DisplayNameFor(model => model.Component[0].PartName)
                     </a>
                 </th>
-                <th>
+                <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                    @Html.DisplayNameFor(model => model.Component[0].Vendor)
+                </th>
+                <th data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
                     <a asp-page="./Index"
                        asp-route-SearchBy="@Model.SearchBy"
                        asp-route-CurrentFilter="@Model.CurrentFilter"
@@ -64,7 +69,16 @@
                         @Html.DisplayNameFor(model => model.Component[0].UnitCost)
                     </a>
                 </th>
-                <th>
+                <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                    @Html.DisplayNameFor(model => model.Component[0].Maturity)
+                </th>
+                <th style="display:none;" data-a-wrap="true" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                    @Html.DisplayNameFor(model => model.Component[0].Notes)
+                </th>
+                <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                    @Html.DisplayNameFor(model => model.Component[0].Url)
+                </th>
+                <th data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
                     <a asp-page="./Index"
                        asp-route-SearchBy="@Model.SearchBy"
                        asp-route-CurrentFilter="@Model.CurrentFilter"
@@ -72,7 +86,10 @@
                         @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
                     </a>
                 </th>
-                <th>
+                <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                    @Html.DisplayNameFor(model => model.Component[0].QuantityNeeded)
+                </th>
+                <th data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
                     <a asp-page="./Index"
                        asp-route-SearchBy="@Model.SearchBy"
                        asp-route-CurrentFilter="@Model.CurrentFilter"
@@ -80,31 +97,52 @@
                         @Html.DisplayNameFor(model => model.Component[0].Project)
                     </a>
                 </th>
+                <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                    @Html.DisplayNameFor(model => model.Component[0].Volunteer)
+                </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Component)
             {
                 <tr>
-                    <td>
+                    <td data-f-sz="11">
                         @Html.DisplayFor(modelItem => item.Category.CategoryName)
                     </td>
-                    <td>
+                    <td data-f-sz="11">
                         @Html.DisplayFor(modelItem => item.PartNumber)
                     </td>
-                    <td>
+                    <td data-f-sz="11">
                         @Html.DisplayFor(modelItem => item.PartName)
                     </td>
-                    <td>
+                    <td style="display:none;" data-f-sz="11">
+                        @Html.DisplayFor(modelItem => item.Vendor.VendorName)
+                    </td>
+                    <td data-f-sz="11">
                         @Html.DisplayFor(modelItem => item.UnitCost)
                     </td>
-                    <td>
+                    <td style="display:none;" data-f-sz="11">
+                        @Html.DisplayFor(modelItem => item.Maturity.MaturityStatus)
+                    </td>
+                    <td style="display:none;" data-f-sz="11">
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </td>
+                    <td style="display:none;" data-f-sz="11">
+                        @Html.DisplayFor(modelItem => item.Url)
+                    </td>
+                    <td data-f-sz="11">
                         @Html.DisplayFor(modelItem => item.QuantityCurrent)
                     </td>
-                    <td>
+                    <td style="display:none;" data-f-sz="11">
+                        @Html.DisplayFor(modelItem => item.QuantityNeeded)
+                    </td>
+                    <td data-f-sz="11">
                         @Html.DisplayFor(modelItem => item.Project.ProjectName)
                     </td>
-                    <td>
+                    <td style="display:none;" data-f-sz="11">
+                        @Html.DisplayFor(modelItem => item.Volunteer.LastName)
+                    </td>
+                    <td data-exclude="true">
                         <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                         <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                         <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
@@ -143,10 +181,20 @@
         </div>
         <div class="col-sm text-right p-2">
             <input type="button" value="Create +" onclick="window.location.href='Inventory/Create';" class="btn btn-primary" />
-            <a asp-page-handler="ExportExcel" target="_blank" download>
-                <input type="button" value="Export" class="btn btn-primary" />
-            </a>
+            <input id="downloadBtn" type="button" value="Export" class="btn btn-primary" />
         </div>
     </div>
+    <script>var now = new Date();
+        var isoDate = new Date(now.getTime() - (now.getTimezoneOffset() * 60000)).toISOString().slice(0, 10).replace(/-/g, "");
+
+        let button = document.querySelector("#downloadBtn");
+
+        button.addEventListener("click", e => {
+            let table = document.querySelector("#invTable");
+            TableToExcel.convert(table, {
+                name: "DasInventory" + isoDate + ".xlsx",
+            });
+        });
+    </script>
 </body>
 </html>

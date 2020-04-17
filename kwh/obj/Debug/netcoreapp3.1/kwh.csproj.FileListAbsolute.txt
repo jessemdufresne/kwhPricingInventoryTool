@@ -1120,3 +1120,4 @@
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/runtimes/win/native/Microsoft.DiaSymReader.Native.arm.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/runtimes/win/native/Microsoft.DiaSymReader.Native.x86.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/runtimes/win8-arm/native/Microsoft.DiaSymReader.Native.arm.dll
+/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/package.json

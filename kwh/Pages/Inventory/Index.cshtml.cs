@@ -5,10 +5,6 @@ using kwh.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using OfficeOpenXml;
-using OfficeOpenXml.Style;
-using System.IO;
-using System.Drawing;
 
 // Tutorial from https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/sort-filter-page?view=aspnetcore-3.1
 namespace kwh.Pages.Inventory
@@ -179,94 +175,6 @@ namespace kwh.Pages.Inventory
                 .Include(c => c.Volunteer)
                 .Include(c => c.Category).AsNoTracking(),
                 pageIndex ?? 1, pageSize);
-        }
-
-        //FileResult or FileContentResult or IActionResult
-        public IActionResult ExportExcel()
-        {
-            // Array holds column headers
-            string[] headers = new string[]
-            {
-                "Component ID", "Part Number", "Part Name", "Category", "Vendor",
-                "Unit Cost", "Notes", "Maturity", "Url", "Current Quan.",
-                "Quan. Needed", "Project", "Volunteer"
-            };
-
-            // Grab records from MySql db
-            var comp_list = c_list
-                    .Include(c => c.Maturity)
-                    .Include(c => c.Project)
-                    .Include(c => c.Vendor)
-                    .Include(c => c.Volunteer)
-                    .Include(c => c.Category).ToList();
-
-            // Convert the excel package to a byte array
-            byte[] result;
-            var stream = new MemoryStream();
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            using (ExcelPackage package = new ExcelPackage())
-            {
-                // Create new worksheet to empty workbook
-                ExcelWorksheet ws = package.Workbook.Worksheets.Add("Inventory");
-
-                // Style and populate header row
-                for (int i = 0; i < headers.Length; i++)
-                {
-                    ws.Cells[1, i + 1].Style.Font.Size = 14;
-                    ws.Cells[1, i + 1].Style.Font.Bold = true;
-                    ws.Cells[1, i + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    ws.Cells[1, i + 1].Style.Font.Color.SetColor(Color.FromArgb(255, 255, 255));
-                    ws.Cells[1, i + 1].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(0, 0, 0));
-                    ws.Cells[1, i + 1].Value = headers[i];
-                }
-
-                int row = 2;
-                foreach (var item in comp_list)
-                {
-                    // Alternate row background colors for readability
-                    if (row % 2 == 0)
-                    {
-                        ws.Row(row).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                        ws.Row(row).Style.Fill.BackgroundColor.SetColor(Color.FromArgb(201, 201, 201));
-                    }
-                    // Populate data cells
-                    for (int col = 1; col <= headers.Length; col++)
-                    {
-                        ws.Cells[row, col].Style.Font.Size = 12;
-                    }
-                    ws.Cells[row, 1].Value = item.ComponentId;
-                    ws.Cells[row, 2].Value = item.PartNumber;
-                    ws.Cells[row, 3].Value = item.PartName;
-                    ws.Cells[row, 4].Value = item.Category.CategoryName;
-                    ws.Cells[row, 5].Value = item.Vendor.VendorName;
-                    ws.Cells[row, 6].Value = item.UnitCost;
-                    ws.Cells[row, 7].Value = item.Notes;
-                    ws.Cells[row, 8].Value = item.Maturity.MaturityStatus;
-                    ws.Cells[row, 9].Value = item.Url;
-                    ws.Cells[row, 10].Value = item.QuantityCurrent;
-                    ws.Cells[row, 11].Value = item.QuantityNeeded;
-                    ws.Cells[row, 12].Value = item.Project.ProjectName;
-                    ws.Cells[row, 13].Value = item.Volunteer.LastName;
-
-                    row++;
-                }
-                ws.Cells.AutoFitColumns();
-
-                // Convert Excel sheet into byte array
-                result = package.GetAsByteArray();
-                package.SaveAs(stream);
-                stream.Seek(0, SeekOrigin.Begin);
-                package.Dispose();
-            }
-            string fileName = "Inventory-" + DateTime.Now.ToString("yyyyMMddTHHmmss") + ".xlsx";
-            string mimeType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            // Ommitting filename triggers inline content disposition, opening it
-            // Including triggers attachment, saving the file 
-            return File(
-                stream,
-                contentType: mimeType,
-                fileDownloadName: fileName
-            );
         }
     }
 }
