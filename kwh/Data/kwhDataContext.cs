@@ -25,7 +25,32 @@ public class kwhDataContext : DbContext
             c.Property(c => c.Id).ValueGeneratedOnAdd();
         });
 
+        // https://www.learnentityframeworkcore.com/configuration/fluent-api/ondelete-method
+        // By default EF Core enables cascade delete for non-nullable FKs 
+        // ...resulting in circular cascade delete rules
+        // DeleteBehavior.Restrict - dependents are unaffected
+        // DeleteBehavior.SetNull - FK values in dependent rows should update to NULL
+
+        modelBuilder.Entity<kwh.Models.Vendor>()
+            .HasMany(c => c.Components)
+            .WithOne(v => v.Vendor)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        modelBuilder.Entity<kwh.Models.Maturity>()
+            .HasMany(c => c.Components)
+            .WithOne(m => m.Maturity)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        modelBuilder.Entity<kwh.Models.Project>()
+            .HasMany(c => c.Components)
+            .WithOne(p => p.Project)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        modelBuilder.Entity<kwh.Models.Category>()
+            .HasMany(c => c.Components)
+            .WithOne(c => c.Category)
+            .OnDelete(DeleteBehavior.SetNull);
+
         base.OnModelCreating(modelBuilder);
     }
-
 }

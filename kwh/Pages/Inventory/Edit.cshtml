@@ -13,6 +13,7 @@
     <title>Edit</title>
 </head>
 <body>
+    <br />
     <h4>Component</h4>
     <hr />
     <!-- CategoryNameSL, VendorNameSL, MaturityStatusSL, ProjectNameSL and LastNameSL generate drop down lists for FK
@@ -35,13 +36,17 @@
                 <div class="form-group">
                     <label asp-for="Component.Category" class="control-label"></label>
                     <select asp-for="Component.CategoryId" class="form-control"
-                            asp-items="@Model.CategoryNameSL"></select>
+                            asp-items="@Model.CategoryNameSL">
+                        <option value="">Select a category</option>
+                    </select>
                     <span asp-validation-for="Component.CategoryId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.Vendor" class="control-label"></label>
                     <select asp-for="Component.VendorId" class="form-control"
-                            asp-items="@Model.VendorNameSL"></select>
+                            asp-items="@Model.VendorNameSL">
+                        <option value="">Select a vendor</option>
+                    </select>
                     <span asp-validation-for="Component.VendorId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -57,7 +62,9 @@
                 <div class="form-group">
                     <label asp-for="Component.Maturity" class="control-label"></label>
                     <select asp-for="Component.MaturityId" class="form-control"
-                            asp-items="@Model.MaturityStatusSL"></select>
+                            asp-items="@Model.MaturityStatusSL">
+                        <option value="">Select a maturity</option>
+                    </select>
                     <span asp-validation-for="Component.MaturityId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -78,13 +85,17 @@
                 <div class="form-group">
                     <label asp-for="Component.Project" class="control-label"></label>
                     <select asp-for="Component.ProjectId" class="form-control"
-                            asp-items="@Model.ProjectNameSL"></select>
+                            asp-items="@Model.ProjectNameSL">
+                        <option value="">Select a project</option>
+                    </select>
                     <span asp-validation-for="Component.ProjectId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.Volunteer" class="control-label"></label>
                     <select asp-for="Component.VolunteerId" class="form-control"
-                            asp-items="@Model.LastNameSL"></select>
+                            asp-items="@Model.LastNameSL">
+                        <option value="">Select a volunteer</option>
+                    </select>
                     <span asp-validation-for="Component.VolunteerId" class="text-danger"></span>
                 </div>
                 <div class="form-group">

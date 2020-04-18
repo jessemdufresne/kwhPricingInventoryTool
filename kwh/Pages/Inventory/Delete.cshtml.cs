@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using kwh.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using kwh.Models;
+
+// DELETING deletes by Id, which should be the most recent record of the component
+// When it is the only record of the component, it deletes the component from the table altogether
 
 namespace kwh.Pages.Inventory
 {
@@ -51,11 +51,13 @@ namespace kwh.Pages.Inventory
                 return NotFound();
             }
 
+            // 1) Retrieve the Component object corresponding to the selected Id
             Component = await _context.Component.FindAsync(id);
 
             if (Component != null)
             {
                 _context.Component.Remove(Component);
+                // 2) Save changes to the database
                 await _context.SaveChangesAsync();
             }
 

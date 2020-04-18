@@ -4218,6 +4218,10 @@ input[type="button"].btn-block {
   align-items: center;
 }
 
+.custom-toggler.navbar-toggler {
+    border-color: white;
+}
+
 .navbar-toggler {
   padding: 0.25rem 0.75rem;
   font-size: 1.25rem;

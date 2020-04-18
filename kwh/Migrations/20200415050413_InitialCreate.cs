@@ -88,11 +88,11 @@ namespace kwh.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ComponentId = table.Column<int>(nullable: false),
-                    VendorId = table.Column<int>(nullable: false),
+                    VendorId = table.Column<int>(nullable: true),
                     VolunteerId = table.Column<int>(nullable: false),
-                    MaturityId = table.Column<int>(nullable: false),
-                    ProjectId = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false),
+                    MaturityId = table.Column<int>(nullable: true),
+                    ProjectId = table.Column<int>(nullable: true),
+                    CategoryId = table.Column<int>(nullable: true),
                     PartNumber = table.Column<string>(maxLength: 25, nullable: true),
                     PartName = table.Column<string>(maxLength: 30, nullable: false),
                     UnitCost = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
@@ -111,25 +111,25 @@ namespace kwh.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Category",
                         principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Component_Maturity_MaturityId",
                         column: x => x.MaturityId,
                         principalTable: "Maturity",
                         principalColumn: "MaturityId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Component_Project_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Project",
                         principalColumn: "ProjectId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Component_Vendor_VendorId",
                         column: x => x.VendorId,
                         principalTable: "Vendor",
                         principalColumn: "VendorId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Component_Volunteer_VolunteerId",
                         column: x => x.VolunteerId,
