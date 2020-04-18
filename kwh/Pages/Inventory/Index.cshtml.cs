@@ -24,7 +24,6 @@ namespace kwh.Pages.Inventory
         public string SearchBy { get; set; }
         public string[] Criteria = new[] { "Category", "Part", "Project" };
         public string CurrentFilter { get; set; }
-        public string CurrentSort { get; set; }
 
         // Add properties to contain sorting parameters
         public string NameSort { get; set; }
@@ -32,8 +31,8 @@ namespace kwh.Pages.Inventory
         public string CostSort { get; set; }
         public string ProjectSort { get; set; }
         public string CategorySort { get; set; }
+        public string CurrentSort { get; set; }
 
-        // Derives PaginatedList to allow paging through
         public IList<Component> Component { get; set; }
 
         // For exporting Excel files

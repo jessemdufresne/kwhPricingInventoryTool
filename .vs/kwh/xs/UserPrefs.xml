@@ -7,9 +7,12 @@
             <Node name="kwh" expanded="True">
               <Node name="Dependencies" expanded="True" />
               <Node name="Pages" expanded="True">
-                <Node name="Inventory" expanded="True">
-                  <Node name="Index.cshtml" expanded="True" selected="True" />
+                <Node name="Categories" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
                 </Node>
+                <Node name="Inventory" expanded="True" />
+                <Node name="Projects" expanded="True" />
+                <Node name="Vendors" expanded="True" />
               </Node>
             </Node>
           </Node>

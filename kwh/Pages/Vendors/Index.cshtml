@@ -14,70 +14,72 @@
     <title>Index</title>
 </head>
 <body>
-    <table class="table border-hidden bg-white mb-0 mt-3">
-        <thead>
-            <tr>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.VendorSort">
-                        @Html.DisplayNameFor(model => model.Vendor[0].VendorName)
-                    </a>
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Vendor[0].VendorUrl)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Vendor[0].VendorPhone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Vendor[0].VendorEmail)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Vendor)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VendorName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VendorUrl)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VendorPhone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VendorEmail)
-                    </td>
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@item.VendorId">Edit</a> |
-                        <a asp-page="./Delete" asp-route-id="@item.VendorId">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    @{
-        var prevDisabled = !Model.Vendor.HasPreviousPage ? "disabled" : "";
-        var nextDisabled = !Model.Vendor.HasNextPage ? "disabled" : "";
-    }
+    <!--Search Bar-->
+    <div class="container mt-3">
+        <form asp-page="./Index" method="get">
+            <div class="form-actions color-white p-2 d-inline-block">
+                <div class="input-group px-2">
+                    <input type="text" class="form-control" name="CurrentFilter" value="@Model.CurrentFilter" />
+                    <div class="input-group-append">
+                        <input class="btn btn-primary " type="submit" value="Search" />
+                    </div>
+                </div>
+            </div>
+            <div class="p-2 d-inline-block">
+                <a asp-page="./Index">Clear Search</a>
+            </div>
+        </form>
+    </div>
 
+    <div class="mt-3" style="height:170px; overflow-y:scroll">
+        <table class="table table-striped border-hidden bg-white mb-0">
+            <thead>
+                <tr>
+                    <th>
+                        <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
+                           asp-route-CurrentFilter="@Model.CurrentFilter"
+                           asp-route-sortOrder="@Model.VendorSort">
+                            @Html.DisplayNameFor(model => model.Vendor[0].VendorName)
+                        </a>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Vendor[0].VendorUrl)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Vendor[0].VendorPhone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Vendor[0].VendorEmail)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Vendor)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VendorName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VendorUrl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VendorPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VendorEmail)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.VendorId" class="badge badge-primary">Edit</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.VendorId" class="badge badge-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
     <div class="row p-2">
-        <div class="btn-group col-sm-3 p-2">
-            <a asp-page="./Index"
-               asp-route-sortOrder="@Model.CurrentSort"
-               asp-route-pageIndex="@(Model.Vendor.PageIndex - 1)"
-               class="btn btn-primary @prevDisabled">
-                <
-            </a>
-            <a asp-page="./Index"
-               asp-route-sortOrder="@Model.CurrentSort"
-               asp-route-pageIndex="@(Model.Vendor.PageIndex + 1)"
-               class="btn btn-primary @nextDisabled">
-                >
-            </a>
-        </div>
         <div class="col-sm text-right p-2">
             <input type="button" value="Create +" onclick="window.location.href = 'Vendors/Create';" class="btn btn-primary" />
         </div>
