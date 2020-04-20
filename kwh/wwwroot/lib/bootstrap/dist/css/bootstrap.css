@@ -1519,7 +1519,7 @@ pre code {
 
 .table th,
 .table td {
-  padding: 0.75rem;
+  padding: 0.55rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
@@ -4968,18 +4968,18 @@ a.badge:hover, a.badge:focus {
 }
 
 .badge-primary {
-  color: #fff;
-  background-color: #007bff;
+    color: #fff;
+    background-color: #008000;
 }
 
 a.badge-primary:hover, a.badge-primary:focus {
-  color: #fff;
-  background-color: #0062cc;
+    color: #fff;
+    background-color: #006700;
 }
 
 a.badge-primary:focus, a.badge-primary.focus {
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,128,0, 0.5);
 }
 
 .badge-secondary {
