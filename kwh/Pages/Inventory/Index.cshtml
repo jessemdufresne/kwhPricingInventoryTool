@@ -21,7 +21,7 @@
                 <b class="px-2 d-inline-block">Search By:</b>
                 @foreach (var searchby in Model.Criteria)
                 {
-                    @Html.RadioButtonFor(m => m.SearchBy, searchby)<p1 class="d-inline-block"> @searchby </p1>
+                    @Html.RadioButtonFor(m => m.SearchBy, searchby, new { required="required" })<p1 class="d-inline-block"> @searchby </p1>
                 }
             </div>
             <div class="px-2 d-inline-block">
