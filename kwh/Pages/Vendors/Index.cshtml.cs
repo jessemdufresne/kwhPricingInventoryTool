@@ -34,7 +34,7 @@ namespace kwh.Pages.Vendors
         {
             CurrentSort = sortOrder;
 
-            VendorSort = String.IsNullOrEmpty(sortOrder) ? "cat_desc" : "";
+            VendorSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
 
             if (searchString == null)
             {
@@ -55,7 +55,7 @@ namespace kwh.Pages.Vendors
 
             switch (sortOrder)
             {
-                case "cat_desc":
+                case "name_desc":
                     vendors = vendors.OrderByDescending(c => c.VendorName);
                     break;
                 default:

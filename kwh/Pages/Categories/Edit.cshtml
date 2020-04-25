@@ -26,8 +26,12 @@
                     <input asp-for="Category.CategoryName" class="form-control" />
                     <span asp-validation-for="Category.CategoryName" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
+                <div class="row p-2">
+                    <div class="form-group col-sm text-right p-2">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <input type="button" value="Delete" class="btn btn-danger"
+                               onclick="window.location.href = 'Delete?id=' + window.location.search.substring(1).split('=')[1];" />
+                    </div>
                 </div>
             </form>
         </div>
