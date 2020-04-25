@@ -1,8 +1,8 @@
 @page
-@model kwh.Pages.Vendors.EditModel
+@model kwh.Pages.Volunteers.EditModel
 
 @{
-    ViewData["Title"] = "Edit Vendor";
+    ViewData["Title"] = "Edit Volunteers";
 }
 
 <!DOCTYPE html>
@@ -14,30 +14,32 @@
 </head>
 <body>
     <br />
-    <h4>Vendor</h4>
+    <h4>Volunteer</h4>
     <hr />
     <div class="row">
         <div class="col-md-4">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="Vendor.VendorId" />
+                <input type="hidden" asp-for="Volunteer.VolunteerId" />
                 <div class="form-group">
-                    <label asp-for="Vendor.VendorName" class="control-label"></label>
-                    <input asp-for="Vendor.VendorName" class="form-control" />
-                    <span asp-validation-for="Vendor.VendorName" class="text-danger"></span>
+                    <label asp-for="Volunteer.FirstName" class="control-label"></label>
+                    <input asp-for="Volunteer.FirstName" class="form-control" />
+                    <span asp-validation-for="Volunteer.FirstName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Vendor.VendorUrl" class="control-label"></label>
-                    <input asp-for="Vendor.VendorUrl" class="form-control" />
-                    <span asp-validation-for="Vendor.VendorUrl" class="text-danger"></span>
+                    <label asp-for="Volunteer.LastName" class="control-label"></label>
+                    <input asp-for="Volunteer.LastName" class="form-control" />
+                    <span asp-validation-for="Volunteer.LastName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Vendor.VendorPhone" class="control-label"></label>
-                    <input asp-for="Vendor.VendorPhone" class="form-control" />
+                    <label asp-for="Volunteer.VolunteerPhone" class="control-label"></label>
+                    <input asp-for="Volunteer.VolunteerPhone" class="form-control" />
+                    <span asp-validation-for="Volunteer.VolunteerPhone" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Vendor.VendorEmail" class="control-label"></label>
-                    <input asp-for="Vendor.VendorEmail" class="form-control" />
+                    <label asp-for="Volunteer.VolunteerEmail" class="control-label"></label>
+                    <input asp-for="Volunteer.VolunteerEmail" class="form-control" />
+                    <span asp-validation-for="Volunteer.VolunteerEmail" class="text-danger"></span>
                 </div>
                 <div class="row p-2">
                     <div class="form-group col-sm text-right p-2">

@@ -35,11 +35,26 @@ p1 {
     border-color: darkgreen;
 }
 
-.btn:hover {
+.btn-primary:hover {
     background-color: darkgreen;
     border-color: darkgreen;
 }
 
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #bd2130;
+}
+
+.btn-danger.disabled {
+    background-color: #dc3545;
+    border-color: #bd2130;
+}
+
+.btn-danger:hover {
+    background-color: #bd2130;
+    border-color: #bd2130;
+}
 
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {

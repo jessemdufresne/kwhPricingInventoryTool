@@ -11,6 +11,13 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
+    <script>
+        $(document).ready(function () {
+            $('#volunteerName').autocomplete({
+                source: '@Url.Page("index", "volunteer")'
+            });
+        });
+    </script>
 </head>
 <body>
     <br />
@@ -28,7 +35,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.PartName" class="control-label"></label>
-                    <input asp-for="Component.PartName" class="form-control" placeholder="Example"/>
+                    <input asp-for="Component.PartName" class="form-control" placeholder="Example" />
                     <span asp-validation-for="Component.PartName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -48,7 +55,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.UnitCost" class="control-label"></label>
-                    <input asp-for="Component.UnitCost" class="form-control" placeholder="0.00"/>
+                    <input asp-for="Component.UnitCost" class="form-control" placeholder="0.00" />
                     <span asp-validation-for="Component.UnitCost" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -65,16 +72,16 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.Url" class="control-label"></label>
-                    <input asp-for="Component.Url" class="form-control" placeholder="https://www.example.com"/>
+                    <input asp-for="Component.Url" class="form-control" placeholder="https://www.example.com" />
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.QuantityCurrent" class="control-label"></label>
-                    <input asp-for="Component.QuantityCurrent" class="form-control" placeholder="0"/>
+                    <input asp-for="Component.QuantityCurrent" class="form-control" placeholder="0" />
                     <span asp-validation-for="Component.QuantityCurrent" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.QuantityNeeded" class="control-label"></label>
-                    <input asp-for="Component.QuantityNeeded" class="form-control" placeholder="0"/>
+                    <input asp-for="Component.QuantityNeeded" class="form-control" placeholder="0" />
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.Project" class="control-label"></label>
@@ -85,7 +92,7 @@
                     <span asp-validation-for="Component.ProjectId" class="text-danger" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="Component.Volunteer" class="control-label"></label>
+                    <label asp-for="Component.Volunteer" class="control-label">Modified By</label>
                     <select asp-for="Component.VolunteerId" class="form-control"
                             asp-items="@Model.LastNameSL">
                         <option value="">-- Select a volunteer --</option>

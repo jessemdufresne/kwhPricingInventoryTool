@@ -1,17 +1,26 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Inventory/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Inventory/Edit.cshtml">
     <Files>
-      <File FileName="kwh/Pages/Inventory/Index.cshtml" Line="24" Column="57" />
+      <File FileName="kwh/Pages/Inventory/Edit.cshtml" Line="103" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="kwh" expanded="True">
             <Node name="kwh" expanded="True">
-              <Node name="Data" expanded="True" />
               <Node name="Pages" expanded="True">
                 <Node name="Inventory" expanded="True">
-                  <Node name="Index.cshtml" expanded="True" selected="True" />
+                  <Node name="Edit.cshtml" selected="True" />
+                </Node>
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+                <Node name="lib" expanded="True">
+                  <Node name="bootstrap" expanded="True">
+                    <Node name="dist" expanded="True">
+                      <Node name="css" expanded="True" />
+                    </Node>
+                  </Node>
                 </Node>
               </Node>
             </Node>

@@ -86,15 +86,19 @@
                     <span asp-validation-for="Component.ProjectId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Component.Volunteer" class="control-label"></label>
+                    <label asp-for="Component.Volunteer" class="control-label">Modified By</label>
                     <select asp-for="Component.VolunteerId" class="form-control"
                             asp-items="@Model.LastNameSL">
                         <option value="">Select a volunteer</option>
                     </select>
                     <span asp-validation-for="Component.VolunteerId" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
+                <div class="row p-2">
+                    <div class="form-group col-sm text-right p-2">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <input type="button" value="Delete" class="btn btn-danger"
+                               onclick="window.location.href = 'Delete?id=' + window.location.search.substring(1).split('=')[1];"/>
+                    </div>
                 </div>
             </form>
         </div>

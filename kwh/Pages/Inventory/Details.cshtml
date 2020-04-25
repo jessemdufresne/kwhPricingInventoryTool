@@ -124,6 +124,7 @@
     var ctx = document.getElementById('priceChart').getContext('2d');
     var tti = [@Model.TimestampsList];
     var LineChart = new Chart(ctx, {
+        responsive: true,
         type: 'line',
         data: {
             datasets: [{

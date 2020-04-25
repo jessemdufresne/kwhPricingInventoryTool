@@ -6,6 +6,8 @@
     <title>@ViewData["Title"] - KWH DAS Pricing and Inventory</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <header>
@@ -31,6 +33,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-page="/Categories/Index">Category</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-page="/Volunteers/Index">Volunteers</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -50,9 +55,6 @@
             </a> <octicon symbol="MarkGithub"></octicon>
         </div>
     </footer>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
