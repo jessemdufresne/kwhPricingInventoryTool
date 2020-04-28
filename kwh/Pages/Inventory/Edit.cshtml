@@ -13,6 +13,7 @@
     <title>Edit</title>
 </head>
 <body>
+    <br />
     <h4>Component</h4>
     <hr />
     <!-- CategoryNameSL, VendorNameSL, MaturityStatusSL, ProjectNameSL and LastNameSL generate drop down lists for FK
@@ -25,7 +26,6 @@
                 <div class="form-group">
                     <label asp-for="Component.PartNumber" class="control-label"></label>
                     <input asp-for="Component.PartNumber" class="form-control" />
-                    <span asp-validation-for="Component.PartNumber" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.PartName" class="control-label"></label>
@@ -35,14 +35,17 @@
                 <div class="form-group">
                     <label asp-for="Component.Category" class="control-label"></label>
                     <select asp-for="Component.CategoryId" class="form-control"
-                            asp-items="@Model.CategoryNameSL"></select>
+                            asp-items="@Model.CategoryNameSL">
+                        <option value="">Select a category</option>
+                    </select>
                     <span asp-validation-for="Component.CategoryId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.Vendor" class="control-label"></label>
                     <select asp-for="Component.VendorId" class="form-control"
-                            asp-items="@Model.VendorNameSL"></select>
-                    <span asp-validation-for="Component.VendorId" class="text-danger"></span>
+                            asp-items="@Model.VendorNameSL">
+                        <option value="">Select a vendor</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.UnitCost" class="control-label"></label>
@@ -52,18 +55,18 @@
                 <div class="form-group">
                     <label asp-for="Component.Notes" class="control-label"></label>
                     <input asp-for="Component.Notes" class="form-control" />
-                    <span asp-validation-for="Component.Notes" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.Maturity" class="control-label"></label>
                     <select asp-for="Component.MaturityId" class="form-control"
-                            asp-items="@Model.MaturityStatusSL"></select>
+                            asp-items="@Model.MaturityStatusSL">
+                        <option value="">Select a maturity</option>
+                    </select>
                     <span asp-validation-for="Component.MaturityId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.Url" class="control-label"></label>
                     <input asp-for="Component.Url" class="form-control" />
-                    <span asp-validation-for="Component.Url" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.QuantityCurrent" class="control-label"></label>
@@ -73,22 +76,29 @@
                 <div class="form-group">
                     <label asp-for="Component.QuantityNeeded" class="control-label"></label>
                     <input asp-for="Component.QuantityNeeded" class="form-control" />
-                    <span asp-validation-for="Component.QuantityNeeded" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.Project" class="control-label"></label>
                     <select asp-for="Component.ProjectId" class="form-control"
-                            asp-items="@Model.ProjectNameSL"></select>
+                            asp-items="@Model.ProjectNameSL">
+                        <option value="">Select a project</option>
+                    </select>
                     <span asp-validation-for="Component.ProjectId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Component.Volunteer" class="control-label"></label>
+                    <label asp-for="Component.Volunteer" class="control-label">Modified By</label>
                     <select asp-for="Component.VolunteerId" class="form-control"
-                            asp-items="@Model.LastNameSL"></select>
+                            asp-items="@Model.LastNameSL">
+                        <option value="">Select a volunteer</option>
+                    </select>
                     <span asp-validation-for="Component.VolunteerId" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
+                <div class="row p-2">
+                    <div class="form-group col-sm text-right p-2">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <input type="button" value="Delete" class="btn btn-danger"
+                               onclick="window.location.href = 'Delete?id=' + window.location.search.substring(1).split('=')[1];"/>
+                    </div>
                 </div>
             </form>
         </div>

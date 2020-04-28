@@ -1,0 +1,67 @@
+@page
+@model kwh.Pages.Volunteers.IndexModel
+
+@{
+    ViewData["Title"] = "Volunteers";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="mt-3" style="height:170px; overflow-y:scroll">
+        <table class="table table-striped border-hidden bg-white mb-0">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Volunteer[0].FirstName)
+                    </th>
+                    <th>
+                        <a asp-page="./Index" asp-route-sortOrder="@Model.LastSort">
+                            @Html.DisplayNameFor(model => model.Volunteer[0].LastName)
+                        </a>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Volunteer[0].VolunteerPhone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Volunteer[0].VolunteerEmail)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Volunteer)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VolunteerPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VolunteerEmail)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.VolunteerId" class="badge badge-primary">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="row p-2">
+        <div class="col-sm text-right p-2">
+            <input type="button" value="Create +" onclick="window.location.href = 'Volunteers/Create';" class="btn btn-primary" />
+        </div>
+    </div>
+</body>
+</html>

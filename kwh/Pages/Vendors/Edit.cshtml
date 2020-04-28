@@ -13,47 +13,49 @@
     <title>Edit</title>
 </head>
 <body>
-
-<h4>Vendor</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Vendor.VendorId" />
-            <div class="form-group">
-                <label asp-for="Vendor.VendorName" class="control-label"></label>
-                <input asp-for="Vendor.VendorName" class="form-control" />
-                <span asp-validation-for="Vendor.VendorName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Vendor.VendorUrl" class="control-label"></label>
-                <input asp-for="Vendor.VendorUrl" class="form-control" />
-                <span asp-validation-for="Vendor.VendorUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Vendor.VendorPhone" class="control-label"></label>
-                <input asp-for="Vendor.VendorPhone" class="form-control" />
-                <span asp-validation-for="Vendor.VendorPhone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Vendor.VendorEmail" class="control-label"></label>
-                <input asp-for="Vendor.VendorEmail" class="form-control" />
-                <span asp-validation-for="Vendor.VendorEmail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+    <br />
+    <h4>Vendor</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Vendor.VendorId" />
+                <div class="form-group">
+                    <label asp-for="Vendor.VendorName" class="control-label"></label>
+                    <input asp-for="Vendor.VendorName" class="form-control" />
+                    <span asp-validation-for="Vendor.VendorName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Vendor.VendorUrl" class="control-label"></label>
+                    <input asp-for="Vendor.VendorUrl" class="form-control" />
+                    <span asp-validation-for="Vendor.VendorUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Vendor.VendorPhone" class="control-label"></label>
+                    <input asp-for="Vendor.VendorPhone" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Vendor.VendorEmail" class="control-label"></label>
+                    <input asp-for="Vendor.VendorEmail" class="form-control" />
+                </div>
+                <div class="row p-2">
+                    <div class="form-group col-sm text-right p-2">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <input type="button" value="Delete" class="btn btn-danger"
+                               onclick="window.location.href = 'Delete?id=' + window.location.search.substring(1).split('=')[1];" />
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
+    <div>
+        <a asp-page="./Index">Back to List</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
 </body>
 </html>

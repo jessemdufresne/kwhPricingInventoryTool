@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/kwh.csproj": {}
   },
   "projects": {
@@ -12,9 +13,25 @@
         "projectPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/kwh.csproj",
         "packagesPath": "/Users/JesseDuFresne/.nuget/packages/",
         "outputPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/obj/",
+=======
+    "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj": {}
+  },
+  "projects": {
+    "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj",
+        "projectName": "kwh",
+        "projectPath": "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj",
+        "packagesPath": "/Users/audreykan/.nuget/packages/",
+        "outputPath": "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/",
+>>>>>>> master
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/JesseDuFresne/.config/NuGet/NuGet.Config"
+          "/Users/audreykan/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -44,25 +61,29 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[3.1.3, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.3, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[3.1.3, )"
             },
             "Microsoft.Extensions.Logging": {
               "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[3.1.3, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.1, )"
+              "version": "[3.1.2, )"
             },
             "MySql.Data": {
               "target": "Package",
@@ -74,7 +95,7 @@
             },
             "MySqlConnector": {
               "target": "Package",
-              "version": "[0.61.0, )"
+              "version": "[0.64.0, )"
             },
             "Octicons.TagHelper": {
               "target": "Package",

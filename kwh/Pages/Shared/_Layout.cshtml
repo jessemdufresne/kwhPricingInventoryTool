@@ -4,16 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - KWH DAS Pricing and Inventory</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-#535458 border-bottom box-shadow mb-1">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-#535458 border-bottom box-shadow mb-1">
             <div class="container color-white">
-                <!--  ><img src="/kwh/wwwroot/Images/logo.png" alt="Killowatts for Humanity Logo"> -->
-                <a class="navbar-brand">DAS Pricing and Inventory</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <img src="~/Images/logo.png" alt="Killowatts for Humanity Logo" height="60" width="60" hspace="10">
+                <a class="navbar-brand">  DAS Inventory</a>
+                <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -31,6 +33,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-page="/Categories/Index">Category</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-page="/Volunteers/Index">Volunteers</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -45,15 +50,11 @@
     <footer class="border-top footer text-whitesmoke">
         <div class="container">
             &copy; 2020 - Seattle University CS 20.10
-            | <a target="_blank" href="https://github.com/jessemdufresne/kwhPricingInventoryTool.git">
-               <octicon symbol="LogoGithub" style="color: white"></octicon>
-            </a> <octicon symbol="MarkGithub" style="color: white"></octicon>
+            | <a target="_blank" href="https://github.com/jessemdufresne/kwhPricingInventoryTool.git" style="text-decoration:none">
+               <octicon symbol="LogoGithub"></octicon>
+            </a> <octicon symbol="MarkGithub"></octicon>
         </div>
     </footer>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

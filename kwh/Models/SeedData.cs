@@ -74,6 +74,12 @@ namespace kwh.Models
                         ProjectName = "Kanchomba",
                         ProjectYear = 2020,
                         ProjectCountry = "Zambia"
+                    },
+                    new Project
+                    {
+                        ProjectName = "Test",
+                        ProjectYear = 2020,
+                        ProjectCountry = "Test"
                     });
                     context.SaveChanges();
                 }
@@ -96,6 +102,13 @@ namespace kwh.Models
                         LastName = "Kalmus",
                         VolunteerPhone = "425-354-7471 ",
                         VolunteerEmail = "jeremiah.kalmus@gmail.com",
+                    },
+                    new Volunteer
+                    {
+                        FirstName = "Test",
+                        LastName = "Test",
+                        VolunteerPhone = "123-456-7890 ",
+                        VolunteerEmail = "test@test.com",
                     });
                     context.SaveChanges();
                 }
@@ -118,6 +131,13 @@ namespace kwh.Models
                         VendorUrl = "https://www.ebay.com/",
                         VendorPhone = "",
                         VendorEmail = ""
+                    },
+                    new Vendor
+                    {
+                        VendorName = "Test",
+                        VendorUrl = "",
+                        VendorPhone = "1234567890",
+                        VendorEmail = "test@test.test"
                     });
                     context.SaveChanges();
                 }

@@ -1,4 +1,5 @@
-@page 
+@page
+
 @model kwh.Pages.Inventory.DetailsModel
 
 @{
@@ -18,6 +19,7 @@
 </head>
 <body>
     <div>
+        <br />
         <h4 class="m-3">Component Details</h4>
         <div class="w-90 bg-white m-5 rounded">
             <canvas id="priceChart" />
@@ -120,7 +122,9 @@
     //Time Axis: https://www.chartjs.org/docs/latest/axes/cartesian/time.html
     Chart.defaults.global.legend.display = false;
     var ctx = document.getElementById('priceChart').getContext('2d');
+    var tti = [@Model.TimestampsList];
     var LineChart = new Chart(ctx, {
+        responsive: true,
         type: 'line',
         data: {
             datasets: [{
@@ -146,11 +150,38 @@
                     labels: [@Model.TimestampsList],
                     distribution: 'linear',
                     time: {
-                        parser: 'MM/DD/YYYY hh:mm a',
-                        unit: 'day', //'month', 'week', 'day', 'hour', 'minute' 
-                        tooltipFormat: 'll hh:mm a'
+                        displayFormats: {
+                            'day': 'MMM DD',
+                            'week': 'll',
+                            'month': 'MMM YYYY',
+                            'year': 'YYYY',
+                        },
+                        parser: 'M/DD/YYYY hh:mm a',
+                        minUnit: 'day'
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        callback: function (value, index, values) {
+                            if (value.toString().length == 1) {
+                                return '$' + value + '.00';
+                            }
+                            return '$' + value;
+                        }
                     }
                 }]
+            },
+            tooltips: {
+                callbacks: {
+                    title: function (tooltipItem, data) {
+                        console.log(tooltipItem);
+                        return 'Date: ' + tti[tooltipItem[0].index];
+                    },
+                    label: function (tooltipItem, data) {
+                        return "Unit Cost: $" + tooltipItem.yLabel;
+                    }
+                }
             }
         }
     });

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 
 // Tutorial from https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/update-related-data?view=aspnetcore-3.1
 // Creates and populates drop down lists for Inventory CRUD scaffolding
@@ -29,19 +30,20 @@ namespace kwh.Pages.Inventory
             object selectedMaturity = null)
         {
             var maturityQuery = from m in _context.Maturity
-                                   orderby m.MaturityId
-                                   select m;
+                                orderby m.MaturityId
+                                select m;
 
             MaturityStatusSL = new SelectList(maturityQuery.AsNoTracking(),
                         "MaturityId", "MaturityStatus", selectedMaturity);
+
         }
 
         public void PopulateProjectDropDown(kwhDataContext _context,
             object selectedProject = null)
         {
             var projectQuery = from p in _context.Project
-                                orderby p.ProjectYear
-                                select p;
+                               orderby p.ProjectYear
+                               select p;
 
             ProjectNameSL = new SelectList(projectQuery.AsNoTracking(),
                         "ProjectId", "ProjectName", selectedProject);
@@ -51,8 +53,8 @@ namespace kwh.Pages.Inventory
             object selectedVendor = null)
         {
             var vendorQuery = from v in _context.Vendor
-                                orderby v.VendorName
-                                select v;
+                              orderby v.VendorName
+                              select v;
 
             VendorNameSL = new SelectList(vendorQuery.AsNoTracking(),
                         "VendorId", "VendorName", selectedVendor);
@@ -62,8 +64,8 @@ namespace kwh.Pages.Inventory
             object selectedVolunteer = null)
         {
             var volunteerQuery = from v in _context.Volunteer
-                                orderby v.LastName
-                                select v;
+                                 orderby v.LastName
+                                 select v;
 
             LastNameSL = new SelectList(volunteerQuery.AsNoTracking(),
                         "VolunteerId", "LastName", selectedVolunteer);
@@ -73,8 +75,8 @@ namespace kwh.Pages.Inventory
             object selectedCategory = null)
         {
             var categoryQuery = from c in _context.Category
-                                 orderby c.CategoryName
-                                 select c;
+                                orderby c.CategoryName
+                                select c;
 
             CategoryNameSL = new SelectList(categoryQuery.AsNoTracking(),
                         "CategoryId", "CategoryName", selectedCategory);

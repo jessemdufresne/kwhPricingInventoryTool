@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using kwh.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using kwh.Models;
 
 namespace kwh.Pages.Projects
 {
@@ -18,41 +18,60 @@ namespace kwh.Pages.Projects
             _context = context;
         }
 
+        // Add properties to contain searching and filtering parameters
+        [BindProperty]
+        public string SearchBy { get; set; }
+        public string CurrentFilter { get; set; }
+
+        // Add properties to contain sorting parameters
         public string NameSort { get; set; }
         public string YearSort { get; set; }
         public string CurrentSort { get; set; }
          
-        public PaginatedList<Project> Project { get; set; }
+        public IList<Project> Project { get; set; }
 
-        public async Task OnGetAsync(string sortOrder, int? pageIndex)
+        public async Task OnGetAsync(string sortOrder, string currentFilter
+            , string searchby, string searchString)
         {
             CurrentSort = sortOrder;
 
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             YearSort = sortOrder == "Year" ? "year_desc" : "Year";
 
-            IQueryable<Project> project = from p in _context.Project
+            if (searchString == null)
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+            SearchBy = searchby;
+
+            IQueryable<Project> projects = from p in _context.Project
                                              select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                projects = projects
+                        .Where(c => c.ProjectName.ToUpper().Contains(searchString.ToUpper()));
+            }
 
             switch (sortOrder)
             {
                 case "name_desc":
-                    project = project.OrderByDescending(p => p.ProjectName);
+                    projects = projects.OrderByDescending(p => p.ProjectName);
                     break;
                 case "Year":
-                    project = project.OrderBy(c => c.ProjectYear);
+                    projects = projects.OrderBy(c => c.ProjectYear);
                     break;
                 case "year_desc":
-                    project = project.OrderByDescending(c => c.ProjectYear);
+                    projects = projects.OrderByDescending(c => c.ProjectYear);
                     break;
                 default:
-                    project = project.OrderBy(p => p.ProjectName);
+                    projects = projects.OrderBy(p => p.ProjectName);
                     break;
             }
 
-            int pageSize = 10;
-            Project = await PaginatedList<Project>.CreateAsync(
-                project.AsNoTracking(), pageIndex ?? 1, pageSize);
+            Project = await projects.AsNoTracking().ToListAsync();
         }
     }
 }

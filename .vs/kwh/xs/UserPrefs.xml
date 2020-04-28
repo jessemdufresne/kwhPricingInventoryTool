@@ -1,29 +1,15 @@
-﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Admin/Index.cshtml">
-    <Files>
-      <File FileName="kwh/appsettings.json" Line="15" Column="9" />
-      <File FileName="kwh/Pages/GuestInventory/Index.cshtml" Line="1" Column="1" />
-      <File FileName="kwh/Pages/Admin/Index.cshtml" Line="1" Column="1" />
-    </Files>
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="kwh" expanded="True">
-            <Node name="kwh" expanded="True">
-              <Node name="Pages" expanded="True">
-                <Node name="Admin" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
-                </Node>
-                <Node name="GuestInventory" expanded="True" />
-                <Node name="Inventory" expanded="True" />
-              </Node>
-            </Node>
+            <Node name="kwh" selected="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.kwh PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

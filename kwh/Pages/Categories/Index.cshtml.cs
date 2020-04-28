@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using kwh.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using kwh.Models;
 
 namespace kwh.Pages.Categories
 {
@@ -18,19 +18,40 @@ namespace kwh.Pages.Categories
             _context = context;
         }
 
+        // Add properties to contain searching and filtering parameters
+        [BindProperty]
+        public string SearchBy { get; set; }
+        public string CurrentFilter { get; set; }
+
+        // Add properties to contain sorting parameters
         public string CategorySort { get; set; }
         public string CurrentSort { get; set; }
 
-        public PaginatedList<Category> Category { get; set; }
+        public IList<Category> Category { get; set; }
 
-        public async Task OnGetAsync(string sortOrder, int? pageIndex)
+        public async Task OnGetAsync(string sortOrder, string currentFilter
+            , string searchby, string searchString)
         {
             CurrentSort = sortOrder;
 
             CategorySort = String.IsNullOrEmpty(sortOrder) ? "cat_desc" : "";
 
+            if (searchString == null)
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+            SearchBy = searchby;
+
             IQueryable<Category> categories = from c in _context.Category
                                                select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                categories = categories
+                        .Where(c => c.CategoryName.ToUpper().Contains(searchString.ToUpper()));
+            }
 
             switch (sortOrder)
             {
@@ -42,9 +63,7 @@ namespace kwh.Pages.Categories
                     break;
             }
 
-            int pageSize = 8;
-            Category = await PaginatedList<Category>.CreateAsync(
-                categories.AsNoTracking(), pageIndex ?? 1, pageSize);
+            Category = await categories.AsNoTracking().ToListAsync();
         }
     }
 }
