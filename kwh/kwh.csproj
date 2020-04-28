@@ -8,9 +8,19 @@
 
   <ItemGroup>
     <Compile Remove="Pages\Privacy.cshtml.cs" />
+    <Compile Remove="Pages\Inventory %28copy%29\Create.cshtml.cs" />
+    <Compile Remove="Pages\Inventory %28copy%29\Delete.cshtml.cs" />
+    <Compile Remove="Pages\Inventory %28copy%29\Details.cshtml.cs" />
+    <Compile Remove="Pages\Inventory %28copy%29\Edit.cshtml.cs" />
+    <Compile Remove="Pages\Inventory %28copy%29\Index.cshtml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Privacy.cshtml" />
+    <Content Remove="Pages\Inventory\Create.cshtml" />
+    <Content Remove="Pages\Inventory\Delete.cshtml" />
+    <Content Remove="Pages\Inventory\Details.cshtml" />
+    <Content Remove="Pages\Inventory\Edit.cshtml" />
+    <Content Remove="Pages\Inventory %28copy%29\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.19" />
@@ -33,11 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Pages\Inventory\" />
     <Folder Include="Pages\Projects\" />
     <Folder Include="Pages\Categories\" />
     <Folder Include="Pages\Vendors\" />
     <Folder Include="wwwroot\Images\" />
+    <Folder Include="Pages\Admin\" />
+    <Folder Include="Pages\Inventory\" />
+    <Folder Include="Pages\GuestInventory\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove=".DS_Store" />

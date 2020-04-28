@@ -1,0 +1,149 @@
+@page
+@model kwh.Pages.GuestInventory.IndexModel
+
+@{
+    ViewData["Title"] = "Components";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="site.css">
+    <title>Index</title>
+</head>
+
+<body>
+    <!--Search Bar-->
+    <div class="container">
+        <form asp-page="./Index" method="get">
+            <div class="form-actions color-white py-2 d-inline-block">
+                <b class="px-2 d-inline-block">Search By:</b>
+                @foreach (var searchby in Model.Criteria)
+                {
+                    @Html.RadioButtonFor(m => m.SearchBy, searchby)<p1 class="d-inline-block"> @searchby </p1>
+                }
+                <div class="p-2 d-inline-block">
+                    <input class="form-control" type="text" name="CurrentFilter" placeholder="Search" value="@Model.CurrentFilter" />
+                </div>
+                <div class="p-2 d-inline-block h-100">
+                    <input class="btn btn-primary " type="submit" value="Search" />
+                </div>
+                <div class="p-2 d-inline-block">
+                    <a asp-page="./Index">Clear Search</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--Table Header and Rows-->
+    <table class="table border-hidden bg-white mb-0">
+        <thead>
+            <tr>
+                <th>
+                    <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
+                       asp-route-CurrentFilter="@Model.CurrentFilter"
+                       asp-route-SortOrder="@Model.CategorySort">
+                        @Html.DisplayNameFor(model => model.Component[0].Category)
+                    </a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Component[0].PartNumber)
+                </th>
+                <th>
+                    <a asp-page="./Index"
+                       asp-route-SearchBy="@Model.SearchBy"
+                       asp-route-CurrentFilter="@Model.CurrentFilter"
+                       asp-route-SortOrder="@Model.NameSort">
+                        @Html.DisplayNameFor(model => model.Component[0].PartName)
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./Index"
+                       asp-route-SearchBy="@Model.SearchBy"
+                       asp-route-CurrentFilter="@Model.CurrentFilter"
+                       asp-route-SortOrder="@Model.CostSort">
+                        @Html.DisplayNameFor(model => model.Component[0].UnitCost)
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./Index"
+                       asp-route-SearchBy="@Model.SearchBy"
+                       asp-route-CurrentFilter="@Model.CurrentFilter"
+                       asp-route-SortOrder="@Model.QuantitySort">
+                        @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./Index"
+                       asp-route-SearchBy="@Model.SearchBy"
+                       asp-route-CurrentFilter="@Model.CurrentFilter"
+                       asp-route-SortOrder="@Model.ProjectSort">
+                        @Html.DisplayNameFor(model => model.Component[0].Project)
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Component)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PartNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PartName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnitCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuantityCurrent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                    </td>
+                    <td>
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                        <!-- <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> -->
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <!-- Paging is disabled, if the number of records shown does not exceed threshold -->
+    @{
+        var prevDisabled = !Model.Component.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Component.HasNextPage ? "disabled" : "";
+    }
+
+    <!--Prev, Next, Create Buttons-->
+    <!-- asp-route-sortOrder, asp-route-currentFilter, asp-route-searchBy, and asp-route-pageIndex preserves sort and
+        search results across pages -->
+    <div class="row p-2">
+        <div class="btn-group col-sm-3 p-2">
+            <a asp-page="./Index"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-currentFilter="@Model.CurrentFilter"
+               asp-route-searchBy="@Model.SearchBy"
+               asp-route-pageIndex="@(Model.Component.PageIndex - 1)"
+               class="btn btn-primary @prevDisabled">
+                <octicon symbol="ChevronLeft"></octicon>
+            </a>
+            <a asp-page="./Index"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-currentFilter="@Model.CurrentFilter"
+               asp-route-searchBy="@Model.SearchBy"
+               asp-route-pageIndex="@(Model.Component.PageIndex + 1)"
+               class="btn btn-primary @nextDisabled">
+                <octicon symbol="ChevronRight"></octicon>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
