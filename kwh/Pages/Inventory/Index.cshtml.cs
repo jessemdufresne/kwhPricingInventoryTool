@@ -161,6 +161,7 @@ namespace kwh.Pages.Inventory
                 .Select(o => o.OrderByDescending(t => t.Timestamp).First())
                 .ToList();
         }
+
     }
 }
 

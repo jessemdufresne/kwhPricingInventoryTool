@@ -1,11 +1,13 @@
 using System.Linq;
 using System.Threading.Tasks;
 using kwh.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace kwh.Pages.Inventory
 {
     // Derives ComponentFKPageModel to load FK navigation properties in drop down
+    [Authorize]
     public class CreateModel : ComponentFKPageModel
     {
         private readonly kwhDataContext _context;

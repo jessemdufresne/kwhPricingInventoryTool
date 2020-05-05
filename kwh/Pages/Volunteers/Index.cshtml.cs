@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using kwh.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace kwh.Pages.Volunteers
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly kwhDataContext _context;

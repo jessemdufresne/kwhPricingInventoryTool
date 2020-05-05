@@ -1,12 +1,14 @@
 using System.Linq;
 using System.Threading.Tasks;
 using kwh.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace kwh.Pages.Inventory
 {
     // Derives ComponentFKPageModel to load FK navigation properties in drop down
+    [Authorize]
     public class EditModel : ComponentFKPageModel
     {
         private readonly kwhDataContext _context;
@@ -60,6 +62,7 @@ namespace kwh.Pages.Inventory
 
             // Create a new Component object to insert into the database
             var emptyComponent = new Component();
+
             // 1) Retrieve the Component object corresponding to the selected Id
             var componentToUpdate = await _context.Component.FindAsync(id);
 
