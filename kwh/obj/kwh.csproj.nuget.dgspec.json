@@ -1,6 +1,10 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
+    "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/kwh.csproj": {}
+=======
+<<<<<<< HEAD
     "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/kwh.csproj": {}
   },
   "projects": {
@@ -12,6 +16,26 @@
         "projectPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/kwh.csproj",
         "packagesPath": "/Users/JesseDuFresne/.nuget/packages/",
         "outputPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/obj/",
+=======
+    "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj": {}
+>>>>>>> 860bc91bd09ea465145861d00d1affdd5421ef5d
+  },
+  "projects": {
+    "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/kwh.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/kwh.csproj",
+        "projectName": "kwh",
+<<<<<<< HEAD
+        "projectPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/kwh.csproj",
+        "packagesPath": "/Users/JesseDuFresne/.nuget/packages/",
+        "outputPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/authentication/kwhPricingInventoryTool/kwh/obj/",
+=======
+        "projectPath": "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj",
+        "packagesPath": "/Users/audreykan/.nuget/packages/",
+        "outputPath": "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/",
+>>>>>>> master
+>>>>>>> 860bc91bd09ea465145861d00d1affdd5421ef5d
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/JesseDuFresne/.config/NuGet/NuGet.Config"

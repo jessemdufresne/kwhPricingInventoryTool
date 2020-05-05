@@ -1,13 +1,19 @@
+<<<<<<< HEAD
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Inventory/Create.cshtml.cs">
     <Files>
       <File FileName="kwh/Pages/Categories/Create.cshtml.cs" Line="1" Column="1" />
       <File FileName="kwh/Pages/Inventory/Create.cshtml.cs" Line="1" Column="1" />
     </Files>
+=======
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench>
+>>>>>>> 860bc91bd09ea465145861d00d1affdd5421ef5d
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="kwh" expanded="True">
+<<<<<<< HEAD
             <Node name="kwh" expanded="True">
               <Node name="Pages" expanded="True">
                 <Node name="Inventory" expanded="True">
@@ -17,12 +23,14 @@
                 </Node>
               </Node>
             </Node>
+=======
+            <Node name="kwh" selected="True" />
+>>>>>>> 860bc91bd09ea465145861d00d1affdd5421ef5d
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.kwh PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
