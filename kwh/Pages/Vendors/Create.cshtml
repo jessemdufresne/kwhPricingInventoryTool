@@ -21,22 +21,22 @@
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Vendor.VendorName" class="control-label"></label>
-                    <input asp-for="Vendor.VendorName" class="form-control" placeholder="Example"/>
-                    <span asp-validation-for="Vendor.VendorName" class="text-danger"></span>
+                    <label asp-for="Vendor.Name" class="control-label"></label>
+                    <input asp-for="Vendor.Name" class="form-control" placeholder="Example"/>
+                    <span asp-validation-for="Vendor.Name" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Vendor.VendorUrl" class="control-label"></label>
-                    <input asp-for="Vendor.VendorUrl" class="form-control" placeholder="https://www.example.com"/>
-                    <span asp-validation-for="Vendor.VendorUrl" class="text-danger"></span>
+                    <label asp-for="Vendor.Url" class="control-label"></label>
+                    <input asp-for="Vendor.Url" class="form-control" placeholder="https://www.example.com"/>
+                    <span asp-validation-for="Vendor.Url" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Vendor.VendorPhone" class="control-label"></label>
-                    <input asp-for="Vendor.VendorPhone" class="form-control" placeholder="123-456-7890"/>
+                    <label asp-for="Vendor.Phone" class="control-label"></label>
+                    <input asp-for="Vendor.Phone" class="form-control" placeholder="123-456-7890"/>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Vendor.VendorEmail" class="control-label"></label>
-                    <input asp-for="Vendor.VendorEmail" class="form-control" placeholder="example@example.com"/>
+                    <label asp-for="Vendor.Email" class="control-label"></label>
+                    <input asp-for="Vendor.Email" class="form-control" placeholder="example@example.com"/>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" />

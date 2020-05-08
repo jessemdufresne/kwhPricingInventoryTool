@@ -36,7 +36,7 @@ namespace kwh.Pages.Inventory
                 .Include(c => c.Maturity)
                 .Include(c => c.Project)
                 .Include(c => c.Vendor)
-                .Include(c => c.Volunteer)
+                .Include(c => c.AppUser)
                 .Include(c => c.Category).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Component == null)

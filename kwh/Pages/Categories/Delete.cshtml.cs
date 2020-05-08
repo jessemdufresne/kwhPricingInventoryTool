@@ -27,7 +27,7 @@ namespace kwh.Pages.Categories
                 return NotFound();
             }
 
-            Category = await _context.Category.FirstOrDefaultAsync(m => m.CategoryId == id);
+            Category = await _context.Category.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Category == null)
             {

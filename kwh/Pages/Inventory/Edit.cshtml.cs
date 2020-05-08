@@ -33,7 +33,7 @@ namespace kwh.Pages.Inventory
                 .Include(c => c.Maturity)
                 .Include(c => c.Project)
                 .Include(c => c.Vendor)
-                .Include(c => c.Volunteer)
+                .Include(c => c.AppUser)
                 .Include(c => c.Category).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Component == null)
@@ -45,7 +45,7 @@ namespace kwh.Pages.Inventory
             PopulateVendorDropDown(_context, Component.VendorId);
             PopulateMaturityDropDown(_context, Component.MaturityId);
             PopulateProjectDropDown(_context, Component.ProjectId);
-            PopulateVolunteerDropDown(_context, Component.VolunteerId);
+            PopulateUserDropDown(_context, Component.AppUserId);
             PopulateCategoryDropDown(_context, Component.CategoryId);
             return Page();
         }
@@ -80,7 +80,7 @@ namespace kwh.Pages.Inventory
                  "component",   // Prefix for form value.
                  c => c.PartNumber, c => c.PartName, c => c.CategoryId, c => c.VendorId,
                  c => c.UnitCost, c => c.Notes, c => c.MaturityId, c => c.Url,
-                 c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.VolunteerId))
+                 c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.AppUserId))
             {
                 // 3) Manually set the same ComponentId before adding a new record
                 emptyComponent.ComponentId = compId;
@@ -95,7 +95,7 @@ namespace kwh.Pages.Inventory
             PopulateVendorDropDown(_context, componentToUpdate.VendorId);
             PopulateMaturityDropDown(_context, componentToUpdate.MaturityId);
             PopulateProjectDropDown(_context, componentToUpdate.ProjectId);
-            PopulateVolunteerDropDown(_context, componentToUpdate.VolunteerId);
+            PopulateUserDropDown(_context, componentToUpdate.AppUserId);
             PopulateCategoryDropDown(_context, componentToUpdate.CategoryId);
             return Page();
         }

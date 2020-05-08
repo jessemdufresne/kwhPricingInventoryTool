@@ -30,7 +30,7 @@ namespace kwh.Pages.Inventory
             object selectedMaturity = null)
         {
             var maturityQuery = from m in _context.Maturity
-                                orderby m.MaturityId
+                                orderby m.Id
                                 select m;
 
             MaturityStatusSL = new SelectList(maturityQuery.AsNoTracking(),
@@ -42,7 +42,7 @@ namespace kwh.Pages.Inventory
             object selectedProject = null)
         {
             var projectQuery = from p in _context.Project
-                               orderby p.ProjectYear
+                               orderby p.Year
                                select p;
 
             ProjectNameSL = new SelectList(projectQuery.AsNoTracking(),
@@ -53,22 +53,22 @@ namespace kwh.Pages.Inventory
             object selectedVendor = null)
         {
             var vendorQuery = from v in _context.Vendor
-                              orderby v.VendorName
+                              orderby v.Name
                               select v;
 
             VendorNameSL = new SelectList(vendorQuery.AsNoTracking(),
                         "VendorId", "VendorName", selectedVendor);
         }
 
-        public void PopulateVolunteerDropDown(kwhDataContext _context,
-            object selectedVolunteer = null)
+        public void PopulateUserDropDown(kwhDataContext _context,
+            object selectedUser = null)
         {
-            var volunteerQuery = from v in _context.Volunteer
+            var userQuery = from v in _context.AppUser
                                  orderby v.LastName
                                  select v;
 
-            LastNameSL = new SelectList(volunteerQuery.AsNoTracking(),
-                        "VolunteerId", "LastName", selectedVolunteer);
+            LastNameSL = new SelectList(userQuery.AsNoTracking(),
+                        "AppUserId", "LastName", selectedUser);
         }
 
         public void PopulateCategoryDropDown(kwhDataContext _context,

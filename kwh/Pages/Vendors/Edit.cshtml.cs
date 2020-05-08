@@ -28,7 +28,7 @@ namespace kwh.Pages.Vendors
                 return NotFound();
             }
 
-            Vendor = await _context.Vendor.FirstOrDefaultAsync(m => m.VendorId == id);
+            Vendor = await _context.Vendor.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Vendor == null)
             {
@@ -54,7 +54,7 @@ namespace kwh.Pages.Vendors
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VendorExists(Vendor.VendorId))
+                if (!VendorExists(Vendor.Id))
                 {
                     return NotFound();
                 }
@@ -69,7 +69,7 @@ namespace kwh.Pages.Vendors
 
         private bool VendorExists(int id)
         {
-            return _context.Vendor.Any(e => e.VendorId == id);
+            return _context.Vendor.Any(e => e.Id == id);
         }
     }
 }

@@ -7,10 +7,12 @@ namespace kwh.Models
 {
     public class Maturity
     {
-        public int MaturityId { get; set; }
+        [Key]
+        public int Id { get; set; }
 
-        [StringLength(25, MinimumLength = 3)]
         [Required]
+        [Display(Name = "Maturity")]
+        [StringLength(25, MinimumLength = 3)]
         public string MaturityStatus { get; set; }
 
         // Navigation property holds related entities in a 1:M

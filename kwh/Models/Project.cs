@@ -7,21 +7,20 @@ namespace kwh.Models
 {
     public class Project
     {
-        public int ProjectId { get; set; }
+        [Key]
+        public int Id { get; set; }
 
+        [Required]
         [Display(Name = "Project")]
         [StringLength(25, MinimumLength = 3)]
-        [Required]
-        public string ProjectName { get; set; }
+        public string Name { get; set; }
 
-        [Display(Name = "Year")]
         [Required]
-        public int ProjectYear { get; set; }
+        public int Year { get; set; }
 
-        [Display(Name = "Country")]
+        [Required]
         [StringLength(25, MinimumLength = 3)]
-        [Required]
-        public string ProjectCountry { get; set; }
+        public string Country { get; set; }
 
         // Navigation property holds related entities in a 1:M
         public ICollection<Component> Components { get; set; }

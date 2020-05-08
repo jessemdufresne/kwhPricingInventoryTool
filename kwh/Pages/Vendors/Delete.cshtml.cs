@@ -27,7 +27,7 @@ namespace kwh.Pages.Vendors
                 return NotFound();
             }
 
-            Vendor = await _context.Vendor.FirstOrDefaultAsync(m => m.VendorId == id);
+            Vendor = await _context.Vendor.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Vendor == null)
             {

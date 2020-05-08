@@ -101,7 +101,7 @@
                         </a>
                     </th>
                     <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
-                        @Html.DisplayNameFor(model => model.Component[0].Volunteer)
+                        @Html.DisplayNameFor(model => model.Component[0].AppUser)
                     </th>
                     <th></th>
                 </tr>
@@ -120,7 +120,7 @@
                             @Html.DisplayFor(modelItem => item.PartName)
                         </td>
                         <td style="display:none;" data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.Vendor.VendorName)
+                            @Html.DisplayFor(modelItem => item.Vendor.Name)
                         </td>
                         <td data-f-sz="11">
                             @Html.DisplayFor(modelItem => item.UnitCost)
@@ -141,10 +141,10 @@
                             @Html.DisplayFor(modelItem => item.QuantityNeeded)
                         </td>
                         <td data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                            @Html.DisplayFor(modelItem => item.Project.Name)
                         </td>
                         <td style="display:none;" data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.Volunteer.LastName)
+                            @Html.DisplayFor(modelItem => item.AppUser.LastName)
                         </td>
                         <td data-exclude="true">
                             <a asp-page="./Edit" asp-route-id="@item.Id" class="badge badge-primary">Edit</a> |

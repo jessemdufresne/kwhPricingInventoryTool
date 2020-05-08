@@ -23,7 +23,7 @@ namespace kwh.Pages.Inventory
             PopulateVendorDropDown(_context);
             PopulateMaturityDropDown(_context);
             PopulateProjectDropDown(_context);
-            PopulateVolunteerDropDown(_context);
+            PopulateUserDropDown(_context);
             PopulateCategoryDropDown(_context);
             return Page();
         }
@@ -52,7 +52,7 @@ namespace kwh.Pages.Inventory
                  "component",   // Prefix for form value.
                  c => c.PartNumber, c => c.PartName, c => c.CategoryId, c => c.VendorId,
                  c => c.UnitCost, c => c.Notes, c => c.MaturityId, c => c.Url,
-                 c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.VolunteerId))
+                 c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.AppUserId))
             {
                 // 3) Manually increment ComponentId before adding a new record
                 emptyComponent.ComponentId = compId + 1;
@@ -67,7 +67,7 @@ namespace kwh.Pages.Inventory
             PopulateVendorDropDown(_context, emptyComponent.VendorId);
             PopulateMaturityDropDown(_context, emptyComponent.MaturityId);
             PopulateProjectDropDown(_context, emptyComponent.ProjectId);
-            PopulateVolunteerDropDown(_context, emptyComponent.VolunteerId);
+            PopulateUserDropDown(_context, emptyComponent.AppUserId);
             PopulateCategoryDropDown(_context, emptyComponent.CategoryId);
             return Page();
         }

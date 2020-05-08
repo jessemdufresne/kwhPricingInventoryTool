@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace kwh.Migrations
 {
     [DbContext(typeof(kwhDataContext))]
-    [Migration("20200415050413_InitialCreate")]
+    [Migration("20200508112823_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,9 +18,48 @@ namespace kwh.Migrations
                 .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("kwh.Models.AppUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
+                        .HasMaxLength(32);
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
+                        .HasMaxLength(25);
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
+                        .HasMaxLength(25);
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("varchar(60) CHARACTER SET utf8mb4")
+                        .HasMaxLength(60);
+
+                    b.Property<string>("Salt")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.ToTable("AppUser");
+                });
+
             modelBuilder.Entity("kwh.Models.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -29,7 +68,7 @@ namespace kwh.Migrations
                         .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
                         .HasMaxLength(25);
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Category");
                 });
@@ -38,6 +77,9 @@ namespace kwh.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AppUserId")
                         .HasColumnType("int");
 
                     b.Property<int?>("CategoryId")
@@ -84,10 +126,9 @@ namespace kwh.Migrations
                     b.Property<int?>("VendorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("VolunteerId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("CategoryId");
 
@@ -97,14 +138,12 @@ namespace kwh.Migrations
 
                     b.HasIndex("VendorId");
 
-                    b.HasIndex("VolunteerId");
-
                     b.ToTable("Component");
                 });
 
             modelBuilder.Entity("kwh.Models.Maturity", b =>
                 {
-                    b.Property<int>("MaturityId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -113,89 +152,67 @@ namespace kwh.Migrations
                         .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
                         .HasMaxLength(25);
 
-                    b.HasKey("MaturityId");
+                    b.HasKey("Id");
 
                     b.ToTable("Maturity");
                 });
 
             modelBuilder.Entity("kwh.Models.Project", b =>
                 {
-                    b.Property<int>("ProjectId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("ProjectCountry")
+                    b.Property<string>("Country")
                         .IsRequired()
                         .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
                         .HasMaxLength(25);
 
-                    b.Property<string>("ProjectName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
                         .HasMaxLength(25);
 
-                    b.Property<int>("ProjectYear")
+                    b.Property<int>("Year")
                         .HasColumnType("int");
 
-                    b.HasKey("ProjectId");
+                    b.HasKey("Id");
 
                     b.ToTable("Project");
                 });
 
             modelBuilder.Entity("kwh.Models.Vendor", b =>
                 {
-                    b.Property<int>("VendorId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("VendorEmail")
+                    b.Property<string>("Email")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("VendorName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
                         .HasMaxLength(25);
 
-                    b.Property<string>("VendorPhone")
+                    b.Property<string>("Phone")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("VendorUrl")
+                    b.Property<string>("Url")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("VendorId");
+                    b.HasKey("Id");
 
                     b.ToTable("Vendor");
                 });
 
-            modelBuilder.Entity("kwh.Models.Volunteer", b =>
-                {
-                    b.Property<int>("VolunteerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
-                        .HasMaxLength(25);
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
-                        .HasMaxLength(25);
-
-                    b.Property<string>("VolunteerEmail")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("VolunteerPhone")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("VolunteerId");
-
-                    b.ToTable("Volunteer");
-                });
-
             modelBuilder.Entity("kwh.Models.Component", b =>
                 {
+                    b.HasOne("kwh.Models.AppUser", "AppUser")
+                        .WithMany("Components")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.HasOne("kwh.Models.Category", "Category")
                         .WithMany("Components")
                         .HasForeignKey("CategoryId")
@@ -215,12 +232,6 @@ namespace kwh.Migrations
                         .WithMany("Components")
                         .HasForeignKey("VendorId")
                         .OnDelete(DeleteBehavior.SetNull);
-
-                    b.HasOne("kwh.Models.Volunteer", "Volunteer")
-                        .WithMany("Components")
-                        .HasForeignKey("VolunteerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

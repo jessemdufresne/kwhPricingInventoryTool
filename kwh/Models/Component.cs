@@ -2,8 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-// Using EF Core Data Annotations
-
 namespace kwh.Models
 {
     public class Component
@@ -19,9 +17,8 @@ namespace kwh.Models
         [Display(Name = "Vendor")]
         public int? VendorId { get; set; }
 
-        [Display(Name = "Volunteer")]
-        [Required]
-        public int VolunteerId { get; set; }
+        [Display(Name = "User")]
+        public int? AppUserId { get; set; }
 
         [Display(Name = "Maturity")]
         public int? MaturityId { get; set; }
@@ -33,7 +30,7 @@ namespace kwh.Models
         public int? CategoryId { get; set; }
 
         public Vendor Vendor { get; set; }
-        public Volunteer Volunteer { get; set; }
+        public AppUser AppUser { get; set; }
         public Maturity Maturity { get; set; }
         public Project Project { get; set; }
         public Category Category { get; set; }

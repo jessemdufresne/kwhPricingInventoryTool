@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - KWH DAS Pricing and Inventory</title>
+    <title>@ViewData["Title"] - KWH DAS Inventory Tracker</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -14,12 +14,13 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-#535458 border-bottom box-shadow mb-1">
             <div class="container color-white">
                 <img src="~/Images/logo.png" alt="Killowatts for Humanity Logo" height="60" width="60" hspace="10">
-                <a class="navbar-brand">  DAS Inventory</a>
+                <a class="navbar-brand">Inventory Tracker</a>
                 <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-page="/Inventory/Index">Inventory</a>
@@ -34,7 +35,7 @@
                             <a class="nav-link text-white" asp-area="" asp-page="/Categories/Index">Category</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-page="/Volunteers/Index">Volunteers</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/AppUsers/Index">Volunteers</a>
                         </li>
                     </ul>
                 </div>

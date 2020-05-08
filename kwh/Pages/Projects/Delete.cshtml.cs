@@ -27,7 +27,7 @@ namespace kwh.Pages.Projects
                 return NotFound();
             }
 
-            Project = await _context.Project.FirstOrDefaultAsync(m => m.ProjectId == id);
+            Project = await _context.Project.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Project == null)
             {

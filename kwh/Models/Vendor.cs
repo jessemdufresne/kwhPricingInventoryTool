@@ -7,24 +7,20 @@ namespace kwh.Models
 {
     public class Vendor
     {
-        public int VendorId { get; set; }
+        public int Id { get; set; }
 
-        [Display(Name = "Vendor")]
-        [StringLength(25, MinimumLength = 3)]
         [Required]
-        public string VendorName { get; set; }
+        [StringLength(25, MinimumLength = 3)]
+        public string Name { get; set; }
 
-        [Display(Name = "URL")]
         [DataType(DataType.Url)]
-        public string VendorUrl { get; set; }
+        public string Url { get; set; }
 
-        [Display(Name = "Phone")]
         [DataType(DataType.PhoneNumber)]
-        public string VendorPhone { get; set; }
+        public string Phone { get; set; }
 
-        [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
-        public string VendorEmail { get; set; }
+        public string Email { get; set; }
 
         // Navigation property holds related entities in a 1:M
         public ICollection<Component> Components { get; set; }

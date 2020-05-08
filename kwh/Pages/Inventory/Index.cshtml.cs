@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using kwh.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -93,7 +92,7 @@ namespace kwh.Pages.Inventory
                 } else
                 {
                     components = components
-                        .Where(c => c.Project.ProjectName.ToUpper().Contains(searchString.ToUpper()));
+                        .Where(c => c.Project.Name.ToUpper().Contains(searchString.ToUpper()));
                 }
             }
 
@@ -125,11 +124,11 @@ namespace kwh.Pages.Inventory
                     break;
                 case "Project":
                     components = components
-                        .OrderBy(c => c.Project.ProjectName);
+                        .OrderBy(c => c.Project.Name);
                     break;
                 case "proj_desc":
                     components = components
-                        .OrderByDescending(c => c.Project.ProjectName);
+                        .OrderByDescending(c => c.Project.Name);
                     break;
                 case "Category":
                     components = components
@@ -154,7 +153,7 @@ namespace kwh.Pages.Inventory
                 .Include(c => c.Maturity)
                 .Include(c => c.Project)
                 .Include(c => c.Vendor)
-                .Include(c => c.Volunteer)
+                .Include(c => c.AppUser)
                 .Include(c => c.Category)
                 .AsEnumerable()
                 .GroupBy(c => c.ComponentId)

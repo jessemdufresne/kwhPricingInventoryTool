@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace kwh.Pages.Volunteers
+namespace kwh.Pages.AppUsers
 {
     [Authorize]
     public class DeleteModel : PageModel
@@ -18,7 +18,7 @@ namespace kwh.Pages.Volunteers
         }
 
         [BindProperty]
-        public Volunteer Volunteer { get; set; }
+        public AppUser AppUser { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,9 +27,9 @@ namespace kwh.Pages.Volunteers
                 return NotFound();
             }
 
-            Volunteer = await _context.Volunteer.FirstOrDefaultAsync(m => m.VolunteerId == id);
+            AppUser = await _context.AppUser.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Volunteer == null)
+            if (AppUser == null)
             {
                 return NotFound();
             }
@@ -43,11 +43,11 @@ namespace kwh.Pages.Volunteers
                 return NotFound();
             }
 
-            Volunteer = await _context.Volunteer.FindAsync(id);
+            AppUser = await _context.AppUser.FindAsync(id);
 
-            if (Volunteer != null)
+            if (AppUser != null)
             {
-                _context.Volunteer.Remove(Volunteer);
+                _context.AppUser.Remove(AppUser);
                 await _context.SaveChangesAsync();
             }
 

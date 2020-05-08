@@ -52,22 +52,22 @@ namespace kwh.Pages.Projects
             if (!String.IsNullOrEmpty(searchString))
             {
                 projects = projects
-                        .Where(c => c.ProjectName.ToUpper().Contains(searchString.ToUpper()));
+                        .Where(c => c.Name.ToUpper().Contains(searchString.ToUpper()));
             }
 
             switch (sortOrder)
             {
                 case "name_desc":
-                    projects = projects.OrderByDescending(p => p.ProjectName);
+                    projects = projects.OrderByDescending(p => p.Name);
                     break;
                 case "Year":
-                    projects = projects.OrderBy(c => c.ProjectYear);
+                    projects = projects.OrderBy(c => c.Year);
                     break;
                 case "year_desc":
-                    projects = projects.OrderByDescending(c => c.ProjectYear);
+                    projects = projects.OrderByDescending(c => c.Year);
                     break;
                 default:
-                    projects = projects.OrderBy(p => p.ProjectName);
+                    projects = projects.OrderBy(p => p.Name);
                     break;
             }
 

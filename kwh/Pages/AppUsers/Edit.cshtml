@@ -1,8 +1,8 @@
 @page
-@model kwh.Pages.Vendors.EditModel
+@model kwh.Pages.AppUsers.EditModel
 
 @{
-    ViewData["Title"] = "Edit Vendor";
+    ViewData["Title"] = "Edit Users";
 }
 
 <!DOCTYPE html>
@@ -14,30 +14,27 @@
 </head>
 <body>
     <br />
-    <h4>Vendor</h4>
+    <h4>User</h4>
     <hr />
     <div class="row">
         <div class="col-md-4">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="Vendor.Id" />
+                <input type="hidden" asp-for="AppUser.Id" />
                 <div class="form-group">
-                    <label asp-for="Vendor.Name" class="control-label"></label>
-                    <input asp-for="Vendor.Name" class="form-control" />
-                    <span asp-validation-for="Vendor.Name" class="text-danger"></span>
+                    <label asp-for="AppUser.FirstName" class="control-label"></label>
+                    <input asp-for="AppUser.FirstName" class="form-control" />
+                    <span asp-validation-for="AppUser.FirstName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Vendor.Url" class="control-label"></label>
-                    <input asp-for="Vendor.Url" class="form-control" />
-                    <span asp-validation-for="Vendor.Url" class="text-danger"></span>
+                    <label asp-for="AppUser.LastName" class="control-label"></label>
+                    <input asp-for="AppUser.LastName" class="form-control" />
+                    <span asp-validation-for="AppUser.LastName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Vendor.Phone" class="control-label"></label>
-                    <input asp-for="Vendor.Phone" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label asp-for="Vendor.Email" class="control-label"></label>
-                    <input asp-for="Vendor.Email" class="form-control" />
+                    <label asp-for="AppUser.Email" class="control-label"></label>
+                    <input asp-for="AppUser.Email" class="form-control" />
+                    <span asp-validation-for="AppUser.Email" class="text-danger"></span>
                 </div>
                 <div class="row p-2">
                     <div class="form-group col-sm text-right p-2">

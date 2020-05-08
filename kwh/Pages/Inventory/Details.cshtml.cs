@@ -22,7 +22,7 @@ namespace kwh.Pages.Inventory
         public string UnitCostList { get; set; }
         public HtmlString TimestampsList { get; set; }
 
-        public PaginatedList<Component> Component { get; set; }
+        public IList<Component> Component { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id, int? pageIndex)
         {
@@ -59,15 +59,14 @@ namespace kwh.Pages.Inventory
                 .OrderByDescending(x => x.Timestamp)
                 .Select(c => c);
 
-            int pageSize = 10; // Number of records shown per page
-            Component = await PaginatedList<Component>.CreateAsync(
-                components
+            Component = await components
                 .Include(c => c.Maturity)
                 .Include(c => c.Project)
                 .Include(c => c.Vendor)
-                .Include(c => c.Volunteer)
-                .Include(c => c.Category).AsNoTracking(),
-                pageIndex ?? 1, pageSize);
+                .Include(c => c.AppUser)
+                .Include(c => c.Category)
+                .AsNoTracking()
+                .ToListAsync();
 
             if (Component == null)
             {

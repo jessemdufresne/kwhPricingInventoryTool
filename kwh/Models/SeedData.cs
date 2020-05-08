@@ -35,80 +35,68 @@ namespace kwh.Models
                     context.Project.AddRange(
                     new Project
                     {
-                        ProjectName = "Muhuru Bay",
-                        ProjectYear = 2014,
-                        ProjectCountry = "Kenya"
+                        Name = "Muhuru Bay",
+                        Year = 2014,
+                        Country = "Kenya"
                     },
                     new Project
                     {
-                        ProjectName = "Filibaba",
-                        ProjectYear = 2015,
-                        ProjectCountry = "Zambia"
+                        Name = "Filibaba",
+                        Year = 2015,
+                        Country = "Zambia"
                     },
                     new Project
                     {
-                        ProjectName = "Chalokwa",
-                        ProjectYear = 2016,
-                        ProjectCountry = "Zambia"
+                        Name = "Chalokwa",
+                        Year = 2016,
+                        Country = "Zambia"
                     },
                     new Project
                     {
-                        ProjectName = "Munyama",
-                        ProjectYear = 2017,
-                        ProjectCountry = "Zambia"
+                        Name = "Munyama",
+                        Year = 2017,
+                        Country = "Zambia"
                     },
                     new Project
                     {
-                        ProjectName = "Palawan",
-                        ProjectYear = 2018,
-                        ProjectCountry = "Philippines"
+                        Name = "Palawan",
+                        Year = 2018,
+                        Country = "Philippines"
                     },
                     new Project
                     {
-                        ProjectName = "Cheeba",
-                        ProjectYear = 2019,
-                        ProjectCountry = "Zambia"
+                        Name = "Cheeba",
+                        Year = 2019,
+                        Country = "Zambia"
                     },
                     new Project
                     {
-                        ProjectName = "Kanchomba",
-                        ProjectYear = 2020,
-                        ProjectCountry = "Zambia"
+                        Name = "Kanchomba",
+                        Year = 2020,
+                        Country = "Zambia"
                     },
                     new Project
                     {
-                        ProjectName = "Test",
-                        ProjectYear = 2020,
-                        ProjectCountry = "Test"
+                        Name = "Test",
+                        Year = 2020,
+                        Country = "Test"
                     });
                     context.SaveChanges();
                 }
 
                 // Check if Volunteer table is empty
                 // If empty, create test data in arrays and save changes
-                if (!context.Volunteer.Any())
+                if (!context.AppUser.Any())
                 {
-                    context.Volunteer.AddRange(
-                    new Volunteer
-                    {
-                        FirstName = "Daniel",
-                        LastName = "Nausner",
-                        VolunteerPhone = "206-735-1989",
-                        VolunteerEmail = "dan.nausner@gmail.com",
-                    },
-                    new Volunteer
-                    {
-                        FirstName = "Jeremiah",
-                        LastName = "Kalmus",
-                        VolunteerPhone = "425-354-7471 ",
-                        VolunteerEmail = "jeremiah.kalmus@gmail.com",
-                    },
-                    new Volunteer
+                    context.AppUser.Add(
+                    new AppUser
                     {
                         FirstName = "Test",
-                        LastName = "Test",
-                        VolunteerPhone = "123-456-7890 ",
-                        VolunteerEmail = "test@test.com",
+                        LastName = "Admin",
+                        Email = "admin@admin.com",
+                        Username = "admin",
+                        Salt = "",
+                        PasswordHash = ""
                     });
                     context.SaveChanges();
                 }
@@ -120,24 +108,24 @@ namespace kwh.Models
                     context.Vendor.AddRange(
                     new Vendor
                     {
-                        VendorName = "Amazon",
-                        VendorUrl = "https://www.amazon.com/",
-                        VendorPhone = "",
-                        VendorEmail = "primary@amazon.com"
+                        Name = "Amazon",
+                        Url = "https://www.amazon.com/",
+                        Phone = "",
+                        Email = "primary@amazon.com"
                     },
                     new Vendor
                     {
-                        VendorName = "Ebay",
-                        VendorUrl = "https://www.ebay.com/",
-                        VendorPhone = "",
-                        VendorEmail = ""
+                        Name = "Ebay",
+                        Url = "https://www.ebay.com/",
+                        Phone = "",
+                        Email = ""
                     },
                     new Vendor
                     {
-                        VendorName = "Test",
-                        VendorUrl = "",
-                        VendorPhone = "1234567890",
-                        VendorEmail = "test@test.test"
+                        Name = "Test",
+                        Url = "",
+                        Phone = "1234567890",
+                        Email = "test@test.test"
                     });
                     context.SaveChanges();
                 }
@@ -175,7 +163,7 @@ namespace kwh.Models
                     {
                         ComponentId = 1,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "MFR-25FBF52-100K",
                         PartName = "RES 100K OHM 1/4W 1% AXIAL",
                         UnitCost = 0.10M,
@@ -191,7 +179,7 @@ namespace kwh.Models
                     {
                         ComponentId = 2,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "WW3FT250",
                         PartName = "RES 250 OHM 3W 1% AXIAL",
                         UnitCost = 0.75M,
@@ -207,7 +195,7 @@ namespace kwh.Models
                     {
                         ComponentId = 3,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "1829390",
                         PartName = "TERM BLK HEADER 7POS GREEN",
                         UnitCost = 8.49M,
@@ -223,7 +211,7 @@ namespace kwh.Models
                     {
                         ComponentId = 4,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "UKL1C100KDD1TD",
                         PartName = "CAP ALUM 10UF 10% 16V RADIAL",
                         UnitCost = 0.40M,
@@ -239,7 +227,7 @@ namespace kwh.Models
                     {
                         ComponentId = 5,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "",
                         PartName = "Ethernet Extension",
                         UnitCost = 4.95M,
@@ -255,7 +243,7 @@ namespace kwh.Models
                     {
                         ComponentId = 6,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "",
                         PartName = "Phoenix Mounting Nuts",
                         UnitCost = 5.88M,
@@ -271,7 +259,7 @@ namespace kwh.Models
                     {
                         ComponentId = 7,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "",
                         PartName = "M3 Standoff",
                         UnitCost = 0.63M,
@@ -287,7 +275,7 @@ namespace kwh.Models
                     {
                         ComponentId = 8,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "",
                         PartName = "16GB Micro SD Card",
                         UnitCost = 5.79M,

@@ -1,8 +1,8 @@
 @page
-@model kwh.Pages.Volunteers.DeleteModel
+@model kwh.Pages.AppUsers.DeleteModel
 
 @{
-    ViewData["Title"] = "Delete Volunteers";
+    ViewData["Title"] = "Delete User";
 }
 
 <!DOCTYPE html>
@@ -19,33 +19,33 @@
         <hr />
         <dl class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Volunteer.FirstName)
+                @Html.DisplayNameFor(model => model.AppUser.FirstName)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Volunteer.FirstName)
+                @Html.DisplayFor(model => model.AppUser.FirstName)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Volunteer.LastName)
+                @Html.DisplayNameFor(model => model.AppUser.LastName)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Volunteer.LastName)
+                @Html.DisplayFor(model => model.AppUser.LastName)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Volunteer.VolunteerPhone)
+                @Html.DisplayNameFor(model => model.AppUser.Username)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Volunteer.VolunteerPhone)
+                @Html.DisplayFor(model => model.AppUser.Username)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Volunteer.VolunteerEmail)
+                @Html.DisplayNameFor(model => model.AppUser.Email)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Volunteer.VolunteerEmail)
+                @Html.DisplayFor(model => model.AppUser.Email)
             </dd>
         </dl>
 
         <form method="post">
-            <input type="hidden" asp-for="Volunteer.VolunteerId" />
+            <input type="hidden" asp-for="AppUser.Id" />
             <input type="submit" value="Delete" class="btn btn-danger" /> |
             <a asp-page="./Index">Back to List</a>
         </form>

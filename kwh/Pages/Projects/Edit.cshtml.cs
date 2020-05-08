@@ -28,7 +28,7 @@ namespace kwh.Pages.Projects
                 return NotFound();
             }
 
-            Project = await _context.Project.FirstOrDefaultAsync(m => m.ProjectId == id);
+            Project = await _context.Project.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Project == null)
             {
@@ -54,7 +54,7 @@ namespace kwh.Pages.Projects
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProjectExists(Project.ProjectId))
+                if (!ProjectExists(Project.Id))
                 {
                     return NotFound();
                 }
@@ -69,7 +69,7 @@ namespace kwh.Pages.Projects
 
         private bool ProjectExists(int id)
         {
-            return _context.Project.Any(e => e.ProjectId == id);
+            return _context.Project.Any(e => e.Id == id);
         }
     }
 }

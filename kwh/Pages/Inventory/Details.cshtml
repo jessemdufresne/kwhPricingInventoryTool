@@ -61,7 +61,7 @@
                         @Html.DisplayNameFor(model => model.Component[0].Project)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Component[0].Volunteer)
+                        @Html.DisplayNameFor(model => model.Component[0].AppUser)
                     </th>
                     <th></th>
                 </tr>
@@ -80,7 +80,7 @@
                             @Html.DisplayFor(modelItem => item.Category.CategoryName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Vendor.VendorName)
+                            @Html.DisplayFor(modelItem => item.Vendor.Name)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.UnitCost)
@@ -101,10 +101,10 @@
                             @Html.DisplayFor(modelItem => item.QuantityNeeded)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                            @Html.DisplayFor(modelItem => item.Project.Name)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Volunteer.LastName)
+                            @Html.DisplayFor(modelItem => item.AppUser.LastName)
                         </td>
                     </tr>
                 }

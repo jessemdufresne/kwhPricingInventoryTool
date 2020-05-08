@@ -20,21 +20,21 @@
         <div class="col-md-4">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="Project.ProjectId" />
+                <input type="hidden" asp-for="Project.Id" />
                 <div class="form-group">
-                    <label asp-for="Project.ProjectName" class="control-label"></label>
-                    <input asp-for="Project.ProjectName" class="form-control" />
-                    <span asp-validation-for="Project.ProjectName" class="text-danger"></span>
+                    <label asp-for="Project.Name" class="control-label"></label>
+                    <input asp-for="Project.Name" class="form-control" />
+                    <span asp-validation-for="Project.Name" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Project.ProjectYear" class="control-label"></label>
-                    <input asp-for="Project.ProjectYear" class="form-control" />
-                    <span asp-validation-for="Project.ProjectYear" class="text-danger"></span>
+                    <label asp-for="Project.Year" class="control-label"></label>
+                    <input asp-for="Project.Year" class="form-control" />
+                    <span asp-validation-for="Project.Year" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Project.ProjectCountry" class="control-label"></label>
-                    <input asp-for="Project.ProjectCountry" class="form-control" />
-                    <span asp-validation-for="Project.ProjectCountry" class="text-danger"></span>
+                    <label asp-for="Project.Country" class="control-label"></label>
+                    <input asp-for="Project.Country" class="form-control" />
+                    <span asp-validation-for="Project.Country" class="text-danger"></span>
                 </div>
                 <div class="row p-2">
                     <div class="form-group col-sm text-right p-2">

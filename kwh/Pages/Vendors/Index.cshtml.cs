@@ -50,16 +50,16 @@ namespace kwh.Pages.Vendors
             if (!String.IsNullOrEmpty(searchString))
             {
                 vendors = vendors
-                        .Where(c => c.VendorName.ToUpper().Contains(searchString.ToUpper()));
+                        .Where(c => c.Name.ToUpper().Contains(searchString.ToUpper()));
             }
 
             switch (sortOrder)
             {
                 case "name_desc":
-                    vendors = vendors.OrderByDescending(c => c.VendorName);
+                    vendors = vendors.OrderByDescending(c => c.Name);
                     break;
                 default:
-                    vendors = vendors.OrderBy(c => c.VendorName);
+                    vendors = vendors.OrderBy(c => c.Name);
                     break;
             }
 

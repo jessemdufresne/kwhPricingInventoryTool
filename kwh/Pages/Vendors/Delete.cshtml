@@ -19,33 +19,33 @@
         <hr />
         <dl class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Vendor.VendorName)
+                @Html.DisplayNameFor(model => model.Vendor.Name)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Vendor.VendorName)
+                @Html.DisplayFor(model => model.Vendor.Name)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Vendor.VendorUrl)
+                @Html.DisplayNameFor(model => model.Vendor.Url)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Vendor.VendorUrl)
+                @Html.DisplayFor(model => model.Vendor.Url)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Vendor.VendorPhone)
+                @Html.DisplayNameFor(model => model.Vendor.Phone)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Vendor.VendorPhone)
+                @Html.DisplayFor(model => model.Vendor.Phone)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Vendor.VendorEmail)
+                @Html.DisplayNameFor(model => model.Vendor.Email)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Vendor.VendorEmail)
+                @Html.DisplayFor(model => model.Vendor.Email)
             </dd>
         </dl>
 
         <form method="post">
-            <input type="hidden" asp-for="Vendor.VendorId" />
+            <input type="hidden" asp-for="Vendor.Id" />
             <input type="submit" value="Delete" class="btn btn-danger" /> |
             <a asp-page="./Index">Back to List</a>
         </form>

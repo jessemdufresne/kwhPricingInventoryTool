@@ -1,0 +1,64 @@
+@page
+@model kwh.Pages.AppUsers.CreateModel
+
+@{
+    ViewData["Title"] = "Add a new user";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>New user</title>
+</head>
+<body>
+    <br />
+    <h4>@ViewData["Title"]</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <p>@Html.ValidationMessage("CustomErr", new { @class = "text-danger" })</p>
+                <div class="form-group">
+                    <label asp-for="AppUser.FirstName" class="control-label"></label>
+                    <input asp-for="AppUser.FirstName" class="form-control" placeholder="John" />
+                    <span asp-validation-for="AppUser.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AppUser.LastName" class="control-label"></label>
+                    <input asp-for="AppUser.LastName" class="form-control" placeholder="Doe" />
+                    <span asp-validation-for="AppUser.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AppUser.Email" class="control-label"></label>
+                    <input asp-for="AppUser.Email" class="form-control" placeholder="example@example.com" />
+                    <span asp-validation-for="AppUser.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AppUser.Password" class="control-label"></label>
+                    <input asp-for="AppUser.Password" class="form-control" placeholder="********" />
+                    <span asp-validation-for="AppUser.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AppUser.ConfirmPassword" class="control-label"></label>
+                    <input asp-for="AppUser.ConfirmPassword" class="form-control" placeholder="********" />
+                    <span asp-validation-for="AppUser.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Add" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-page="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</body>
+</html>
