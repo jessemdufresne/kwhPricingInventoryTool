@@ -1,7 +1,7 @@
 @page
 @model LoginModel
 @{
-    ViewData["Title"] = "Sign in";
+    ViewData["Title"] = "Log in";
 }
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Sign in</title>
+    <title>Log in</title>
 </head>
 <body>
     <br />
@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-md-4">
             <form method="post">
-                <p>Log in using your email or usernames.</p>
+                <p>Sign in using your email or username.</p>
                 <p>@Html.ValidationMessage("CustomErr", new { @class = "text-danger" })</p>
                 <div class="form-group">
                     <label asp-for="Input.Username"></label>

@@ -1,8 +1,12 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Account/Login.cshtml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Projects/Edit.cshtml">
     <Files>
-      <File FileName="kwh/Pages/Account/Login.cshtml" Line="1" Column="1" />
-      <File FileName="kwh/Pages/Account/Login.cshtml.cs" Line="1" Column="1" />
+      <File FileName="kwh/Pages/Vendors/Create.cshtml" Line="50" Column="24" />
+      <File FileName="kwh/Pages/Vendors/Edit.cshtml" Line="54" Column="11" />
+      <File FileName="kwh/Pages/Categories/Create.cshtml" Line="38" Column="11" />
+      <File FileName="kwh/Pages/Categories/Edit.cshtml" Line="42" Column="1" />
+      <File FileName="kwh/Pages/Projects/Create.cshtml" Line="48" Column="11" NotebookId="1" />
+      <File FileName="kwh/Pages/Projects/Edit.cshtml" Line="48" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,11 +14,11 @@
           <Node name="kwh" expanded="True">
             <Node name="kwh" expanded="True">
               <Node name="Pages" expanded="True">
-                <Node name="Account" expanded="True">
-                  <Node name="Login.cshtml" expanded="True">
-                    <Node name="Login.cshtml.cs" selected="True" />
-                  </Node>
+                <Node name="Categories" expanded="True" />
+                <Node name="Projects" expanded="True">
+                  <Node name="Edit.cshtml" selected="True" />
                 </Node>
+                <Node name="Vendors" expanded="True" />
               </Node>
             </Node>
           </Node>

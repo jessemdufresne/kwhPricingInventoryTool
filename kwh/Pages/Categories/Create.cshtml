@@ -15,25 +15,26 @@
 <body>
     <br />
     <h4>Category</h4>
-    <hr />
     <div class="row">
         <div class="col-md-4">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Category.CategoryName" class="control-label"></label>
-                    <input asp-for="Category.CategoryName" class="form-control" placeholder="Example"/>
+                    <input asp-for="Category.CategoryName" class="form-control" placeholder="Example" />
                     <span asp-validation-for="Category.CategoryName" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                <div class="row p-2">
+                    <div class="form-group col-sm text-left p-2">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 
     <div>
-        <a asp-page="Index">Back to List</a>
+        <a asp-page="./Index">Back to List</a>
     </div>
 
     @section Scripts {

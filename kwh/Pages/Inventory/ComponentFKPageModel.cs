@@ -46,7 +46,7 @@ namespace kwh.Pages.Inventory
                                select p;
 
             ProjectNameSL = new SelectList(projectQuery.AsNoTracking(),
-                        "ProjectId", "ProjectName", selectedProject);
+                        "ProjectId", "Name", selectedProject);
         }
 
         public void PopulateVendorDropDown(kwhDataContext _context,
@@ -57,7 +57,7 @@ namespace kwh.Pages.Inventory
                               select v;
 
             VendorNameSL = new SelectList(vendorQuery.AsNoTracking(),
-                        "VendorId", "VendorName", selectedVendor);
+                        "VendorId", "Name", selectedVendor);
         }
 
         public void PopulateUserDropDown(kwhDataContext _context,

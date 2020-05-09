@@ -1,17 +1,16 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using CryptoHelper;
+using kwh.Models;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Collections.Generic;
-using kwh.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using CryptoHelper;
 
 namespace kwh.Pages.Account
 {
@@ -22,14 +21,6 @@ namespace kwh.Pages.Account
         {
             _context = context;
         }
-
-        [BindProperty]
-        public InputModel Input { get; set; }
-
-        public string ReturnUrl { get; set; }
-
-        [TempData]
-        public string ErrorMessage { get; set; }
 
         public class InputModel
         {
@@ -42,6 +33,14 @@ namespace kwh.Pages.Account
             [StringLength(14, ErrorMessage = "Must be between 8 and 14 characters.", MinimumLength = 8)]
             public string Password { get; set; }
         }
+
+        [BindProperty]
+        public InputModel Input { get; set; }
+
+        public string ReturnUrl { get; set; }
+
+        [TempData]
+        public string ErrorMessage { get; set; }
 
         public async Task OnGetAsync(string returnUrl = null)
         {
@@ -95,7 +94,8 @@ namespace kwh.Pages.Account
                         IsPersistent = true,
                     });
 
-                return LocalRedirect("/inventory");
+                if (!Url.IsLocalUrl(returnUrl)) returnUrl = Url.Content("~/");
+                return LocalRedirect(returnUrl);
             }
 
             // Something failed. Redisplay the form.
@@ -112,18 +112,15 @@ namespace kwh.Pages.Account
                 return null;
             }
 
-            var lower_login = login.Contains("@")
-                ? login.ToLower() : login.Substring(0, Math.Max(login.IndexOf('@'), 0)).ToLower();
             var user = await _context.AppUser
                 .AsNoTracking()
-                .Where(v => v.Email.Contains(lower_login))
+                .Where(v => v.Email.Contains(login.ToLower()))
                 .FirstOrDefaultAsync()
                 .ConfigureAwait(false);
 
             if (user == null) { return null; }
 
-
-            if (VerifyPassword(user.PasswordHash, HashPassword(password)))
+            if (VerifyPassword(user.PasswordHash, password))
             {
                 return user;
             }

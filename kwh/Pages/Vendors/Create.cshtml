@@ -15,38 +15,39 @@
 <body>
     <br />
     <h4>Vendor</h4>
-    <hr />
     <div class="row">
         <div class="col-md-4">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Vendor.Name" class="control-label"></label>
-                    <input asp-for="Vendor.Name" class="form-control" placeholder="Example"/>
+                    <input asp-for="Vendor.Name" class="form-control" placeholder="Example" />
                     <span asp-validation-for="Vendor.Name" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Vendor.Url" class="control-label"></label>
-                    <input asp-for="Vendor.Url" class="form-control" placeholder="https://www.example.com"/>
+                    <input asp-for="Vendor.Url" class="form-control" placeholder="https://www.example.com" />
                     <span asp-validation-for="Vendor.Url" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Vendor.Phone" class="control-label"></label>
-                    <input asp-for="Vendor.Phone" class="form-control" placeholder="123-456-7890"/>
+                    <input asp-for="Vendor.Phone" class="form-control" placeholder="123-456-7890" />
                 </div>
                 <div class="form-group">
                     <label asp-for="Vendor.Email" class="control-label"></label>
-                    <input asp-for="Vendor.Email" class="form-control" placeholder="example@example.com"/>
+                    <input asp-for="Vendor.Email" class="form-control" placeholder="example@example.com" />
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                <div class="row p-2">
+                    <div class="form-group col-sm text-left p-2">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 
     <div>
-        <a asp-page="Index">Back to List</a>
+        <a asp-page="./Index">Back to List</a>
     </div>
 
     @section Scripts {
