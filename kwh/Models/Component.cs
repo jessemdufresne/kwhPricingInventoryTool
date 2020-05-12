@@ -2,8 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-// Using EF Core Data Annotations
-
 namespace kwh.Models
 {
     public class Component
@@ -14,14 +12,12 @@ namespace kwh.Models
 
         public int ComponentId { get; set; }
 
-        // Set foreign keys and corresponding navigation properties
-        // to hold related entities of a 1:M relationship
+        // Set FKs to hold related 1:M entities
         [Display(Name = "Vendor")]
         public int? VendorId { get; set; }
 
-        [Display(Name = "Volunteer")]
-        [Required]
-        public int VolunteerId { get; set; }
+        [Display(Name = "User")]
+        public int? AppUserId { get; set; }
 
         [Display(Name = "Maturity")]
         public int? MaturityId { get; set; }
@@ -33,7 +29,7 @@ namespace kwh.Models
         public int? CategoryId { get; set; }
 
         public Vendor Vendor { get; set; }
-        public Volunteer Volunteer { get; set; }
+        public AppUser AppUser { get; set; }
         public Maturity Maturity { get; set; }
         public Project Project { get; set; }
         public Category Category { get; set; }
@@ -64,10 +60,10 @@ namespace kwh.Models
         [Display(Name = "Quantity Needed")]
         public int QuantityNeeded { get; set; }
 
+        //.Identity for Add action only
+        //.Computed is for Add and Update actions...
         [DataType(DataType.Date)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime Timestamp { get; set; }
-        //.Identity for Add action only
-        //.Computed is for Add and Update actions...
     }
 }

@@ -2,7 +2,7 @@
 @model kwh.Pages.Projects.CreateModel
 
 @{
-    ViewData["Title"] = "Create Project";
+    ViewData["Title"] = "Add a new project";
 }
 
 <!DOCTYPE html>
@@ -14,36 +14,37 @@
 </head>
 <body>
     <br />
-    <h4>Project</h4>
-    <hr />
+    <h4>@ViewData["Title"]</h4>
     <div class="row">
         <div class="col-md-4">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Project.ProjectName" class="control-label"></label>
-                    <input asp-for="Project.ProjectName" class="form-control" placeholder="Example"/>
+                    <input asp-for="Project.ProjectName" class="form-control" placeholder="Example" />
                     <span asp-validation-for="Project.ProjectName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Project.ProjectYear" class="control-label"></label>
-                    <input asp-for="Project.ProjectYear" class="form-control" placeholder="2020"/>
+                    <input asp-for="Project.ProjectYear" class="form-control" placeholder="2020" />
                     <span asp-validation-for="Project.ProjectYear" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Project.ProjectCountry" class="control-label"></label>
-                    <input asp-for="Project.ProjectCountry" class="form-control" placeholder="Example"/>
+                    <input asp-for="Project.ProjectCountry" class="form-control" placeholder="Zambia" />
                     <span asp-validation-for="Project.ProjectCountry" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                <div class="row p-2">
+                    <div class="form-group col-sm text-left p-2">
+                        <input type="submit" value="Add" class="btn btn-primary" />
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 
     <div>
-        <a asp-page="Index">Back to List</a>
+        <a asp-page="./Index">Back to List</a>
     </div>
 
     @section Scripts {

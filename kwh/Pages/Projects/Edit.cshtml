@@ -15,7 +15,6 @@
 <body>
     <br />
     <h4>Project</h4>
-    <hr />
     <div class="row">
         <div class="col-md-4">
             <form method="post">
@@ -37,7 +36,7 @@
                     <span asp-validation-for="Project.ProjectCountry" class="text-danger"></span>
                 </div>
                 <div class="row p-2">
-                    <div class="form-group col-sm text-right p-2">
+                    <div class="form-group col-sm text-left p-2">
                         <input type="submit" value="Save" class="btn btn-primary" />
                         <input type="button" value="Delete" class="btn btn-danger"
                                onclick="window.location.href = 'Delete?id=' + window.location.search.substring(1).split('=')[1];" />

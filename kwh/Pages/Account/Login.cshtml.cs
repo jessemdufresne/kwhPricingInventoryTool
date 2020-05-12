@@ -1,26 +1,37 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using CryptoHelper;
+using kwh.Models;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-//using kwh.Data;
-
-using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Collections.Generic;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace kwh.Pages.Account
 {
     public class LoginModel : PageModel
     {
-        private readonly ILogger<LoginModel> _logger;
-
-        public LoginModel(ILogger<LoginModel> logger)
+        private readonly kwhDataContext _context;
+        public LoginModel(kwhDataContext context)
         {
-            _logger = logger;
+            _context = context;
+        }
+
+        public class InputModel
+        {
+            [Required]
+            [Display(Name = "Username/Email")]
+            public string Username { get; set; }
+
+            [Required]
+            [DataType(DataType.Password)]
+            [StringLength(14, ErrorMessage = "Must be between 8 and 14 characters.", MinimumLength = 8)]
+            public string Password { get; set; }
         }
 
         [BindProperty]
@@ -31,17 +42,6 @@ namespace kwh.Pages.Account
         [TempData]
         public string ErrorMessage { get; set; }
 
-        public class InputModel
-        {
-            [Required]
-            [EmailAddress]
-            public string Email { get; set; }
-
-            [Required]
-            [DataType(DataType.Password)]
-            public string Password { get; set; }
-        }
-
         public async Task OnGetAsync(string returnUrl = null)
         {
             if (!string.IsNullOrEmpty(ErrorMessage))
@@ -49,11 +49,9 @@ namespace kwh.Pages.Account
                 ModelState.AddModelError(string.Empty, ErrorMessage);
             }
 
-            // Clear the existing external cookie
-            #region snippet2
+            // Clears existing external cookie
             await HttpContext.SignOutAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme);
-            #endregion
 
             ReturnUrl = returnUrl;
         }
@@ -64,92 +62,79 @@ namespace kwh.Pages.Account
 
             if (ModelState.IsValid)
             {
-                // Use Input.Email and Input.Password to authenticate the user
-                // with your custom authentication logic.
-                //
-                // For demonstration purposes, the sample validates the user
-                // on the email address maria.rodriguez@contoso.com with 
-                // any password that passes model validation.
 
-                var user = await AuthenticateUser(Input.Email, Input.Password);
+                // Authenticate with salt hashing
+                var user = await AuthenticateUser(Input.Username, Input.Password);
 
                 if (user == null)
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError("CustomErr", "Invalid login attempt.");
                     return Page();
                 }
 
-                #region snippet1
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, user.Email),
-                    new Claim("FullName", user.FullName),
+                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim("Email", user.Email),
                     new Claim(ClaimTypes.Role, "Administrator"),
                 };
 
                 var claimsIdentity = new ClaimsIdentity(
                     claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                var authProperties = new AuthenticationProperties
-                {
-                    AllowRefresh = true,
-                    // Refreshing the authentication session should be allowed.
-
-                    //ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
-                    // The time at which the authentication ticket expires. A 
-                    // value set here overrides the ExpireTimeSpan option of 
-                    // CookieAuthenticationOptions set with AddCookie.
-
-                    IsPersistent = true,
-                    // Whether the authentication session is persisted across 
-                    // multiple requests. When used with cookies, controls
-                    // whether the cookie's lifetime is absolute (matching the
-                    // lifetime of the authentication ticket) or session-based.
-
-                    //IssuedUtc = <DateTimeOffset>,
-                    // The time at which the authentication ticket was issued.
-
-                    //RedirectUri = <string>
-                    // The full path or absolute URI to be used as an http 
-                    // redirect response value.
-                };
-
                 await HttpContext.SignInAsync(
                     CookieAuthenticationDefaults.AuthenticationScheme, 
-                    new ClaimsPrincipal(claimsIdentity), 
-                    authProperties);
-                #endregion
+                    new ClaimsPrincipal(claimsIdentity),
+                    new AuthenticationProperties
+                    {
+                        // Allows user to refresh the auth session
+                        AllowRefresh = true,
+                        // Sets auth ticket to expire in 25 mins
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(25),
+                        // Persists auth session across multiple requests
+                        IsPersistent = true,
+                    });
 
-                _logger.LogInformation("User {Email} logged in at {Time}.", 
-                    user.Email, DateTime.UtcNow);
-
-                return LocalRedirect("/inventory");
+                if (!Url.IsLocalUrl(returnUrl)) returnUrl = Url.Content("~/");
+                return LocalRedirect(returnUrl);
             }
 
-            // Something failed. Redisplay the form.
+            // Failed: redisplay the page
             return Page();
         }
 
-        private async Task<ApplicationUser> AuthenticateUser(string email, string password)
+        private async Task<AppUser> AuthenticateUser(string login, string password)
         {
-            // For demonstration purposes, authenticate a user
-            // with a static email address. Ignore the password.
-            // Assume that checking the database takes 500ms
-
-            await Task.Delay(500);
-
-            if (email == "maria.rodriguez@contoso.com")
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
-                return new ApplicationUser()
-                {
-                    Email = "maria.rodriguez@contoso.com",
-                    FullName = "Maria Rodriguez"
-                };
+                return null;
+            }
+
+            // Check if user exists in db
+            var user = await _context.AppUser
+                .AsNoTracking()
+                .Where(v => v.Email.Contains(login))
+                .FirstOrDefaultAsync()
+                .ConfigureAwait(false);
+
+            // User was not found
+            if (user == null) { return null; }
+
+            // Compare given password and stored password hash
+            if (VerifyPassword(user.PasswordHash, password))
+            {
+                return user;
             }
             else
             {
                 return null;
             }
+        }
+
+        // Verify the password hash against the given password
+        private bool VerifyPassword(string hash, string password)
+        {
+            return Crypto.VerifyHashedPassword(hash, password);
         }
     }
 }

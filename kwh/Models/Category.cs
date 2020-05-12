@@ -1,20 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-// Using EF Core Data Annotations
-
 namespace kwh.Models
 {
     public class Category
     {
         public int CategoryId { get; set; }
 
-        [Display(Name = "Category")]
-        [StringLength(25, MinimumLength = 3)]
         [Required]
+        [Display(Name = "Category")]
         public string CategoryName { get; set; }
 
-        // Navigation property holds related entities in a 1:M
+        // Navigation property holds related 1:M entities
         public ICollection<Component> Components { get; set; }
     }
 }

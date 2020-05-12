@@ -12,9 +12,6 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.bundle.min.js"></script>
-    <style>
-
-    </style>
     <title>Details</title>
 </head>
 <body>
@@ -61,7 +58,7 @@
                         @Html.DisplayNameFor(model => model.Component[0].Project)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Component[0].Volunteer)
+                        @Html.DisplayNameFor(model => model.Component[0].AppUser)
                     </th>
                     <th></th>
                 </tr>
@@ -104,7 +101,7 @@
                             @Html.DisplayFor(modelItem => item.Project.ProjectName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Volunteer.LastName)
+                            @Html.DisplayFor(modelItem => item.AppUser.Username)
                         </td>
                     </tr>
                 }
@@ -112,7 +109,7 @@
         </table>
     </div>
     <div class="text-center m-3">
-        <input type="button" value="Back to List" onclick="window.location.href='./Index';" class="btn btn-primary" />
+        <a asp-page="./Index">Back to List</a>
     </div>
 </body>
 </html>

@@ -12,7 +12,6 @@ namespace kwh.Pages.Vendors
     public class IndexModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public IndexModel(kwhDataContext context)
         {
             _context = context;
@@ -34,6 +33,7 @@ namespace kwh.Pages.Vendors
         {
             CurrentSort = sortOrder;
 
+            // Toggle column sorting
             VendorSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
 
             if (searchString == null)

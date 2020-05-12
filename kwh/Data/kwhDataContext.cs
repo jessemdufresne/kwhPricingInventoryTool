@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using kwh.Models;
 
 public class kwhDataContext : DbContext
 {
@@ -8,19 +9,19 @@ public class kwhDataContext : DbContext
     }
 
     // DbSet<> properties to set up entity sets (i.e. database table)
-    public DbSet<kwh.Models.Component> Component { get; set; }
-    public DbSet<kwh.Models.Maturity> Maturity { get; set; }
-    public DbSet<kwh.Models.Project> Project { get; set; }
-    public DbSet<kwh.Models.Vendor> Vendor { get; set; }
-    public DbSet<kwh.Models.Volunteer> Volunteer { get; set; }
-    public DbSet<kwh.Models.Category> Category { get; set; }
+    public DbSet<Component> Component { get; set; }
+    public DbSet<Maturity> Maturity { get; set; }
+    public DbSet<Project> Project { get; set; }
+    public DbSet<Vendor> Vendor { get; set; }
+    public DbSet<AppUser> AppUser { get; set; }
+    public DbSet<Category> Category { get; set; }
 
     // Using EF Core Fluent API...
-    // Overrides or extends any Data Annotations in Models
-    // Specify global changes for Component.Id, set to auto-increment
+    // Global changes to override or extend any Data Annotations in Models
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<kwh.Models.Component>(c =>
+        // Set Component.Id to auto-increment
+        modelBuilder.Entity<Component>(c =>
         {
             c.Property(c => c.Id).ValueGeneratedOnAdd();
         });
@@ -28,35 +29,37 @@ public class kwhDataContext : DbContext
         // https://www.learnentityframeworkcore.com/configuration/fluent-api/ondelete-method
         // By default EF Core enables cascade delete for non-nullable FKs 
         // ...resulting in circular cascade delete rules
-        // DeleteBehavior.Restrict - dependents are unaffected
-        // DeleteBehavior.SetNull - FK values in dependent rows should update to NULL
+        // DeleteBehavior.SetNull - FK values in dependent rows will update to NULL
 
-        modelBuilder.Entity<kwh.Models.Vendor>()
+        modelBuilder.Entity<Vendor>()
             .HasMany(c => c.Components)
             .WithOne(v => v.Vendor)
             .OnDelete(DeleteBehavior.SetNull);
 
-        modelBuilder.Entity<kwh.Models.Maturity>()
+        modelBuilder.Entity<Maturity>()
             .HasMany(c => c.Components)
             .WithOne(m => m.Maturity)
             .OnDelete(DeleteBehavior.SetNull);
 
-        modelBuilder.Entity<kwh.Models.Project>()
+        modelBuilder.Entity<Project>()
             .HasMany(c => c.Components)
             .WithOne(p => p.Project)
             .OnDelete(DeleteBehavior.SetNull);
 
-        modelBuilder.Entity<kwh.Models.Category>()
+        modelBuilder.Entity<Category>()
             .HasMany(c => c.Components)
             .WithOne(c => c.Category)
             .OnDelete(DeleteBehavior.SetNull);
 
+        modelBuilder.Entity<AppUser>()
+            .HasMany(c => c.Components)
+            .WithOne(c => c.AppUser)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        modelBuilder.Entity<AppUser>()
+            .HasIndex(a => a.Email)
+            .IsUnique();
+
         base.OnModelCreating(modelBuilder);
     }
-}
-
-public class ApplicationUser
-{
-    public string Email { get; set; }
-    public string FullName { get; set; }
 }

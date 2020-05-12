@@ -1,8 +1,8 @@
 @page
-@model kwh.Pages.Volunteers.IndexModel
+@model kwh.Pages.AppUsers.IndexModel
 
 @{
-    ViewData["Title"] = "Volunteers";
+    ViewData["Title"] = "Users";
 }
 
 <!DOCTYPE html>
@@ -18,24 +18,24 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Volunteer[0].FirstName)
+                        @Html.DisplayNameFor(model => model.AppUser[0].FirstName)
                     </th>
                     <th>
                         <a asp-page="./Index" asp-route-sortOrder="@Model.LastSort">
-                            @Html.DisplayNameFor(model => model.Volunteer[0].LastName)
+                            @Html.DisplayNameFor(model => model.AppUser[0].LastName)
                         </a>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Volunteer[0].VolunteerPhone)
+                        @Html.DisplayNameFor(model => model.AppUser[0].Username)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Volunteer[0].VolunteerEmail)
+                        @Html.DisplayNameFor(model => model.AppUser[0].Email)
                     </th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Volunteer)
+                @foreach (var item in Model.AppUser)
                 {
                     <tr>
                         <td>
@@ -45,13 +45,13 @@
                             @Html.DisplayFor(modelItem => item.LastName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.VolunteerPhone)
+                            @Html.DisplayFor(modelItem => item.Username)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.VolunteerEmail)
+                            @Html.DisplayFor(modelItem => item.Email)
                         </td>
                         <td>
-                            <a asp-page="./Edit" asp-route-id="@item.VolunteerId" class="badge badge-primary">Edit</a>
+                            <a asp-page="./Edit" asp-route-id="@item.Id" class="badge badge-primary">Edit</a>
                         </td>
                     </tr>
                 }
@@ -60,7 +60,7 @@
     </div>
     <div class="row p-2">
         <div class="col-sm text-right p-2">
-            <input type="button" value="Create +" onclick="window.location.href = 'Volunteers/Create';" class="btn btn-primary" />
+            <input type="button" value="Add +" onclick="window.location.href = 'AppUsers/Create';" class="btn btn-primary" />
         </div>
     </div>
 </body>

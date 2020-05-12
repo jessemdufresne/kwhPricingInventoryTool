@@ -9,12 +9,30 @@ namespace kwh.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AppUser",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(maxLength: 25, nullable: false),
+                    LastName = table.Column<string>(maxLength: 25, nullable: false),
+                    Email = table.Column<string>(maxLength: 32, nullable: false),
+                    Username = table.Column<string>(nullable: true),
+                    Salt = table.Column<string>(nullable: true),
+                    PasswordHash = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppUser", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Category",
                 columns: table => new
                 {
                     CategoryId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CategoryName = table.Column<string>(maxLength: 25, nullable: false)
+                    CategoryName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,9 +58,9 @@ namespace kwh.Migrations
                 {
                     ProjectId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ProjectName = table.Column<string>(maxLength: 25, nullable: false),
+                    ProjectName = table.Column<string>(nullable: false),
                     ProjectYear = table.Column<int>(nullable: false),
-                    ProjectCountry = table.Column<string>(maxLength: 25, nullable: false)
+                    ProjectCountry = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,7 +73,7 @@ namespace kwh.Migrations
                 {
                     VendorId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    VendorName = table.Column<string>(maxLength: 25, nullable: false),
+                    VendorName = table.Column<string>(nullable: false),
                     VendorUrl = table.Column<string>(nullable: true),
                     VendorPhone = table.Column<string>(nullable: true),
                     VendorEmail = table.Column<string>(nullable: true)
@@ -66,22 +84,6 @@ namespace kwh.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Volunteer",
-                columns: table => new
-                {
-                    VolunteerId = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FirstName = table.Column<string>(maxLength: 25, nullable: false),
-                    LastName = table.Column<string>(maxLength: 25, nullable: false),
-                    VolunteerPhone = table.Column<string>(nullable: true),
-                    VolunteerEmail = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Volunteer", x => x.VolunteerId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Component",
                 columns: table => new
                 {
@@ -89,7 +91,7 @@ namespace kwh.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ComponentId = table.Column<int>(nullable: false),
                     VendorId = table.Column<int>(nullable: true),
-                    VolunteerId = table.Column<int>(nullable: false),
+                    AppUserId = table.Column<int>(nullable: true),
                     MaturityId = table.Column<int>(nullable: true),
                     ProjectId = table.Column<int>(nullable: true),
                     CategoryId = table.Column<int>(nullable: true),
@@ -106,6 +108,12 @@ namespace kwh.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Component", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Component_AppUser_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AppUser",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Component_Category_CategoryId",
                         column: x => x.CategoryId,
@@ -130,13 +138,18 @@ namespace kwh.Migrations
                         principalTable: "Vendor",
                         principalColumn: "VendorId",
                         onDelete: ReferentialAction.SetNull);
-                    table.ForeignKey(
-                        name: "FK_Component_Volunteer_VolunteerId",
-                        column: x => x.VolunteerId,
-                        principalTable: "Volunteer",
-                        principalColumn: "VolunteerId",
-                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppUser_Email",
+                table: "AppUser",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Component_AppUserId",
+                table: "Component",
+                column: "AppUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Component_CategoryId",
@@ -157,17 +170,15 @@ namespace kwh.Migrations
                 name: "IX_Component_VendorId",
                 table: "Component",
                 column: "VendorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Component_VolunteerId",
-                table: "Component",
-                column: "VolunteerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Component");
+
+            migrationBuilder.DropTable(
+                name: "AppUser");
 
             migrationBuilder.DropTable(
                 name: "Category");
@@ -180,9 +191,6 @@ namespace kwh.Migrations
 
             migrationBuilder.DropTable(
                 name: "Vendor");
-
-            migrationBuilder.DropTable(
-                name: "Volunteer");
         }
     }
 }

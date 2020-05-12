@@ -12,7 +12,6 @@ namespace kwh.Pages.Categories
     public class IndexModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public IndexModel(kwhDataContext context)
         {
             _context = context;
@@ -34,6 +33,7 @@ namespace kwh.Pages.Categories
         {
             CurrentSort = sortOrder;
 
+            // Toggle column sorting
             CategorySort = String.IsNullOrEmpty(sortOrder) ? "cat_desc" : "";
 
             if (searchString == null)
@@ -44,8 +44,7 @@ namespace kwh.Pages.Categories
             CurrentFilter = searchString;
             SearchBy = searchby;
 
-            IQueryable<Category> categories = from c in _context.Category
-                                               select c;
+            IQueryable<Category> categories = _context.Category;
 
             if (!String.IsNullOrEmpty(searchString))
             {

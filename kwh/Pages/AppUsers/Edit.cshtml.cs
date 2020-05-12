@@ -6,20 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace kwh.Pages.Volunteers
+namespace kwh.Pages.AppUsers
 {
     [Authorize]
     public class EditModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public EditModel(kwhDataContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Volunteer Volunteer { get; set; }
+        public AppUser AppUser { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,17 +27,15 @@ namespace kwh.Pages.Volunteers
                 return NotFound();
             }
 
-            Volunteer = await _context.Volunteer.FirstOrDefaultAsync(m => m.VolunteerId == id);
+            AppUser = await _context.AppUser.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Volunteer == null)
+            if (AppUser == null)
             {
                 return NotFound();
             }
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -46,7 +43,7 @@ namespace kwh.Pages.Volunteers
                 return Page();
             }
 
-            _context.Attach(Volunteer).State = EntityState.Modified;
+            _context.Attach(AppUser).State = EntityState.Modified;
 
             try
             {
@@ -54,7 +51,7 @@ namespace kwh.Pages.Volunteers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VolunteerExists(Volunteer.VolunteerId))
+                if (!VolunteerExists(AppUser.Id))
                 {
                     return NotFound();
                 }
@@ -69,7 +66,7 @@ namespace kwh.Pages.Volunteers
 
         private bool VolunteerExists(int id)
         {
-            return _context.Volunteer.Any(e => e.VolunteerId == id);
+            return _context.AppUser.Any(e => e.Id == id);
         }
     }
 }

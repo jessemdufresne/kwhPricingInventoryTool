@@ -6,24 +6,17 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
-// Tutorial from https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/update-related-data?view=aspnetcore-3.1
-// Creates and populates drop down lists for Inventory CRUD scaffolding
+// Create and populate drop down lists for Inventory scaffolding
 namespace kwh.Pages.Inventory
 {
     public class ComponentFKPageModel : PageModel
     {
-        /* Create multiple SelectLists to contain the list of FK details
-         * If selectedMaturity, selectedProject, selectedVendor,
-         * selectedVolunteer or selectedCategory is specified, that corresponding
-         * FK detail.
-         *
-         * Inventory Create and Edit pages model classes will derive from the
-         * ComponentFKPageModel class. 
-        */
+        // Each SelectList contains its corresponding FK detail
+        // Inventory/Create and Inventory/Edit inherits ComponentFKPageModel class
         public SelectList MaturityStatusSL { get; set; }
         public SelectList ProjectNameSL { get; set; }
         public SelectList VendorNameSL { get; set; }
-        public SelectList LastNameSL { get; set; }
+        public SelectList UserNameSL { get; set; }
         public SelectList CategoryNameSL { get; set; }
 
         public void PopulateMaturityDropDown(kwhDataContext _context,
@@ -60,15 +53,15 @@ namespace kwh.Pages.Inventory
                         "VendorId", "VendorName", selectedVendor);
         }
 
-        public void PopulateVolunteerDropDown(kwhDataContext _context,
-            object selectedVolunteer = null)
+        public void PopulateUserDropDown(kwhDataContext _context,
+            object selectedUser = null)
         {
-            var volunteerQuery = from v in _context.Volunteer
-                                 orderby v.LastName
-                                 select v;
+            var userQuery = from v in _context.AppUser
+                            orderby v.Username
+                            select v;
 
-            LastNameSL = new SelectList(volunteerQuery.AsNoTracking(),
-                        "VolunteerId", "LastName", selectedVolunteer);
+            UserNameSL = new SelectList(userQuery.AsNoTracking(),
+                        "AppUserId", "UserName", selectedUser);
         }
 
         public void PopulateCategoryDropDown(kwhDataContext _context,

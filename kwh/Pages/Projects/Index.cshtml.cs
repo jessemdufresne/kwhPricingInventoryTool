@@ -12,7 +12,6 @@ namespace kwh.Pages.Projects
     public class IndexModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public IndexModel(kwhDataContext context)
         {
             _context = context;
@@ -35,6 +34,7 @@ namespace kwh.Pages.Projects
         {
             CurrentSort = sortOrder;
 
+            // Toggle column sorting
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             YearSort = sortOrder == "Year" ? "year_desc" : "Year";
 
@@ -46,8 +46,7 @@ namespace kwh.Pages.Projects
             CurrentFilter = searchString;
             SearchBy = searchby;
 
-            IQueryable<Project> projects = from p in _context.Project
-                                             select p;
+            IQueryable<Project> projects = _context.Project;
 
             if (!String.IsNullOrEmpty(searchString))
             {

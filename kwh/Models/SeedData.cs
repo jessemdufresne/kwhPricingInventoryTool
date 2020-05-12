@@ -16,7 +16,7 @@ namespace kwh.Models
                 context.Database.EnsureCreated();
 
                 // Check if Maturity table is empty
-                // If empty, create test data in arrays and save changes
+                // If empty, create test data and save changes
                 if (!context.Maturity.Any())
                 {
                     context.Maturity.AddRange(
@@ -29,7 +29,7 @@ namespace kwh.Models
                 }
 
                 // Check if Project table is empty
-                // If empty, create test data in arrays and save changes
+                // If empty, create test data and save changes
                 if (!context.Project.Any())
                 {
                     context.Project.AddRange(
@@ -85,36 +85,33 @@ namespace kwh.Models
                 }
 
                 // Check if Volunteer table is empty
-                // If empty, create test data in arrays and save changes
-                if (!context.Volunteer.Any())
+                // If empty, create test data and save changes
+                if (!context.AppUser.Any())
                 {
-                    context.Volunteer.AddRange(
-                    new Volunteer
+                    context.AppUser.AddRange(
+                    new AppUser
                     {
-                        FirstName = "Daniel",
-                        LastName = "Nausner",
-                        VolunteerPhone = "206-735-1989",
-                        VolunteerEmail = "dan.nausner@gmail.com",
+                        FirstName = "Admin",
+                        LastName = "Admin",
+                        Email = "admin@admin.com",
+                        Username = "admin",
+                        Salt = "",
+                        PasswordHash = ""
                     },
-                    new Volunteer
+                    new AppUser
                     {
-                        FirstName = "Jeremiah",
-                        LastName = "Kalmus",
-                        VolunteerPhone = "425-354-7471 ",
-                        VolunteerEmail = "jeremiah.kalmus@gmail.com",
-                    },
-                    new Volunteer
-                    {
-                        FirstName = "Test",
-                        LastName = "Test",
-                        VolunteerPhone = "123-456-7890 ",
-                        VolunteerEmail = "test@test.com",
+                        FirstName = "Audrey",
+                        LastName = "Kan",
+                        Email = "kana@seattleu.edu",
+                        Username = "kana",
+                        Salt = "",
+                        PasswordHash = "AQAAAAEAACcQAAAAEE2CNOPjK0XOm0q1wNWoKT3vzU8fWUYCeeuMZa+rz7PnVGjjsg44j3dGFV9IUqEOzw=="
                     });
                     context.SaveChanges();
                 }
 
                 // Check if Vendor table is empty
-                // If empty, create test data in arrays and save changes
+                // If empty, create test data and save changes
                 if (!context.Vendor.Any())
                 {
                     context.Vendor.AddRange(
@@ -143,7 +140,7 @@ namespace kwh.Models
                 }
 
                 // Check if Category table is empty
-                // If empty, create test data in arrays and save changes
+                // If empty, create test data and save changes
                 if (!context.Category.Any())
                 {
                     context.Category.AddRange(
@@ -167,7 +164,7 @@ namespace kwh.Models
                 }
 
                 // Check if Component table is empty
-                // If empty, create test data in arrays and save changes
+                // If empty, create test data and save changes
                 if (!context.Component.Any())
                 {
                     context.Component.AddRange(
@@ -175,7 +172,7 @@ namespace kwh.Models
                     {
                         ComponentId = 1,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "MFR-25FBF52-100K",
                         PartName = "RES 100K OHM 1/4W 1% AXIAL",
                         UnitCost = 0.10M,
@@ -191,7 +188,7 @@ namespace kwh.Models
                     {
                         ComponentId = 2,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "WW3FT250",
                         PartName = "RES 250 OHM 3W 1% AXIAL",
                         UnitCost = 0.75M,
@@ -207,7 +204,7 @@ namespace kwh.Models
                     {
                         ComponentId = 3,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "1829390",
                         PartName = "TERM BLK HEADER 7POS GREEN",
                         UnitCost = 8.49M,
@@ -223,7 +220,7 @@ namespace kwh.Models
                     {
                         ComponentId = 4,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "UKL1C100KDD1TD",
                         PartName = "CAP ALUM 10UF 10% 16V RADIAL",
                         UnitCost = 0.40M,
@@ -239,7 +236,7 @@ namespace kwh.Models
                     {
                         ComponentId = 5,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "",
                         PartName = "Ethernet Extension",
                         UnitCost = 4.95M,
@@ -255,7 +252,7 @@ namespace kwh.Models
                     {
                         ComponentId = 6,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "",
                         PartName = "Phoenix Mounting Nuts",
                         UnitCost = 5.88M,
@@ -271,7 +268,7 @@ namespace kwh.Models
                     {
                         ComponentId = 7,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "",
                         PartName = "M3 Standoff",
                         UnitCost = 0.63M,
@@ -287,7 +284,7 @@ namespace kwh.Models
                     {
                         ComponentId = 8,
                         VendorId = 1,
-                        VolunteerId = 1,
+                        AppUserId = 1,
                         PartNumber = "",
                         PartName = "16GB Micro SD Card",
                         UnitCost = 5.79M,

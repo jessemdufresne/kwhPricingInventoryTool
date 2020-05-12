@@ -11,7 +11,6 @@ namespace kwh.Pages.Vendors
     public class DeleteModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public DeleteModel(kwhDataContext context)
         {
             _context = context;

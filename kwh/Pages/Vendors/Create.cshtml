@@ -2,51 +2,52 @@
 @model kwh.Pages.Vendors.CreateModel
 
 @{
-    ViewData["Title"] = "Create Vendor";
+    ViewData["Title"] = "Add a new vendor";
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta VendorName="viewport" content="width=device-width" />
     <title>Create</title>
 </head>
 <body>
     <br />
-    <h4>Vendor</h4>
-    <hr />
+    <h4>@ViewData["Title"]</h4>
     <div class="row">
         <div class="col-md-4">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Vendor.VendorName" class="control-label"></label>
-                    <input asp-for="Vendor.VendorName" class="form-control" placeholder="Example"/>
+                    <input asp-for="Vendor.VendorName" class="form-control" placeholder="Example" />
                     <span asp-validation-for="Vendor.VendorName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Vendor.VendorUrl" class="control-label"></label>
-                    <input asp-for="Vendor.VendorUrl" class="form-control" placeholder="https://www.example.com"/>
+                    <input asp-for="Vendor.VendorUrl" class="form-control" placeholder="https://www.example.com" />
                     <span asp-validation-for="Vendor.VendorUrl" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Vendor.VendorPhone" class="control-label"></label>
-                    <input asp-for="Vendor.VendorPhone" class="form-control" placeholder="123-456-7890"/>
+                    <input asp-for="Vendor.VendorPhone" class="form-control" placeholder="123-456-7890" />
                 </div>
                 <div class="form-group">
                     <label asp-for="Vendor.VendorEmail" class="control-label"></label>
-                    <input asp-for="Vendor.VendorEmail" class="form-control" placeholder="example@example.com"/>
+                    <input asp-for="Vendor.VendorEmail" class="form-control" placeholder="example@example.com" />
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                <div class="row p-2">
+                    <div class="form-group col-sm text-left p-2">
+                        <input type="submit" value="Add" class="btn btn-primary" />
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 
     <div>
-        <a asp-page="Index">Back to List</a>
+        <a asp-page="./Index">Back to List</a>
     </div>
 
     @section Scripts {
