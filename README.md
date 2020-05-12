@@ -2,7 +2,7 @@
 Pricing and inventory web application for Kilowatts for Humanity
 
 # Requirements
-### Visual Studio 2019 Community | https://visualstudio.microsoft.com/downloads/
+### [Visual Studio 2019 Community](https://visualstudio.microsoft.com/downloads/)
 
 Windows (Version 16.5) or For Mac (Version 8.5.3)
 
@@ -11,13 +11,13 @@ To check version…
 
 **Windows (Version 16.5)**
 1.	Open Visual Studio.
-2.	Select Help > About Microsoft Visual Studio.
-3.	Read the version number from the About dialog.
+2.	Select **Help** > **About Microsoft Visual Studio**.
+3.	Read the version number from the **About** dialog.
 
 **For Mac (Version 8.5.3)**
 1.	Open Visual Studio.
-2.	Select Visual Studio > About Visual Studio.
-3.	Read the version number from the Show Details button.
+2.	Select **Visual Studio** > **About Visual Studio**.
+3.	Read the version number from the **Show Details** button.
 
 ### MySql (Version 8.0.19)
 https://bertvv.github.io/notes-to-self/2015/11/16/automating-mysql_secure_installation/
@@ -30,7 +30,7 @@ If when you try `mysql -u root -p` and you cannot connect to MySQL…
 
 You must start the server
 
-Enter `mysql.server status` to confirm
+Enter `mysql.server status` to confirm server status
 
 Enter `mysql.server start`
 
@@ -73,48 +73,57 @@ Build kwh.csproj in Visual Studio
 
 ---
 
-Downloading MySQL on Ubuntu
-https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04
+### [Downloading MySQL on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04)
 
-MySQL on Ubunti 18.01
+MySQL on Ubuntu 18.01
+```
 sudo apt update
 sudo apt install mysql-server
 sudo mysql_secure_installation
+```
 
 ---
 
-Downloading MySQL on Windows
-•	Access download here: https://dev.mysql.com/downloads/file/?id=495321
-•	Click No thanks, just start my download
-•	Double click to run the MySQL installer. 
-•	License Agreement > Accept
-•	Setup Type > Server only
-•	If there are path conflicts… Change Data Directory from “C:\Program\MySQL\MySQL Server 8.0” to “C:\Program\MySQL\MySQL Server 8”
-•	Check requirements and install any other required software (e.g. Visual Studio)
-•	Installation > Execute
-•	Continue with installer…
-•	Group Replication > Standalone MySQL Server. This should be the default option.
-•	Continue with installer…
-•	Authentication Method > Select “Use Strong Password Encryption”
-o	 Use “uRootPass1!” as the MySQL Root Password
-•	Continue with installer…
-•	Execute to apply configurations
-•	Finish
-•	Connect to Server > Enter User: root and Password: uRootPass1! > Check
-•	Execute to apply further configurations
-•	Finish
+### Downloading MySQL on Windows
+* Access download [here](https://dev.mysql.com/downloads/file/?id=495321)
+* Click **No thanks, just start my download**
+* Double click to run the MySQL installer. 
+* License Agreement > **Accept**
+* Setup Type > **Server only**
+* If there are path conflicts… Change Data Directory from “C:\Program\MySQL\MySQL Server **8.0**” to “C:\Program\MySQL\MySQL Server **8**”
+* Check requirements and install any other required software (e.g. Visual Studio)
+* Installation > **Execute**
+* Continue with installer…
+* Group Replication > **Standalone MySQL Server**. This should be the default option.
+* Continue with installer…
+* Authentication Method > Select “Use Strong Password Encryption”
+..* Choose your MySQL Root Password
+* Continue with installer…
+* **Execute** to apply configurations
+* **Finish**
+*	Connect to Server > Enter User: **roo**t and Password: **yourPasswordHere** > **Check**
+*	**Execute** to apply further configurations
+*	**Finish**
 
 Now in command line…
-Type mysql -u root -p
+
+Type `mysql -u root -p`
+
 Enter password
-mysql> create database das;
-mysql> exit;
+
+`mysql> create database das;`
+
+`mysql> exit;`
 
 ---
 
 After installing MySQL and Visual Studio, you can now build the project. 
+
 Open the project in Visual Studio
-Navigate to Properties > launchSettings.json
+
+Navigate to **Properties** > **launchSettings.json**
+
 Confirm that http://localhost:5000 is correct. You may change the port.
-Click the Build button (  ) in the top left
+
+Click the **Build** button in the top left
 
