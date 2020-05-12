@@ -62,8 +62,7 @@ namespace kwh.Migrations
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
-                        .HasMaxLength(25);
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("CategoryId");
 
@@ -162,13 +161,11 @@ namespace kwh.Migrations
 
                     b.Property<string>("ProjectCountry")
                         .IsRequired()
-                        .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
-                        .HasMaxLength(25);
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProjectName")
                         .IsRequired()
-                        .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
-                        .HasMaxLength(25);
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("ProjectYear")
                         .HasColumnType("int");
@@ -189,8 +186,7 @@ namespace kwh.Migrations
 
                     b.Property<string>("VendorName")
                         .IsRequired()
-                        .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
-                        .HasMaxLength(25);
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("VendorPhone")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");

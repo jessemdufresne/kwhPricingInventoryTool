@@ -32,7 +32,7 @@ namespace kwh.Migrations
                 {
                     CategoryId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CategoryName = table.Column<string>(maxLength: 25, nullable: false)
+                    CategoryName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,9 +58,9 @@ namespace kwh.Migrations
                 {
                     ProjectId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ProjectName = table.Column<string>(maxLength: 25, nullable: false),
+                    ProjectName = table.Column<string>(nullable: false),
                     ProjectYear = table.Column<int>(nullable: false),
-                    ProjectCountry = table.Column<string>(maxLength: 25, nullable: false)
+                    ProjectCountry = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,7 +73,7 @@ namespace kwh.Migrations
                 {
                     VendorId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    VendorName = table.Column<string>(maxLength: 25, nullable: false),
+                    VendorName = table.Column<string>(nullable: false),
                     VendorUrl = table.Column<string>(nullable: true),
                     VendorPhone = table.Column<string>(nullable: true),
                     VendorEmail = table.Column<string>(nullable: true)

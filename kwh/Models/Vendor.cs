@@ -9,7 +9,6 @@ namespace kwh.Models
 
         [Required]
         [Display(Name = "Vendor")]
-        [StringLength(25, MinimumLength = 3)]
         public string VendorName { get; set; }
 
         [Display(Name = "URL")]

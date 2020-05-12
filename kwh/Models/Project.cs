@@ -9,7 +9,6 @@ namespace kwh.Models
 
         [Required]
         [Display(Name = "Project")]
-        [StringLength(25, MinimumLength = 3)]
         public string ProjectName { get; set; }
 
         [Required]
@@ -18,7 +17,6 @@ namespace kwh.Models
 
         [Required]
         [Display(Name = "Country")]
-        [StringLength(25, MinimumLength = 3)]
         public string ProjectCountry { get; set; }
 
         // Navigation property holds related 1:M entities

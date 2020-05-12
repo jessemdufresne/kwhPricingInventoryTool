@@ -49,16 +49,32 @@ namespace kwh.Pages.Inventory
                 return NotFound();
             }
 
+            var projectQuery = _context.Project
+                .OrderBy(p => p.ProjectYear)
+                .Select(p => p);
+
+            var vendorQuery = _context.Vendor
+                .OrderBy(v => v.VendorName)
+                .Select(v => v);
+
+            var categoryQuery = _context.Category
+                .OrderBy(c => c.CategoryName)
+                .Select(c => c);
+
+            var userQuery = _context.AppUser
+                .OrderBy(u => u.Username)
+                .Select(u => u);
+
             // Select existing FK navigation properties for drop down fields
             MaturityStatusSL = new SelectList(_context.Maturity.AsNoTracking(),
                 nameof(Maturity.MaturityId), nameof(Maturity.MaturityStatus));
-            ProjectNameSL = new SelectList(_context.Project.AsNoTracking(),
+            ProjectNameSL = new SelectList(projectQuery.AsNoTracking(),
                 nameof(Project.ProjectId), nameof(Project.ProjectName));
-            VendorNameSL = new SelectList(_context.Vendor.AsNoTracking(),
+            VendorNameSL = new SelectList(vendorQuery.AsNoTracking(),
                 nameof(Vendor.VendorId), nameof(Vendor.VendorName));
-            UserNameSL = new SelectList(_context.AppUser.AsNoTracking(),
+            UserNameSL = new SelectList(userQuery.AsNoTracking(),
                 nameof(AppUser.Id), nameof(AppUser.Username));
-            CategoryNameSL = new SelectList(_context.Category.AsNoTracking(),
+            CategoryNameSL = new SelectList(categoryQuery.AsNoTracking(),
                 nameof(Category.CategoryId), nameof(Category.CategoryName));
             return Page();
         }
@@ -72,8 +88,6 @@ namespace kwh.Pages.Inventory
 
             // Create a new Component object to insert into the database
             var emptyComponent = new Component();
-
-            var componentToUpdate = await _context.Component.FindAsync(id);
 
             // 1) Retrieve the ComponentId corresponding to the selected Id
             // "Updating" will insert a new record (i.e. increment Id and use same ComponentId)
@@ -99,20 +113,36 @@ namespace kwh.Pages.Inventory
                 return RedirectToPage("./Index");
             }
 
+            var projectQuery = _context.Project
+                .OrderBy(p => p.ProjectYear)
+                .Select(p => p);
+
+            var vendorQuery = _context.Vendor
+                .OrderBy(v => v.VendorName)
+                .Select(v => v);
+
+            var categoryQuery = _context.Category
+                .OrderBy(c => c.CategoryName)
+                .Select(c => c);
+
+            var userQuery = _context.AppUser
+                .OrderBy(u => u.Username)
+                .Select(u => u);
+
             // Select FK navigation properties for drop down fields if TryUpdateModelAsync fails
             MaturityStatusSL = new SelectList(_context.Maturity,
                 nameof(Maturity.MaturityId), nameof(Maturity.MaturityStatus),
                 emptyComponent.MaturityId);
-            ProjectNameSL = new SelectList(_context.Project,
+            ProjectNameSL = new SelectList(projectQuery,
                 nameof(Project.ProjectId), nameof(Project.ProjectName),
                 emptyComponent.ProjectId);
-            VendorNameSL = new SelectList(_context.Vendor,
+            VendorNameSL = new SelectList(vendorQuery,
                 nameof(Vendor.VendorId), nameof(Vendor.VendorName),
                 emptyComponent.VendorId);
-            UserNameSL = new SelectList(_context.AppUser,
+            UserNameSL = new SelectList(userQuery,
                 nameof(AppUser.Id), nameof(AppUser.Username),
                 emptyComponent.AppUserId);
-            CategoryNameSL = new SelectList(_context.Category,
+            CategoryNameSL = new SelectList(categoryQuery,
                 nameof(Category.CategoryId), nameof(Category.CategoryName),
                 emptyComponent.CategoryId);
             return Page();

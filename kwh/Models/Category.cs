@@ -9,7 +9,6 @@ namespace kwh.Models
 
         [Required]
         [Display(Name = "Category")]
-        [StringLength(25, MinimumLength = 3)]
         public string CategoryName { get; set; }
 
         // Navigation property holds related 1:M entities

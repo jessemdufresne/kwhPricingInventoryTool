@@ -16,7 +16,6 @@
     <Content Remove="Pages\Privacy.cshtml" />
     <Content Remove="Pages\Account\SignedOut.cshtml" />
     <Content Remove="Pages\Account\AccessDenied.cshtml" />
-    <Content Remove="Pages\AppUsers\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.20" />
@@ -47,7 +46,6 @@
     <Folder Include="Pages\Categories\" />
     <Folder Include="Pages\Vendors\" />
     <Folder Include="wwwroot\Images\" />
-    <Folder Include="Pages\AppUsers\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove=".DS_Store" />

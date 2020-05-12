@@ -88,7 +88,7 @@ namespace kwh.Models
                 // If empty, create test data and save changes
                 if (!context.AppUser.Any())
                 {
-                    context.AppUser.Add(
+                    context.AppUser.AddRange(
                     new AppUser
                     {
                         FirstName = "Admin",
@@ -97,6 +97,15 @@ namespace kwh.Models
                         Username = "admin",
                         Salt = "",
                         PasswordHash = ""
+                    },
+                    new AppUser
+                    {
+                        FirstName = "Audrey",
+                        LastName = "Kan",
+                        Email = "kana@seattleu.edu",
+                        Username = "kana",
+                        Salt = "",
+                        PasswordHash = "AQAAAAEAACcQAAAAEE2CNOPjK0XOm0q1wNWoKT3vzU8fWUYCeeuMZa+rz7PnVGjjsg44j3dGFV9IUqEOzw=="
                     });
                     context.SaveChanges();
                 }
