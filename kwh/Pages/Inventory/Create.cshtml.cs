@@ -3,12 +3,15 @@ using System.Threading.Tasks;
 using kwh.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace kwh.Pages.Inventory
 {
     // Derives ComponentFKPageModel to load FK navigation properties 
     [Authorize]
-    public class CreateModel : ComponentFKPageModel
+    public class CreateModel : PageModel
     {
         private readonly kwhDataContext _context;
         public CreateModel(kwhDataContext context)
@@ -16,14 +19,25 @@ namespace kwh.Pages.Inventory
             _context = context;
         }
 
+        public SelectList MaturityStatusSL { get; set; }
+        public SelectList ProjectNameSL { get; set; }
+        public SelectList VendorNameSL { get; set; }
+        public SelectList UserNameSL { get; set; }
+        public SelectList CategoryNameSL { get; set; }
+
         // Select FK navigation properties to populate drop down fields
         public IActionResult OnGet()
         {
-            PopulateVendorDropDown(_context);
-            PopulateMaturityDropDown(_context);
-            PopulateProjectDropDown(_context);
-            PopulateUserDropDown(_context);
-            PopulateCategoryDropDown(_context);
+            MaturityStatusSL = new SelectList(_context.Maturity.AsNoTracking(),
+                nameof(Maturity.MaturityId), nameof(Maturity.MaturityStatus));
+            ProjectNameSL = new SelectList(_context.Project.AsNoTracking(),
+                nameof(Project.ProjectId), nameof(Project.ProjectName));
+            VendorNameSL = new SelectList(_context.Vendor.AsNoTracking(),
+                nameof(Vendor.VendorId), nameof(Vendor.VendorName));
+            UserNameSL = new SelectList(_context.AppUser.AsNoTracking(),
+                nameof(AppUser.Id), nameof(AppUser.Username));
+            CategoryNameSL = new SelectList(_context.Category.AsNoTracking(),
+                nameof(Category.CategoryId), nameof(Category.CategoryName));
             return Page();
         }
 
@@ -61,11 +75,21 @@ namespace kwh.Pages.Inventory
 
             // Select FK navigation properties for drop down fields if
             // TryUpdateModelAsync fails
-            PopulateVendorDropDown(_context, emptyComponent.VendorId);
-            PopulateMaturityDropDown(_context, emptyComponent.MaturityId);
-            PopulateProjectDropDown(_context, emptyComponent.ProjectId);
-            PopulateUserDropDown(_context, emptyComponent.AppUserId);
-            PopulateCategoryDropDown(_context, emptyComponent.CategoryId);
+            MaturityStatusSL = new SelectList(_context.Maturity,
+                nameof(Maturity.MaturityId), nameof(Maturity.MaturityStatus),
+                emptyComponent.MaturityId);
+            ProjectNameSL = new SelectList(_context.Project,
+                nameof(Project.ProjectId), nameof(Project.ProjectName),
+                emptyComponent.ProjectId);
+            VendorNameSL = new SelectList(_context.Vendor,
+                nameof(Vendor.VendorId), nameof(Vendor.VendorName),
+                emptyComponent.VendorId);
+            UserNameSL = new SelectList(_context.AppUser,
+                nameof(AppUser.Id), nameof(AppUser.Username),
+                emptyComponent.AppUserId);
+            CategoryNameSL = new SelectList(_context.Category,
+                nameof(Category.CategoryId), nameof(Category.CategoryName),
+                emptyComponent.CategoryId);
             return Page();
         }
     }

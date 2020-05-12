@@ -5,7 +5,6 @@ namespace kwh.Models
 {
     public class Project
     {
-        [Key]
         public int ProjectId { get; set; }
 
         [Required]
@@ -14,9 +13,11 @@ namespace kwh.Models
         public string ProjectName { get; set; }
 
         [Required]
+        [Display(Name = "Year")]
         public int ProjectYear { get; set; }
 
         [Required]
+        [Display(Name = "Country")]
         [StringLength(25, MinimumLength = 3)]
         public string ProjectCountry { get; set; }
 

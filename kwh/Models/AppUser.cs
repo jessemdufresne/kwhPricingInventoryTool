@@ -6,7 +6,6 @@ namespace kwh.Models
 {
     public class AppUser
     {
-        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "First name is required")]

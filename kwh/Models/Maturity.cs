@@ -5,7 +5,6 @@ namespace kwh.Models
 {
     public class Maturity
     {
-        [Key]
         public int MaturityId { get; set; }
 
         [Required]

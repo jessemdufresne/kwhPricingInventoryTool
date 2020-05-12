@@ -3,13 +3,15 @@ using System.Threading.Tasks;
 using kwh.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace kwh.Pages.Inventory
 {
     // Derives ComponentFKPageModel to load FK navigation properties in drop down
     [Authorize]
-    public class EditModel : ComponentFKPageModel
+    public class EditModel : PageModel
     {
         private readonly kwhDataContext _context;
         public EditModel(kwhDataContext context)
@@ -19,6 +21,12 @@ namespace kwh.Pages.Inventory
 
         [BindProperty]
         public Component Component { get; set; }
+
+        public SelectList MaturityStatusSL { get; set; }
+        public SelectList ProjectNameSL { get; set; }
+        public SelectList VendorNameSL { get; set; }
+        public SelectList UserNameSL { get; set; }
+        public SelectList CategoryNameSL { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -42,11 +50,16 @@ namespace kwh.Pages.Inventory
             }
 
             // Select existing FK navigation properties for drop down fields
-            PopulateVendorDropDown(_context, Component.VendorId);
-            PopulateMaturityDropDown(_context, Component.MaturityId);
-            PopulateProjectDropDown(_context, Component.ProjectId);
-            PopulateUserDropDown(_context, Component.AppUserId);
-            PopulateCategoryDropDown(_context, Component.CategoryId);
+            MaturityStatusSL = new SelectList(_context.Maturity.AsNoTracking(),
+                nameof(Maturity.MaturityId), nameof(Maturity.MaturityStatus));
+            ProjectNameSL = new SelectList(_context.Project.AsNoTracking(),
+                nameof(Project.ProjectId), nameof(Project.ProjectName));
+            VendorNameSL = new SelectList(_context.Vendor.AsNoTracking(),
+                nameof(Vendor.VendorId), nameof(Vendor.VendorName));
+            UserNameSL = new SelectList(_context.AppUser.AsNoTracking(),
+                nameof(AppUser.Id), nameof(AppUser.Username));
+            CategoryNameSL = new SelectList(_context.Category.AsNoTracking(),
+                nameof(Category.CategoryId), nameof(Category.CategoryName));
             return Page();
         }
 
@@ -59,6 +72,8 @@ namespace kwh.Pages.Inventory
 
             // Create a new Component object to insert into the database
             var emptyComponent = new Component();
+
+            var componentToUpdate = await _context.Component.FindAsync(id);
 
             // 1) Retrieve the ComponentId corresponding to the selected Id
             // "Updating" will insert a new record (i.e. increment Id and use same ComponentId)
@@ -85,11 +100,21 @@ namespace kwh.Pages.Inventory
             }
 
             // Select FK navigation properties for drop down fields if TryUpdateModelAsync fails
-            PopulateVendorDropDown(_context, emptyComponent.VendorId);
-            PopulateMaturityDropDown(_context, emptyComponent.MaturityId);
-            PopulateProjectDropDown(_context, emptyComponent.ProjectId);
-            PopulateUserDropDown(_context, emptyComponent.AppUserId);
-            PopulateCategoryDropDown(_context, emptyComponent.CategoryId);
+            MaturityStatusSL = new SelectList(_context.Maturity,
+                nameof(Maturity.MaturityId), nameof(Maturity.MaturityStatus),
+                emptyComponent.MaturityId);
+            ProjectNameSL = new SelectList(_context.Project,
+                nameof(Project.ProjectId), nameof(Project.ProjectName),
+                emptyComponent.ProjectId);
+            VendorNameSL = new SelectList(_context.Vendor,
+                nameof(Vendor.VendorId), nameof(Vendor.VendorName),
+                emptyComponent.VendorId);
+            UserNameSL = new SelectList(_context.AppUser,
+                nameof(AppUser.Id), nameof(AppUser.Username),
+                emptyComponent.AppUserId);
+            CategoryNameSL = new SelectList(_context.Category,
+                nameof(Category.CategoryId), nameof(Category.CategoryName),
+                emptyComponent.CategoryId);
             return Page();
         }
     }

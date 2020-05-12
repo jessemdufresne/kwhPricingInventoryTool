@@ -1,8 +1,10 @@
 ﻿using System;
-using System.Linq;
+using kwh.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 
 // Create and populate drop down lists for Inventory scaffolding
 namespace kwh.Pages.Inventory
@@ -55,8 +57,8 @@ namespace kwh.Pages.Inventory
             object selectedUser = null)
         {
             var userQuery = from v in _context.AppUser
-                                 orderby v.LastName
-                                 select v;
+                            orderby v.Username
+                            select v;
 
             UserNameSL = new SelectList(userQuery.AsNoTracking(),
                         "AppUserId", "UserName", selectedUser);

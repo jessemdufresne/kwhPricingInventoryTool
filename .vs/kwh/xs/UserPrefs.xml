@@ -1,26 +1,10 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Inventory/ComponentFKPageModel.cs">
-    <Files>
-      <File FileName="kwh/Pages/Inventory/Create.cshtml.cs" Line="1" Column="1" />
-      <File FileName="kwh/Pages/Inventory/ComponentFKPageModel.cs" Line="26" Column="1" />
-      <File FileName="kwh/Pages/Inventory/Create.cshtml" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="kwh" expanded="True">
-            <Node name="kwh" expanded="True">
-              <Node name="Models" expanded="True" />
-              <Node name="Pages" expanded="True">
-                <Node name="Inventory" expanded="True">
-                  <Node name="ComponentFKPageModel.cs" selected="True" />
-                  <Node name="Create.cshtml" expanded="True" />
-                  <Node name="Details.cshtml" expanded="True" />
-                  <Node name="Edit.cshtml" expanded="True" />
-                  <Node name="Index.cshtml" expanded="True" />
-                </Node>
-              </Node>
-            </Node>
+          <Node name="kwh" expanded="True" selected="True">
+            <Node name="kwh" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -32,7 +16,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Catchpoint exceptionName="System.Exception" includeSubclasses="True" />
-      <Breakpoint file="/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/Pages/Inventory/Create.cshtml" relfile="kwh/Pages/Inventory/Create.cshtml" line="34" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
