@@ -50,7 +50,7 @@ Y
 Y
 Y
 ```
-```
+``` 
 mysql -u root -p
 mysql> create database das;
 mysql> exit;
