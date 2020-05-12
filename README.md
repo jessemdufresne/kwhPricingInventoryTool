@@ -26,18 +26,6 @@ https://gist.github.com/Mins/4602864#gistcomment-1294952
 
 ---
 
-If when you try `mysql -u root -p` and you cannot connect to MySQL… 
-
-You must start the server
-
-Enter `mysql.server status` to confirm server status
-
-Enter `mysql.server start`
-
-Then try `mysql -u root -p`  again 
-
----
-
 ### Downloading MySQL on macOS
 
 **Mysql 8.0.19 requires macOS >= 10.10** | https://flaviocopes.com/mysql-how-to-install/
@@ -127,3 +115,42 @@ Confirm that http://localhost:5000 is correct. You may change the port.
 
 Click the **Build** button in the top left
 
+---
+
+If when you try `mysql -u root -p` and you cannot connect to MySQL… 
+
+You must start the server
+
+Enter `mysql.server status` to confirm server status
+
+Enter `mysql.server start`
+
+Then try `mysql -u root -p`  again 
+
+---
+
+### **On macOS**
+
+If you are having issues starting mysql with `mysql.server start`...
+
+First try killing all MySQL processes
+```
+ps aux | grep mysql
+kill -9 mysqld_safe
+kill -15 mysql
+```
+Try `mysql.server start` again...
+
+If starting MySQL still does not work, then do:
+```
+brew services list
+brew services stop mysql
+```
+---
+
+If changes need to be made to the EF Core model (i.e. MySQL database):
+
+```
+dotnet ef migrations add YourMigrationName
+dotnet ef database update
+```
