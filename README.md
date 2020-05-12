@@ -1,4 +1,4 @@
-# kwhPricingInventoryTool
+# KWH Pricing and Inventory Tool (PIT)
 Lacking a central inventory management application can pose significant challenges for any volunteer-run organization, such as  redundant purchasing, inventory management errors, and internal miscommunication. This web application, built on the .NET Framework with C#, helps volunteer-run organizations (like KiloWatts for Humanity) manage their data logger inventory across implementation projects. The web app establishes an organization-wide inventory management system that centralizes the information. As a result, decision-making and information transfer among incoming and outgoing volunteers during the planning stages of future installations will be greatly improved. 
 
 # Requirements
