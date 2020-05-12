@@ -16,7 +16,7 @@ namespace kwh.Models
                 context.Database.EnsureCreated();
 
                 // Check if Maturity table is empty
-                // If empty, create test data in arrays and save changes
+                // If empty, create test data and save changes
                 if (!context.Maturity.Any())
                 {
                     context.Maturity.AddRange(
@@ -29,69 +29,69 @@ namespace kwh.Models
                 }
 
                 // Check if Project table is empty
-                // If empty, create test data in arrays and save changes
+                // If empty, create test data and save changes
                 if (!context.Project.Any())
                 {
                     context.Project.AddRange(
                     new Project
                     {
-                        Name = "Muhuru Bay",
-                        Year = 2014,
-                        Country = "Kenya"
+                        ProjectName = "Muhuru Bay",
+                        ProjectYear = 2014,
+                        ProjectCountry = "Kenya"
                     },
                     new Project
                     {
-                        Name = "Filibaba",
-                        Year = 2015,
-                        Country = "Zambia"
+                        ProjectName = "Filibaba",
+                        ProjectYear = 2015,
+                        ProjectCountry = "Zambia"
                     },
                     new Project
                     {
-                        Name = "Chalokwa",
-                        Year = 2016,
-                        Country = "Zambia"
+                        ProjectName = "Chalokwa",
+                        ProjectYear = 2016,
+                        ProjectCountry = "Zambia"
                     },
                     new Project
                     {
-                        Name = "Munyama",
-                        Year = 2017,
-                        Country = "Zambia"
+                        ProjectName = "Munyama",
+                        ProjectYear = 2017,
+                        ProjectCountry = "Zambia"
                     },
                     new Project
                     {
-                        Name = "Palawan",
-                        Year = 2018,
-                        Country = "Philippines"
+                        ProjectName = "Palawan",
+                        ProjectYear = 2018,
+                        ProjectCountry = "Philippines"
                     },
                     new Project
                     {
-                        Name = "Cheeba",
-                        Year = 2019,
-                        Country = "Zambia"
+                        ProjectName = "Cheeba",
+                        ProjectYear = 2019,
+                        ProjectCountry = "Zambia"
                     },
                     new Project
                     {
-                        Name = "Kanchomba",
-                        Year = 2020,
-                        Country = "Zambia"
+                        ProjectName = "Kanchomba",
+                        ProjectYear = 2020,
+                        ProjectCountry = "Zambia"
                     },
                     new Project
                     {
-                        Name = "Test",
-                        Year = 2020,
-                        Country = "Test"
+                        ProjectName = "Test",
+                        ProjectYear = 2020,
+                        ProjectCountry = "Test"
                     });
                     context.SaveChanges();
                 }
 
                 // Check if Volunteer table is empty
-                // If empty, create test data in arrays and save changes
+                // If empty, create test data and save changes
                 if (!context.AppUser.Any())
                 {
                     context.AppUser.Add(
                     new AppUser
                     {
-                        FirstName = "Test",
+                        FirstName = "Admin",
                         LastName = "Admin",
                         Email = "admin@admin.com",
                         Username = "admin",
@@ -102,36 +102,36 @@ namespace kwh.Models
                 }
 
                 // Check if Vendor table is empty
-                // If empty, create test data in arrays and save changes
+                // If empty, create test data and save changes
                 if (!context.Vendor.Any())
                 {
                     context.Vendor.AddRange(
                     new Vendor
                     {
-                        Name = "Amazon",
-                        Url = "https://www.amazon.com/",
-                        Phone = "",
-                        Email = "primary@amazon.com"
+                        VendorName = "Amazon",
+                        VendorUrl = "https://www.amazon.com/",
+                        VendorPhone = "",
+                        VendorEmail = "primary@amazon.com"
                     },
                     new Vendor
                     {
-                        Name = "Ebay",
-                        Url = "https://www.ebay.com/",
-                        Phone = "",
-                        Email = ""
+                        VendorName = "Ebay",
+                        VendorUrl = "https://www.ebay.com/",
+                        VendorPhone = "",
+                        VendorEmail = ""
                     },
                     new Vendor
                     {
-                        Name = "Test",
-                        Url = "",
-                        Phone = "1234567890",
-                        Email = "test@test.test"
+                        VendorName = "Test",
+                        VendorUrl = "",
+                        VendorPhone = "1234567890",
+                        VendorEmail = "test@test.test"
                     });
                     context.SaveChanges();
                 }
 
                 // Check if Category table is empty
-                // If empty, create test data in arrays and save changes
+                // If empty, create test data and save changes
                 if (!context.Category.Any())
                 {
                     context.Category.AddRange(
@@ -155,7 +155,7 @@ namespace kwh.Models
                 }
 
                 // Check if Component table is empty
-                // If empty, create test data in arrays and save changes
+                // If empty, create test data and save changes
                 if (!context.Component.Any())
                 {
                     context.Component.AddRange(

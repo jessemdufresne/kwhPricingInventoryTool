@@ -1,24 +1,24 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Projects/Edit.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Inventory/ComponentFKPageModel.cs">
     <Files>
-      <File FileName="kwh/Pages/Vendors/Create.cshtml" Line="50" Column="24" />
-      <File FileName="kwh/Pages/Vendors/Edit.cshtml" Line="54" Column="11" />
-      <File FileName="kwh/Pages/Categories/Create.cshtml" Line="38" Column="11" />
-      <File FileName="kwh/Pages/Categories/Edit.cshtml" Line="42" Column="1" />
-      <File FileName="kwh/Pages/Projects/Create.cshtml" Line="48" Column="11" NotebookId="1" />
-      <File FileName="kwh/Pages/Projects/Edit.cshtml" Line="48" Column="1" NotebookId="1" />
+      <File FileName="kwh/Pages/Inventory/Create.cshtml.cs" Line="1" Column="1" />
+      <File FileName="kwh/Pages/Inventory/ComponentFKPageModel.cs" Line="26" Column="1" />
+      <File FileName="kwh/Pages/Inventory/Create.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="kwh" expanded="True">
             <Node name="kwh" expanded="True">
+              <Node name="Models" expanded="True" />
               <Node name="Pages" expanded="True">
-                <Node name="Categories" expanded="True" />
-                <Node name="Projects" expanded="True">
-                  <Node name="Edit.cshtml" selected="True" />
+                <Node name="Inventory" expanded="True">
+                  <Node name="ComponentFKPageModel.cs" selected="True" />
+                  <Node name="Create.cshtml" expanded="True" />
+                  <Node name="Details.cshtml" expanded="True" />
+                  <Node name="Edit.cshtml" expanded="True" />
+                  <Node name="Index.cshtml" expanded="True" />
                 </Node>
-                <Node name="Vendors" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -28,9 +28,12 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.kwh PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Catchpoint exceptionName="System.Exception" includeSubclasses="True" />
+      <Breakpoint file="/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/Pages/Inventory/Create.cshtml" relfile="kwh/Pages/Inventory/Create.cshtml" line="34" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

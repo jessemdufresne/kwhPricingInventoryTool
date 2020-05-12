@@ -12,7 +12,6 @@ namespace kwh.Pages.Inventory
     public class EditModel : ComponentFKPageModel
     {
         private readonly kwhDataContext _context;
-
         public EditModel(kwhDataContext context)
         {
             _context = context;
@@ -34,7 +33,8 @@ namespace kwh.Pages.Inventory
                 .Include(c => c.Project)
                 .Include(c => c.Vendor)
                 .Include(c => c.AppUser)
-                .Include(c => c.Category).FirstOrDefaultAsync(m => m.Id == id);
+                .Include(c => c.Category)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Component == null)
             {
@@ -50,9 +50,6 @@ namespace kwh.Pages.Inventory
             return Page();
         }
 
-        // TryUpdateModelAsync prevents overposting
-        // To protect from overposting attacks, enable specific bind properties
-        // More details at https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
@@ -63,12 +60,9 @@ namespace kwh.Pages.Inventory
             // Create a new Component object to insert into the database
             var emptyComponent = new Component();
 
-            // 1) Retrieve the Component object corresponding to the selected Id
-            var componentToUpdate = await _context.Component.FindAsync(id);
-
-            // "Updates" to a component, should insert a new record (i.e. increment PK Id and use same ComponentId) 
-            // 2) Retrieve the ComponentId corresponding to the selected Id
-            // ** EF Core LINQ-to-Entities Query (written in method syntax) **
+            // 1) Retrieve the ComponentId corresponding to the selected Id
+            // "Updating" will insert a new record (i.e. increment Id and use same ComponentId)
+            // EF Core LINQ-to-Entities Method Syntax
             var compId = _context.Component
                 .Where(x => x.Id == id)
                 .Select(x => x.ComponentId)
@@ -77,12 +71,12 @@ namespace kwh.Pages.Inventory
             // 2) Asynchronously retrieve user input
             if (await TryUpdateModelAsync<Component>(
                  emptyComponent,
-                 "component",   // Prefix for form value.
+                 "component",
                  c => c.PartNumber, c => c.PartName, c => c.CategoryId, c => c.VendorId,
                  c => c.UnitCost, c => c.Notes, c => c.MaturityId, c => c.Url,
                  c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.AppUserId))
             {
-                // 3) Manually set the same ComponentId before adding a new record
+                // 3) Manually assign the same ComponentId before adding a new record
                 emptyComponent.ComponentId = compId;
                 _context.Component.Add(emptyComponent);
                 // 4) Save changes to the database
@@ -90,13 +84,12 @@ namespace kwh.Pages.Inventory
                 return RedirectToPage("./Index");
             }
 
-            // Select FK navigation properties for drop down fields if
-            // TryUpdateModelAsync fails
-            PopulateVendorDropDown(_context, componentToUpdate.VendorId);
-            PopulateMaturityDropDown(_context, componentToUpdate.MaturityId);
-            PopulateProjectDropDown(_context, componentToUpdate.ProjectId);
-            PopulateUserDropDown(_context, componentToUpdate.AppUserId);
-            PopulateCategoryDropDown(_context, componentToUpdate.CategoryId);
+            // Select FK navigation properties for drop down fields if TryUpdateModelAsync fails
+            PopulateVendorDropDown(_context, emptyComponent.VendorId);
+            PopulateMaturityDropDown(_context, emptyComponent.MaturityId);
+            PopulateProjectDropDown(_context, emptyComponent.ProjectId);
+            PopulateUserDropDown(_context, emptyComponent.AppUserId);
+            PopulateCategoryDropDown(_context, emptyComponent.CategoryId);
             return Page();
         }
     }

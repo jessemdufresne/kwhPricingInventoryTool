@@ -17,10 +17,10 @@ public class kwhDataContext : DbContext
     public DbSet<Category> Category { get; set; }
 
     // Using EF Core Fluent API...
-    // Overrides or extends any Data Annotations in Models
-    // Specify global changes for Component.Id, set to auto-increment
+    // Global changes to override or extend any Data Annotations in Models
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // Set Component.Id to auto-increment
         modelBuilder.Entity<Component>(c =>
         {
             c.Property(c => c.Id).ValueGeneratedOnAdd();
@@ -29,8 +29,7 @@ public class kwhDataContext : DbContext
         // https://www.learnentityframeworkcore.com/configuration/fluent-api/ondelete-method
         // By default EF Core enables cascade delete for non-nullable FKs 
         // ...resulting in circular cascade delete rules
-        // DeleteBehavior.Restrict - dependents are unaffected
-        // DeleteBehavior.SetNull - FK values in dependent rows should update to NULL
+        // DeleteBehavior.SetNull - FK values in dependent rows will update to NULL
 
         modelBuilder.Entity<Vendor>()
             .HasMany(c => c.Components)

@@ -43,7 +43,10 @@ namespace kwh
             {
                 app.UseExceptionHandler("/Error");
 
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                // The default HSTS value is 30 days.
+                // To change for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                // https://docs.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio#http-strict-transport-security-protocol-hsts
+                // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-3.1
                 app.UseHsts();
             }
 

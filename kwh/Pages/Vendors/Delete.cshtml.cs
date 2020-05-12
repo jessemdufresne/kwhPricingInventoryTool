@@ -11,7 +11,6 @@ namespace kwh.Pages.Vendors
     public class DeleteModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public DeleteModel(kwhDataContext context)
         {
             _context = context;
@@ -27,7 +26,7 @@ namespace kwh.Pages.Vendors
                 return NotFound();
             }
 
-            Vendor = await _context.Vendor.FirstOrDefaultAsync(m => m.Id == id);
+            Vendor = await _context.Vendor.FirstOrDefaultAsync(m => m.VendorId == id);
 
             if (Vendor == null)
             {

@@ -11,7 +11,6 @@ namespace kwh.Pages.Projects
     public class DeleteModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public DeleteModel(kwhDataContext context)
         {
             _context = context;
@@ -27,7 +26,7 @@ namespace kwh.Pages.Projects
                 return NotFound();
             }
 
-            Project = await _context.Project.FirstOrDefaultAsync(m => m.Id == id);
+            Project = await _context.Project.FirstOrDefaultAsync(m => m.ProjectId == id);
 
             if (Project == null)
             {

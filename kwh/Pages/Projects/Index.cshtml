@@ -40,18 +40,18 @@
                         <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
                            asp-route-CurrentFilter="@Model.CurrentFilter"
                            asp-route-sortOrder="@Model.NameSort">
-                            @Html.DisplayNameFor(model => model.Project[0].Name)
+                            @Html.DisplayNameFor(model => model.Project[0].ProjectName)
                         </a>
                     </th>
                     <th>
                         <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
                            asp-route-CurrentFilter="@Model.CurrentFilter"
                            asp-route-sortOrder="@Model.YearSort">
-                            @Html.DisplayNameFor(model => model.Project[0].Year)
+                            @Html.DisplayNameFor(model => model.Project[0].ProjectYear)
                         </a>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Project[0].Country)
+                        @Html.DisplayNameFor(model => model.Project[0].ProjectCountry)
                     </th>
                     <th></th>
                 </tr>
@@ -61,16 +61,16 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @Html.DisplayFor(modelItem => item.ProjectName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Year)
+                            @Html.DisplayFor(modelItem => item.ProjectYear)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Country)
+                            @Html.DisplayFor(modelItem => item.ProjectCountry)
                         </td>
                         <td>
-                            <a asp-page="./Edit" asp-route-id="@item.Id" class="badge badge-primary">Edit</a>
+                            <a asp-page="./Edit" asp-route-id="@item.ProjectId" class="badge badge-primary">Edit</a>
                         </td>
                     </tr>
                 }

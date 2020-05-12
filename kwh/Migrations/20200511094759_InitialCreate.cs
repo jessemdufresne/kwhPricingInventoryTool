@@ -19,7 +19,7 @@ namespace kwh.Migrations
                     Email = table.Column<string>(maxLength: 32, nullable: false),
                     Username = table.Column<string>(nullable: true),
                     Salt = table.Column<string>(nullable: true),
-                    PasswordHash = table.Column<string>(maxLength: 60, nullable: true)
+                    PasswordHash = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -30,57 +30,57 @@ namespace kwh.Migrations
                 name: "Category",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    CategoryId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CategoryName = table.Column<string>(maxLength: 25, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.Id);
+                    table.PrimaryKey("PK_Category", x => x.CategoryId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Maturity",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    MaturityId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     MaturityStatus = table.Column<string>(maxLength: 25, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Maturity", x => x.Id);
+                    table.PrimaryKey("PK_Maturity", x => x.MaturityId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Project",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    ProjectId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 25, nullable: false),
-                    Year = table.Column<int>(nullable: false),
-                    Country = table.Column<string>(maxLength: 25, nullable: false)
+                    ProjectName = table.Column<string>(maxLength: 25, nullable: false),
+                    ProjectYear = table.Column<int>(nullable: false),
+                    ProjectCountry = table.Column<string>(maxLength: 25, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Project", x => x.Id);
+                    table.PrimaryKey("PK_Project", x => x.ProjectId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Vendor",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    VendorId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 25, nullable: false),
-                    Url = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true)
+                    VendorName = table.Column<string>(maxLength: 25, nullable: false),
+                    VendorUrl = table.Column<string>(nullable: true),
+                    VendorPhone = table.Column<string>(nullable: true),
+                    VendorEmail = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vendor", x => x.Id);
+                    table.PrimaryKey("PK_Vendor", x => x.VendorId);
                 });
 
             migrationBuilder.CreateTable(
@@ -118,25 +118,25 @@ namespace kwh.Migrations
                         name: "FK_Component_Category_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Category",
-                        principalColumn: "Id",
+                        principalColumn: "CategoryId",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Component_Maturity_MaturityId",
                         column: x => x.MaturityId,
                         principalTable: "Maturity",
-                        principalColumn: "Id",
+                        principalColumn: "MaturityId",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Component_Project_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Project",
-                        principalColumn: "Id",
+                        principalColumn: "ProjectId",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Component_Vendor_VendorId",
                         column: x => x.VendorId,
                         principalTable: "Vendor",
-                        principalColumn: "Id",
+                        principalColumn: "VendorId",
                         onDelete: ReferentialAction.SetNull);
                 });
 

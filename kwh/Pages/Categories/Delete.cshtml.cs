@@ -11,7 +11,6 @@ namespace kwh.Pages.Categories
     public class DeleteModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public DeleteModel(kwhDataContext context)
         {
             _context = context;
@@ -27,7 +26,7 @@ namespace kwh.Pages.Categories
                 return NotFound();
             }
 
-            Category = await _context.Category.FirstOrDefaultAsync(m => m.Id == id);
+            Category = await _context.Category.FirstOrDefaultAsync(m => m.CategoryId == id);
 
             if (Category == null)
             {

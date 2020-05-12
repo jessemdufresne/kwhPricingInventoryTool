@@ -13,7 +13,6 @@ namespace kwh.Pages.Inventory
     public class DetailsModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public DetailsModel(kwhDataContext context)
         {
             _context = context;
@@ -32,18 +31,18 @@ namespace kwh.Pages.Inventory
             }
 
             // 1) Retrieve the ComponentId corresponding to the selected Id
-            // ** EF Core LINQ-to-Entities Query (written in method syntax) **
+            // EF Core LINQ-to-Entities Method Syntax
             var compId = _context.Component
                 .Where(x => x.Id == id)
                 .Select(x => x.ComponentId)
                 .FirstOrDefault();
 
-            // 2) Retrieve all historical records for the selected ComponentId ordered by timestamp
+            // 2) Retrieve all historical records for the selected ComponentId
             IQueryable<Component> graph = _context.Component
                 .Where(x => x.ComponentId == compId)
                 .OrderBy(x => x.Timestamp);
 
-            // 3) Retrieve unit costs and timestamps, then create a list from query
+            // 3) Retrieve timestamps for x-axis and unit costs for y-axis
             var costs = graph.Select(c => c.UnitCost).ToList();
             var time = graph.Select(c => c.Timestamp).ToList();
 
@@ -52,8 +51,8 @@ namespace kwh.Pages.Inventory
             List<string> t = time.ConvertAll(x => x.ToString("g"));
             TimestampsList = new HtmlString("'" + string.Join("','", t) + "'");
 
-            // 5) Retrieve all historical records for the selected ComponentId ordered by timestamp
-            // ** EF Core LINQ-to-Entities Query (written in method syntax) **
+            // 5) Retrieve all historical records for the selected ComponentId
+            // EF Core LINQ-to-Entities Method Syntax
             IQueryable<Component> components = _context.Component
                 .Where(x => x.ComponentId == compId)
                 .OrderByDescending(x => x.Timestamp)

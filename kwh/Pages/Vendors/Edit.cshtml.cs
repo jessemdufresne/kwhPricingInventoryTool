@@ -12,7 +12,6 @@ namespace kwh.Pages.Vendors
     public class EditModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public EditModel(kwhDataContext context)
         {
             _context = context;
@@ -28,7 +27,7 @@ namespace kwh.Pages.Vendors
                 return NotFound();
             }
 
-            Vendor = await _context.Vendor.FirstOrDefaultAsync(m => m.Id == id);
+            Vendor = await _context.Vendor.FirstOrDefaultAsync(m => m.VendorId == id);
 
             if (Vendor == null)
             {
@@ -37,8 +36,6 @@ namespace kwh.Pages.Vendors
             return Page();
         }
 
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -54,7 +51,7 @@ namespace kwh.Pages.Vendors
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VendorExists(Vendor.Id))
+                if (!VendorExists(Vendor.VendorId))
                 {
                     return NotFound();
                 }
@@ -69,7 +66,7 @@ namespace kwh.Pages.Vendors
 
         private bool VendorExists(int id)
         {
-            return _context.Vendor.Any(e => e.Id == id);
+            return _context.Vendor.Any(e => e.VendorId == id);
         }
     }
 }

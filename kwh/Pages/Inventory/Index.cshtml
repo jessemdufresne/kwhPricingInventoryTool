@@ -120,7 +120,7 @@
                             @Html.DisplayFor(modelItem => item.PartName)
                         </td>
                         <td style="display:none;" data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.Vendor.Name)
+                            @Html.DisplayFor(modelItem => item.Vendor.VendorName)
                         </td>
                         <td data-f-sz="11">
                             @Html.DisplayFor(modelItem => item.UnitCost)
@@ -141,10 +141,10 @@
                             @Html.DisplayFor(modelItem => item.QuantityNeeded)
                         </td>
                         <td data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.Project.Name)
+                            @Html.DisplayFor(modelItem => item.Project.ProjectName)
                         </td>
                         <td style="display:none;" data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.AppUser.LastName)
+                            @Html.DisplayFor(modelItem => item.AppUser.Username)
                         </td>
                         <td data-exclude="true">
                             <a asp-page="./Edit" asp-route-id="@item.Id" class="badge badge-primary">Edit</a> |

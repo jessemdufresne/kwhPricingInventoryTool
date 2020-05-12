@@ -49,7 +49,7 @@ namespace kwh.Pages.Account
                 ModelState.AddModelError(string.Empty, ErrorMessage);
             }
 
-            // Clear the existing external cookie
+            // Clears existing external cookie
             await HttpContext.SignOutAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -63,6 +63,7 @@ namespace kwh.Pages.Account
             if (ModelState.IsValid)
             {
 
+                // Authenticate with salt hashing
                 var user = await AuthenticateUser(Input.Username, Input.Password);
 
                 if (user == null)
@@ -86,11 +87,11 @@ namespace kwh.Pages.Account
                     new ClaimsPrincipal(claimsIdentity),
                     new AuthenticationProperties
                     {
-                        // Refreshing the authentication session should be allowed.
+                        // Allows user to refresh the auth session
                         AllowRefresh = true,
-                        // Aauthentication ticket expires in 25 mins
+                        // Sets auth ticket to expire in 25 mins
                         ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(25),
-                        // Auth session is persisted across multiple requests
+                        // Persists auth session across multiple requests
                         IsPersistent = true,
                     });
 
@@ -98,28 +99,28 @@ namespace kwh.Pages.Account
                 return LocalRedirect(returnUrl);
             }
 
-            // Something failed. Redisplay the form.
+            // Failed: redisplay the page
             return Page();
         }
 
         private async Task<AppUser> AuthenticateUser(string login, string password)
         {
-            // For demonstration purposes, authenticate a user
-            // with a static email address. Ignore the password.
-            // Assume that checking the database takes 500ms
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
                 return null;
             }
 
+            // Check if user exists in db
             var user = await _context.AppUser
                 .AsNoTracking()
-                .Where(v => v.Email.Contains(login.ToLower()))
+                .Where(v => v.Email.Contains(login))
                 .FirstOrDefaultAsync()
                 .ConfigureAwait(false);
 
+            // User was not found
             if (user == null) { return null; }
 
+            // Compare given password and stored password hash
             if (VerifyPassword(user.PasswordHash, password))
             {
                 return user;
@@ -134,12 +135,6 @@ namespace kwh.Pages.Account
         private bool VerifyPassword(string hash, string password)
         {
             return Crypto.VerifyHashedPassword(hash, password);
-        }
-
-        // Hash a password
-        private string HashPassword(string password)
-        {
-            return Crypto.HashPassword(password);
         }
     }
 }

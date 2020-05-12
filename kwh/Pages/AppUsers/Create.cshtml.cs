@@ -11,7 +11,7 @@ using CryptoHelper;
 
 namespace kwh.Pages.AppUsers
 {
-    [Authorize]
+    //[Authorize]
     public class CreateModel : PageModel
     {
         private readonly kwhDataContext _context;
@@ -28,8 +28,6 @@ namespace kwh.Pages.AppUsers
         [BindProperty]
         public AppUser AppUser { get; set; }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -37,25 +35,25 @@ namespace kwh.Pages.AppUsers
                 return Page();
             }
 
+            // Emails are unique. Check if this is an exisiting email
             var userId = _context.AppUser
                 .Where(u => u.Email.Contains(AppUser.Email.ToLower()))
                 .Select(u => u.Id)
                 .FirstOrDefault();
 
-            // If there is no existing email, add a new user
+            // If email does not exist, proceed with adding a new user
             if (userId == 0)
             {
-
-                // Manually set properties before adding a new record
-                AppUser.Email = AppUser.Email.ToLower();
+                AppUser.Email = AppUser.Email;
+                // Username is set to the email's username (excluding '@' and the domain)
                 AppUser.Username = AppUser.Email.Substring(0, Math.Max(AppUser.Email.IndexOf('@'), 0));
                 AppUser.Salt = "";
 
+                // Hash password using CryptoHelper
                 var hashedPassword = HashPassword(AppUser.Password);
                 AppUser.PasswordHash = hashedPassword;
                 _context.AppUser.Add(AppUser);
 
-                // Save changes to the database
                 try
                 {
                     await _context.SaveChangesAsync();

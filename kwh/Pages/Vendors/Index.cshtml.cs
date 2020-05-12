@@ -12,7 +12,6 @@ namespace kwh.Pages.Vendors
     public class IndexModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public IndexModel(kwhDataContext context)
         {
             _context = context;
@@ -34,6 +33,7 @@ namespace kwh.Pages.Vendors
         {
             CurrentSort = sortOrder;
 
+            // Toggle column sorting
             VendorSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
 
             if (searchString == null)
@@ -50,16 +50,16 @@ namespace kwh.Pages.Vendors
             if (!String.IsNullOrEmpty(searchString))
             {
                 vendors = vendors
-                        .Where(c => c.Name.ToUpper().Contains(searchString.ToUpper()));
+                        .Where(c => c.VendorName.ToUpper().Contains(searchString.ToUpper()));
             }
 
             switch (sortOrder)
             {
                 case "name_desc":
-                    vendors = vendors.OrderByDescending(c => c.Name);
+                    vendors = vendors.OrderByDescending(c => c.VendorName);
                     break;
                 default:
-                    vendors = vendors.OrderBy(c => c.Name);
+                    vendors = vendors.OrderBy(c => c.VendorName);
                     break;
             }
 

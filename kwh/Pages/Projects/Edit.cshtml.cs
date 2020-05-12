@@ -12,7 +12,6 @@ namespace kwh.Pages.Projects
     public class EditModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public EditModel(kwhDataContext context)
         {
             _context = context;
@@ -28,7 +27,7 @@ namespace kwh.Pages.Projects
                 return NotFound();
             }
 
-            Project = await _context.Project.FirstOrDefaultAsync(m => m.Id == id);
+            Project = await _context.Project.FirstOrDefaultAsync(m => m.ProjectId == id);
 
             if (Project == null)
             {
@@ -37,8 +36,6 @@ namespace kwh.Pages.Projects
             return Page();
         }
 
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -54,7 +51,7 @@ namespace kwh.Pages.Projects
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProjectExists(Project.Id))
+                if (!ProjectExists(Project.ProjectId))
                 {
                     return NotFound();
                 }
@@ -69,7 +66,7 @@ namespace kwh.Pages.Projects
 
         private bool ProjectExists(int id)
         {
-            return _context.Project.Any(e => e.Id == id);
+            return _context.Project.Any(e => e.ProjectId == id);
         }
     }
 }

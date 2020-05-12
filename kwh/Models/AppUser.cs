@@ -2,8 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-// Using EF Core Data Annotations
-
 namespace kwh.Models
 {
     public class AppUser
@@ -32,20 +30,20 @@ namespace kwh.Models
 
         public string PasswordHash { get; set; }
 
-        [Required(ErrorMessage = "Password is required")]
         [NotMapped]
+        [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
         [StringLength(14, ErrorMessage = "Must be between 8 and 14 characters", MinimumLength = 8)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Confirm Password is required")]
         [NotMapped]
+        [Required(ErrorMessage = "Confirm Password is required")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "Passwords do not match.")]
         public string ConfirmPassword { get; set; }
 
-        // Navigation property holds related entities in a 1:M
+        // Navigation property holds related 1:M entities
         public ICollection<Component> Components { get; set; }
     }
 }

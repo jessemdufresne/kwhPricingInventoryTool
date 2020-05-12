@@ -12,8 +12,7 @@ namespace kwh.Models
 
         public int ComponentId { get; set; }
 
-        // Set foreign keys and corresponding navigation properties
-        // to hold related entities of a 1:M relationship
+        // Set FKs to hold related 1:M entities
         [Display(Name = "Vendor")]
         public int? VendorId { get; set; }
 
@@ -61,10 +60,10 @@ namespace kwh.Models
         [Display(Name = "Quantity Needed")]
         public int QuantityNeeded { get; set; }
 
+        //.Identity for Add action only
+        //.Computed is for Add and Update actions...
         [DataType(DataType.Date)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime Timestamp { get; set; }
-        //.Identity for Add action only
-        //.Computed is for Add and Update actions...
     }
 }

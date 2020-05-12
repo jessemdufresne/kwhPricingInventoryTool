@@ -12,7 +12,6 @@ namespace kwh.Pages.Categories
     public class EditModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public EditModel(kwhDataContext context)
         {
             _context = context;
@@ -28,7 +27,7 @@ namespace kwh.Pages.Categories
                 return NotFound();
             }
 
-            Category = await _context.Category.FirstOrDefaultAsync(m => m.Id == id);
+            Category = await _context.Category.FirstOrDefaultAsync(m => m.CategoryId == id);
 
             if (Category == null)
             {
@@ -37,8 +36,6 @@ namespace kwh.Pages.Categories
             return Page();
         }
 
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -54,7 +51,7 @@ namespace kwh.Pages.Categories
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(Category.Id))
+                if (!CategoryExists(Category.CategoryId))
                 {
                     return NotFound();
                 }
@@ -69,7 +66,7 @@ namespace kwh.Pages.Categories
 
         private bool CategoryExists(int id)
         {
-            return _context.Category.Any(e => e.Id == id);
+            return _context.Category.Any(e => e.CategoryId == id);
         }
     }
 }

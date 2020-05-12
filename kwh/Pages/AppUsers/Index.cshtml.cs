@@ -13,7 +13,6 @@ namespace kwh.Pages.AppUsers
     public class IndexModel : PageModel
     {
         private readonly kwhDataContext _context;
-
         public IndexModel(kwhDataContext context)
         {
             _context = context;
@@ -29,6 +28,7 @@ namespace kwh.Pages.AppUsers
         {
             CurrentSort = sortOrder;
 
+            // Toggle sorting
             LastSort = String.IsNullOrEmpty(sortOrder) ? "last_desc" : "";
 
             IQueryable<AppUser> users = _context.AppUser;

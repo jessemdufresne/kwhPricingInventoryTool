@@ -39,17 +39,17 @@
                         <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
                            asp-route-CurrentFilter="@Model.CurrentFilter"
                            asp-route-sortOrder="@Model.VendorSort">
-                            @Html.DisplayNameFor(model => model.Vendor[0].Name)
+                            @Html.DisplayNameFor(model => model.Vendor[0].VendorName)
                         </a>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Vendor[0].Url)
+                        @Html.DisplayNameFor(model => model.Vendor[0].VendorUrl)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Vendor[0].Phone)
+                        @Html.DisplayNameFor(model => model.Vendor[0].VendorPhone)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Vendor[0].Email)
+                        @Html.DisplayNameFor(model => model.Vendor[0].VendorEmail)
                     </th>
                     <th></th>
                 </tr>
@@ -59,19 +59,19 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @Html.DisplayFor(modelItem => item.VendorName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Url)
+                            @Html.DisplayFor(modelItem => item.VendorUrl)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Phone)
+                            @Html.DisplayFor(modelItem => item.VendorPhone)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Email)
+                            @Html.DisplayFor(modelItem => item.VendorEmail)
                         </td>
                         <td>
-                            <a asp-page="./Edit" asp-route-id="@item.Id" class="badge badge-primary">Edit</a>
+                            <a asp-page="./Edit" asp-route-id="@item.VendorId" class="badge badge-primary">Edit</a>
                         </td>
                     </tr>
                 }

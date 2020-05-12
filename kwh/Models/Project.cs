@@ -1,28 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-// Using EF Core Data Annotations
-
 namespace kwh.Models
 {
     public class Project
     {
         [Key]
-        public int Id { get; set; }
+        public int ProjectId { get; set; }
 
         [Required]
         [Display(Name = "Project")]
         [StringLength(25, MinimumLength = 3)]
-        public string Name { get; set; }
+        public string ProjectName { get; set; }
 
         [Required]
-        public int Year { get; set; }
+        public int ProjectYear { get; set; }
 
         [Required]
         [StringLength(25, MinimumLength = 3)]
-        public string Country { get; set; }
+        public string ProjectCountry { get; set; }
 
-        // Navigation property holds related entities in a 1:M
+        // Navigation property holds related 1:M entities
         public ICollection<Component> Components { get; set; }
     }
 

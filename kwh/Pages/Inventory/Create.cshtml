@@ -11,19 +11,10 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
-    <script>
-        $(document).ready(function () {
-            $('#volunteerName').autocomplete({
-                source: '@Url.Page("index", "volunteer")'
-            });
-        });
-    </script>
 </head>
 <body>
     <br />
     <h4>Component</h4>
-    <!-- CategoryNameSL, VendorNameSL, MaturityStatusSL, ProjectNameSL and LastNameSL generate drop down lists for FK
-            navigation properties -->
     <div class="row">
         <div class="col-md-4">
             <form method="post">
@@ -91,9 +82,9 @@
                     <span asp-validation-for="Component.ProjectId" class="text-danger" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="Component.AppUser" class="control-label">Modified By</label>
+                    <label asp-for="Component.AppUser" class="control-label"></label>
                     <select asp-for="Component.AppUserId" class="form-control"
-                            asp-items="@Model.LastNameSL">
+                            asp-items="@Model.UserNameSL">
                         <option value="">-- Select a user --</option>
                     </select>
                     <span asp-validation-for="Component.AppUserId" class="text-danger" />

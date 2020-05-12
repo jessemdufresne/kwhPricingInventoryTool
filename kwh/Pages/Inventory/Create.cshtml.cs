@@ -6,18 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace kwh.Pages.Inventory
 {
-    // Derives ComponentFKPageModel to load FK navigation properties in drop down
+    // Derives ComponentFKPageModel to load FK navigation properties 
     [Authorize]
     public class CreateModel : ComponentFKPageModel
     {
         private readonly kwhDataContext _context;
-
         public CreateModel(kwhDataContext context)
         {
             _context = context;
         }
 
-        // Select FK navigation properties for drop down fields
+        // Select FK navigation properties to populate drop down fields
         public IActionResult OnGet()
         {
             PopulateVendorDropDown(_context);
@@ -31,22 +30,20 @@ namespace kwh.Pages.Inventory
         [BindProperty]
         public Component Component { get; set; }
 
-        // TryUpdateModelAsync prevents overposting
-        // To protect from overposting attacks, enable specific bind properties
-        // More details at https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             var emptyComponent = new Component();
 
-            // New additions to the Component table should use the next available ComponentId
             // 1) Retrieve the maximum ComponentId to increment
-            // ** EF Core LINQ-to-Entities Query (written in method syntax) **
+            // New records should use the next available ComponentId
+            // Uses EF Core LINQ-to-Entities Method Syntax
             var compId = _context.Component
                 .OrderByDescending(x => x.ComponentId)
                 .Select(x => x.ComponentId)
                 .FirstOrDefault();
 
             // 2) Asynchronously retrieve user input
+            // TryUpdateModelAsync prevents overposting
             if (await TryUpdateModelAsync<Component>(
                  emptyComponent,
                  "component",   // Prefix for form value.
