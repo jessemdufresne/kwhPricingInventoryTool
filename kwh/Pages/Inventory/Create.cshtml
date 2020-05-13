@@ -34,7 +34,6 @@
                             asp-items="Model.CategoryNameSL">
                         <option value="">-- Select a category --</option>
                     </select>
-                    <span asp-validation-for="Component.CategoryId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.Vendor" class="control-label"></label>
@@ -58,11 +57,11 @@
                             asp-items="Model.MaturityStatusSL">
                         <option value="">-- Select a maturity --</option>
                     </select>
-                    <span asp-validation-for="Component.MaturityId" class="text-danger" />
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.Url" class="control-label"></label>
                     <input asp-for="Component.Url" class="form-control" placeholder="https://www.example.com" />
+                    <span asp-validation-for="Component.Url" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.QuantityCurrent" class="control-label"></label>
@@ -72,6 +71,7 @@
                 <div class="form-group">
                     <label asp-for="Component.QuantityNeeded" class="control-label"></label>
                     <input asp-for="Component.QuantityNeeded" class="form-control" placeholder="0" />
+                    <span asp-validation-for="Component.QuantityNeeded" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.Project" class="control-label"></label>
@@ -79,7 +79,6 @@
                             asp-items="Model.ProjectNameSL">
                         <option value="">-- Select a project --</option>
                     </select>
-                    <span asp-validation-for="Component.ProjectId" class="text-danger" />
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.AppUser" class="control-label">Created By</label>

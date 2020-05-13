@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace kwh.Models
@@ -12,7 +13,7 @@ namespace kwh.Models
         public string VendorName { get; set; }
 
         [Display(Name = "URL")]
-        [DataType(DataType.Url)]
+        [Url(ErrorMessage = "Url is invalid. Must contain 'http://' or 'https://'")]
         public string VendorUrl { get; set; }
 
         [Display(Name = "Phone")]

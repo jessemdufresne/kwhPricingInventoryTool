@@ -16,6 +16,7 @@ namespace kwh.Models
         [Display(Name = "Vendor")]
         public int? VendorId { get; set; }
 
+        [Required]
         [Display(Name = "User")]
         public int? AppUserId { get; set; }
 
@@ -29,18 +30,18 @@ namespace kwh.Models
         public int? CategoryId { get; set; }
 
         public Vendor Vendor { get; set; }
+
+        [Display(Name = "User")]
         public AppUser AppUser { get; set; }
         public Maturity Maturity { get; set; }
         public Project Project { get; set; }
         public Category Category { get; set; }
 
         [Display(Name = "Part Number")]
-        [StringLength(25, MinimumLength = 3)]
         public string PartNumber { get; set; }
 
-        [Display(Name = "Part Name")]
-        [StringLength(30, MinimumLength = 3)]
         [Required]
+        [Display(Name = "Part Name")]
         public string PartName { get; set; }
 
         [Display(Name = "Unit Cost")]
@@ -48,12 +49,12 @@ namespace kwh.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal UnitCost { get; set; }
 
-        [StringLength(40, MinimumLength = 3)]
         public string Notes { get; set; }
 
-        [DataType(DataType.Url)]
+        [Url(ErrorMessage = "Url is invalid. Must contain 'http://' or 'https://'")]
         public string Url { get; set; }
 
+        [Required]
         [Display(Name = "Current Quantity")]
         public int QuantityCurrent { get; set; }
 

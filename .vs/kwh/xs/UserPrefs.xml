@@ -4,7 +4,7 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="kwh" expanded="True">
-            <Node name="kwh" selected="True" />
+            <Node name="kwh" expanded="True" />
           </Node>
         </State>
       </Pad>
