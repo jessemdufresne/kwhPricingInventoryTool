@@ -1,10 +1,33 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Shared/_LoginPartial.cshtml">
+    <Files>
+      <File FileName="kwh/Pages/Index.cshtml" Line="15" Column="1" />
+      <File FileName="kwh/Pages/Inventory/Index.cshtml" Line="44" Column="67" />
+      <File FileName="kwh/Pages/Shared/_Layout.cshtml" Line="23" Column="33" />
+      <File FileName="kwh/Pages/Shared/_LoginPartial.cshtml" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="kwh" expanded="True">
-            <Node name="kwh" selected="True" />
+            <Node name="kwh" expanded="True">
+              <Node name="Pages" expanded="True">
+                <Node name="Inventory" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="_LoginPartial.cshtml" selected="True" />
+                </Node>
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+                <Node name="lib" expanded="True">
+                  <Node name="bootstrap" expanded="True">
+                    <Node name="dist" expanded="True">
+                      <Node name="css" expanded="True" />
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
           </Node>
         </State>
       </Pad>

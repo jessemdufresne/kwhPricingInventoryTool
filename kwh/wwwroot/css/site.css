@@ -5,6 +5,15 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.navbar-nav .nav-item .nav-link {
+    color: red;
+}
+
+.navbar-nav .nav-item.active .nav-link,
+.navbar-nav .nav-item:hover .nav-link {
+    color: pink;
+}
+
 a {
   color: green;
 }
@@ -14,7 +23,6 @@ a.hover, a:hover {
 }
 
 table {
-    border-radius: 15px;
     border: hidden;
 }
 
