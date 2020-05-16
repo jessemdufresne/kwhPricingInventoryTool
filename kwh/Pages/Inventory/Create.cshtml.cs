@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using kwh.Models;
@@ -19,11 +21,18 @@ namespace kwh.Pages.Inventory
             _context = context;
         }
 
+        [BindProperty]
+        public bool IsCurrent { get; set; }
+
+        [BindProperty]
+        public Component Component { get; set; }
+
+        public string Category = "";
+        public List<string> CategoryList;
         public SelectList MaturityStatusSL { get; set; }
         public SelectList ProjectNameSL { get; set; }
         public SelectList VendorNameSL { get; set; }
         public SelectList UserNameSL { get; set; }
-        public SelectList CategoryNameSL { get; set; }
 
         // Select FK navigation properties to populate drop down fields
         public IActionResult OnGet()
@@ -36,15 +45,19 @@ namespace kwh.Pages.Inventory
                 .OrderBy(v => v.VendorName)
                 .Select(v => v);
 
-            var categoryQuery = _context.Category
-                .OrderBy(c => c.CategoryName)
-                .Select(c => c);
-
             var userQuery = _context.AppUser
                 .OrderBy(u => u.Username)
                 .Select(u => u);
 
-            MaturityStatusSL = new SelectList(_context.Maturity.AsNoTracking(),
+            var maturityQuery = _context.Maturity
+               .OrderBy(x => x.MaturityId)
+               .Select(m => m);
+
+            CategoryList = _context.Category
+                .Select(x => x.CategoryName)
+                .ToList();
+
+            MaturityStatusSL = new SelectList(maturityQuery.AsNoTracking(),
                 nameof(Maturity.MaturityId), nameof(Maturity.MaturityStatus));
             ProjectNameSL = new SelectList(projectQuery.AsNoTracking(),
                 nameof(Project.ProjectId), nameof(Project.ProjectName));
@@ -52,13 +65,8 @@ namespace kwh.Pages.Inventory
                 nameof(Vendor.VendorId), nameof(Vendor.VendorName));
             UserNameSL = new SelectList(userQuery.AsNoTracking(),
                 nameof(AppUser.Id), nameof(AppUser.Username));
-            CategoryNameSL = new SelectList(categoryQuery.AsNoTracking(),
-                nameof(Category.CategoryId), nameof(Category.CategoryName));
             return Page();
         }
-
-        [BindProperty]
-        public Component Component { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -79,7 +87,7 @@ namespace kwh.Pages.Inventory
                  "component",   // Prefix for form value.
                  c => c.PartNumber, c => c.PartName, c => c.CategoryId, c => c.VendorId,
                  c => c.UnitCost, c => c.Notes, c => c.MaturityId, c => c.Url,
-                 c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.AppUserId))
+                 c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.AppUserId, c => c.Timestamp))
             {
                 // 3) Manually increment ComponentId before adding a new record
                 emptyComponent.ComponentId = compId + 1;
@@ -97,17 +105,21 @@ namespace kwh.Pages.Inventory
                 .OrderBy(v => v.VendorName)
                 .Select(v => v);
 
-            var categoryQuery = _context.Category
-                .OrderBy(c => c.CategoryName)
-                .Select(c => c);
-
             var userQuery = _context.AppUser
                 .OrderBy(u => u.Username)
                 .Select(u => u);
 
+            var maturityQuery = _context.Maturity
+               .OrderBy(x => x.MaturityId)
+               .Select(m => m);
+
+            CategoryList = _context.Category
+                .Select(x => x.CategoryName)
+                .ToList();
+
             // Select FK navigation properties for drop down fields if
             // TryUpdateModelAsync fails
-            MaturityStatusSL = new SelectList(_context.Maturity,
+            MaturityStatusSL = new SelectList(maturityQuery,
                 nameof(Maturity.MaturityId), nameof(Maturity.MaturityStatus),
                 emptyComponent.MaturityId);
             ProjectNameSL = new SelectList(projectQuery,
@@ -119,9 +131,6 @@ namespace kwh.Pages.Inventory
             UserNameSL = new SelectList(userQuery,
                 nameof(AppUser.Id), nameof(AppUser.Username),
                 emptyComponent.AppUserId);
-            CategoryNameSL = new SelectList(categoryQuery,
-                nameof(Category.CategoryId), nameof(Category.CategoryName),
-                emptyComponent.CategoryId);
             return Page();
         }
     }

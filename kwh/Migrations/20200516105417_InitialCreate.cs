@@ -95,15 +95,14 @@ namespace kwh.Migrations
                     MaturityId = table.Column<int>(nullable: true),
                     ProjectId = table.Column<int>(nullable: true),
                     CategoryId = table.Column<int>(nullable: true),
-                    PartNumber = table.Column<string>(maxLength: 25, nullable: true),
-                    PartName = table.Column<string>(maxLength: 30, nullable: false),
+                    PartNumber = table.Column<string>(nullable: true),
+                    PartName = table.Column<string>(nullable: false),
                     UnitCost = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    Notes = table.Column<string>(maxLength: 40, nullable: true),
+                    Notes = table.Column<string>(nullable: true),
                     Url = table.Column<string>(nullable: true),
                     QuantityCurrent = table.Column<int>(nullable: false),
                     QuantityNeeded = table.Column<int>(nullable: false),
                     Timestamp = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
                 },
                 constraints: table =>
                 {

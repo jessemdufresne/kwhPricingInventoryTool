@@ -1,10 +1,22 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Inventory/Create.cshtml">
+    <Files>
+      <File FileName="kwh/Pages/Inventory/Create.cshtml.cs" Line="89" Column="68" />
+      <File FileName="kwh/Pages/Inventory/Create.cshtml" Line="26" Column="37" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="kwh" expanded="True">
-            <Node name="kwh" expanded="True" />
+            <Node name="kwh" expanded="True">
+              <Node name="Models" expanded="True" />
+              <Node name="Pages" expanded="True">
+                <Node name="Inventory" expanded="True">
+                  <Node name="Create.cshtml" expanded="True" selected="True" />
+                  <Node name="Edit.cshtml" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
           </Node>
         </State>
       </Pad>

@@ -20,7 +20,7 @@ namespace kwh.Models
                 if (!context.Maturity.Any())
                 {
                     context.Maturity.AddRange(
-                    new Maturity { MaturityStatus = "New/Growth" },
+                    new Maturity { MaturityStatus = "New" },
                     new Maturity { MaturityStatus = "Mature" },
                     new Maturity { MaturityStatus = "Decline" },
                     new Maturity { MaturityStatus = "Obsolete" }
@@ -88,24 +88,15 @@ namespace kwh.Models
                 // If empty, create test data and save changes
                 if (!context.AppUser.Any())
                 {
-                    context.AppUser.AddRange(
+                    context.AppUser.Add(
                     new AppUser
                     {
-                        FirstName = "Admin",
+                        FirstName = "Temp",
                         LastName = "Admin",
-                        Email = "admin@admin.com",
-                        Username = "admin",
+                        Email = "temp@admin.com",
+                        Username = "temp",
                         Salt = "",
-                        PasswordHash = ""
-                    },
-                    new AppUser
-                    {
-                        FirstName = "Audrey",
-                        LastName = "Kan",
-                        Email = "kana@seattleu.edu",
-                        Username = "kana",
-                        Salt = "",
-                        PasswordHash = "AQAAAAEAACcQAAAAEE2CNOPjK0XOm0q1wNWoKT3vzU8fWUYCeeuMZa+rz7PnVGjjsg44j3dGFV9IUqEOzw=="
+                        PasswordHash = "AQAAAAEAACcQAAAAEAYQRta0AZj7K/eRfRBdaYm3B/i7Wf/sdwNeLjFVxlR29RE8vJMOyPEfw1BB5X92Zg=="
                     });
                     context.SaveChanges();
                 }
@@ -182,7 +173,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 5,
                         QuantityCurrent = 2,
-                        QuantityNeeded = 2
+                        QuantityNeeded = 2,
+                        Timestamp = DateTime.Now
                     },
                     new Component
                     {
@@ -198,7 +190,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 6,
                         QuantityCurrent = 2,
-                        QuantityNeeded = 2
+                        QuantityNeeded = 2,
+                        Timestamp = DateTime.Now
                     },
                     new Component
                     {
@@ -214,7 +207,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 6,
                         QuantityCurrent = 11,
-                        QuantityNeeded = 3
+                        QuantityNeeded = 3,
+                        Timestamp = DateTime.Now
                     },
                     new Component
                     {
@@ -230,7 +224,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 5,
                         QuantityCurrent = 1,
-                        QuantityNeeded = 5
+                        QuantityNeeded = 5,
+                        Timestamp = DateTime.Now
                     },
                     new Component
                     {
@@ -246,7 +241,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 5,
                         QuantityCurrent = 1,
-                        QuantityNeeded = 1
+                        QuantityNeeded = 1,
+                        Timestamp = DateTime.Now
                     },
                     new Component
                     {
@@ -262,7 +258,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 5,
                         QuantityCurrent = 23,
-                        QuantityNeeded = 11
+                        QuantityNeeded = 11,
+                        Timestamp = DateTime.Now
                     },
                     new Component
                     {
@@ -278,7 +275,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 6,
                         QuantityCurrent = 17,
-                        QuantityNeeded = 16
+                        QuantityNeeded = 16,
+                        Timestamp = DateTime.Now
                     },
                     new Component
                     {
@@ -294,7 +292,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 4,
                         QuantityCurrent = 3,
-                        QuantityNeeded = 1
+                        QuantityNeeded = 1,
+                        Timestamp = DateTime.Now
                     });
                     context.SaveChanges();
                 }

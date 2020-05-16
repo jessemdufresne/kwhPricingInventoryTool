@@ -16,7 +16,6 @@ namespace kwh.Models
         [Display(Name = "Vendor")]
         public int? VendorId { get; set; }
 
-        [Required]
         [Display(Name = "User")]
         public int? AppUserId { get; set; }
 
@@ -63,8 +62,8 @@ namespace kwh.Models
 
         //.Identity for Add action only
         //.Computed is for Add and Update actions...
-        [DataType(DataType.Date)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Date Added")]
         public DateTime Timestamp { get; set; }
     }
 }

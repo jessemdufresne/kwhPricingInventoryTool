@@ -1,0 +1,54 @@
+﻿@page
+@model kwh.Pages.HelpModel
+@{
+    ViewData["Title"] = "Help";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Help</title>
+</head>
+<body>
+    <div>
+        <br />
+        <h4 class="text-center">Frequently Asked Questions</h4><br /><br />
+    </div>
+    <div>
+        <p class="font-weight-bold">How do I assign a component to multiple projects?</p>
+        <p>
+            When a component is used in multiple installation projects, change the project location by editing the
+            component through the Components table.
+        </p>
+    </div>
+    <br />
+    <div>
+        <p class="font-weight-bold">How do I add another admin user?</p>
+        <p>
+            To add a new admin user, an existing user must create a temporary admin account and give the login
+            credentials to the new user. Once the new user logs in to the temporary account, the new user should add themselves
+            to the list of admins. Verify your login is created in the Volunteers table. Delete the temporary account when finished.
+        </p>
+        <p class="font-weight-bold">How do I remove an admin user?</p>
+        <p>
+            To remove another admin user, first log in. After deleting the user, the removed user will still have admin
+            privileges if they are currently logged in. Once the deleted user is logged out, they cannot log back in.
+        </p>
+        <p class="font-weight-bold">How do I reset my password?</p>
+        <p>
+            Admin users cannot reset passwords. If password is forgotten, follow the steps to remove then add a admin user.
+        </p>
+    </div>
+    <br />
+    <div>
+        <p class="font-weight-bold">How do I delete a historic record?</p>
+        <p>
+            To delete a historic record, first navigate to the Projects table. Identify which project the component was
+            used in. Clicking the project name will redirect you to that project's component list. From there you may select
+            and delete historic components as needed.
+        </p>
+    </div>
+</body>
+</html>

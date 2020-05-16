@@ -13,7 +13,7 @@ namespace kwh.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.3")
+                .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("kwh.Models.AppUser", b =>
@@ -92,12 +92,10 @@ namespace kwh.Migrations
 
                     b.Property<string>("PartName")
                         .IsRequired()
-                        .HasColumnType("varchar(30) CHARACTER SET utf8mb4")
-                        .HasMaxLength(30);
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("PartNumber")
-                        .HasColumnType("varchar(25) CHARACTER SET utf8mb4")
-                        .HasMaxLength(25);
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int?>("ProjectId")
                         .HasColumnType("int");
@@ -109,7 +107,6 @@ namespace kwh.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Timestamp")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<decimal>("UnitCost")

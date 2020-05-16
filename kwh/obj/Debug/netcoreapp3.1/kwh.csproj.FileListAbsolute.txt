@@ -1360,6 +1360,9 @@
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/Razor/Pages/AppUsers/Edit.cshtml.g.cs
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/Razor/Pages/AppUsers/Index.cshtml.g.cs
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/Razor/Pages/AppUsers/Delete.cshtml.g.cs
+/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/System.Collections.Immutable.dll
+/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/System.Diagnostics.DiagnosticSource.dll
+/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/Razor/Pages/Help/FAQ.cshtml.g.cs
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/runtimes/win-x64/native/Microsoft.DiaSymReader.Native.amd64.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/Microsoft.DiaSymReader.Native.x86.dll
 /Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/runtimes/win/native/Microsoft.DiaSymReader.Native.amd64.dll
