@@ -174,7 +174,7 @@ namespace kwh.Models
                         ProjectId = 5,
                         QuantityCurrent = 2,
                         QuantityNeeded = 2,
-                        Timestamp = DateTime.Now
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -191,7 +191,7 @@ namespace kwh.Models
                         ProjectId = 6,
                         QuantityCurrent = 2,
                         QuantityNeeded = 2,
-                        Timestamp = DateTime.Now
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -208,7 +208,7 @@ namespace kwh.Models
                         ProjectId = 6,
                         QuantityCurrent = 11,
                         QuantityNeeded = 3,
-                        Timestamp = DateTime.Now
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -225,7 +225,7 @@ namespace kwh.Models
                         ProjectId = 5,
                         QuantityCurrent = 1,
                         QuantityNeeded = 5,
-                        Timestamp = DateTime.Now
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -242,7 +242,7 @@ namespace kwh.Models
                         ProjectId = 5,
                         QuantityCurrent = 1,
                         QuantityNeeded = 1,
-                        Timestamp = DateTime.Now
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -259,7 +259,7 @@ namespace kwh.Models
                         ProjectId = 5,
                         QuantityCurrent = 23,
                         QuantityNeeded = 11,
-                        Timestamp = DateTime.Now
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -276,7 +276,7 @@ namespace kwh.Models
                         ProjectId = 6,
                         QuantityCurrent = 17,
                         QuantityNeeded = 16,
-                        Timestamp = DateTime.Now
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -293,7 +293,7 @@ namespace kwh.Models
                         ProjectId = 4,
                         QuantityCurrent = 3,
                         QuantityNeeded = 1,
-                        Timestamp = DateTime.Now
+                        Timestamp = DateTime.UtcNow
                     });
                     context.SaveChanges();
                 }

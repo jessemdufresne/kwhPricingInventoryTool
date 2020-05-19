@@ -60,10 +60,13 @@ namespace kwh.Models
         [Display(Name = "Quantity Needed")]
         public int QuantityNeeded { get; set; }
 
-        //.Identity for Add action only
-        //.Computed is for Add and Update actions...
         [DataType(DataType.DateTime)]
         [Display(Name = "Date Added")]
         public DateTime Timestamp { get; set; }
+
+        [Required]
+        [Display(Name = "Date Added")]
+        [NotMapped]
+        public bool isCurrent { get; set; }
     }
 }

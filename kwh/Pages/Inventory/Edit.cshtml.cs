@@ -112,7 +112,7 @@ namespace kwh.Pages.Inventory
             {
                 // 3) Manually assign the same ComponentId before adding a new record
                 emptyComponent.ComponentId = compId;
-                emptyComponent.Timestamp = DateTime.Now;
+                emptyComponent.Timestamp = DateTime.UtcNow;
                 _context.Component.Add(emptyComponent);
                 // 4) Save changes to the database
                 await _context.SaveChangesAsync();
