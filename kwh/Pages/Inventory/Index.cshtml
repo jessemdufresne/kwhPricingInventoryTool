@@ -161,9 +161,8 @@
         </div>
 
 
-    <script>var now = new Date();
-        var isoDate = new Date(now.getTime() - (now.getTimezoneOffset() * 60000)).toISOString().slice(0, 10).replace(/-/g, "");
-
+    <script>
+        var isoDate = new Date().toISOString().slice(-24).replace(/\D/g, '').slice(0, 14);
         let button = document.querySelector("#downloadBtn");
 
         button.addEventListener("click", e => {

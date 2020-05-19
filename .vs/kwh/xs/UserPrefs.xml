@@ -10,12 +10,16 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="kwh" expanded="True">
+<<<<<<< HEAD
             <Node name="kwh" expanded="True">
               <Node name="Pages" expanded="True" />
               <Node name="wwwroot" expanded="True">
                 <Node name="Images" expanded="True" />
               </Node>
             </Node>
+=======
+            <Node name="kwh" expanded="True" />
+>>>>>>> origin/master
           </Node>
         </State>
       </Pad>

@@ -61,7 +61,8 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.ProjectName)
+                            <a asp-page="../Inventory/Index" asp-route-SearchBy="Project"
+                           asp-route-CurrentFilter="@item.ProjectName">@Html.DisplayFor(modelItem => item.ProjectName)</a>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ProjectYear)
