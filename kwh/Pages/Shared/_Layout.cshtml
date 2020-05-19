@@ -14,7 +14,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-#535458 border-bottom box-shadow mb-1">
             <div class="container color-white">
                 <img src="~/Images/logo.png" alt="Killowatts for Humanity Logo" height="60" width="60" hspace="10">
-                <a class="navbar-brand">Inventory Tracker</a>
+                <a asp-page="../Index" class="navbar-brand">Inventory Tracker</a>
                 <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -36,6 +36,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-page="/AppUsers/Index">Volunteers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-page="/Help/FAQ">Help</a>
                         </li>
                     </ul>
                 </div>

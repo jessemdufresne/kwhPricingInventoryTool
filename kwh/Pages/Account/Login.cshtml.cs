@@ -74,7 +74,7 @@ namespace kwh.Pages.Account
 
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim(ClaimTypes.Name, user.FirstName),
                     new Claim("Email", user.Email),
                     new Claim(ClaimTypes.Role, "Administrator"),
                 };

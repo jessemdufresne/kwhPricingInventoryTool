@@ -56,9 +56,7 @@ public class kwhDataContext : DbContext
             .WithOne(c => c.AppUser)
             .OnDelete(DeleteBehavior.SetNull);
 
-        modelBuilder.Entity<AppUser>()
-            .HasIndex(a => a.Email)
-            .IsUnique();
+        //modelBuilder.Entity<AppUser>().HasIndex(a => a.Email).IsUnique();
 
         base.OnModelCreating(modelBuilder);
     }

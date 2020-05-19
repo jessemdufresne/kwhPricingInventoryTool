@@ -35,6 +35,11 @@
                     <input asp-for="AppUser.Email" class="form-control" />
                     <span asp-validation-for="AppUser.Email" class="text-danger"></span>
                 </div>
+                <div class="form-group">
+                    <label asp-for="AppUser.Username" class="control-label"></label>
+                    <input asp-for="AppUser.Username" class="form-control" />
+                    <span asp-validation-for="AppUser.Username" class="text-danger"></span>
+                </div>
                 <div class="row p-2">
                     <div class="form-group col-sm text-left p-2">
                         <input type="submit" value="Save" class="btn btn-primary" />
@@ -47,7 +52,7 @@
     </div>
 
     <div>
-        <a asp-page="./Index">Back to List</a>
+        <a type="button" asp-page="./Index" class="btn btn-primary">Cancel</a>
     </div>
 
     @section Scripts {
