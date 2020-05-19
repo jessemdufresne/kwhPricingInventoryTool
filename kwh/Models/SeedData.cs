@@ -74,18 +74,13 @@ namespace kwh.Models
                         ProjectName = "Kanchomba",
                         ProjectYear = 2020,
                         ProjectCountry = "Zambia"
-                    },
-                    new Project
-                    {
-                        ProjectName = "Test",
-                        ProjectYear = 2020,
-                        ProjectCountry = "Test"
                     });
                     context.SaveChanges();
                 }
 
                 // Check if Volunteer table is empty
                 // If empty, create test data and save changes
+                // kwhpitpass
                 if (!context.AppUser.Any())
                 {
                     context.AppUser.Add(
@@ -119,13 +114,6 @@ namespace kwh.Models
                         VendorUrl = "https://www.ebay.com/",
                         VendorPhone = "",
                         VendorEmail = ""
-                    },
-                    new Vendor
-                    {
-                        VendorName = "Test",
-                        VendorUrl = "",
-                        VendorPhone = "1234567890",
-                        VendorEmail = "test@test.test"
                     });
                     context.SaveChanges();
                 }
@@ -291,6 +279,40 @@ namespace kwh.Models
                         MaturityId = 2,
                         Url = "",
                         ProjectId = 4,
+                        QuantityCurrent = 3,
+                        QuantityNeeded = 1,
+                        Timestamp = DateTime.Parse("5/6/2017 12:30:00 PM")
+                    },
+                    new Component
+                    {
+                        ComponentId = 8,
+                        VendorId = 1,
+                        AppUserId = 1,
+                        PartNumber = "",
+                        PartName = "16GB Micro SD Card",
+                        UnitCost = 5.63M,
+                        CategoryId = 8,
+                        Notes = "",
+                        MaturityId = 2,
+                        Url = "",
+                        ProjectId = 7,
+                        QuantityCurrent = 3,
+                        QuantityNeeded = 1,
+                        Timestamp = DateTime.Parse("1/6/2020 12:30:00 PM")
+                    },
+                    new Component
+                    {
+                        ComponentId = 8,
+                        VendorId = 1,
+                        AppUserId = 1,
+                        PartNumber = "",
+                        PartName = "16GB Micro SD Card",
+                        UnitCost = 5.67M,
+                        CategoryId = 8,
+                        Notes = "",
+                        MaturityId = 2,
+                        Url = "",
+                        ProjectId = 7,
                         QuantityCurrent = 3,
                         QuantityNeeded = 1,
                         Timestamp = DateTime.UtcNow

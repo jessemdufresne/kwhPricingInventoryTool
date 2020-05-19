@@ -1,19 +1,31 @@
-﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Help/FAQ.cshtml">
+﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Custom">
+  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Startup.cs">
     <Files>
-      <File FileName="kwh/Pages/Inventory/Create.cshtml" Line="45" Column="45" />
-      <File FileName="kwh/Pages/Help/FAQ.cshtml" Line="1" Column="1" />
+      <File FileName="kwh/Pages/AppUsers/Edit.cshtml" Line="20" Column="32" />
+      <File FileName="kwh/Pages/AppUsers/Edit.cshtml.cs" Line="10" Column="2" />
+      <File FileName="kwh/Startup.cs" Line="31" Column="38" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="kwh" expanded="True">
             <Node name="kwh" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
               <Node name="Pages" expanded="True">
-                <Node name="Help" expanded="True">
-                  <Node name="FAQ.cshtml" selected="True" />
+                <Node name="AppUsers" expanded="True">
+                  <Node name="Edit.cshtml" expanded="True" />
+                </Node>
+                <Node name="Categories" expanded="True">
+                  <Node name="Edit.cshtml" expanded="True" />
+                </Node>
+                <Node name="Vendors" expanded="True">
+                  <Node name="Edit.cshtml" expanded="True" />
                 </Node>
               </Node>
+              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>

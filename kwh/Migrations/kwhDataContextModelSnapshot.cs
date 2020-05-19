@@ -48,9 +48,6 @@ namespace kwh.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Email")
-                        .IsUnique();
-
                     b.ToTable("AppUser");
                 });
 

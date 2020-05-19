@@ -140,12 +140,6 @@ namespace kwh.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AppUser_Email",
-                table: "AppUser",
-                column: "Email",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Component_AppUserId",
                 table: "Component",
                 column: "AppUserId");
