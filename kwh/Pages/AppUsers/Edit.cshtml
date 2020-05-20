@@ -1,4 +1,4 @@
-@page
+﻿@page
 @model kwh.Pages.AppUsers.EditModel
 
 @{
@@ -40,6 +40,8 @@
                     <input asp-for="AppUser.Username" class="form-control" />
                     <span asp-validation-for="AppUser.Username" class="text-danger"></span>
                 </div>
+                <input type="hidden" asp-for="AppUser.Password" value="qwertyuiop"/>
+                <input type="hidden" asp-for="AppUser.ConfirmPassword" value="qwertyuiop"/>
                 <div class="row p-2">
                     <div class="form-group col-sm text-left p-2">
                         <input type="submit" value="Save" class="btn btn-primary" />
