@@ -17,9 +17,12 @@
 <body>
     <div>
         <br />
-        <h4 class="m-3">Component Details</h4>
-        <div class="w-90 bg-white m-5 rounded">
+        <h4 class="m-3 text-center">Component Details</h4>
+        <div class="w-90 bg-white m-5 mb-2 rounded">
             <canvas id="priceChart" />
+        </div>
+        <div class="text-center">
+            <p>Zulu Time Zone is shown (UTC)</p>
         </div>
         <table class="table border-hidden bg-white mb-0 mt-3">
             <thead>
@@ -59,6 +62,9 @@
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Component[0].AppUser)
+                    </th>
+                    <th>
+                        Date Added/Modified
                     </th>
                     <th></th>
                 </tr>
@@ -103,13 +109,21 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.AppUser.Username)
                         </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Timestamp)
+                        </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
     <div class="text-center m-3">
+<<<<<<< HEAD
         <button class="btn btn-primary py-2 mb-4" onclick="window.history.back()">&larr; Back</button>
+=======
+        <a type="button" asp-page="./Index" class="btn btn-primary">Back to List</a>
+        <a type="button" asp-page="./Edit" asp-route-id="@Model.Component[0].Id" class="btn btn-primary">Edit</a>
+>>>>>>> origin/master
     </div>
 </body>
 </html>

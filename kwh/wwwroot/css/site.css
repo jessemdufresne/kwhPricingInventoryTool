@@ -119,3 +119,11 @@ body {
   background-color: #272727;
   color: white;
 }
+
+.auto-complete {
+    list-style: none;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    background-color: #FFFFFF;
+}

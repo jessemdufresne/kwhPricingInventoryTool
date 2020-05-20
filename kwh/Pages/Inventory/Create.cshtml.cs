@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using kwh.Models;
@@ -19,6 +21,11 @@ namespace kwh.Pages.Inventory
             _context = context;
         }
 
+        [BindProperty]
+        public Component Component { get; set; }
+
+        //public string Category = "";
+        //public List<string> CategoryList;
         public SelectList MaturityStatusSL { get; set; }
         public SelectList ProjectNameSL { get; set; }
         public SelectList VendorNameSL { get; set; }
@@ -57,9 +64,6 @@ namespace kwh.Pages.Inventory
             return Page();
         }
 
-        [BindProperty]
-        public Component Component { get; set; }
-
         public async Task<IActionResult> OnPostAsync()
         {
             var emptyComponent = new Component();
@@ -79,7 +83,8 @@ namespace kwh.Pages.Inventory
                  "component",   // Prefix for form value.
                  c => c.PartNumber, c => c.PartName, c => c.CategoryId, c => c.VendorId,
                  c => c.UnitCost, c => c.Notes, c => c.MaturityId, c => c.Url,
-                 c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId, c => c.AppUserId))
+                 c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId,
+                 c => c.AppUserId, c => c.Timestamp))
             {
                 // 3) Manually increment ComponentId before adding a new record
                 emptyComponent.ComponentId = compId + 1;

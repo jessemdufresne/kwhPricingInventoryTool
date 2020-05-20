@@ -11,13 +11,49 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            var d, t, dt;
+            var now = new Date().toISOString().substring(0, 23);
+
+            $("#curr").click(function () {
+                $("#dateField").hide("fast");
+                $("#timeField").hide("fast");
+                $("#resultField").val(now);
+            });
+            $("#hist").click(function () {
+                $("#dateField").show("fast");
+                $("#timeField").show("fast");
+                $("#resultField").val("");
+            });
+
+            $("#dateField").change(function () {
+                if ($(this).val()) {
+                    setResult();
+                }
+            })
+            $("#timeField").change(function () {
+                setResult();
+            })
+
+            function setResult() {
+                d = $("#dateField").val();
+                t = $("#timeField").val();
+                dt = d + "T" + t + ":00.000";
+                document.getElementById("resultField").value = dt;
+            }
+        });
+    </script>
 </head>
 <body>
     <br />
     <h4>@ViewData["Title"]</h4>
     <div class="row">
         <div class="col-md-4">
-            <form method="post">
+            <form method="post" autocomplete="off">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Component.PartNumber" class="control-label"></label>
@@ -87,6 +123,21 @@
                         <option value="">-- Select a user --</option>
                     </select>
                     <span asp-validation-for="Component.AppUserId" class="text-danger" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Component.Timestamp" class="control-label"></label><br />
+                    <div class="d-inline-block">
+                        <label>Current <input type="radio" id="curr" asp-for="Component.isCurrent" value="Curr" /></label>
+                        <label> Historic <input type="radio" id="hist" asp-for="Component.isCurrent" value="Hist" /></label>
+                        <br />
+                        <input id="dateField" type="date" style="display:none;"/>
+                        <input id="timeField" type="time" style="display:none;" value="12:00"/>
+                        <input type="datetime-local" id="resultField" asp-for="Component.Timestamp" value=""
+                               class="form-control" style="display:none;">
+                    </div>
+                    <br />
+                    <span asp-validation-for="Component.isCurrent" class="text-danger" />
+                    <span asp-validation-for="Component.Timestamp" class="text-danger" />
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Add" class="btn btn-primary" />

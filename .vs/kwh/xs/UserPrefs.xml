@@ -1,17 +1,17 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Vendors/Edit.cshtml">
     <Files>
-      <File FileName="kwh/Pages/Index.cshtml" Line="18" Column="51" />
-      <File FileName="kwh/Pages/Inventory/Index.cshtml" Line="175" Column="8" />
-      <File FileName="kwh/Pages/Shared/_Layout.cshtml" Line="49" Column="53" />
-      <File FileName="kwh/Pages/Shared/_LoginPartial.cshtml" Line="12" Column="9" />
-      <File FileName="kwh/Pages/Account/Login.cshtml" Line="34" Column="16" />
-      <File FileName="kwh/Pages/Inventory/Edit.cshtml" Line="104" Column="1" />
-      <File FileName="kwh/Pages/Inventory/Details.cshtml" Line="113" Column="11" />
-      <File FileName="kwh/Pages/Categories/Edit.cshtml" Line="41" Column="1" />
-      <File FileName="kwh/Pages/AppUsers/Edit.cshtml" Line="51" Column="1" />
-      <File FileName="kwh/Pages/Projects/Edit.cshtml" Line="51" Column="1" />
-      <File FileName="kwh/Pages/Vendors/Edit.cshtml" Line="54" Column="1" />
+      <File FileName="kwh/Pages/Index.cshtml" Line="1" Column="1" />
+      <File FileName="kwh/Pages/Inventory/Index.cshtml" />
+      <File FileName="kwh/Pages/Shared/_Layout.cshtml" />
+      <File FileName="kwh/Pages/Shared/_LoginPartial.cshtml" />
+      <File FileName="kwh/Pages/Account/Login.cshtml" />
+      <File FileName="kwh/Pages/Inventory/Edit.cshtml" />
+      <File FileName="kwh/Pages/Inventory/Details.cshtml" />
+      <File FileName="kwh/Pages/Categories/Edit.cshtml" />
+      <File FileName="kwh/Pages/AppUsers/Edit.cshtml" />
+      <File FileName="kwh/Pages/Projects/Edit.cshtml" />
+      <File FileName="kwh/Pages/Vendors/Edit.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

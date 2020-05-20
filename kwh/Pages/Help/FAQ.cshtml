@@ -1,0 +1,97 @@
+﻿@page
+@model kwh.Pages.HelpModel
+@{
+    ViewData["Title"] = "Help";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Help</title>
+</head>
+<body>
+    <div>
+        <br />
+        <h4 class="text-center">Frequently Asked Questions</h4><br /><br />
+    </div>
+    <div>
+        <h5 class="font-weight-bold">Tables</h5>
+        <p><u>What time zone is displayed?</u></p>
+        <p>
+            All dates and times on this site is shown in UTC.
+        </p>
+        <p><u>Why can't I add or modify records?</u></p>
+        <p>
+            To add or modify records you must be logged in as an admin user.
+        </p>
+        <p><u>How is the component information displayed in the Inventory table?</u></p>
+        <p>
+            All component records shown are the most recent version of that record. To view previous versions of a component
+            (i.e. price, vendor, maturity, and project history), click Details.
+        </p>
+        <p><u>How is the historic information displayed in the Component Details table?</u></p>
+        <p>
+            All historical component records are shown in descending time, with the most recent version at the top.
+        </p>
+    </div>
+    <br /><br />
+    <div>
+        <h5 class="font-weight-bold">Users</h5>
+        <p><u>How do I add another admin user?</u></p>
+        <p>
+            To add a new admin user, an existing user must create a temporary admin account and give the login
+            credentials to the new user. Once the new user logs in to the temporary account, the new user should add themselves
+            to the list of admins. Verify your login is created in the Volunteers table. Delete the temporary account when finished.
+        </p>
+        <p><u>How do I remove an admin user?</u></p>
+        <p>
+            To remove another admin user, first log in. Navigate to the Edit button in the Volunteers table, then click Delete.
+            After deleting an admin user, the removed user will still have admin privileges if they are currently logged in.
+            Once the deleted user is logged out, they cannot log back in.
+        </p>
+        <p><u>How do I reset my password?</u></p>
+        <p>
+            Admin users cannot reset passwords. If a password is forgotten, follow the steps to remove then add an admin user.
+        </p>
+    </div>
+    <br /><br />
+    <div>
+        <h5 class="font-weight-bold">Projects</h5>
+        <p><u>How do I assign a component to multiple projects</u></p>
+        <p>
+            When a component is used in multiple installation projects, update the project location by editing the
+            component through the Inventory table.
+        </p>
+        <p><u>How do I find the list of components used in each project</u></p>
+        <p>
+            First, navigate to the Projects table. Select the project you wish to see components for.
+        </p>
+    </div>
+    <br /><br />
+    <div>
+        <h5 class="font-weight-bold">Historic Records</h5>
+        <p><u>How do I delete a historic record</u></p>
+        <p>
+            To delete a historic record, first navigate to the Projects table. Identify which project the component was
+            used in. Clicking a project name will redirect you to that project's component list. From there you may select
+            and delete historic components as needed.
+        </p>
+        <p><u>How do I retrospectively add old components records</u></p>
+        <p>
+            To add old information, fill out the web form to add a new component. Before submitting the form, select the
+            Historic radiobutton. Doing so will allow you to enter a previous date. (Time is optional and set to a default time.)
+        </p>
+    </div>
+    <br /><br />
+    <div>
+        <h5 class="font-weight-bold">Export</h5>
+        <p><u>How do I export the Inventory table</u></p>
+        <p>
+            To export information in the Inventory table to an Excel sheet, first sort and filter the table as needed.
+            The exported Excel sheet will display exactly as shown in the table at time of export.
+        </p>
+    </div>
+</body>
+</html>

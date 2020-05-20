@@ -20,7 +20,7 @@ namespace kwh.Models
                 if (!context.Maturity.Any())
                 {
                     context.Maturity.AddRange(
-                    new Maturity { MaturityStatus = "New/Growth" },
+                    new Maturity { MaturityStatus = "New" },
                     new Maturity { MaturityStatus = "Mature" },
                     new Maturity { MaturityStatus = "Decline" },
                     new Maturity { MaturityStatus = "Obsolete" }
@@ -74,38 +74,24 @@ namespace kwh.Models
                         ProjectName = "Kanchomba",
                         ProjectYear = 2020,
                         ProjectCountry = "Zambia"
-                    },
-                    new Project
-                    {
-                        ProjectName = "Test",
-                        ProjectYear = 2020,
-                        ProjectCountry = "Test"
                     });
                     context.SaveChanges();
                 }
 
                 // Check if Volunteer table is empty
                 // If empty, create test data and save changes
+                // kwhpitpass
                 if (!context.AppUser.Any())
                 {
-                    context.AppUser.AddRange(
+                    context.AppUser.Add(
                     new AppUser
                     {
-                        FirstName = "Admin",
+                        FirstName = "Temp",
                         LastName = "Admin",
-                        Email = "admin@admin.com",
-                        Username = "admin",
+                        Email = "temp@admin.com",
+                        Username = "temp",
                         Salt = "",
-                        PasswordHash = ""
-                    },
-                    new AppUser
-                    {
-                        FirstName = "Audrey",
-                        LastName = "Kan",
-                        Email = "kana@seattleu.edu",
-                        Username = "kana",
-                        Salt = "",
-                        PasswordHash = "AQAAAAEAACcQAAAAEE2CNOPjK0XOm0q1wNWoKT3vzU8fWUYCeeuMZa+rz7PnVGjjsg44j3dGFV9IUqEOzw=="
+                        PasswordHash = "AQAAAAEAACcQAAAAEAYQRta0AZj7K/eRfRBdaYm3B/i7Wf/sdwNeLjFVxlR29RE8vJMOyPEfw1BB5X92Zg=="
                     });
                     context.SaveChanges();
                 }
@@ -128,13 +114,6 @@ namespace kwh.Models
                         VendorUrl = "https://www.ebay.com/",
                         VendorPhone = "",
                         VendorEmail = ""
-                    },
-                    new Vendor
-                    {
-                        VendorName = "Test",
-                        VendorUrl = "",
-                        VendorPhone = "1234567890",
-                        VendorEmail = "test@test.test"
                     });
                     context.SaveChanges();
                 }
@@ -182,7 +161,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 5,
                         QuantityCurrent = 2,
-                        QuantityNeeded = 2
+                        QuantityNeeded = 2,
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -198,7 +178,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 6,
                         QuantityCurrent = 2,
-                        QuantityNeeded = 2
+                        QuantityNeeded = 2,
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -214,7 +195,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 6,
                         QuantityCurrent = 11,
-                        QuantityNeeded = 3
+                        QuantityNeeded = 3,
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -230,7 +212,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 5,
                         QuantityCurrent = 1,
-                        QuantityNeeded = 5
+                        QuantityNeeded = 5,
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -246,7 +229,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 5,
                         QuantityCurrent = 1,
-                        QuantityNeeded = 1
+                        QuantityNeeded = 1,
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -262,7 +246,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 5,
                         QuantityCurrent = 23,
-                        QuantityNeeded = 11
+                        QuantityNeeded = 11,
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -278,7 +263,8 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 6,
                         QuantityCurrent = 17,
-                        QuantityNeeded = 16
+                        QuantityNeeded = 16,
+                        Timestamp = DateTime.UtcNow
                     },
                     new Component
                     {
@@ -294,7 +280,42 @@ namespace kwh.Models
                         Url = "",
                         ProjectId = 4,
                         QuantityCurrent = 3,
-                        QuantityNeeded = 1
+                        QuantityNeeded = 1,
+                        Timestamp = DateTime.Parse("5/6/2017 12:30:00 PM")
+                    },
+                    new Component
+                    {
+                        ComponentId = 8,
+                        VendorId = 1,
+                        AppUserId = 1,
+                        PartNumber = "",
+                        PartName = "16GB Micro SD Card",
+                        UnitCost = 5.63M,
+                        CategoryId = 8,
+                        Notes = "",
+                        MaturityId = 2,
+                        Url = "",
+                        ProjectId = 7,
+                        QuantityCurrent = 3,
+                        QuantityNeeded = 1,
+                        Timestamp = DateTime.Parse("1/6/2020 12:30:00 PM")
+                    },
+                    new Component
+                    {
+                        ComponentId = 8,
+                        VendorId = 1,
+                        AppUserId = 1,
+                        PartNumber = "",
+                        PartName = "16GB Micro SD Card",
+                        UnitCost = 5.67M,
+                        CategoryId = 8,
+                        Notes = "",
+                        MaturityId = 2,
+                        Url = "",
+                        ProjectId = 7,
+                        QuantityCurrent = 3,
+                        QuantityNeeded = 1,
+                        Timestamp = DateTime.UtcNow
                     });
                     context.SaveChanges();
                 }

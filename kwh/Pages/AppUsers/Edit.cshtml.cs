@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace kwh.Pages.AppUsers
 {
-    [Authorize]
     public class EditModel : PageModel
     {
         private readonly kwhDataContext _context;
@@ -51,7 +50,7 @@ namespace kwh.Pages.AppUsers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VolunteerExists(AppUser.Id))
+                if (!AppUserExists(AppUser.Id))
                 {
                     return NotFound();
                 }
@@ -64,7 +63,7 @@ namespace kwh.Pages.AppUsers
             return RedirectToPage("./Index");
         }
 
-        private bool VolunteerExists(int id)
+        private bool AppUserExists(int id)
         {
             return _context.AppUser.Any(e => e.Id == id);
         }

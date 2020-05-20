@@ -15,6 +15,14 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
+    "Custom": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:5001"
+    },
     "IISX-Production": {
       "commandName": "IISExpress",
       "launchBrowser": true,
