@@ -11,7 +11,7 @@ using CryptoHelper;
 
 namespace kwh.Pages.AppUsers
 {
-    [Authorize]
+    //[Authorize]
     public class CreateModel : PageModel
     {
         private readonly kwhDataContext _context;

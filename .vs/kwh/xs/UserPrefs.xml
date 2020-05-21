@@ -1,31 +1,17 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Custom">
-  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Startup.cs">
-    <Files>
-      <File FileName="kwh/Pages/AppUsers/Edit.cshtml" Line="20" Column="32" />
-      <File FileName="kwh/Pages/AppUsers/Edit.cshtml.cs" Line="10" Column="2" />
-      <File FileName="kwh/Startup.cs" Line="31" Column="38" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="kwh" expanded="True">
             <Node name="kwh" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
-              <Node name="Models" expanded="True" />
               <Node name="Pages" expanded="True">
                 <Node name="AppUsers" expanded="True">
-                  <Node name="Edit.cshtml" expanded="True" />
-                </Node>
-                <Node name="Categories" expanded="True">
-                  <Node name="Edit.cshtml" expanded="True" />
-                </Node>
-                <Node name="Vendors" expanded="True">
-                  <Node name="Edit.cshtml" expanded="True" />
+                  <Node name="Edit.cshtml" expanded="True">
+                    <Node name="Edit.cshtml.cs" selected="True" />
+                  </Node>
                 </Node>
               </Node>
-              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -36,7 +22,10 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/Pages/Inventory/Create.cshtml.cs" relfile="kwh/Pages/Inventory/Create.cshtml.cs" line="81" column="1" />
+      <Breakpoint file="/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/Pages/Inventory/Create.cshtml.cs" relfile="kwh/Pages/Inventory/Create.cshtml.cs" line="74" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
