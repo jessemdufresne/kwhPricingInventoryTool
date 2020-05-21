@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using kwh.Models;
@@ -24,8 +23,7 @@ namespace kwh.Pages.Inventory
         [BindProperty]
         public Component Component { get; set; }
 
-        public string Category = "";
-        public List<string> CategoryList;
+        public SelectList CategoryNameSL { get; set; }
         public SelectList MaturityStatusSL { get; set; }
         public SelectList ProjectNameSL { get; set; }
         public SelectList VendorNameSL { get; set; }
@@ -68,11 +66,13 @@ namespace kwh.Pages.Inventory
                .OrderBy(x => x.MaturityId)
                .Select(m => m);
 
-            CategoryList = _context.Category
-                .Select(x => x.CategoryName)
-                .ToList();
+            var categoryQuery = _context.Category
+                .OrderBy(x => x.CategoryName)
+                .Select(x => x);
 
             // Select existing FK navigation properties for drop down fields
+            CategoryNameSL = new SelectList(categoryQuery.AsNoTracking(),
+                nameof(Category.CategoryId), nameof(Category.CategoryName));
             MaturityStatusSL = new SelectList(maturityQuery.AsNoTracking(),
                 nameof(Maturity.MaturityId), nameof(Maturity.MaturityStatus));
             ProjectNameSL = new SelectList(projectQuery.AsNoTracking(),
@@ -135,11 +135,14 @@ namespace kwh.Pages.Inventory
                .OrderBy(x => x.MaturityId)
                .Select(m => m);
 
-            CategoryList = _context.Category
-                .Select(x => x.CategoryName)
-                .ToList();
+            var categoryQuery = _context.Category
+                .OrderBy(x => x.CategoryName)
+                .Select(x => x);
 
             // Select FK navigation properties for drop down fields if TryUpdateModelAsync fails
+            CategoryNameSL = new SelectList(categoryQuery,
+                nameof(Category.CategoryId), nameof(Category.CategoryName),
+                emptyComponent.CategoryId);
             MaturityStatusSL = new SelectList(maturityQuery,
                 nameof(Maturity.MaturityId), nameof(Maturity.MaturityStatus),
                 emptyComponent.MaturityId);

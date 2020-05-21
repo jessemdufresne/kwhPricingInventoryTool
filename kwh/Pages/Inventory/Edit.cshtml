@@ -11,20 +11,6 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Edit</title>
-    <script type='text/javascript'>
-        $(document).ready(function ()
-        {
-            var categoryArr = [];
-
-            @foreach (var d in Model.CategoryList) {
-                @:categoryArr.push("@d");
-            }
-
-            $('#cat').autocomplete({
-                source: categoryArr
-            });
-        });
-    </script>
 </head>
 <body>
     <br />
@@ -45,7 +31,10 @@
                 </div>
                 <div class="form-group autocomplete">
                     <label asp-for="Component.Category" class="control-label"></label>
-                    <input id="cat" type="text" asp-for="Component.CategoryId" class="form-control" />
+                    <select asp-for="Component.CategoryId" class="form-control"
+                            asp-items="Model.CategoryNameSL">
+                        <option value="">-- Select a category --</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label asp-for="Component.Vendor" class="control-label"></label>
