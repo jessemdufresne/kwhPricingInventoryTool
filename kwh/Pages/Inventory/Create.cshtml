@@ -28,12 +28,10 @@
             $("#curr").click(function () {
                 $("#datetime").hide("fast");
                 $("#datetime").val(now);
-                console.log("Hide: " + document.getElementById("datetime").value);
             });
             $("#hist").click(function () {
                 $("#datetime").show("fast");
                 $("#datetime").val(dflt);
-                console.log("Show: " + document.getElementById("datetime").value);
             });
 
             $("#datetime").flatpickr({
