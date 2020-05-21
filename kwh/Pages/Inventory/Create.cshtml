@@ -11,40 +11,37 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type='text/javascript'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/ie.css">
+    <![endif]-->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script type="text/javascript">
         $(document).ready(function () {
-            var d, t, dt;
-            var now = new Date().toISOString().substring(0, 23);
+            var now = new Date().toISOString();
+            var dflt = new Date("2014-01-01 13:30").toISOString();
 
+            $("#datetime").hide("fast");
             $("#curr").click(function () {
-                $("#dateField").hide("fast");
-                $("#timeField").hide("fast");
-                $("#resultField").val(now);
+                $("#datetime").hide("fast");
+                $("#datetime").val(now);
+                console.log("Hide: " + document.getElementById("datetime").value);
             });
             $("#hist").click(function () {
-                $("#dateField").show("fast");
-                $("#timeField").show("fast");
-                $("#resultField").val("");
+                $("#datetime").show("fast");
+                $("#datetime").val(dflt);
+                console.log("Show: " + document.getElementById("datetime").value);
             });
 
-            $("#dateField").change(function () {
-                if ($(this).val()) {
-                    setResult();
-                }
-            })
-            $("#timeField").change(function () {
-                setResult();
-            })
-
-            function setResult() {
-                d = $("#dateField").val();
-                t = $("#timeField").val();
-                dt = d + "T" + t + ":00.000";
-                document.getElementById("resultField").value = dt;
-            }
+            $("#datetime").flatpickr({
+                enableTime: true,
+                time_24hr: true,
+                dateFormat: "Z",
+                defaultDate: dflt
+            });
         });
     </script>
 </head>
@@ -127,20 +124,18 @@
                 <div class="form-group">
                     <label asp-for="Component.Timestamp" class="control-label"></label><br />
                     <div class="d-inline-block">
-                        <label>Current <input type="radio" id="curr" asp-for="Component.isCurrent" value="Curr" /></label>
-                        <label> Historic <input type="radio" id="hist" asp-for="Component.isCurrent" value="Hist" /></label>
+                        <label>Current <input type="radio" id="curr" asp-for="Component.isCurrent" value="true" /></label>
+                        <label> Historic <input type="radio" id="hist" asp-for="Component.isCurrent" value="false" /></label>
                         <br />
-                        <input id="dateField" type="date" style="display:none;"/>
-                        <input id="timeField" type="time" style="display:none;" value="12:00"/>
-                        <input type="datetime-local" id="resultField" asp-for="Component.Timestamp" value=""
-                               class="form-control" style="display:none;">
+                        <input type="hidden" asp-for="Component.Timestamp" value="01/01/2014 13:30:00"/>
+                        <input type="text" asp-for="datetime" class="form-control" style="width:240px;"/>
                     </div>
                     <br />
                     <span asp-validation-for="Component.isCurrent" class="text-danger" />
                     <span asp-validation-for="Component.Timestamp" class="text-danger" />
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Add" class="btn btn-primary" />
+                    <input id="sub" type="submit" value="Add" class="btn btn-primary" />
                 </div>
             </form>
         </div>

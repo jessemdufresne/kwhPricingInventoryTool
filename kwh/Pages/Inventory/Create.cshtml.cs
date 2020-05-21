@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using kwh.Models;
@@ -24,8 +23,9 @@ namespace kwh.Pages.Inventory
         [BindProperty]
         public Component Component { get; set; }
 
-        //public string Category = "";
-        //public List<string> CategoryList;
+        [BindProperty]
+        public string datetime { get; set; }
+
         public SelectList MaturityStatusSL { get; set; }
         public SelectList ProjectNameSL { get; set; }
         public SelectList VendorNameSL { get; set; }
@@ -66,8 +66,6 @@ namespace kwh.Pages.Inventory
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var emptyComponent = new Component();
-
             // 1) Retrieve the maximum ComponentId to increment
             // New records should use the next available ComponentId
             // Uses EF Core LINQ-to-Entities Method Syntax
@@ -76,19 +74,13 @@ namespace kwh.Pages.Inventory
                 .Select(x => x.ComponentId)
                 .FirstOrDefault();
 
-            // 2) Asynchronously retrieve user input
-            // TryUpdateModelAsync prevents overposting
-            if (await TryUpdateModelAsync<Component>(
-                 emptyComponent,
-                 "component",   // Prefix for form value.
-                 c => c.PartNumber, c => c.PartName, c => c.CategoryId, c => c.VendorId,
-                 c => c.UnitCost, c => c.Notes, c => c.MaturityId, c => c.Url,
-                 c => c.QuantityCurrent, c => c.QuantityNeeded, c => c.ProjectId,
-                 c => c.AppUserId, c => c.Timestamp))
+            // 2) Retrieve user input
+            if (ModelState.IsValid)
             {
-                // 3) Manually increment ComponentId before adding a new record
-                emptyComponent.ComponentId = compId + 1;
-                _context.Component.Add(emptyComponent);
+                // 3) Manually increment ComponentId and set Timestamp input
+                Component.ComponentId = compId + 1;
+                Component.Timestamp = DateTime.Parse(datetime);
+                _context.Component.Add(Component);
                 // 4) Save changes to the database
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
@@ -114,19 +106,19 @@ namespace kwh.Pages.Inventory
             // TryUpdateModelAsync fails
             MaturityStatusSL = new SelectList(_context.Maturity,
                 nameof(Maturity.MaturityId), nameof(Maturity.MaturityStatus),
-                emptyComponent.MaturityId);
+                Component.MaturityId);
             ProjectNameSL = new SelectList(projectQuery,
                 nameof(Project.ProjectId), nameof(Project.ProjectName),
-                emptyComponent.ProjectId);
+                Component.ProjectId);
             VendorNameSL = new SelectList(vendorQuery,
                 nameof(Vendor.VendorId), nameof(Vendor.VendorName),
-                emptyComponent.VendorId);
+                Component.VendorId);
             UserNameSL = new SelectList(userQuery,
                 nameof(AppUser.Id), nameof(AppUser.Username),
-                emptyComponent.AppUserId);
+                Component.AppUserId);
             CategoryNameSL = new SelectList(categoryQuery,
                 nameof(Category.CategoryId), nameof(Category.CategoryName),
-                emptyComponent.CategoryId);
+                Component.CategoryId);
             return Page();
         }
     }

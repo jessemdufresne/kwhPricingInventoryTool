@@ -60,10 +60,9 @@ namespace kwh.Models
         [Display(Name = "Quantity Needed")]
         public int QuantityNeeded { get; set; }
 
-        [Required]
-        [DataType(DataType.DateTime)]
         [Display(Name = "Date Added")]
-        public DateTime Timestamp { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 
         [NotMapped]
         [Required]
