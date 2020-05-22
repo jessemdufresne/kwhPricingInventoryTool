@@ -1,5 +1,7 @@
 using System;
+using System.Globalization;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using kwh.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -66,6 +68,8 @@ namespace kwh.Pages.Inventory
 
         public async Task<IActionResult> OnPostAsync()
         {
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             // 1) Retrieve the maximum ComponentId to increment
             // New records should use the next available ComponentId
             // Uses EF Core LINQ-to-Entities Method Syntax
@@ -79,7 +83,9 @@ namespace kwh.Pages.Inventory
             {
                 // 3) Manually increment ComponentId and set Timestamp input
                 Component.ComponentId = compId + 1;
-                Component.Timestamp = DateTime.Parse(datetime);
+                // Parse(String, IFormatProvider, DateTimeStyles)
+                Component.Timestamp = DateTime.Parse(datetime, culture, DateTimeStyles.AdjustToUniversal);
+                Component.AppUserId = Int16.Parse(userId);
                 _context.Component.Add(Component);
                 // 4) Save changes to the database
                 await _context.SaveChangesAsync();

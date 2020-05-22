@@ -77,6 +77,7 @@ namespace kwh.Pages.Account
                     new Claim(ClaimTypes.Name, user.FirstName),
                     new Claim("Email", user.Email),
                     new Claim(ClaimTypes.Role, "Administrator"),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
                 };
 
                 var claimsIdentity = new ClaimsIdentity(

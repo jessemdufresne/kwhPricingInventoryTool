@@ -281,7 +281,7 @@ namespace kwh.Models
                         ProjectId = 4,
                         QuantityCurrent = 3,
                         QuantityNeeded = 1,
-                        Timestamp = DateTime.Parse("5/6/2017 12:30:00 PM")
+                        Timestamp = DateTime.Parse("5/6/2017 13:30:00 PM")
                     },
                     new Component
                     {
@@ -298,7 +298,7 @@ namespace kwh.Models
                         ProjectId = 7,
                         QuantityCurrent = 3,
                         QuantityNeeded = 1,
-                        Timestamp = DateTime.Parse("1/6/2020 12:30:00 PM")
+                        Timestamp = DateTime.Parse("1/6/2020 13:30:00 PM")
                     },
                     new Component
                     {
