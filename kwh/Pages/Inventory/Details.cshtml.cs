@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using kwh.Models;
@@ -45,10 +46,9 @@ namespace kwh.Pages.Inventory
             // 3) Retrieve timestamps for x-axis and unit costs for y-axis
             var costs = graph.Select(c => c.UnitCost).ToList();
             var time = graph.Select(c => c.Timestamp).ToList();
-
             // 4) Convert lists to strings for Chart.js
             UnitCostList = String.Join(",", costs);
-            List<string> t = time.ConvertAll(x => x.ToString("g"));
+            List<string> t = time.ConvertAll(x => x.ToString("M/d/yyyy HH:mm"));
             TimestampsList = new HtmlString("'" + string.Join("','", t) + "'");
 
             // 5) Retrieve all historical records for the selected ComponentId
