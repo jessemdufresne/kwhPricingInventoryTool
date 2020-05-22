@@ -1,9 +1,6 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Custom">
   <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Vendors/Index.cshtml">
     <Files>
-      <File FileName="kwh/Pages/Inventory/Details.cshtml" Line="27" Column="28" />
-      <File FileName="kwh/Pages/Inventory/Create.cshtml" Line="1" Column="1" />
-      <File FileName="kwh/Pages/Categories/Create.cshtml" Line="1" Column="1" />
       <File FileName="kwh/Pages/Vendors/Index.cshtml" Line="18" Column="28" />
     </Files>
     <Pads>
