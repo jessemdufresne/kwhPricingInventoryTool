@@ -11,14 +11,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-#535458 border-bottom box-shadow mb-1">
-            <div class="container color-white">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-#535458 border-bottom box-shadow">
+            <div class="container-fluid row color-white justify-content-center">
                 <img src="~/Images/logo.png" alt="Killowatts for Humanity Logo" height="60" width="60" hspace="10">
-<<<<<<< HEAD
-                <a class="navbar-brand" href="./Index">Inventory Tracker</a>
-=======
-                <a asp-page="../Index" class="navbar-brand">Inventory Tracker</a>
->>>>>>> origin/master
                 <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,22 +21,25 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        <li class="nav-item text-center">
+                            <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item text-center">
                             <a class="nav-link text-white" asp-area="" asp-page="/Inventory/Index">Inventory</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item text-center">
                             <a class="nav-link text-white" asp-area="" asp-page="/Projects/Index">Projects</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item text-center">
                             <a class="nav-link text-white" asp-area="" asp-page="/Vendors/Index">Vendors</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item text-center">
                             <a class="nav-link text-white" asp-area="" asp-page="/Categories/Index">Category</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item text-center">
                             <a class="nav-link text-white" asp-area="" asp-page="/AppUsers/Index">Volunteers</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item text-center">
                             <a class="nav-link text-white" asp-area="" asp-page="/Help/FAQ">Help</a>
                         </li>
                     </ul>
@@ -49,7 +47,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="mb-2">
             @RenderBody()
     </div>
 

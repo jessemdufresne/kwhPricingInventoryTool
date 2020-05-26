@@ -21,6 +21,7 @@
     <Content Remove="Pages\Privacy.cshtml" />
     <Content Remove="Pages\Account\SignedOut.cshtml" />
     <Content Remove="Pages\Account\AccessDenied.cshtml" />
+    <Content Remove="wwwroot\Images\icons8-link-26.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.20" />
@@ -66,5 +67,11 @@
        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\**">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

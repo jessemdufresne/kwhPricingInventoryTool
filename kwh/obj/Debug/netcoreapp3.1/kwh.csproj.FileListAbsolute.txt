@@ -1859,3 +1859,6 @@
 /Users/JesseDuFresne/Desktop/School/Project/branches/ui_fix/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/kwh.dll
 /Users/JesseDuFresne/Desktop/School/Project/branches/ui_fix/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/kwh.pdb
 /Users/JesseDuFresne/Desktop/School/Project/branches/ui_fix/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/kwh.genruntimeconfig.cache
+/Users/JesseDuFresne/Desktop/School/Project/branches/ui_fix/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/System.Collections.Immutable.dll
+/Users/JesseDuFresne/Desktop/School/Project/branches/ui_fix/kwhPricingInventoryTool/kwh/bin/Debug/netcoreapp3.1/System.Diagnostics.DiagnosticSource.dll
+/Users/JesseDuFresne/Desktop/School/Project/branches/ui_fix/kwhPricingInventoryTool/kwh/obj/Debug/netcoreapp3.1/Razor/Pages/Help/FAQ.cshtml.g.cs

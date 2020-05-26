@@ -15,120 +15,131 @@
     <title>Details</title>
 </head>
 <body>
-    <div>
+    <div class="text-center">
         <br />
-        <h4 class="m-3 text-center">Component Details</h4>
-        <div class="w-90 bg-white m-5 mb-2 rounded">
-            <canvas id="priceChart" />
+        <div class="row justify-content-center">
+            <h4 class="m-2 text-center">Component Details</h4>
         </div>
-        <div class="text-center">
-            <p>Zulu Time Zone is shown (UTC)</p>
+
+        <div class="row justify-content-center">
+            <div class="w-75 bg-white m-3 rounded">
+                <canvas id="priceChart" />
+            </div>
         </div>
-        <table class="table border-hidden bg-white mb-0 mt-3">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Component[0].PartNumber)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Component[0].PartName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Component[0].Category)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Component[0].Vendor)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Component[0].UnitCost)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Component[0].Notes)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Component[0].Maturity)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Component[0].Url)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Component[0].QuantityNeeded)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Component[0].Project)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Component[0].AppUser)
-                    </th>
-                    <th>
-                        Date Added/Modified
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Component)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PartNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PartName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Vendor.VendorName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.UnitCost)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Notes)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Maturity.MaturityStatus)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Url)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.QuantityCurrent)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.QuantityNeeded)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Project.ProjectName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AppUser.Username)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Timestamp)
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+
+        <div class="row justify-content-center">
+            <p class="text-center">Zulu Time Zone is shown (UTC)</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <table class="table border-hidden bg-white rounded">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Component[0].PartNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Component[0].PartName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Component[0].Category)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Component[0].Vendor)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Component[0].UnitCost)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Component[0].Notes)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Component[0].Maturity)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Component[0].Url)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Component[0].QuantityNeeded)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Component[0].Project)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Component[0].AppUser)
+                            </th>
+                            <th>
+                                Date Added/Modified
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Component)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PartNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PartName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Vendor.VendorName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UnitCost)
+                                </td>
+                                <td>
+                                    <img src="~/Images/Notepad-icon.png" data-toggle="popover" data-placement="top" data-content="@Html.DisplayFor(modelItem => item.Notes)" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Maturity.MaturityStatus)
+                                </td>
+                                <td>
+                                    <a href="@item.Url" target="_blank">
+                                        <img src="~/Images/icons8-link-26.png" style="width: 20px;" />
+                                    </a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.QuantityCurrent)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.QuantityNeeded)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AppUser.Username)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Timestamp)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+
     <div class="text-center m-3">
-<<<<<<< HEAD
         <button class="btn btn-primary py-2 mb-4" onclick="window.history.back()">&larr; Back</button>
-=======
-        <a type="button" asp-page="./Index" class="btn btn-primary">Back to List</a>
-        <a type="button" asp-page="./Edit" asp-route-id="@Model.Component[0].Id" class="btn btn-primary">Edit</a>
->>>>>>> origin/master
+        <a type="button" asp-page="./Edit" asp-route-id="@Model.Component[0].Id" class="btn btn-primary py-2 mb-4">Edit</a>
     </div>
 </body>
 </html>
 
 <script>
+    $("[data-toggle=popover]").popover();
+
     //Line graph styling: https://www.chartjs.org/docs/latest/charts/line.html
     //Time Axis: https://www.chartjs.org/docs/latest/axes/cartesian/time.html
     Chart.defaults.global.legend.display = false;

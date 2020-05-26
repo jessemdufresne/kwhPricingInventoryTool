@@ -48,6 +48,10 @@ p1 {
     border-color: darkgreen;
 }
 
+.btn-primary:focus {
+    border-color: darkgreen;
+}
+
 .btn-danger {
     color: #fff;
     background-color: #dc3545;
@@ -126,4 +130,8 @@ body {
     padding: 0px;
     margin: 0px;
     background-color: #FFFFFF;
+}
+
+.popover-title{
+    color: black;
 }

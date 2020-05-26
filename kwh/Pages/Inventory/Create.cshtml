@@ -2,7 +2,7 @@
 @model kwh.Pages.Inventory.CreateModel
 
 @{
-    ViewData["Title"] = "Add a new component";
+    ViewData["Title"] = "New Component";
 }
 
 <!DOCTYPE html>
@@ -50,9 +50,11 @@
 </head>
 <body>
     <br />
-    <h4>@ViewData["Title"]</h4>
-    <div class="row">
-        <div class="col-md-4">
+    <div class="row justify-content-center">
+        <h3>@ViewData["Title"]</h3>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-4 col-sm-10 text-left">
             <form method="post" autocomplete="off">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
@@ -124,14 +126,14 @@
                     </select>
                     <span asp-validation-for="Component.AppUserId" class="text-danger" />
                 </div>
-                <div class="form-group">
+                <div class="form-group text-center">
                     <label asp-for="Component.Timestamp" class="control-label"></label><br />
                     <div class="d-inline-block">
                         <label>Current <input type="radio" id="curr" asp-for="Component.isCurrent" value="Curr" /></label>
                         <label> Historic <input type="radio" id="hist" asp-for="Component.isCurrent" value="Hist" /></label>
                         <br />
-                        <input id="dateField" type="date" style="display:none;"/>
-                        <input id="timeField" type="time" style="display:none;" value="12:00"/>
+                        <input id="dateField" type="date" style="display:none;" />
+                        <input id="timeField" type="time" style="display:none;" value="12:00" />
                         <input type="datetime-local" id="resultField" asp-for="Component.Timestamp" value=""
                                class="form-control" style="display:none;">
                     </div>
@@ -139,15 +141,14 @@
                     <span asp-validation-for="Component.isCurrent" class="text-danger" />
                     <span asp-validation-for="Component.Timestamp" class="text-danger" />
                 </div>
-                <div class="form-group">
+                <div class="form-group text-center">
                     <input type="submit" value="Add" class="btn btn-primary" />
+                </div>
+                <div class="text-center">
+                    <a class="btn btn-primary" asp-page="./Index">Cancel</a>
                 </div>
             </form>
         </div>
-    </div>
-
-    <div>
-        <a asp-page="Index">Back to List</a>
     </div>
 
     @section Scripts {

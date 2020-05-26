@@ -14,11 +14,7 @@
         "outputPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/ui_fix/kwhPricingInventoryTool/kwh/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-<<<<<<< HEAD
           "/Users/JesseDuFresne/.config/NuGet/NuGet.Config"
-=======
-          "/Users/audreykan/.config/NuGet/NuGet.Config"
->>>>>>> origin/master
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -123,7 +119,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.202/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
         }
       }
     }
