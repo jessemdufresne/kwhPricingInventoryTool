@@ -1,4 +1,4 @@
-@page
+﻿@page
 @model kwh.Pages.AppUsers.EditModel
 
 @{
@@ -13,18 +13,41 @@
     <title>Edit</title>
 </head>
 <body>
-    <div class="container-fluid mt-2 text-center">
-        <br />
-        <h3>Edit User</h3>
-        <div class="row justify-content-center mt-3">
-            <div class="col-md-4  col-sm-10 text-left">
-                <form method="post">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="AppUser.Id" />
-                    <div class="form-group">
-                        <label asp-for="AppUser.FirstName" class="control-label"></label>
-                        <input asp-for="AppUser.FirstName" class="form-control" />
-                        <span asp-validation-for="AppUser.FirstName" class="text-danger"></span>
+    <br />
+    <h3>User</h3>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-4 col-sm-10 text-left">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="AppUser.Id" />
+                <div class="form-group">
+                    <label asp-for="AppUser.FirstName" class="control-label"></label>
+                    <input asp-for="AppUser.FirstName" class="form-control" />
+                    <span asp-validation-for="AppUser.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AppUser.LastName" class="control-label"></label>
+                    <input asp-for="AppUser.LastName" class="form-control" />
+                    <span asp-validation-for="AppUser.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AppUser.Email" class="control-label"></label>
+                    <input asp-for="AppUser.Email" class="form-control" />
+                    <span asp-validation-for="AppUser.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AppUser.Username" class="control-label"></label>
+                    <input asp-for="AppUser.Username" class="form-control" />
+                    <span asp-validation-for="AppUser.Username" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="AppUser.PasswordHash" value="@Model.AppUser.PasswordHash" />
+                <input type="hidden" asp-for="AppUser.Password" value="password" />
+                <input type="hidden" asp-for="AppUser.ConfirmPassword" value="password" />
+                <div class="row p-2">
+                    <div class="form-group col-sm text-left p-2">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <input type="button" value="Delete" class="btn btn-danger"
+                               onclick="window.location.href = 'Delete?id=' + window.location.search.substring(1).split('=')[1];" />
                     </div>
                     <div class="form-group">
                         <label asp-for="AppUser.LastName" class="control-label"></label>
@@ -48,12 +71,13 @@
                                    onclick="window.location.href = 'Delete?id=' + window.location.search.substring(1).split('=')[1];" />
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
-        <div class="row justify-content-center">
-            <button class="btn btn-primary py-2 mb-4" onclick="window.history.back()">Cancel</button>
-        </div>
+    </div>
+    <div class="row justify-content-center">
+        <button class="btn btn-primary py-2 mb-4" onclick="window.history.back()">Cancel</button>
+    </div>
     </div>
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

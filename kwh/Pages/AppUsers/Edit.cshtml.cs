@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using kwh.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace kwh.Pages.AppUsers
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly kwhDataContext _context;

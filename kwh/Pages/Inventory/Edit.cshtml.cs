@@ -1,6 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using kwh.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -24,12 +24,11 @@ namespace kwh.Pages.Inventory
         [BindProperty]
         public Component Component { get; set; }
 
-        public string Category = "";
-        public List<string> CategoryList;
         public SelectList MaturityStatusSL { get; set; }
         public SelectList ProjectNameSL { get; set; }
         public SelectList VendorNameSL { get; set; }
         public SelectList UserNameSL { get; set; }
+        public SelectList CategoryNameSL { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -68,9 +67,9 @@ namespace kwh.Pages.Inventory
                .OrderBy(x => x.MaturityId)
                .Select(m => m);
 
-            CategoryList = _context.Category
-                .Select(x => x.CategoryName)
-                .ToList();
+            var categoryQuery = _context.Category
+                .OrderBy(x => x.CategoryName)
+                .Select(x => x);
 
             // Select existing FK navigation properties for drop down fields
             MaturityStatusSL = new SelectList(maturityQuery.AsNoTracking(),
@@ -81,6 +80,8 @@ namespace kwh.Pages.Inventory
                 nameof(Vendor.VendorId), nameof(Vendor.VendorName));
             UserNameSL = new SelectList(userQuery.AsNoTracking(),
                 nameof(AppUser.Id), nameof(AppUser.Username));
+            CategoryNameSL = new SelectList(categoryQuery.AsNoTracking(),
+                nameof(Category.CategoryId), nameof(Category.CategoryName));
             return Page();
         }
 
@@ -91,6 +92,7 @@ namespace kwh.Pages.Inventory
                 return NotFound();
             }
 
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             // Create a new Component object to insert into the database
             var emptyComponent = new Component();
 
@@ -113,6 +115,7 @@ namespace kwh.Pages.Inventory
                 // 3) Manually assign the same ComponentId before adding a new record
                 emptyComponent.ComponentId = compId;
                 emptyComponent.Timestamp = DateTime.UtcNow;
+                emptyComponent.AppUserId = Int16.Parse(userId);
                 _context.Component.Add(emptyComponent);
                 // 4) Save changes to the database
                 await _context.SaveChangesAsync();
@@ -135,9 +138,9 @@ namespace kwh.Pages.Inventory
                .OrderBy(x => x.MaturityId)
                .Select(m => m);
 
-            CategoryList = _context.Category
-                .Select(x => x.CategoryName)
-                .ToList();
+            var categoryQuery = _context.Category
+                .OrderBy(x => x.CategoryName)
+                .Select(x => x);
 
             // Select FK navigation properties for drop down fields if TryUpdateModelAsync fails
             MaturityStatusSL = new SelectList(maturityQuery,
@@ -152,6 +155,9 @@ namespace kwh.Pages.Inventory
             UserNameSL = new SelectList(userQuery,
                 nameof(AppUser.Id), nameof(AppUser.Username),
                 emptyComponent.AppUserId);
+            CategoryNameSL = new SelectList(categoryQuery,
+                nameof(Category.CategoryId), nameof(Category.CategoryName),
+                emptyComponent.CategoryId);
             return Page();
         }
     }

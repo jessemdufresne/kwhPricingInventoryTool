@@ -11,115 +11,96 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Edit</title>
-    <script type='text/javascript'>
-        $(document).ready(function ()
-        {
-            var categoryArr = [];
-
-            @foreach (var d in Model.CategoryList) {
-                @:categoryArr.push("@d");
-            }
-
-            $('#cat').autocomplete({
-                source: categoryArr
-            });
-        });
-    </script>
 </head>
 <body>
     <br />
     <div class="container-fluid text-center">
-            <h3>Edit Component</h3>
-            <div class="row justify-content-center">
-                <div class="col-md-4  col-sm-10 text-left">
-                    <form method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <input type="hidden" asp-for="Component.Id" />
-                        <div class="form-group">
-                            <label asp-for="Component.PartNumber" class="control-label"></label>
-                            <input asp-for="Component.PartNumber" class="form-control" />
+        <h3>Edit Component</h3>
+        <div class="row justify-content-center">
+            <div class="col-md-4  col-sm-10 text-left">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Component.Id" />
+                    <div class="form-group">
+                        <label asp-for="Component.PartNumber" class="control-label"></label>
+                        <input asp-for="Component.PartNumber" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Component.PartName" class="control-label"></label>
+                        <input asp-for="Component.PartName" class="form-control" />
+                        <span asp-validation-for="Component.PartName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group autocomplete">
+                        <label asp-for="Component.Category" class="control-label"></label>
+                        <select asp-for="Component.CategoryId" class="form-control"
+                                asp-items="Model.CategoryNameSL">
+                            <option value="">-- Select a category --</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Component.Vendor" class="control-label"></label>
+                        <select asp-for="Component.VendorId" class="form-control"
+                                asp-items="@Model.VendorNameSL">
+                            <option value="">-- Select a vendor --</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Component.UnitCost" class="control-label"></label>
+                        <input asp-for="Component.UnitCost" class="form-control" />
+                        <span asp-validation-for="Component.UnitCost" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Component.Notes" class="control-label"></label>
+                        <input asp-for="Component.Notes" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Component.Maturity" class="control-label"></label>
+                        <select asp-for="Component.MaturityId" class="form-control"
+                                asp-items="Model.MaturityStatusSL">
+                            <option value="">-- Select a maturity --</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Component.Url" class="control-label"></label>
+                        <input asp-for="Component.Url" class="form-control" />
+                        <span asp-validation-for="Component.Url" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Component.QuantityCurrent" class="control-label"></label>
+                        <input asp-for="Component.QuantityCurrent" class="form-control" />
+                        <span asp-validation-for="Component.QuantityCurrent" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Component.QuantityNeeded" class="control-label"></label>
+                        <input asp-for="Component.QuantityNeeded" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Component.Project" class="control-label"></label>
+                        <select asp-for="Component.ProjectId" class="form-control"
+                                asp-items="@Model.ProjectNameSL">
+                            <option value="">-- Select a project --</option>
+                        </select>
+                        <span asp-validation-for="Component.ProjectId" class="text-danger"></span>
+                    </div>
+                    <input type="hidden" asp-for="Component.AppUserId" value="0" />
+                    <div class="row p-2 text-center">
+                        <div class="form-group col-sm p-2">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                            <input type="button" value="Delete" class="btn btn-danger"
+                                    onclick="window.location.href = 'Delete?id=' + window.location.search.substring(1).split('=')[1];" />
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Component.PartName" class="control-label"></label>
-                            <input asp-for="Component.PartName" class="form-control" />
-                            <span asp-validation-for="Component.PartName" class="text-danger"></span>
-                        </div>
-                        <div class="form-group autocomplete">
-                            <label asp-for="Component.Category" class="control-label"></label>
-                            <input id="cat" type="text" asp-for="Component.CategoryId" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Component.Vendor" class="control-label"></label>
-                            <select asp-for="Component.VendorId" class="form-control"
-                                    asp-items="@Model.VendorNameSL">
-                                <option value="">-- Select a vendor --</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Component.UnitCost" class="control-label"></label>
-                            <input asp-for="Component.UnitCost" class="form-control" />
-                            <span asp-validation-for="Component.UnitCost" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Component.Notes" class="control-label"></label>
-                            <input asp-for="Component.Notes" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Component.Maturity" class="control-label"></label>
-                            <select asp-for="Component.MaturityId" class="form-control"
-                                    asp-items="Model.MaturityStatusSL">
-                                <option value="">-- Select a maturity --</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Component.Url" class="control-label"></label>
-                            <input asp-for="Component.Url" class="form-control" />
-                            <span asp-validation-for="Component.Url" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Component.QuantityCurrent" class="control-label"></label>
-                            <input asp-for="Component.QuantityCurrent" class="form-control" />
-                            <span asp-validation-for="Component.QuantityCurrent" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Component.QuantityNeeded" class="control-label"></label>
-                            <input asp-for="Component.QuantityNeeded" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Component.Project" class="control-label"></label>
-                            <select asp-for="Component.ProjectId" class="form-control"
-                                    asp-items="@Model.ProjectNameSL">
-                                <option value="">-- Select a project --</option>
-                            </select>
-                            <span asp-validation-for="Component.ProjectId" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Component.AppUser" class="control-label">Modified By</label>
-                            <select asp-for="Component.AppUserId" class="form-control"
-                                    asp-items="@Model.UserNameSL">
-                                <option value="">-- Select a user --</option>
-                            </select>
-                            <span asp-validation-for="Component.AppUserId" class="text-danger"></span>
-                        </div>
-                        <div class="row justify-content-center text-center p-2">
-                            <div class="form-group col-sm text-center p-2">
-                                <input type="submit" value="Save" class="btn btn-primary" />
-                                <input type="button" value="Delete" class="btn btn-danger"
-                                       onclick="window.location.href = 'Delete?id=' + window.location.search.substring(1).split('=')[1];" />
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="row justify-content-center text-center">
-                <button class="btn btn-primary py-2 mb-4" onclick="window.history.back()">&larr; Back</button>
+                    </div>
+                </form>
             </div>
         </div>
 
+        <div class="row justify-content-center text-center">
+            <button class="btn btn-primary py-2 mb-4" onclick="window.history.back()">&larr; Back</button>
+        </div>
+    </div>
 
-        @section Scripts {
-            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-        }
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
 </body>
 </html>

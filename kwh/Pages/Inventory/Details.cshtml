@@ -146,14 +146,15 @@
     var ctx = document.getElementById('priceChart').getContext('2d');
     var tti = [@Model.TimestampsList];
     var LineChart = new Chart(ctx, {
-        responsive: true,
+        responsive: true, 
         type: 'line',
         data: {
             datasets: [{
                 fill: false,
                 borderColor: 'rgb(162, 202, 153)',
+                pointBackgroundColor: 'rgb(162, 202, 153)', 
                 borderWidth: 2,
-                lineTension: 0.2,
+                lineTension: 0.3,
                 data: [@Model.UnitCostList]
             }]
         },
@@ -169,35 +170,47 @@
             scales: {
                 xAxes: [{
                     type: 'time',
-                    labels: [@Model.TimestampsList],
-                    distribution: 'linear',
+                    offset: true,
+                    scaleLabel: {
+                        labelString: 'Time',
+                        display: true
+                    },
+                    labels: tti,
                     time: {
+                        parser: 'MM/DD/YYYY HH:mm',
+                        format: "MM/DD/YYYY HH:mm",
                         displayFormats: {
-                            'day': 'MMM DD',
-                            'week': 'll',
-                            'month': 'MMM YYYY',
-                            'year': 'YYYY',
-                        },
-                        parser: 'M/DD/YYYY hh:mm a',
-                        minUnit: 'day'
+                            millisecond: 'HH:mm',
+                            second: 'HH:mm',
+                            minute: 'HH:mm',
+                            hour: 'HH:mm',
+                            quarter: 'MMM YYYY'
+                        }
+                    },
+                    ticks: {
+                        maxTicksLimit: 10
                     }
                 }],
                 yAxes: [{
                     ticks: {
                         beginAtZero: true,
-                        callback: function (value, index, values) {
+                        maxTicksLimit: 5,
+                        callback: function (value) {
                             if (value.toString().length == 1) {
                                 return '$' + value + '.00';
                             }
                             return '$' + value;
                         }
+                    },
+                    scaleLabel: {
+                        labelString: '$ Cost',
+                        display: true
                     }
                 }]
             },
             tooltips: {
                 callbacks: {
                     title: function (tooltipItem, data) {
-                        console.log(tooltipItem);
                         return 'Date: ' + tti[tooltipItem[0].index];
                     },
                     label: function (tooltipItem, data) {
