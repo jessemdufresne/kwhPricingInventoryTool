@@ -30,7 +30,7 @@
         <div class="row justify-content-center">
             <p class="text-center">Zulu Time Zone is shown (UTC)</p>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="overflow: scroll;">
             <div class="col-11">
                 <table class="table border-hidden bg-white rounded">
                     <thead>
@@ -97,7 +97,9 @@
                                     @Html.DisplayFor(modelItem => item.UnitCost)
                                 </td>
                                 <td>
-                                    <img src="~/Images/Notepad-icon.png" data-toggle="popover" data-placement="top" data-content="@Html.DisplayFor(modelItem => item.Notes)" />
+                                    <a>
+                                        <img src="~/Images/Notepad-icon.png" style="cursor: pointer;" data-toggle="popover" data-placement="top" data-content="@Html.DisplayFor(modelItem => item.Notes)" />
+                                    </a>
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Maturity.MaturityStatus)
@@ -178,7 +180,6 @@
                     labels: tti,
                     time: {
                         parser: 'MM/DD/YYYY HH:mm',
-                        format: "MM/DD/YYYY HH:mm",
                         displayFormats: {
                             millisecond: 'HH:mm',
                             second: 'HH:mm',

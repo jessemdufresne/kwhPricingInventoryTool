@@ -117,8 +117,8 @@
                 <div class="form-group">
                     <label asp-for="Component.Timestamp" class="control-label"></label><br />
                     <div class="d-inline-block">
-                        <label>Current <input type="radio" id="curr" asp-for="Component.isCurrent" value="true" /></label>
-                        <label> Historic <input type="radio" id="hist" asp-for="Component.isCurrent" value="false" /></label>
+                        <label class="px-2">Current <input type="radio" id="curr" asp-for="Component.isCurrent" value="true" /></label>
+                        <label class="px-2"> Historic <input type="radio" id="hist" asp-for="Component.isCurrent" value="false" /></label>
                         <br />
                         <input type="hidden" asp-for="Component.Timestamp" value="01/01/2014 13:30:00"/>
                         <input type="text" asp-for="datetime" class="form-control" style="width:240px;"/>
@@ -130,7 +130,7 @@
                 <div class="form-group text-center">
                     <input id="sub" type="submit" value="Add" class="btn btn-primary" />
                 </div>
-                <div class="text-center">
+                <div class="text-center mb-3">
                     <a class="btn btn-primary" asp-page="./Index">Cancel</a>
                 </div>
             </form>

@@ -1,26 +1,19 @@
 ﻿<Properties StartupConfiguration="{5F30A03B-EE9A-45E2-9949-734F6907C128}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/Vendors/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="kwh/Pages/AppUsers/Edit.cshtml">
     <Files>
-      <File FileName="kwh/Pages/Inventory/Details.cshtml" Line="179" Column="28" />
-      <File FileName="kwh/Pages/Inventory/Create.cshtml" />
-      <File FileName="kwh/Pages/Shared/_Layout.cshtml" />
-      <File FileName="kwh/Pages/Account/Login.cshtml" />
-      <File FileName="kwh/Pages/Account/Logout.cshtml" />
-      <File FileName="kwh/Pages/AppUsers/Create.cshtml" />
-      <File FileName="kwh/Pages/AppUsers/Delete.cshtml" />
-      <File FileName="kwh/Pages/AppUsers/Edit.cshtml" Line="74" Column="21" />
-      <File FileName="kwh/Pages/Categories/Create.cshtml" />
-      <File FileName="kwh/Pages/Categories/Edit.cshtml" />
-      <File FileName="kwh/Pages/Inventory/Edit.cshtml" Line="81" Column="37" />
-      <File FileName="kwh/Pages/Projects/Create.cshtml" />
-      <File FileName="kwh/Pages/Projects/Edit.cshtml" />
-      <File FileName="kwh/Pages/Vendors/Create.cshtml" />
-      <File FileName="kwh/Pages/Vendors/Edit.cshtml" />
-      <File FileName="kwh/Pages/Categories/Index.cshtml" Line="50" Column="114" />
-      <File FileName="kwh/Pages/AppUsers/Index.cshtml" Line="36" Column="33" />
-      <File FileName="kwh/Pages/Inventory/Index.cshtml" Line="1" Column="1" />
-      <File FileName="kwh/Pages/Projects/Index.cshtml" Line="51" Column="34" />
-      <File FileName="kwh/Pages/Vendors/Index.cshtml" Line="57" Column="114" />
+      <File FileName="kwh/Pages/Inventory/Details.cshtml" Line="33" Column="66" />
+      <File FileName="kwh/Pages/Shared/_Layout.cshtml" Line="54" Column="54" />
+      <File FileName="kwh/Pages/Shared/_LoginPartial.cshtml" Line="1" Column="1" />
+      <File FileName="kwh/Pages/Inventory/Index.cshtml" Line="43" Column="75" />
+      <File FileName="kwh/Pages/Categories/Index.cshtml" Line="38" Column="76" />
+      <File FileName="kwh/Pages/AppUsers/Index.cshtml" Line="17" Column="75" />
+      <File FileName="kwh/Pages/Projects/Index.cshtml" Line="37" Column="73" />
+      <File FileName="kwh/Pages/Vendors/Index.cshtml" Line="36" Column="76" />
+      <File FileName="kwh/Pages/Help/FAQ.cshtml" Line="21" Column="19" />
+      <File FileName="kwh/wwwroot/css/site.css" Line="118" Column="22" />
+      <File FileName="kwh/Pages/Inventory/Create.cshtml" Line="133" Column="45" />
+      <File FileName="kwh/Pages/Inventory/Edit.cshtml" Line="1" Column="1" />
+      <File FileName="kwh/Pages/AppUsers/Edit.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -29,9 +22,13 @@
             <Node name="kwh" expanded="True">
               <Node name="Data" expanded="True" />
               <Node name="Pages" expanded="True">
-                <Node name="Vendors" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
+                <Node name="AppUsers" expanded="True">
+                  <Node name="Edit.cshtml" selected="True" />
                 </Node>
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+                <Node name="Images" expanded="True" />
               </Node>
             </Node>
           </Node>
