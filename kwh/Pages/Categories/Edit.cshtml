@@ -14,30 +14,32 @@
 </head>
 <body>
     <br />
-    <h4>Category</h4>
-    <div class="row">
-        <div class="col-md-4">
-            <form method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="Category.CategoryId" />
-                <div class="form-group">
-                    <label asp-for="Category.CategoryName" class="control-label"></label>
-                    <input asp-for="Category.CategoryName" class="form-control" />
-                    <span asp-validation-for="Category.CategoryName" class="text-danger"></span>
-                </div>
-                <div class="row p-2">
-                    <div class="form-group col-sm text-left p-2">
-                        <input type="submit" value="Save" class="btn btn-primary" />
-                        <input type="button" value="Delete" class="btn btn-danger"
-                               onclick="window.location.href = 'Delete?id=' + window.location.search.substring(1).split('=')[1];" />
+    <div class="container-fluid text-center">
+        <h3>Edit Category</h3>
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-sm-10 text-left">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Category.CategoryId" />
+                    <div class="form-group">
+                        <label asp-for="Category.CategoryName" class="control-label"></label>
+                        <input asp-for="Category.CategoryName" class="form-control" />
+                        <span asp-validation-for="Category.CategoryName" class="text-danger"></span>
                     </div>
-                </div>
-            </form>
+                    <div class="row p-2">
+                        <div class="form-group col-sm text-center p-2">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                            <input type="button" value="Delete" class="btn btn-danger"
+                                   onclick="window.location.href = 'Delete?id=' + window.location.search.substring(1).split('=')[1];" />
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div>
-        <a type="button" asp-page="./Index" class="btn btn-primary">Cancel</a>
+        <div class="row justify-content-center text-center">
+            <a type="button" asp-page="./Index" class="btn btn-primary">Cancel</a>
+        </div>
     </div>
 
     @section Scripts {

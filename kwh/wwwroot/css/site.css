@@ -5,6 +5,15 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.navbar-nav .nav-item .nav-link {
+    color: red;
+}
+
+.navbar-nav .nav-item.active .nav-link,
+.navbar-nav .nav-item:hover .nav-link {
+    color: pink;
+}
+
 a {
   color: green;
 }
@@ -14,7 +23,6 @@ a.hover, a:hover {
 }
 
 table {
-    border-radius: 15px;
     border: hidden;
 }
 
@@ -37,6 +45,10 @@ p1 {
 
 .btn-primary:hover {
     background-color: darkgreen;
+    border-color: darkgreen;
+}
+
+.btn-primary:focus {
     border-color: darkgreen;
 }
 
@@ -97,7 +109,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin-bottom: 75px;
   background-color: #272727;
   color: white;
 }
@@ -118,4 +130,8 @@ body {
     padding: 0px;
     margin: 0px;
     background-color: #FFFFFF;
+}
+
+.popover-title{
+    color: black;
 }

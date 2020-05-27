@@ -13,55 +13,59 @@
     <title>Index</title>
 </head>
 <body>
-    <div class="mt-3" style="height:170px; overflow-y:scroll">
-        <table class="table table-striped border-hidden bg-white mb-0">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.AppUser[0].FirstName)
-                    </th>
-                    <th>
-                        <a asp-page="./Index" asp-route-sortOrder="@Model.LastSort">
-                            @Html.DisplayNameFor(model => model.AppUser[0].LastName)
-                        </a>
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.AppUser[0].Username)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.AppUser[0].Email)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.AppUser)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FirstName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LastName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Username)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            <a asp-page="./Edit" asp-route-id="@item.Id" class="badge badge-primary">Edit</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-    <div class="row p-2">
-        <div class="col-sm text-right p-2">
-            <input type="button" value="Add +" onclick="window.location.href = 'AppUsers/Create';" class="btn btn-primary" />
+    <div class="container-fluid mt-3">
+        <div class="row justify-content-center mt-3" style="max-height:560px; overflow-y:scroll">
+            <div class="col-10">
+                <table class="table table-striped border-hidden bg-white mb-0">
+                    <thead>
+                        <tr>
+                            <th class="border-0 rounded-top" style="position: sticky; top: 0; background: white;">
+                                @Html.DisplayNameFor(model => model.AppUser[0].FirstName)
+                            </th>
+                            <th>
+                                <a asp-page="./Index" asp-route-sortOrder="@Model.LastSort">
+                                    @Html.DisplayNameFor(model => model.AppUser[0].LastName)
+                                </a>
+                            </th>
+                            <th class="border-0 rounded-top" style="position: sticky; top: 0; background: white;">
+                                @Html.DisplayNameFor(model => model.AppUser[0].Username)
+                            </th>
+                            <th class="border-0 rounded-top" style="position: sticky; top: 0; background: white;">
+                                @Html.DisplayNameFor(model => model.AppUser[0].Email)
+                            </th>
+                            <th class="border-0 rounded-top" style="position: sticky; top: 0; background: white;"</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.AppUser)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FirstName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LastName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Username)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    <a asp-page="./Edit" asp-route-id="@item.Id" class="badge badge-primary">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <div class="row justify-content-center p-2">
+            <div class="col-10 text-right p-2">
+                <input type="button" value="Add +" onclick="window.location.href = 'AppUsers/Create';" class="btn btn-primary" />
+            </div>
+        </div>  
     </div>
 </body>
 </html>

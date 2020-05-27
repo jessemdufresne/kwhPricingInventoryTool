@@ -14,9 +14,9 @@
 </head>
 <body>
     <br />
-    <h4>User</h4>
-    <div class="row">
-        <div class="col-md-4">
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-4 col-sm-10 text-left">
+            <h3 class="text-center">User</h3>
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="AppUser.Id" />
@@ -44,7 +44,7 @@
                 <input type="hidden" asp-for="AppUser.Password" value="password" />
                 <input type="hidden" asp-for="AppUser.ConfirmPassword" value="password" />
                 <div class="row p-2">
-                    <div class="form-group col-sm text-left p-2">
+                    <div class="form-group col-sm text-center p-2">
                         <input type="submit" value="Save" class="btn btn-primary" />
                         <input type="button" value="Delete" class="btn btn-danger"
                                onclick="window.location.href = 'Delete?id=' + window.location.search.substring(1).split('=')[1];" />
@@ -53,11 +53,10 @@
             </form>
         </div>
     </div>
-
-    <div>
-        <a type="button" asp-page="./Index" class="btn btn-primary">Cancel</a>
+    <div class="row justify-content-center">
+        <button class="btn btn-primary py-2 mb-4" onclick="window.history.back()">Cancel</button>
     </div>
-
+    </div>
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }

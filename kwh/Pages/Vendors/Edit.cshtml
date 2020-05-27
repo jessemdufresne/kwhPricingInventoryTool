@@ -14,9 +14,11 @@
 </head>
 <body>
     <br />
-    <h4>Vendor</h4>
-    <div class="row">
-        <div class="col-md-4">
+    <div class="text-center">
+        <h4>Edit Vendor</h4>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-4  col-sm-10 text-lef">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Vendor.VendorId" />
@@ -38,8 +40,8 @@
                     <label asp-for="Vendor.VendorEmail" class="control-label"></label>
                     <input asp-for="Vendor.VendorEmail" class="form-control" />
                 </div>
-                <div class="row p-2">
-                    <div class="form-group col-sm text-left p-2">
+                <div class="row p-2 text-center">
+                    <div class="form-group col-sm text-center p-2">
                         <input type="submit" value="Save" class="btn btn-primary" />
                         <input type="button" value="Delete" class="btn btn-danger"
                                onclick="window.location.href = 'Delete?id=' + window.location.search.substring(1).split('=')[1];" />
@@ -49,7 +51,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="text-center">
         <a type="button" asp-page="./Index" class="btn btn-primary">Cancel</a>
     </div>
 

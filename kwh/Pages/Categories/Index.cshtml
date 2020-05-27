@@ -15,54 +15,63 @@
 </head>
 <body>
     <!--Search Bar-->
-    <div class="container mt-3">
-        <form asp-page="./Index" method="get">
-            <div class="form-actions color-white p-2 d-inline-block">
-                <div class="input-group px-2">
-                    <input type="text" class="form-control" name="CurrentFilter" value="@Model.CurrentFilter" />
-                    <div class="input-group-append">
-                        <input class="btn btn-primary " type="submit" value="Search" />
+    <div class="container-fluid mt-3">
+        <div class="row justify-content-center">
+            <div class="col-10 text-right">
+                <form asp-page="./Index" method="get">
+                    <div class="form-actions color-white p-2 d-inline-block">
+                        <div class="input-group px-2">
+                            <input type="text" class="form-control" name="CurrentFilter" value="@Model.CurrentFilter" />
+                            <div class="input-group-append">
+                                <input class="btn btn-primary " type="submit" value="Search" />
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <div class="p-2 d-inline-block">
+                        <a class="btn btn-primary" asp-page="./Index">Clear Search</a>
+                    </div>
+                </form>
             </div>
-            <div class="p-2 d-inline-block">
-                <a asp-page="./Index">Clear Search</a>
-            </div>
-        </form>
-    </div>
+         </div>
 
-    <div class="mt-3" style="height:460px; overflow-y:scroll;">
-        <table class="table table-striped border-hidden bg-white mb-0">
-            <thead>
-                <tr>
-                    <th>
-                        <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
-                           asp-route-CurrentFilter="@Model.CurrentFilter"
-                           asp-route-sortOrder="@Model.CategorySort">
-                            @Html.DisplayNameFor(model => model.Category[0].CategoryName)
-                        </a>
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Category)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CategoryName)
-                        </td>
-                        <td>
-                            <a asp-page="./Edit" asp-route-id="@item.CategoryId" class="badge badge-primary">Edit</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-    <div class="row p-2">
-        <div class="col-sm text-right p-2">
-            <input type="button" value="Add +" onclick="window.location.href = 'Categories/Create';" class="btn btn-primary" />
+        <!--Table-->
+        <div class="row justify-content-center mt-3" style="max-height: 560px; overflow-y:scroll;">
+            <div class="col-10">
+                <table class="table table-striped border-hidden bg-white mb-0">
+                    <thead>
+                        <tr>
+                            <th class="border-0 rounded-top" style="position: sticky; top: 0; background: white;">
+                                <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
+                                   asp-route-CurrentFilter="@Model.CurrentFilter"
+                                   asp-route-sortOrder="@Model.CategorySort">
+                                    @Html.DisplayNameFor(model => model.Category[0].CategoryName)
+                                </a>
+                            </th>
+                            <th class="border-0 rounded-top" style="position: sticky; top: 0; background: white;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Category)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CategoryName)
+                                </td>
+                                <td>
+                                    <a asp-page="./Edit" asp-route-id="@item.CategoryId" class="badge badge-primary">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--Add Button-->
+        <div class="row justify-content-center p-2">
+            <div class="col-10 text-right p-2">
+                <input type="button" value="Add +" onclick="window.location.href = 'Categories/Create';" class="btn btn-primary" />
+            </div>
         </div>
     </div>
 </body>

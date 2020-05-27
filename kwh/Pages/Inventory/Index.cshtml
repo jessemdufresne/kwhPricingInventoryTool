@@ -15,150 +15,154 @@
 
 <body>
     <!--Search Bar-->
-    <div class="container mt-3">
-        <form asp-page="./Index" method="get">
-            <div class="form-actions color-white p-2 d-inline-block">
-                <b class="px-2 d-inline-block">Search By:</b>
-                @foreach (var searchby in Model.Criteria)
-                {
-                    @Html.RadioButtonFor(m => m.SearchBy, searchby, new { required="required" })<p1 class="d-inline-block"> @searchby </p1>
-                }
-            </div>
-            <div class="px-2 d-inline-block">
-                <div class="input-group px-2">
-                    <input type="text" class="form-control" name="CurrentFilter" value="@Model.CurrentFilter" />
-                    <div class="input-group-append">
-                        <input class="btn btn-primary " type="submit" value="Search" />
+    <div class="container-fluid">
+        <div class="row justify-content-center m-3">
+            <div class="col-10 text-right">
+                <form asp-page="./Index" method="get">
+                    <div class="form-actions color-white px-2 d-inline-block">
+                        <b class="px-2">Search By:</b>
+                        @foreach (var searchby in Model.Criteria)
+                        {
+                            @Html.RadioButtonFor(m => m.SearchBy, searchby, new { required = "required" })<p1 class="d-inline-block"> @searchby </p1>
+                        }
                     </div>
-                </div>
+                    <div class="px-2 d-inline-block">
+                        <div class="input-group px-2">
+                            <input type="text" class="form-control" name="CurrentFilter" value="@Model.CurrentFilter" />
+                            <input class="btn btn-primary " type="submit" value="Search" />
+                        </div>
+                    </div>
+                    <div class="px-2 d-inline-block">
+                        <input type="button" value="Clear Search" onclick="window.location.href='/Inventory';" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <div class="p-2 d-inline-block">
-                <a asp-page="./Index">Clear Search</a>
-            </div>
-        </form>
-    </div>
+        </div>
 
-    <!--Table Header and Rows-->
-    <div class="mt-3" style="height:360px; overflow-y:scroll;">
-        <table class="table table-striped border-hidden bg-white mb-0" cellpadding="4" id="invTable" data-cols-width="15,15,25,10,8,10,25,8,6,6,10,8">
-            <thead>
-                <tr>
-                    <th data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
-                        <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
-                           asp-route-CurrentFilter="@Model.CurrentFilter"
-                           asp-route-SortOrder="@Model.CategorySort">
-                            @Html.DisplayNameFor(model => model.Component[0].Category)
-                        </a>
-                    </th>
-                    <th data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
-                        @Html.DisplayNameFor(model => model.Component[0].PartNumber)
-                    </th>
-                    <th data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
-                        <a asp-page="./Index"
-                           asp-route-SearchBy="@Model.SearchBy"
-                           asp-route-CurrentFilter="@Model.CurrentFilter"
-                           asp-route-SortOrder="@Model.NameSort">
-                            @Html.DisplayNameFor(model => model.Component[0].PartName)
-                        </a>
-                    </th>
-                    <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
-                        @Html.DisplayNameFor(model => model.Component[0].Vendor)
-                    </th>
-                    <th data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
-                        <a asp-page="./Index"
-                           asp-route-SearchBy="@Model.SearchBy"
-                           asp-route-CurrentFilter="@Model.CurrentFilter"
-                           asp-route-SortOrder="@Model.CostSort">
-                            @Html.DisplayNameFor(model => model.Component[0].UnitCost)
-                        </a>
-                    </th>
-                    <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
-                        @Html.DisplayNameFor(model => model.Component[0].Maturity)
-                    </th>
-                    <th style="display:none;" data-a-wrap="true" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
-                        @Html.DisplayNameFor(model => model.Component[0].Notes)
-                    </th>
-                    <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
-                        @Html.DisplayNameFor(model => model.Component[0].Url)
-                    </th>
-                    <th data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
-                        <a asp-page="./Index"
-                           asp-route-SearchBy="@Model.SearchBy"
-                           asp-route-CurrentFilter="@Model.CurrentFilter"
-                           asp-route-SortOrder="@Model.QuantitySort">
-                            @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
-                        </a>
-                    </th>
-                    <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
-                        @Html.DisplayNameFor(model => model.Component[0].QuantityNeeded)
-                    </th>
-                    <th data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
-                        <a asp-page="./Index"
-                           asp-route-SearchBy="@Model.SearchBy"
-                           asp-route-CurrentFilter="@Model.CurrentFilter"
-                           asp-route-SortOrder="@Model.ProjectSort">
-                            @Html.DisplayNameFor(model => model.Component[0].Project)
-                        </a>
-                    </th>
-                    <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
-                        @Html.DisplayNameFor(model => model.Component[0].AppUser)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Component)
-                {
-                    <tr>
-                        <td data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                        </td>
-                        <td data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.PartNumber)
-                        </td>
-                        <td data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.PartName)
-                        </td>
-                        <td style="display:none;" data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.Vendor.VendorName)
-                        </td>
-                        <td data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.UnitCost)
-                        </td>
-                        <td style="display:none;" data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.Maturity.MaturityStatus)
-                        </td>
-                        <td style="display:none;" data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.Notes)
-                        </td>
-                        <td style="display:none;" data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.Url)
-                        </td>
-                        <td data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.QuantityCurrent)
-                        </td>
-                        <td style="display:none;" data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.QuantityNeeded)
-                        </td>
-                        <td data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.Project.ProjectName)
-                        </td>
-                        <td style="display:none;" data-f-sz="11">
-                            @Html.DisplayFor(modelItem => item.AppUser.Username)
-                        </td>
-                        <td data-exclude="true">
-                            <a asp-page="./Edit" asp-route-id="@item.Id" class="badge badge-primary">Edit</a> |
-                            <a asp-page="./Details" asp-route-id="@item.Id" class="badge badge-primary">Details</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-    <div class="row p-2">
-        <div class="col-sm text-right p-2">
-            <input type="button" value="Add +" onclick="window.location.href='Inventory/Create';" class="btn btn-primary" />
-            <input id="downloadBtn" type="button" value="Export" class="btn btn-primary" />
+        <!--Table Header and Rows-->
+        <div class="row justify-content-center m-3" style="max-height: 560px; overflow-y: scroll;" >
+            <div class="col-10">
+                <table class="table table-striped border-hidden rounded bg-white mb-0" cellpadding="4" id="invTable" data-cols-width="15,15,25,10,8,10,25,8,6,6,10,8">
+                    <thead>
+                        <tr>
+                            <th class="border-0 rounded-top" style="position: sticky; top: 0; background: white;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                                <a asp-page="./Index" asp-route-SearchBy="@Model.SearchBy"
+                                   asp-route-CurrentFilter="@Model.CurrentFilter"
+                                   asp-route-SortOrder="@Model.CategorySort">
+                                    @Html.DisplayNameFor(model => model.Component[0].Category)
+                                </a>
+                            </th>
+                            <th class="border-0" style="position: sticky; top: 0; background: white;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                                @Html.DisplayNameFor(model => model.Component[0].PartNumber)
+                            </th>
+                            <th class="border-0" style="position: sticky; top: 0; background: white;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                                <a asp-page="./Index"
+                                   asp-route-SearchBy="@Model.SearchBy"
+                                   asp-route-CurrentFilter="@Model.CurrentFilter"
+                                   asp-route-SortOrder="@Model.NameSort">
+                                    @Html.DisplayNameFor(model => model.Component[0].PartName)
+                                </a>
+                            </th>
+                            <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                                @Html.DisplayNameFor(model => model.Component[0].Vendor)
+                            </th>
+                            <th class="border-0" style="position: sticky; top: 0; background: white;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                                <a asp-page="./Index"
+                                   asp-route-SearchBy="@Model.SearchBy"
+                                   asp-route-CurrentFilter="@Model.CurrentFilter"
+                                   asp-route-SortOrder="@Model.CostSort">
+                                    @Html.DisplayNameFor(model => model.Component[0].UnitCost)
+                                </a>
+                            </th>
+                            <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                                @Html.DisplayNameFor(model => model.Component[0].Maturity)
+                            </th>
+                            <th style="display:none;" data-a-wrap="true" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                                @Html.DisplayNameFor(model => model.Component[0].Notes)
+                            </th>
+                            <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                                @Html.DisplayNameFor(model => model.Component[0].Url)
+                            </th>
+                            <th class="border-0" style="position: sticky; top: 0; background: white;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                                <a asp-page="./Index"
+                                   asp-route-SearchBy="@Model.SearchBy"
+                                   asp-route-CurrentFilter="@Model.CurrentFilter"
+                                   asp-route-SortOrder="@Model.QuantitySort">
+                                    @Html.DisplayNameFor(model => model.Component[0].QuantityCurrent)
+                                </a>
+                            </th>
+                            <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                                @Html.DisplayNameFor(model => model.Component[0].QuantityNeeded)
+                            </th>
+                            <th class="border-0" style="position: sticky; top: 0; background: white;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                                <a asp-page="./Index"
+                                   asp-route-SearchBy="@Model.SearchBy"
+                                   asp-route-CurrentFilter="@Model.CurrentFilter"
+                                   asp-route-SortOrder="@Model.ProjectSort">
+                                    @Html.DisplayNameFor(model => model.Component[0].Project)
+                                </a>
+                            </th>
+                            <th style="display:none;" data-f-sz="12" data-f-bold="true" data-f-color="FFFFFF" data-fill-color="000000">
+                                @Html.DisplayNameFor(model => model.Component[0].AppUser)
+                            </th>
+                            <th class="border-0 rounded-top" style="position: sticky; top: 0; background: white;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Component)
+                        {
+                            <tr>
+                                <td data-f-sz="11">
+                                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                                </td>
+                                <td data-f-sz="11">
+                                    @Html.DisplayFor(modelItem => item.PartNumber)
+                                </td>
+                                <td data-f-sz="11">
+                                    @Html.DisplayFor(modelItem => item.PartName)
+                                </td>
+                                <td style="display:none;" data-f-sz="11">
+                                    @Html.DisplayFor(modelItem => item.Vendor.VendorName)
+                                </td>
+                                <td data-f-sz="11">
+                                    @Html.DisplayFor(modelItem => item.UnitCost)
+                                </td>
+                                <td style="display:none;" data-f-sz="11">
+                                    @Html.DisplayFor(modelItem => item.Maturity.MaturityStatus)
+                                </td>
+                                <td style="display:none;" data-f-sz="11">
+                                    @Html.DisplayFor(modelItem => item.Notes)
+                                </td>
+                                <td style="display:none;" data-f-sz="11">
+                                    @Html.DisplayFor(modelItem => item.Url)
+                                </td>
+                                <td data-f-sz="11">
+                                    @Html.DisplayFor(modelItem => item.QuantityCurrent)
+                                </td>
+                                <td style="display:none;" data-f-sz="11">
+                                    @Html.DisplayFor(modelItem => item.QuantityNeeded)
+                                </td>
+                                <td data-f-sz="11">
+                                    @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                                </td>
+                                <td style="display:none;" data-f-sz="11">
+                                    @Html.DisplayFor(modelItem => item.AppUser.Username)
+                                </td>
+                                <td data-exclude="true">
+                                    <a asp-page="./Edit" asp-route-id="@item.Id" class="badge badge-primary">Edit</a> |
+                                    <a asp-page="./Details" asp-route-id="@item.Id" class="badge badge-primary">Details</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row justify-content-center m-3">
+            <div class="col-10 text-right">
+                <input type="button" value="Add +" onclick="window.location.href='Inventory/Create';" class="btn btn-primary" />
+                <input id="downloadBtn" type="button" value="Export" class="btn btn-primary" />
+            </div>
         </div>
     </div>
 
