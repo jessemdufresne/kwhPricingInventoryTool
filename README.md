@@ -1,5 +1,5 @@
 # KWH Pricing and Inventory Tool (PIT)
-Lacking a organization-wide inventory management system can pose significant challenges for any volunteer-run organization, such as redundant purchasing, cluttered information tracking, and internal miscommunication. This web application helps volunteer-run organizations (like KiloWatts for Humanity) manage their data logger inventory across implementation projects. As a result, decision-making and information transfer among incoming and outgoing volunteers during the planning stages of future installations will be greatly improved. 
+Lacking an organization-wide inventory management system can pose significant challenges for any volunteer-run organization, such as redundant purchasing, cluttered information tracking, and internal miscommunication. This web application helps volunteer-run organizations (like KiloWatts for Humanity) manage their data logger inventory across implementation projects. As a result, decision-making and information transfer among incoming and outgoing volunteers during the planning stages of future installations will be greatly improved. 
 
 # Requirements
 ### [Visual Studio 2019 Community](https://visualstudio.microsoft.com/downloads/)
