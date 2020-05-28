@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/Users/JesseDuFresne/Desktop/School/Project/branches/ui_fix/kwhPricingInventoryTool/kwh/kwh.csproj": {}
+    "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj": {}
   },
   "projects": {
-    "/Users/JesseDuFresne/Desktop/School/Project/branches/ui_fix/kwhPricingInventoryTool/kwh/kwh.csproj": {
+    "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/JesseDuFresne/Desktop/School/Project/branches/ui_fix/kwhPricingInventoryTool/kwh/kwh.csproj",
+        "projectUniqueName": "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj",
         "projectName": "kwh",
-        "projectPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/ui_fix/kwhPricingInventoryTool/kwh/kwh.csproj",
-        "packagesPath": "/Users/JesseDuFresne/.nuget/packages/",
-        "outputPath": "/Users/JesseDuFresne/Desktop/School/Project/branches/ui_fix/kwhPricingInventoryTool/kwh/obj/",
+        "projectPath": "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/kwh.csproj",
+        "packagesPath": "/Users/audreykan/.nuget/packages/",
+        "outputPath": "/Users/audreykan/Documents/GitHub/pit/kwhPricingInventoryTool/kwh/obj/",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/JesseDuFresne/.config/NuGet/NuGet.Config"
+          "/Users/audreykan/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -119,7 +122,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.202/RuntimeIdentifierGraph.json"
         }
       }
     }

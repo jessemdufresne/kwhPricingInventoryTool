@@ -35,8 +35,9 @@ namespace kwh.Pages.Projects
             CurrentSort = sortOrder;
 
             // Toggle column sorting
-            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            YearSort = sortOrder == "Year" ? "year_desc" : "Year";
+            YearSort = String.IsNullOrEmpty(sortOrder) ? "year_desc" : "";
+            NameSort = sortOrder == "Name" ? "name_desc" : "Name";
+
 
             if (searchString == null)
             {
@@ -56,17 +57,17 @@ namespace kwh.Pages.Projects
 
             switch (sortOrder)
             {
-                case "name_desc":
-                    projects = projects.OrderByDescending(p => p.ProjectName);
-                    break;
-                case "Year":
-                    projects = projects.OrderBy(c => c.ProjectYear);
-                    break;
                 case "year_desc":
-                    projects = projects.OrderByDescending(c => c.ProjectYear);
+                    projects = projects.OrderByDescending(p => p.ProjectYear);
+                    break;
+                case "Name":
+                    projects = projects.OrderBy(c => c.ProjectName);
+                    break;
+                case "name_desc":
+                    projects = projects.OrderByDescending(c => c.ProjectName);
                     break;
                 default:
-                    projects = projects.OrderBy(p => p.ProjectName);
+                    projects = projects.OrderBy(p => p.ProjectYear);
                     break;
             }
 
