@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center m-3">
             <div class="col-10 text-right">
-                <form asp-page="./Index" method="get">
+                <form asp-page="./Index" method="get" autocomplete="off">
                     <div class="form-actions color-white px-2 d-inline-block">
                         <b class="px-2">Search By:</b>
                         @foreach (var searchby in Model.Criteria)

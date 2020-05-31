@@ -96,19 +96,37 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.UnitCost)
                                 </td>
-                                <td>
-                                    <a>
-                                        <img src="~/Images/Notepad-icon.png" style="cursor: pointer;" data-toggle="popover" data-placement="top" data-content="@Html.DisplayFor(modelItem => item.Notes)" />
-                                    </a>
-                                </td>
+                                @if (item.Notes == "" || item.Notes == null)
+                                {
+                                    <td>
+                                        <img src="~/Images/Notepad-icon.png" />
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <a>
+                                            <img src="~/Images/Notepad-icon.png" style="cursor: pointer;" data-toggle="popover" data-placement="top" data-content="@Html.DisplayFor(modelItem => item.Notes)" />
+                                        </a>
+                                    </td>
+                                }
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Maturity.MaturityStatus)
                                 </td>
-                                <td>
-                                    <a href="@item.Url" target="_blank">
+                                @if (item.Url == "")
+                                {
+                                    <td>
                                         <img src="~/Images/icons8-link-26.png" style="width: 20px;" />
-                                    </a>
-                                </td>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <a href="@item.Url" target="_blank">
+                                            <img src="~/Images/icons8-link-26.png" style="width: 20px;" />
+                                        </a>
+                                    </td>
+                                }
                                 <td>
                                     @Html.DisplayFor(modelItem => item.QuantityCurrent)
                                 </td>
@@ -148,13 +166,13 @@
     var ctx = document.getElementById('priceChart').getContext('2d');
     var tti = [@Model.TimestampsList];
     var LineChart = new Chart(ctx, {
-        responsive: true, 
+        responsive: true,
         type: 'line',
         data: {
             datasets: [{
                 fill: false,
                 borderColor: 'rgb(162, 202, 153)',
-                pointBackgroundColor: 'rgb(162, 202, 153)', 
+                pointBackgroundColor: 'rgb(162, 202, 153)',
                 borderWidth: 2,
                 lineTension: 0.3,
                 data: [@Model.UnitCostList]

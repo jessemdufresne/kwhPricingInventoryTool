@@ -18,7 +18,7 @@
         <h3>@ViewData["Title"]</h3>
         <div class="row justify-content-center">
             <div class="col-md-4  col-sm-10 text-left">
-                <form method="post">
+                <form method="post" autocomplete="off">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <p>@Html.ValidationMessage("CustomErr", new { @class = "text-danger" })</p>
                     <div class="form-group">
@@ -48,12 +48,10 @@
                     </div>
                     <div class="form-group text-center">
                         <input type="submit" value="Add" class="btn btn-primary" />
+                        <a class="btn btn-secondary" asp-page="./Index">Cancel</a>
                     </div>
                 </form>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <a class="btn btn-primary" asp-page="./Index">Back to List</a>
         </div>
     </div>
 
