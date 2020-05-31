@@ -44,8 +44,8 @@ mysql_secure_installation
 ENTER
 Y
 2
-uRootPass1!
-uRootPass1!
+{Enter password here}
+{Re-enter password here}
 Y
 Y
 Y
@@ -85,11 +85,11 @@ sudo mysql_secure_installation
 * Group Replication > **Standalone MySQL Server**. This should be the default option.
 * Continue with installer…
 * Authentication Method > Select “Use Strong Password Encryption”
-..* Choose your MySQL Root Password
+* Choose your MySQL Root Password
 * Continue with installer…
 * **Execute** to apply configurations
 * **Finish**
-*	Connect to Server > Enter User: **roo**t and Password: **yourPasswordHere** > **Check**
+*	Connect to Server > Enter User: **root** and Password: **yourPasswordHere** > **Check**
 *	**Execute** to apply further configurations
 *	**Finish**
 
